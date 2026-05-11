@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Brief reports · index</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Sora:wght@500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand: #3db27c;
+    --brand-bg: #ecf9f3;
+    --brand-deep: #1f6b48;
+    --text: #2d2f49;
+    --muted: #777;
+    --bg: #f8f8f8;
+    --surface: #fff;
+    --border: #ececec;
+    --ok: #3db27c;
+    --warn: #eab308;
+    --blocker: #ef4444;
+    --warn-bg: #fefce8;
+    --warn-border: #fde68a;
+    --warn-text: #854d0e;
+    --blocker-bg: #fef2f2;
+    --blocker-border: #fecaca;
+    --blocker-text: #991b1b;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    font-family: 'Poppins', sans-serif;
+    color: var(--text);
+    padding: 48px clamp(24px, 5vw, 64px) 96px;
+  }
+  header {
+    max-width: 1240px;
+    margin: 0 auto 48px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  h1 {
+    font-family: 'Sora', 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+    letter-spacing: -0.015em;
+    margin: 0;
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brand-deep);
+    margin: 0 0 8px;
+  }
+  .header-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+  main { max-width: 1240px; margin: 0 auto; }
+  section + section { margin-top: 56px; }
+  h2 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 22px;
+    position: relative;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 1px 2px rgba(45,47,73,0.04);
+    transition: transform 200ms cubic-bezier(0.32,0.72,0,1),
+                box-shadow 200ms cubic-bezier(0.32,0.72,0,1),
+                border-color 200ms cubic-bezier(0.32,0.72,0,1);
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 12px 28px -16px rgba(45,47,73,0.25);
+    border-color: rgba(45,47,73,0.12);
+  }
+  .card-verdict {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 999px;
+    border: 1px solid;
+    margin-bottom: 14px;
+  }
+  .card-verdict--ready    { background: var(--brand-bg); color: var(--brand-deep); border-color: #c4ebd6; }
+  .card-verdict--pending  { background: var(--warn-bg); color: var(--warn-text); border-color: var(--warn-border); }
+  .card-verdict--blocked  { background: var(--blocker-bg); color: var(--blocker-text); border-color: var(--blocker-border); }
+  .card-title {
+    font-family: 'Sora', 'Poppins', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0 0 4px;
+  }
+  .card-sub {
+    font-size: 12px;
+    color: var(--muted);
+    margin: 0 0 10px;
+  }
+  .card-summary {
+    font-size: 12.5px;
+    color: var(--text);
+    margin: 0 0 14px;
+    line-height: 1.45;
+  }
+  .card-stats {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--muted);
+    align-items: center;
+  }
+  .card-stats li { display: inline-flex; align-items: center; gap: 5px; }
+  .card-stats .sep { opacity: 0.4; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+  .dot--ok      { background: var(--ok); }
+  .dot--warn    { background: var(--warn); }
+  .dot--blocker { background: var(--blocker); }
+
+  .card-next {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: var(--brand-bg);
+    color: var(--brand-deep);
+    border: 1px solid #c4ebd6;
+  }
+  .card-next--missing {
+    background: var(--warn-bg);
+    color: var(--warn-text);
+    border-color: var(--warn-border);
+  }
+
+  .template-row {
+    display: flex; gap: 12px; flex-wrap: wrap;
+  }
+  .template-card {
+    flex: 1 1 240px;
+    background: var(--surface);
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    text-decoration: none;
+    color: inherit;
+  }
+  .template-card:hover { border-color: var(--brand); }
+  .template-card .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 4px;
+  }
+  .template-card .name {
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    margin: 0;
+  }
+  .template-card .path {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    margin: 4px 0 0;
+  }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <p class="eyebrow">Brief de onboarding</p>
+    <h1>Reportes · navegador</h1>
+  </div>
+  <div class="header-meta">5 reportes sintéticos · 3 estados del verdict</div>
+</header>
+
+<main>
+  <section>
+    <h2>Sintéticos · 3 estados del verdict</h2>
+    <div class="grid">
+      <a class="card card--blocked" href="brief-html-blocked/index.html">
+        <span class="card-verdict card-verdict--blocked">Bloqueado</span>
+        <h3 class="card-title">Bebidas Andinas SA</h3>
+        <p class="card-sub">AR · 2026-05-08</p>
+        <p class="card-summary">2 bloqueantes · 3 avisos</p>
+        <ul class="card-stats">
+          <li><span class="dot dot--ok"></span>5 ok</li>
+          <li><span class="dot dot--warn"></span>3 aviso</li>
+          <li><span class="dot dot--blocker"></span>2 bloqueo</li>
+          <li class="sep">·</li>
+          <li>4 pendientes</li>
+          <li>1 custom</li>
+        </ul>
+        <span class="card-next">Próxima · 22 May 2026</span>
+      </a>
+      <a class="card card--ready" href="brief-html-no-meeting/index.html">
+        <span class="card-verdict card-verdict--ready">Listo para implementar</span>
+        <h3 class="card-title">Bebidas Andinas SA</h3>
+        <p class="card-sub">AR · 2026-05-08</p>
+        <p class="card-summary">10 bloques en orden</p>
+        <ul class="card-stats">
+          <li><span class="dot dot--ok"></span>10 ok</li>
+          <li><span class="dot dot--warn"></span>0 aviso</li>
+          <li><span class="dot dot--blocker"></span>0 bloqueo</li>
+          <li class="sep">·</li>
+          <li>0 pendientes</li>
+          <li>0 custom</li>
+        </ul>
+        <span class="card-next card-next--missing">Sin próxima reunión</span>
+      </a>
+      <a class="card card--blocked" href="brief-html-off-script/index.html">
+        <span class="card-verdict card-verdict--blocked">Bloqueado</span>
+        <h3 class="card-title">Aceros del Sur SA</h3>
+        <p class="card-sub">Argentina · Rosario · 2026-04-22</p>
+        <p class="card-summary">Reunión sin recorrer el cuestionario</p>
+        <ul class="card-stats">
+          <li><span class="dot dot--ok"></span>0 ok</li>
+          <li><span class="dot dot--warn"></span>2 aviso</li>
+          <li><span class="dot dot--blocker"></span>8 bloqueo</li>
+          <li class="sep">·</li>
+          <li>0 pendientes</li>
+          <li>0 custom</li>
+        </ul>
+        <span class="card-next">Próxima · 2026-04-29</span>
+      </a>
+      <a class="card card--ready" href="brief-html-ready/index.html">
+        <span class="card-verdict card-verdict--ready">Listo para implementar</span>
+        <h3 class="card-title">Bebidas Andinas SA</h3>
+        <p class="card-sub">AR · 2026-05-08</p>
+        <p class="card-summary">10 bloques en orden</p>
+        <ul class="card-stats">
+          <li><span class="dot dot--ok"></span>10 ok</li>
+          <li><span class="dot dot--warn"></span>0 aviso</li>
+          <li><span class="dot dot--blocker"></span>0 bloqueo</li>
+          <li class="sep">·</li>
+          <li>0 pendientes</li>
+          <li>0 custom</li>
+        </ul>
+        <span class="card-next">Próxima · 22 May 2026</span>
+      </a>
+      <a class="card card--pending" href="brief-html-with-pendings/index.html">
+        <span class="card-verdict card-verdict--pending">Listo con pendientes</span>
+        <h3 class="card-title">Bebidas Andinas SA</h3>
+        <p class="card-sub">AR · 2026-05-08</p>
+        <p class="card-summary">0 bloqueantes · 2 avisos</p>
+        <ul class="card-stats">
+          <li><span class="dot dot--ok"></span>8 ok</li>
+          <li><span class="dot dot--warn"></span>2 aviso</li>
+          <li><span class="dot dot--blocker"></span>0 bloqueo</li>
+          <li class="sep">·</li>
+          <li>4 pendientes</li>
+          <li>1 custom</li>
+        </ul>
+        <span class="card-next">Próxima · 22 May 2026</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>
