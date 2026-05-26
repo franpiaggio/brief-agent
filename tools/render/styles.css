@@ -1207,12 +1207,12 @@ body {
 /* Print / PDF export */
 @page {
   size: A4;
-  margin: 12mm 8mm;
+  margin: 0; /* zero margin → Chrome omits its URL/date headers and footers */
 }
 
 @media print {
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  body { padding: 0; }
+  body { padding: 12mm 8mm; } /* replaces @page margin so content isn't edge-to-edge */
   .doc { max-width: none; margin: 0; }
 
   .narrative,
