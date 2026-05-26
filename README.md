@@ -1,4 +1,4 @@
-# EasyDocking — Brief de onboarding
+# EasyDocking: Brief de onboarding
 
 Contratos del agente, templates y herramientas para el pipeline de briefs de onboarding.
 
@@ -10,13 +10,13 @@ Contratos del agente, templates y herramientas para el pipeline de briefs de onb
 
 ### Brief Editor
 
-Editor local para pulir briefs antes de mandarlos al cliente. Cargás un brief (HTML con JSON embebido o JSON suelto), corregís datos con un click sobre el documento y exportás el HTML actualizado. Sin servidor, sin LLM, sin auto-save.
+Editor local para pulir briefs antes de enviarlos al cliente. Acepta el HTML del brief con JSON embebido o el JSON canónico suelto. Permite corregir cualquier dato haciendo click sobre el documento y exporta el HTML actualizado. Sin servidor, sin LLM, sin auto-save.
 
 → [`tools/brief-editor/`](tools/brief-editor/) · [README](tools/brief-editor/README.md)
 
 ### Render
 
-CLI TypeScript que valida el JSON del agente contra el schema Zod, calcula campos derivados y genera el HTML final del brief. Es la fuente de verdad del output — el Brief Editor y el Runner lo usan internamente.
+CLI TypeScript que valida el JSON del agente contra el schema Zod, calcula campos derivados y genera el HTML final del brief. Es la fuente de verdad del output. El Brief Editor y el Runner lo usan internamente.
 
 ```bash
 cd tools/render
@@ -28,9 +28,9 @@ npm run render -- fixtures/test-ready.json output.html
 ### Runner
 
 > [!NOTE]
-> Work in progress — coming soon.
+> Work in progress, coming soon.
 
-Ejecutor local del agente. Arrastrás un transcript, elegís proveedor y modelo, y genera el brief completo. Soporta Claude Max (CLI local), Anthropic API y OpenAI API. Historial de runs con métricas de tokens y costo.
+Ejecutor local del agente. Recibe un transcript, deja elegir proveedor y modelo, y genera el brief completo. Soporta Claude Max (CLI local), Anthropic API y OpenAI API. Incluye historial de runs con métricas de tokens y costo.
 
 → [`tools/runner/`](tools/runner/)
 
@@ -57,4 +57,3 @@ Ejemplos visuales del brief como HTML estático. No son dependencias runtime del
 | `brief-html-blocked/` | Gaps críticos que bloquean el avance. |
 | `brief-html-off-script/` | La reunión se desvió del cuestionario. |
 | `brief-html-no-meeting/` | Sin reunión o sin material suficiente. |
-
