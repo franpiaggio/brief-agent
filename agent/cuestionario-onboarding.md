@@ -174,6 +174,7 @@ Para cada formulario:
 
 ❓ **Preguntas guía**
 
+- ¿Qué canales usan para comunicar al cliente y a los transportistas? (Mail, WhatsApp, otro)
 - ¿Las plantillas de mail aplican o requieren ajustes?
 - ¿Las plantillas de WhatsApp aplican o requieren ajustes?
 - ¿Falta algún mensaje clave en el proceso?

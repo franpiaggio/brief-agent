@@ -116,7 +116,7 @@ Options van en `options[]` del bloque con cada ítem como entrada plana (con `gr
 | `classification` | `modules` | `"YMS"`, `"Dock Scheduling"`, `"Inducción"`, `"Control Documental"` |
 | `orders_module` | `module_decision` | `"Módulo de Órdenes"` (binario, single item: `needed: true` activa, `false` descarta, `null` por definir) |
 | `fields_and_forms` | `forms_to_review` | `"Planificación / Turnos"`, `"Confirmación de turno"`, `"Check-in"`, `"Checklists"`, `"Asignación de dock / llamado"` |
-| `messages_notifications` | `channels` | `"Email"`, `"WhatsApp"` |
+| `messages_notifications` | `channels` | `"Email"`, `"WhatsApp"`, `"Otro"` |
 
 ## Fields por bloque (`key`)
 

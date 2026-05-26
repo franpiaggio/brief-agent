@@ -443,6 +443,12 @@
           "label": "WhatsApp",
           "needed": true,
           "citation": "Los transportistas ya nos escriben por WhatsApp, tiene que seguir siendo así"
+        },
+        {
+          "group_name": "channels",
+          "label": "Otro",
+          "needed": false,
+          "citation": null
         }
       ],
       "fields": [

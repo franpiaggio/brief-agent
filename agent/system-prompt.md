@@ -183,7 +183,7 @@ Fields:
 ## 8. Mensajes y notificaciones
 
 Options:
-- `Canales de comunicación` (multi-select): "Mail", "WhatsApp"
+- `Canales de comunicación` (multi-select): "Mail", "WhatsApp", "Otro"
 
 Fields:
 - `Ajustes a plantillas`

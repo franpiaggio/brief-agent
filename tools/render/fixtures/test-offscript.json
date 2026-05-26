@@ -406,6 +406,12 @@
           "label": "WhatsApp",
           "needed": null,
           "citation": null
+        },
+        {
+          "group_name": "channels",
+          "label": "Otro",
+          "needed": false,
+          "citation": null
         }
       ],
       "fields": [

@@ -423,6 +423,12 @@
           "label": "WhatsApp",
           "needed": true,
           "citation": "El 80% de los transportistas solo usa WhatsApp"
+        },
+        {
+          "group_name": "channels",
+          "label": "Otro",
+          "needed": false,
+          "citation": null
         }
       ],
       "fields": [
