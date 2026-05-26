@@ -162,13 +162,14 @@ export function Toolbar() {
           {isDirty ? 'Sin exportar' : 'Documento exportado'}
         </span>
 
-        <button className="btn btn--ghost" type="button" onClick={handleReset}>
-          Cargar otro
+        <button className="btn btn--ghost btn--load" type="button" onClick={handleReset} aria-label="Cargar otro brief">
+          <span className="btn-label">Cargar otro</span>
         </button>
         <button
-          className="btn btn--ghost"
+          className="btn btn--ghost btn--pdf"
           type="button"
           onClick={handleExportPdfClick}
+          aria-label="Exportar PDF"
           title="Abrir diálogo de impresión para guardar como PDF"
         >
           <svg className="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -178,13 +179,14 @@ export function Toolbar() {
             <path d="M9 16h6" />
             <path d="M9 8h1" />
           </svg>
-          Exportar PDF
+          <span className="btn-label">Exportar PDF</span>
         </button>
         <div className="toolbar-dropdown">
           <button
             type="button"
-            className="btn btn--primary"
+            className="btn btn--primary btn--export"
             aria-expanded={exportOpen}
+            aria-label="Exportar"
             onClick={() => setExportOpen((v) => !v)}
             onBlur={() => setTimeout(() => setExportOpen(false), 120)}
             title="Exportar (⌘E para HTML)"
@@ -194,7 +196,7 @@ export function Toolbar() {
               <polyline points="7 10 12 15 17 10" />
               <line x1="12" y1="15" x2="12" y2="3" />
             </svg>
-            Exportar
+            <span className="btn-label">Exportar</span>
             <svg className="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <polyline points="6 9 12 15 18 9" />
             </svg>

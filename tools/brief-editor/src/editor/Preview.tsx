@@ -6,7 +6,6 @@ import type { ModalState } from '../modal/ModalContext'
 import { Brief } from '../brief/Brief'
 
 const NATIVE_WIDTH = 920
-const HORIZONTAL_PADDING = 32
 
 const EDITOR_OVERLAY_CSS = `
   html, body { margin: 0; padding: 0; }
@@ -153,7 +152,9 @@ export function Preview() {
     if (!pane) return
 
     const recalcScale = () => {
-      const available = pane.clientWidth - HORIZONTAL_PADDING * 2
+      const styles = window.getComputedStyle(pane)
+      const horizontalPadding = parseFloat(styles.paddingLeft) + parseFloat(styles.paddingRight)
+      const available = pane.clientWidth - horizontalPadding
       const next = Math.min(1, available / NATIVE_WIDTH)
       setScale(next > 0 ? next : 1)
     }
