@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useBrief } from '../state/BriefContext'
 import { toHtml } from '../export/toHtml'
 import { downloadHtml, buildFilename } from '../export/downloadHtml'
+import { downloadPdf } from '../export/downloadPdf'
 import { BLOCK_DEFS } from '../constants/blockDefs'
 import { VERDICT_DEFS, VERDICT_BY_STATUS } from '../constants/verdictDefs'
 import { BLOCK_STATUS_LABELS } from '../constants/groupLabels'
@@ -9,6 +10,7 @@ import { BLOCK_STATUS_LABELS } from '../constants/groupLabels'
 export function Toolbar() {
   const { state, dispatch, actions, isDirty, markExported, resetEditor } = useBrief()
   const [blocksOpen, setBlocksOpen] = useState(false)
+  const [pdfLoading, setPdfLoading] = useState(false)
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
@@ -32,6 +34,17 @@ export function Toolbar() {
     const html = await toHtml(state)
     downloadHtml(html, buildFilename(state))
     markExported()
+  }
+
+  async function handleExportPdf() {
+    if (!state || pdfLoading) return
+    setPdfLoading(true)
+    try {
+      await downloadPdf(state)
+      markExported()
+    } finally {
+      setPdfLoading(false)
+    }
   }
 
   function handleReset() {
@@ -127,6 +140,28 @@ export function Toolbar() {
 
         <button className="btn btn--ghost" type="button" onClick={handleReset}>
           Cargar otro
+        </button>
+        <button
+          className="btn btn--ghost"
+          type="button"
+          onClick={handleExportPdf}
+          disabled={pdfLoading}
+          title="Exportar PDF (con JSON embebido para seguir editando)"
+        >
+          {pdfLoading ? (
+            'Generando…'
+          ) : (
+            <>
+              <svg className="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <path d="M9 12h6" />
+                <path d="M9 16h6" />
+                <path d="M9 8h1" />
+              </svg>
+              Exportar PDF
+            </>
+          )}
         </button>
         <button className="btn btn--primary" type="button" onClick={handleExport} title="Exportar (⌘E)">
           <svg className="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

@@ -1,5 +1,7 @@
+import type { VerdictStatus } from '../types'
+
 export type VerdictDef = {
-  status: string
+  status: VerdictStatus
   label: string
   cssClass: string
 }

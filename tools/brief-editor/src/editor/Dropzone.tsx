@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import { useBrief } from '../state/BriefContext'
 import { loadHtml } from '../loaders/loadHtml'
 import { loadJson } from '../loaders/loadJson'
+import { loadPdf } from '../loaders/loadPdf'
 import './dropzone.css'
 
 type DropzoneState = 'idle' | 'loading' | { error: string }
@@ -13,14 +14,17 @@ export function Dropzone() {
 
   async function handleFile(file: File) {
     const ext = file.name.split('.').pop()?.toLowerCase()
-    if (ext !== 'html' && ext !== 'json') {
-      setStatus({ error: 'Formato no soportado. Usá un archivo .html o .json' })
+    if (ext !== 'html' && ext !== 'json' && ext !== 'pdf') {
+      setStatus({ error: 'Formato no soportado. Usá un archivo .html, .json o .pdf' })
       return
     }
 
     setStatus('loading')
     try {
-      const data = ext === 'html' ? await loadHtml(file) : await loadJson(file)
+      const data =
+        ext === 'html' ? await loadHtml(file) :
+        ext === 'pdf'  ? await loadPdf(file)  :
+                         await loadJson(file)
       dispatch(actions.loadBrief(data))
     } catch (err) {
       setStatus({ error: err instanceof Error ? err.message : 'Error desconocido' })
@@ -54,7 +58,7 @@ export function Dropzone() {
           <input
             ref={inputRef}
             type="file"
-            accept=".html,.json"
+            accept=".html,.json,.pdf"
             onChange={onInputChange}
             style={{ opacity: 0, position: 'absolute', pointerEvents: 'none' }}
             tabIndex={-1}
@@ -73,7 +77,7 @@ export function Dropzone() {
           <div className="dropzone-eyebrow">Cargar reporte</div>
           <h1 className="dropzone-title">Soltá el brief para editar</h1>
           <p className="dropzone-sub">
-            Acepta el HTML completo del brief (con su JSON embebido) o el JSON canónico suelto. Sin LLM, sin server: edición local, exportás el HTML actualizado.
+            Acepta el HTML del brief, el JSON canónico o un PDF exportado desde este editor. Sin LLM, sin server: edición local.
           </p>
 
           {status === 'loading' ? (
@@ -104,19 +108,10 @@ export function Dropzone() {
           <div className="dropzone-formats">
             <span className="format-pill">.html</span>
             <span className="format-pill">.json</span>
+            <span className="format-pill">.pdf</span>
           </div>
         </div>
 
-        <div className="landing-tips">
-          <div className="tip">
-            <span className="tip-label">HTML</span>
-            El brief tal cual lo emitió el agente. El editor lee el JSON embebido en <code>{'<script id="brief-source">'}</code> y lo usa como fuente de verdad.
-          </div>
-          <div className="tip">
-            <span className="tip-label">JSON</span>
-            El reporte sin renderizar. El editor lo monta sobre el template del verdict correspondiente y permite ajustarlo.
-          </div>
-        </div>
       </div>
 
       <footer className="landing-footer">

@@ -1,6 +1,8 @@
+import type { ReactElement } from 'react'
+
 type Props = { fieldKey: string }
 
-const PATHS: Record<string, JSX.Element> = {
+const PATHS: Record<string, ReactElement> = {
   industry: (
     <>
       <path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" />
