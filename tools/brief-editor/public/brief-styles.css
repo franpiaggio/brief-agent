@@ -1207,14 +1207,14 @@ body {
 /* Print / PDF export */
 @page {
   size: A4;
-  margin: 0; /* zero margin → Chrome omits its URL/date headers and footers */
+  margin: 14mm 22mm; /* consistent margin on every page */
 }
 
 @media print {
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 
   body {
-    padding: 14mm 22mm !important; /* !important ensures no other rule narrows the margin */
+    padding: 0 !important;
     background: white !important;
   }
 
