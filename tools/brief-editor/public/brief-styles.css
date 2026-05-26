@@ -1214,18 +1214,18 @@ body {
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 
   body {
-    padding: 14mm 16mm;
-    background: white;
+    padding: 14mm 22mm !important; /* !important ensures no other rule narrows the margin */
+    background: white !important;
   }
 
   /* Remove card chrome — flat document layout for print */
   .doc {
-    max-width: none;
-    margin: 0;
-    padding: 0 var(--doc-pad-x); /* keep horizontal padding so section content isn't edge-to-edge */
-    box-shadow: none;
-    border-radius: 0;
-    background: white;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    background: white !important;
   }
 
   /* Narrative: strip gradient wrapper, keep the inner card border */
