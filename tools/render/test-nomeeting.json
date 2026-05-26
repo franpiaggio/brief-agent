@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "client_name": null,
+    "industry": null,
+    "country": null,
+    "meeting_date": "2026-05-25"
+  },
+  "verdict": {
+    "status": "blocked",
+    "summary": "Sin reunión",
+    "blockers_count": 10,
+    "warnings_count": 0,
+    "detail": "No hubo reunión o no hay transcript disponible para procesar"
+  },
+  "custom": { "count": 0, "items": [] },
+  "narrative": {
+    "current_situation": null,
+    "what_they_want": null,
+    "closure": null
+  },
+  "blocks": [
+    { "id": 1,  "name": "general_info",              "status": "blocker", "status_reason": "Sin datos", "options": [], "fields": [], "flags": [], "pending": [], "additional_notes": [], "workflow_states": [] },
+    { "id": 2,  "name": "classification",             "status": "blocker", "status_reason": "Sin datos", "options": [], "fields": [], "flags": [], "pending": [], "additional_notes": [], "workflow_states": [] },
+    { "id": 3,  "name": "workflow",                   "status": "blocker", "status_reason": "Sin datos", "options": [], "fields": [], "flags": [], "pending": [], "additional_notes": [], "workflow_states": [] },
+    { "id": 4,  "name": "process_actors",             "status": "blocker", "status_reason": "Sin datos", "options": [], "fields": [], "flags": [], "pending": [], "additional_notes": [], "workflow_states": [] },
+    { "id": 5,  "name": "schedule_docks_warehouse",   "status": "blocker", "status_reason": "Sin datos", "options": [], "fields": [], "flags": [], "pending": [], "additional_notes": [], "workflow_states": [] },
+    { "id": 6,  "name": "orders_module",              "status": "blocker", "status_reason": "Sin datos", "options": [], "fields": [], "flags": [], "pending": [], "additional_notes": [], "workflow_states": [] },
+    { "id": 7,  "name": "fields_and_forms",           "status": "blocker", "status_reason": "Sin datos", "options": [], "fields": [], "flags": [], "pending": [], "additional_notes": [], "workflow_states": [] },
+    { "id": 8,  "name": "messages_notifications",     "status": "blocker", "status_reason": "Sin datos", "options": [], "fields": [], "flags": [], "pending": [], "additional_notes": [], "workflow_states": [] },
+    { "id": 9,  "name": "exceptions_integrations",    "status": "blocker", "status_reason": "Sin datos", "options": [], "fields": [], "flags": [], "pending": [], "additional_notes": [], "workflow_states": [] },
+    { "id": 10, "name": "closure",                    "status": "blocker", "status_reason": "Sin datos", "options": [], "fields": [], "flags": [], "pending": [], "additional_notes": [], "workflow_states": [] }
+  ]
+}

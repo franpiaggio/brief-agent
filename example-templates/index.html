@@ -241,7 +241,7 @@
     <p class="eyebrow">Brief de onboarding</p>
     <h1>Reportes · navegador</h1>
   </div>
-  <div class="header-meta">5 ejemplos · 1 esqueleto · 1 contrato</div>
+  <div class="header-meta">5 ejemplos · 1 renderer</div>
 </header>
 
 <main>
@@ -329,17 +329,11 @@
   <section>
     <h2>Para el generador</h2>
     <div class="tool-grid">
-      <a class="tool-card" href="template.html">
-        <span class="tool-card-label">Skeleton · vacío</span>
-        <h3 class="tool-card-title">Plantilla base</h3>
-        <p class="tool-card-desc">HTML estructural con placeholders mustache-style. El generador llena los slots a partir del JSON del agente.</p>
-        <p class="tool-card-path">templates/template.html</p>
-      </a>
-      <a class="tool-card" href="../RENDER-CONTRACT.md">
-        <span class="tool-card-label">Contract · mapping spec</span>
-        <h3 class="tool-card-title">Render contract</h3>
-        <p class="tool-card-desc">Mapeo 1-a-1 entre cada campo del JSON y su slot en el HTML. Incluye tablas de mapping, conditional rendering y derived fields.</p>
-        <p class="tool-card-path">RENDER-CONTRACT.md</p>
+      <a class="tool-card" href="../tools/render/core/render.ts">
+        <span class="tool-card-label">Renderer · TypeScript</span>
+        <h3 class="tool-card-title">Renderer</h3>
+        <p class="tool-card-desc">Valida el JSON del agente, calcula campos derivados y renderiza la plantilla base a HTML.</p>
+        <p class="tool-card-path">tools/render/core/render.ts</p>
       </a>
     </div>
   </section>

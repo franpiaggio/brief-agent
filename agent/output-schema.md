@@ -1,13 +1,13 @@
 # Output schema — Brief de onboarding
 
-> Contrato del JSON que el agente emite. Diseñado para mapear 1:1 con lo que el HTML renderiza, sin claves muertas. Todo lo derivable lo deriva el renderer; el agente solo emite hechos extraídos del transcript.
+Contrato del JSON que el agente emite. El renderer en `tools/render/` lo valida contra este schema y lo convierte a HTML.
 
 ## Principios
 
 1. **Solo lo que se renderiza.** Si una clave no aparece en el HTML, no está en el JSON.
-2. **Citas inline.** Cada `value`, `needed:true|false`, `pending`, `custom` lleva `cite` con texto literal del transcript. Anti-invención sin ceremonia.
-3. **Null es válido.** Si el cliente no mencionó algo, el agente emite `null` (en `value`, `cite`, `needed`). El renderer muestra `"—"`.
-4. **El agente no cuenta ni decide totales.** Cobertura, banner off-script, verdict counts — todo lo deriva el renderer leyendo `blocks[].status`.
+2. **Citas en cada dato extraído.** Cualquier `answer`, `needed: true|false` o pendiente lleva `citation` con el fragmento literal del transcript que lo respalda.
+3. **`null` es válido.** Si el cliente no mencionó algo, el agente emite `null`. El renderer muestra `Sin definir`.
+4. **El agente no cuenta totales.** Counts de pendientes, cobertura, leyenda de coverage — todo lo deriva el renderer.
 
 ## Estructura top-level
 
@@ -15,25 +15,41 @@
 {
   "meta": {
     "client_name":  "string | null",
-    "meeting_date": "YYYY-MM-DD | null"
+    "industry":     "string | null",
+    "country":      "string | null",
+    "meeting_date": "YYYY-MM-DD"
   },
   "verdict": {
-    "status":  "ready | ready_with_pending | blocked",
-    "summary": "string",
-    "detail":  "string"
+    "status":         "ready | ready_with_pending | blocked",
+    "summary":        "string  (1 frase, ej. '2 bloqueantes · 3 avisos')",
+    "blockers_count": 0,
+    "warnings_count": 0,
+    "detail":         "string | null  // opcional — sub-línea que expande el verdict"
+  },
+  "custom": {
+    "count": 0,
+    "items": [
+      { "description": "string", "citation": "string | null" }
+    ]
   },
   "narrative": {
     "current_situation": "string | null",
     "what_they_want":    "string | null",
-    "closure":           "string | null"
+    "closure":           "string | null  // opcional"
   },
+  // Opcional — solo si hay próxima reunión con fecha acordada
   "next_meeting": {
-    "label":   "string | null",
-    "summary": "string | null",
-    "date":    "string | null",
-    "time":    "string | null"
+    "label":   "string",
+    "summary": "string",
+    "date":    "YYYY-MM-DD",
+    "time":    "HH:MM | null"
   },
-  "blocks": [ /* 10 entradas, en orden — ver schema por bloque abajo */ ]
+  // Opcional — solo cuando cobertura < mitad de bloques (reunión off-script)
+  "coverage": {
+    "blocks_covered": 0,
+    "blocks_total":   10
+  },
+  "blocks": [ /* 10 entradas, id 1–10 en orden — ver shape abajo */ ]
 }
 ```
 
@@ -42,206 +58,135 @@
 ```json
 {
   "id": 1,
+  "name": "general_info",
   "status": "ok | warning | blocker",
-  "status_reason": "string | null",
+  "status_reason": "string",
   "options": [
-    {
-      "group_name": "string",
-      "items": [
-        { "label": "string", "needed": true | false | null, "cite": "string | null" }
-      ]
-    }
+    { "group_name": "site_type", "label": "Puerto", "needed": true, "citation": "string | null" }
   ],
   "fields": [
-    { "label": "string", "value": "string | null", "cite": "string | null" }
+    { "key": "industry", "answer": "string | null", "citation": "string | null", "state": "ok | vague | missing" }
+  ],
+  "flags": [
+    { "type": "custom | ideal_process | vague_answer", "description": "string", "citation": "string" }
   ],
   "pending": [
-    { "description": "string", "cite": "string | null" }
+    { "description": "string", "citation": "string | null" }
   ],
-  "custom": [
-    { "description": "string", "cite": "string | null" }
-  ]
+  "additional_notes": [
+    { "note": "string", "citation": "string" }
+  ],
+  "workflow_states": [ /* solo bloque 3 — ver abajo */ ]
 }
 ```
 
 Reglas:
 
-- `status_reason` es `null` cuando `status:"ok"`, string corto cuando `warning` o `blocker`.
-- `options` es `[]` para los bloques que no tienen enums (3 después de la reforma: actores, agenda, cierre).
-- `fields[].cite` puede ser `null` solo si `value` también es `null` (no se mencionó).
-- `pending` y `custom` son `[]` si no hay nada que pedir.
-- El agente NO emite `field.state`, `flag.type`, `options[].group_id`, `block.name`, `decisions[]`, `open_questions[]`, `workflow_states[]`, `custom.count`, `verdict.blockers_count/warnings_count`. Todo eso o se derivó al renderer o murió.
+- `name` es el identificador en inglés del bloque (ver tabla más abajo).
+- `status_reason` es string vacío `""` cuando `status: "ok"`, frase corta cuando `warning` o `blocker`.
+- `options` es `[]` para los bloques sin enums (actores, agenda, excepciones, cierre).
+- `fields[].state`: `"ok"` si respondido directamente; `"vague"` si vago o inferido; `"missing"` si no fue mencionado.
+- `flags` de `type: "custom"` se agregan también a `custom.items[]` a nivel top. Los de `type: "ideal_process"` o `"vague_answer"` solo van en `flags[]` del bloque.
+- `pending`, `additional_notes`, `workflow_states` son `[]` si no aplica.
 
-## Schema por bloque (enums cerrados)
+## Nombres de bloque (`name`)
 
-### 1. Información general
-- **Options**:
-  - `Tipo de sitio` → `["Planta industrial", "Centro de distribución", "Almacén"]` (single-select)
-  - `Objetivo principal` → `["Turnos", "YMS", "Ambos"]` (single-select)
-- **Fields**: `Industria`, `País`, `Ciudad`, `Contacto principal`, `Contacto operativo diario`, `Fecha objetivo go-live`
+| `id` | `name` |
+|------|--------|
+| 1 | `general_info` |
+| 2 | `classification` |
+| 3 | `workflow` |
+| 4 | `process_actors` |
+| 5 | `schedule_docks_warehouse` |
+| 6 | `orders_module` |
+| 7 | `fields_and_forms` |
+| 8 | `messages_notifications` |
+| 9 | `exceptions_integrations` |
+| 10 | `closure` |
 
-> Nota: `meta` queda mínimo (`client_name` + `meeting_date`). Industria, país, ciudad, contacto principal viven **solo** en `blocks[0].fields`. El renderer los proyecta al hero meta line desde ahí.
+## Options por bloque
 
-### 2. Clasificación
-- **Options**:
-  - `Operaciones` → `["Descarga", "Carga", "Retira Cliente", "Interplantas", "Otro"]` (multi-select)
-  - `Módulos` → `["YMS", "Dock Scheduling", "Inducción", "Control Documental"]` (multi-select)
-- **Fields**: `Método de agendamiento actual`, `Usan Excel para órdenes/turnos`
+Options van en `options[]` del bloque con cada ítem como entrada plana (con `group_name`). Nunca en `fields[]`.
 
-### 3. Workflow operativo
-- **Options**:
-  - `Workflow seleccionado` → `["Recepción", "Expedición", "Retira cliente"]` (single-select)
-- **Fields**: `Requiere modificaciones`, `Etapas adicionales o faltantes`
+| `name` | `group_name` | Ítems posibles |
+|---|---|---|
+| `general_info` | `site_type` | `"Puerto"`, `"Aeropuerto"`, `"Centro de distribución"`, `"Planta industrial"`, `"Almacén"` |
+| `general_info` | `implementation_focus` | `"Scheduling"`, `"Yard management"`, `"Ambos"` |
+| `classification` | `operations` | `"Recepción"`, `"Despacho"`, `"Transferencia"`, `"Retira cliente"`, `"Otro"` |
+| `classification` | `modules` | `"Agenda de docks"`, `"Check-in"`, `"Módulo de órdenes"`, `"Control documental"` |
+| `orders_module` | `module_decision` | `"Con módulo de Órdenes"`, `"Sin módulo de Órdenes"` |
+| `fields_and_forms` | `forms_to_review` | `"Formulario de turno"`, `"Formulario de check-in"`, `"Checklist de descarga"`, `"Asignación de dock"` |
+| `messages_notifications` | `channels` | `"Email"`, `"SMS"`, `"WhatsApp"` |
 
-### 4. Actores del proceso
-- **Options**: ninguno
-- **Fields**: `Crea los turnos`, `Realiza el check-in`, `Asigna el dock`, `Completa checklists`, `Supervisa la operación`, `Usuarios externos`, `Valida documentación`
+## Fields por bloque (`key`)
 
-### 5. Agenda, docks y warehouse
-- **Options**: ninguno
-- **Fields**: `Cantidad de warehouses`, `Docks por warehouse`, `Operaciones por dock`, `Duración del turno`, `Días y horarios habilitados`, `Restricciones horarias`
+### `general_info`
+`industry`, `country`, `city`, `project_contact`, `operational_contact`, `target_go_live_date`
 
-### 6. Módulo de Órdenes
-- **Options**:
-  - `Decisión módulo Órdenes` → `["Con módulo de Órdenes", "Sin módulo de Órdenes"]` (single-select)
-- **Fields**: `Rol de la orden`, `Debe existir antes de agendar`, `Puede operar sin órdenes precargadas`, `Cita puede incluir varias órdenes`, `Usa Excel para órdenes`, `Asignar a tercero antes de agendar`, `Ubicación actual de gestión`, `Método de carga en EasyDocking`, `Campos requeridos en la orden`, `Coordina orden existente o on-demand`, `Nivel de detalle de mercadería`, `Duración del turno depende de datos de la orden`
+### `classification`
+`current_scheduling_method`, `uses_excel_for_orders`
 
-### 7. Campos y formularios
-- **Options**:
-  - `Formularios a revisar` → `["Planificación", "Confirmación de turno", "Check-in", "Checklists", "Asignación de dock"]` (multi-select)
-- **Fields**: `Resumen de modificaciones`
+### `workflow`
+`workflow_per_operation`, `requires_modifications`, `additional_or_missing_stages`
 
-### 8. Mensajes y notificaciones
-- **Options**:
-  - `Canales de comunicación` → `["Mail", "WhatsApp"]` (multi-select)
-- **Fields**: `Ajustes a plantillas`, `Mensaje clave faltante`
+### `process_actors`
+`shift_creator`, `check_in_actor`, `dock_assigner`, `checklist_completer`, `operation_supervisor`, `external_users`, `document_validator`
 
-### 9. Excepciones e integraciones
-- **Options**: ninguno
-- **Fields**: `Requerimientos no-estándar`, `Integraciones requeridas`, `Datos iniciales a importar`
+### `schedule_docks_warehouse`
+`warehouses_count`, `docks_per_warehouse`, `operations_per_dock`, `shift_duration`, `available_days_hours`, `time_restrictions`
 
-### 10. Cierre
-- **Options**: ninguno
-- **Fields**: `Definido en la reunión`, `Pendientes abiertos`, `Debe enviar el cliente`, `Próximo paso`
+### `orders_module`
+`order_role`, `must_exist_before_booking`, `can_operate_without_preloaded`, `appointment_multiple_orders`, `uses_excel_for_orders`, `assign_to_third_party_before_booking`, `current_management_location`, `load_method_into_easydocking`, `order_fields_required`, `coordinates_existing_or_on_demand`, `merchandise_detail_level`, `shift_duration_depends_on_order`
+
+### `fields_and_forms`
+`modifications_summary`
+
+### `messages_notifications`
+`template_adjustments_needed`, `missing_key_message`
+
+### `exceptions_integrations`
+`non_standard_requirements`, `required_integrations`, `initial_data_import`
+
+### `closure`
+`defined_in_meeting`, `open_pending_items`, `client_deliverables`, `next_step`
+
+### `workflow` — `workflow_states[]` (solo bloque 3)
+
+Cuando el cliente describe el workflow con suficiente claridad:
+
+```json
+{ "operation": "string", "step": 1, "name": "string", "actor": "string", "notes": "string | null", "citation": "string" }
+```
+
+Si no queda claro, dejar `workflow_states: []` y usar el field `workflow_per_operation`.
 
 ## Reglas para `block.status`
 
-El agente decide el status de cada bloque usando criterios internos (no se emiten al JSON):
-
-- **`ok`** — Todas las preguntas obligatorias respondidas de forma directa y completa. Sin opciones en `null`. Pendientes opcionales no degradan.
-- **`warning`** — El bloque está cubierto pero hay rugosidad: respuestas vagas, opciones sin confirmar, o pendientes que el cliente prometió enviar.
-- **`blocker`** — Falta un dato crítico que impide avanzar a configuración:
-  - Bloque 1: ningún item en `Tipo de sitio` o ningún item en `Objetivo principal` con `needed:true`.
-  - Bloque 2: ninguna operación seleccionada o ningún módulo seleccionado.
-  - Bloque 3: ningún workflow seleccionado.
-  - Bloque 5: `Cantidad de warehouses` o `Docks por warehouse` con `value:null`.
-  - Bloque 6: ninguna opción de `Decisión módulo Órdenes` con `needed:true`.
+- **`ok`** — todas las preguntas cubiertas directamente, sin opciones `null`, sin pendientes bloqueantes.
+- **`warning`** — alguna opción con `needed: null`, o algún field con `state: "vague"` o `"missing"`, o tiene entradas en `pending`, o tiene flags `ideal_process` o `vague_answer`.
+- **`blocker`** — falta una decisión crítica que impide configurar:
+  - Bloque 1: `site_type` o `implementation_focus` sin ningún `needed: true`.
+  - Bloque 2: ninguna operación o ningún módulo confirmados.
+  - Bloque 5: `warehouses_count` o `docks_per_warehouse` con `answer: null`.
+  - Bloque 6: `module_decision` sin ningún `needed: true`.
 
 ## Reglas para `verdict.status`
 
-Derivable. El agente puede emitirlo directamente (más simple) o el renderer puede recalcularlo. Convención:
+- `blocked` — al menos un bloque en `blocker`.
+- `ready_with_pending` — ningún blocker, al menos un `warning`.
+- `ready` — todos los bloques en `ok`.
 
-- `blocked` si **algún** `blocks[].status === "blocker"`.
-- `ready_with_pending` si no hay blockers pero **algún** `warning`.
-- `ready` si todos los bloques `ok`.
-
-`verdict.summary` y `verdict.detail` son frases humanas que el agente sí emite (no se derivan):
-- `summary`: cuenta breve, ej. `"2 bloqueantes · 3 avisos"` o `"10 bloques en orden"`.
-- `detail`: una línea cualitativa, ej. `"Configuración lista, pendientes operativos"` o `"Faltan datos críticos del cliente"`.
+`custom` se reporta siempre, independiente del verdict.
 
 ## Lo que el renderer deriva (no va al JSON)
 
-| Item del HTML | Cómo se deriva |
+| Elemento HTML | Derivación |
 |---|---|
-| Cobertura legend (`5 ok · 3 aviso · 2 bloqueo`) | Contar `blocks[].status` por valor |
+| Leyenda coverage (`n ok · n aviso · n bloqueo`) | Contar `blocks[].status` |
 | Color de cada coverage-tile | `blocks[i].status` |
-| Pill del verdict (verde/amarillo/rojo) | `verdict.status` |
-| Hero meta line (`Industria · País · Ciudad · Contacto`) | Lookup en `blocks[0].fields[].value` por label (con `"—"` si null) |
-| Summary cell "Pendientes cliente" count | `sum(blocks[].pending.length)` |
-| Summary cell "Pedidos custom" count | `sum(blocks[].custom.length)` |
-| Summary cell "Go-live objetivo" | `blocks[0].fields[].value` donde label = "Fecha objetivo go-live" |
-| Action-box pending list | Flatten de `blocks[].pending` con `id · nombre del bloque` como source |
-| Action-box custom list | Flatten de `blocks[].custom` con `id · nombre del bloque` como source |
-| Banner off-script | Aparece si `count(blocks[].status === "blocker") >= 5` (umbral a confirmar) |
-
-## No-meeting (estado especial)
-
-Cuando no hubo reunión o no hay material para armar el brief, el JSON sigue el mismo schema pero con todo `null`:
-
-```json
-{
-  "meta": { "client_name": null, "meeting_date": null },
-  "verdict": { "status": "blocked", "summary": "Sin reunión", "detail": "..." },
-  "narrative": { "current_situation": null, "what_they_want": null, "closure": null },
-  "next_meeting": { ... },  // si hay próxima reunión agendada
-  "blocks": [
-    { "id": 1, "status": "blocker", "status_reason": "Sin datos", "options": [], "fields": [], "pending": [], "custom": [] },
-    /* x10 */
-  ]
-}
-```
-
-El renderer detecta el caso por `narrative.current_situation === null` (o un flag explícito si hace falta) y cambia al layout no-meeting.
-
-## Ejemplo mínimo — estado `ready`
-
-```json
-{
-  "meta": {
-    "client_name": "Example Corp SA",
-    "meeting_date": "2026-05-08"
-  },
-  "verdict": {
-    "status": "ready",
-    "summary": "10 bloques en orden",
-    "detail": "Sin pendientes ni avisos"
-  },
-  "narrative": {
-    "current_situation": "Example Corp SA opera una planta de embotellado en Mendoza...",
-    "what_they_want": "Implementar YMS + Dock Scheduling + Inducción...",
-    "closure": "Configuración base completa y validada..."
-  },
-  "next_meeting": {
-    "label": "Validación",
-    "summary": "Equipo EasyDocking presenta la configuración base",
-    "date": "22 May 2026",
-    "time": "10:00 hs"
-  },
-  "blocks": [
-    {
-      "id": 1,
-      "status": "ok",
-      "status_reason": null,
-      "options": [
-        {
-          "group_name": "Tipo de sitio",
-          "items": [
-            { "label": "Planta industrial", "needed": true,  "cite": "es nuestra planta principal de embotellado en Mendoza" },
-            { "label": "Centro de distribución", "needed": false, "cite": "tenemos un CD aparte pero no entra en este onboarding" },
-            { "label": "Almacén", "needed": false, "cite": "tenemos un CD aparte pero no entra en este onboarding" }
-          ]
-        },
-        {
-          "group_name": "Objetivo principal",
-          "items": [
-            { "label": "Turnos", "needed": false, "cite": "necesitamos todo el YMS, no solo agendamiento" },
-            { "label": "YMS",    "needed": false, "cite": "necesitamos todo el YMS, no solo agendamiento" },
-            { "label": "Ambos",  "needed": true,  "cite": "necesitamos todo el YMS, no solo agendamiento" }
-          ]
-        }
-      ],
-      "fields": [
-        { "label": "Industria", "value": "Bebidas no alcohólicas", "cite": "somos un embotellador de bebidas no alcohólicas" },
-        { "label": "País", "value": "Argentina", "cite": "operamos en Argentina" },
-        { "label": "Ciudad", "value": "Mendoza", "cite": "es nuestra planta principal de embotellado en Mendoza" },
-        { "label": "Contacto principal", "value": "Lucía Fernández (Jefa de Logística)", "cite": "yo soy Lucía Fernández, jefa de logística" },
-        { "label": "Contacto operativo diario", "value": "Mariano Sosa (Supervisor de Patio)", "cite": "el día a día lo va a llevar Mariano Sosa" },
-        { "label": "Fecha objetivo go-live", "value": "2026-07-15", "cite": "queremos estar en vivo el 15 de julio" }
-      ],
-      "pending": [],
-      "custom": []
-    }
-    /* ... bloques 2-10 ... */
-  ]
-}
-```
+| Pill del verdict | `verdict.status` → clase CSS + label |
+| Count "Pendientes cliente" | `sum(blocks[].pending.length)` |
+| Banner off-script | `coverage` presente en JSON |
+| Source label de cada pending | `zero-pad(block.id) · block title` |
+| Formato de fecha | `next_meeting.date` (ISO) → `DD MMM YYYY` en español |
+| Total `custom.count` | Reportado por el agente; el renderer también puede contar `flags[type=custom]` |

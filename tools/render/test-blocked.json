@@ -1,0 +1,239 @@
+{
+  "meta": {
+    "client_name": "Embotelladora Andina SA",
+    "industry": "Bebidas",
+    "country": "Argentina",
+    "meeting_date": "2026-05-20"
+  },
+  "verdict": {
+    "status": "blocked",
+    "summary": "2 bloqueantes · 2 avisos",
+    "blockers_count": 2,
+    "warnings_count": 2,
+    "detail": "Configuración de docks y decisión de módulo de órdenes sin definir"
+  },
+  "custom": {
+    "count": 1,
+    "items": [
+      {
+        "description": "Integración con SAP para importar órdenes de producción automáticamente antes de cada turno",
+        "citation": "Toda la planificación de producción sale de SAP, no podemos cargar las órdenes a mano"
+      }
+    ]
+  },
+  "narrative": {
+    "current_situation": "Embotelladora Andina SA opera una planta de producción y expedición en Luján con camiones de reparto propios y de terceros. Hoy el portero anota a mano en un cuaderno la llegada de cada camión y llama al jefe de playa para asignar el dock.",
+    "what_they_want": "Digitalizar el agendamiento de turnos de carga y descarga, eliminar los llamados internos y darle visibilidad en tiempo real al jefe de playa. La inducción de seguridad también interesa para choferes externos.",
+    "closure": null
+  },
+  "next_meeting": {
+    "label": "Relevamiento técnico",
+    "summary": "Recorrer el patio, contar docks y revisar el plano de la planta con el jefe de playa",
+    "date": "2026-06-02",
+    "time": "09:00"
+  },
+  "blocks": [
+    {
+      "id": 1,
+      "name": "general_info",
+      "status": "ok",
+      "status_reason": "",
+      "options": [
+        { "group_name": "site_type", "label": "Planta industrial", "needed": true, "citation": "Somos una planta de producción y expedición, no un CD" },
+        { "group_name": "site_type", "label": "Centro de distribución", "needed": false, "citation": null },
+        { "group_name": "implementation_focus", "label": "Scheduling", "needed": true, "citation": "Lo que más nos duele es que los camiones llegan todos juntos a las 7 de la mañana" },
+        { "group_name": "implementation_focus", "label": "Yard management", "needed": false, "citation": null },
+        { "group_name": "implementation_focus", "label": "Ambos", "needed": false, "citation": null }
+      ],
+      "fields": [
+        { "key": "industry", "answer": "Bebidas — producción y distribución", "citation": null, "state": "ok" },
+        { "key": "country", "answer": "Argentina", "citation": null, "state": "ok" },
+        { "key": "city", "answer": "Luján, Buenos Aires", "citation": null, "state": "ok" },
+        { "key": "project_contact", "answer": "Valeria Ríos — Gerente de Logística", "citation": "Yo soy la responsable del proyecto", "state": "ok" },
+        { "key": "operational_contact", "answer": "Diego Carrizo — Jefe de Playa", "citation": "El día a día lo maneja Diego", "state": "ok" },
+        { "key": "target_go_live_date", "answer": "Agosto 2026", "citation": "Queremos salir antes del pico de temporada alta", "state": "ok" }
+      ],
+      "flags": [],
+      "pending": [],
+      "additional_notes": [],
+      "workflow_states": []
+    },
+    {
+      "id": 2,
+      "name": "classification",
+      "status": "ok",
+      "status_reason": "",
+      "options": [
+        { "group_name": "operations", "label": "Recepción", "needed": true, "citation": "Recibimos materia prima todos los días" },
+        { "group_name": "operations", "label": "Despacho", "needed": true, "citation": "Expedimos producto terminado a distribuidores y puntos propios" },
+        { "group_name": "operations", "label": "Transferencia", "needed": false, "citation": null },
+        { "group_name": "operations", "label": "Retira cliente", "needed": false, "citation": null },
+        { "group_name": "modules", "label": "Agenda de docks", "needed": true, "citation": null },
+        { "group_name": "modules", "label": "Check-in", "needed": true, "citation": null },
+        { "group_name": "modules", "label": "Módulo de órdenes", "needed": null, "citation": "Estamos evaluando si lo necesitamos en la primera fase" },
+        { "group_name": "modules", "label": "Control documental", "needed": false, "citation": null }
+      ],
+      "fields": [
+        { "key": "current_scheduling_method", "answer": "El portero anota en cuaderno, el jefe de playa asigna dock por teléfono", "citation": "Hoy es todo manual y a voz", "state": "ok" },
+        { "key": "uses_excel_for_orders", "answer": "Sí, Excel de expedición con las órdenes del día", "citation": null, "state": "ok" }
+      ],
+      "flags": [],
+      "pending": [],
+      "additional_notes": [],
+      "workflow_states": []
+    },
+    {
+      "id": 3,
+      "name": "workflow",
+      "status": "warning",
+      "status_reason": "El proceso de recepción de MP tiene pasos adicionales a confirmar",
+      "options": [],
+      "fields": [
+        { "key": "workflow_per_operation", "answer": "Expedición: el transportista reserva turno la víspera por WhatsApp → jefe de playa confirma dock → el día: check-in en portería, inducción, asignación de dock, carga y cierre. Recepción de MP: similar pero el proveedor agenda 48 hs antes.", "citation": "Así funciona hoy básicamente, aunque varía según el proveedor", "state": "ok" },
+        { "key": "requires_modifications", "answer": "Sí — queremos agregar validación del remito antes de que entre el camión", "citation": "Sin el remito aprobado el camión no puede ingresar a la playa", "state": "ok" },
+        { "key": "additional_or_missing_stages", "answer": "Control de temperatura para camiones frigoríficos de MP", "citation": "Los camiones de lácteos necesitan que controlemos la temperatura antes de descargar", "state": "vague" }
+      ],
+      "flags": [
+        { "type": "ideal_process", "description": "El control de temperatura antes de descarga no quedó claro si es hoy o cómo debería ser", "citation": "Los camiones de lácteos necesitan que controlemos la temperatura antes de descargar" }
+      ],
+      "pending": [],
+      "additional_notes": [],
+      "workflow_states": []
+    },
+    {
+      "id": 4,
+      "name": "process_actors",
+      "status": "ok",
+      "status_reason": "",
+      "options": [],
+      "fields": [
+        { "key": "shift_creator", "answer": "Coordinadora logística (oficina)", "citation": null, "state": "ok" },
+        { "key": "check_in_actor", "answer": "Portero — registra llegada y verifica documentación", "citation": null, "state": "ok" },
+        { "key": "dock_assigner", "answer": "Jefe de playa", "citation": null, "state": "ok" },
+        { "key": "checklist_completer", "answer": "Playero asignado al dock", "citation": null, "state": "ok" },
+        { "key": "operation_supervisor", "answer": "Jefe de playa", "citation": null, "state": "ok" },
+        { "key": "external_users", "answer": "Transportistas propios y de terceros (agendan por portal o WhatsApp)", "citation": null, "state": "ok" },
+        { "key": "document_validator", "answer": "Portero — valida remito y documentación del chofer", "citation": null, "state": "ok" }
+      ],
+      "flags": [],
+      "pending": [],
+      "additional_notes": [],
+      "workflow_states": []
+    },
+    {
+      "id": 5,
+      "name": "schedule_docks_warehouse",
+      "status": "blocker",
+      "status_reason": "Cantidad exacta de docks no confirmada — necesitan recorrer la playa con el jefe de playa",
+      "options": [],
+      "fields": [
+        { "key": "warehouses_count", "answer": null, "citation": null, "state": "missing" },
+        { "key": "docks_per_warehouse", "answer": null, "citation": null, "state": "missing" },
+        { "key": "operations_per_dock", "answer": "Recepción de MP en docks del ala norte, expedición en docks del ala sur", "citation": "Los docks están separados por operación", "state": "ok" },
+        { "key": "shift_duration", "answer": "2 horas para expedición, 3 horas para descarga de MP a granel", "citation": "La descarga de azúcar tarda más porque va a silo", "state": "ok" },
+        { "key": "available_days_hours", "answer": "Lunes a sábado 6:00–22:00, domingo solo expediciones urgentes", "citation": null, "state": "ok" },
+        { "key": "time_restrictions", "answer": "No se puede maniobrar en el patio entre 12:00 y 13:00 por el cruce peatonal del personal", "citation": "Es una restricción de seguridad interna", "state": "ok" }
+      ],
+      "flags": [],
+      "pending": [
+        { "description": "Plano del patio con docks numerados y tipos de operación por dock", "citation": "Diego lo tiene que imprimir del CAD, lo manda esta semana" }
+      ],
+      "additional_notes": [],
+      "workflow_states": []
+    },
+    {
+      "id": 6,
+      "name": "orders_module",
+      "status": "blocker",
+      "status_reason": "Decisión de módulo de órdenes pendiente de evaluación con gerencia",
+      "options": [
+        { "group_name": "module_decision", "label": "Con módulo de Órdenes", "needed": null, "citation": "Estamos evaluando si lo necesitamos en la primera fase" },
+        { "group_name": "module_decision", "label": "Sin módulo de Órdenes", "needed": null, "citation": null }
+      ],
+      "fields": [
+        { "key": "order_role", "answer": "La orden de expedición vincula el turno con la carga — sin orden no hay dock asignado", "citation": "No podemos dejar subir a un camión sin una orden de carga", "state": "ok" },
+        { "key": "must_exist_before_booking", "answer": "Sí — el transportista necesita número de orden para reservar turno", "citation": null, "state": "ok" },
+        { "key": "load_method_into_easydocking", "answer": null, "citation": null, "state": "missing" }
+      ],
+      "flags": [
+        { "type": "custom", "description": "Integración con SAP para importar órdenes de producción automáticamente antes de cada turno", "citation": "Toda la planificación de producción sale de SAP, no podemos cargar las órdenes a mano" }
+      ],
+      "pending": [
+        { "description": "Decisión de módulo de órdenes en fase 1 (requiere validación con gerencia de operaciones)", "citation": "Lo tenemos que hablar con el gerente general antes de confirmar" }
+      ],
+      "additional_notes": [],
+      "workflow_states": []
+    },
+    {
+      "id": 7,
+      "name": "fields_and_forms",
+      "status": "warning",
+      "status_reason": "Formularios a revisar sin confirmar",
+      "options": [
+        { "group_name": "forms_to_review", "label": "Formulario de turno", "needed": null, "citation": null },
+        { "group_name": "forms_to_review", "label": "Formulario de check-in", "needed": null, "citation": null },
+        { "group_name": "forms_to_review", "label": "Checklist de descarga", "needed": null, "citation": null },
+        { "group_name": "forms_to_review", "label": "Asignación de dock", "needed": null, "citation": null }
+      ],
+      "fields": [
+        { "key": "modifications_summary", "answer": null, "citation": null, "state": "missing" }
+      ],
+      "flags": [],
+      "pending": [],
+      "additional_notes": [],
+      "workflow_states": []
+    },
+    {
+      "id": 8,
+      "name": "messages_notifications",
+      "status": "ok",
+      "status_reason": "",
+      "options": [
+        { "group_name": "channels", "label": "Email", "needed": true, "citation": null },
+        { "group_name": "channels", "label": "SMS", "needed": false, "citation": null },
+        { "group_name": "channels", "label": "WhatsApp", "needed": true, "citation": "Los transportistas ya nos escriben por WhatsApp, tiene que seguir siendo así" }
+      ],
+      "fields": [
+        { "key": "template_adjustments_needed", "answer": "Agregar número de dock y nombre del playero asignado en el mensaje de confirmación", "citation": "El chofer tiene que saber a qué dock ir sin tener que preguntar", "state": "ok" },
+        { "key": "missing_key_message", "answer": null, "citation": null, "state": "missing" }
+      ],
+      "flags": [],
+      "pending": [],
+      "additional_notes": [],
+      "workflow_states": []
+    },
+    {
+      "id": 9,
+      "name": "exceptions_integrations",
+      "status": "ok",
+      "status_reason": "",
+      "options": [],
+      "fields": [
+        { "key": "non_standard_requirements", "answer": "Integración SAP para órdenes (custom)", "citation": null, "state": "ok" },
+        { "key": "required_integrations", "answer": "SAP S/4HANA vía API REST", "citation": null, "state": "ok" },
+        { "key": "initial_data_import", "answer": "Catálogo de transportistas habituales (~80 empresas) y lista de proveedores de MP (~30)", "citation": null, "state": "ok" }
+      ],
+      "flags": [],
+      "pending": [],
+      "additional_notes": [],
+      "workflow_states": []
+    },
+    {
+      "id": 10,
+      "name": "closure",
+      "status": "ok",
+      "status_reason": "",
+      "options": [],
+      "fields": [
+        { "key": "defined_in_meeting", "answer": "Scope: planta Luján, recepción de MP y expedición de PT, agenda + check-in + inducción", "citation": null, "state": "ok" },
+        { "key": "open_pending_items", "answer": "Plano del patio con docks, decisión módulo de órdenes, revisión de formularios", "citation": null, "state": "ok" },
+        { "key": "client_deliverables", "answer": "Plano del patio con docks numerados", "citation": null, "state": "ok" },
+        { "key": "next_step", "answer": "Recorrida técnica por el patio el 2 de junio con Diego Carrizo", "citation": null, "state": "ok" }
+      ],
+      "flags": [],
+      "pending": [],
+      "additional_notes": [],
+      "workflow_states": []
+    }
+  ]
+}

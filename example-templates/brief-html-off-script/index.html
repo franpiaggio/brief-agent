@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Brief · Example Corp SA</title>
+<title>Brief · Aceros del Sur SA</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
@@ -13,29 +13,53 @@
 <article class="doc">
   <header class="brand-bar">
     <img src="../assets/logo.png" alt="EasyDocking" class="brand-logo" />
-    <span class="brand-meta">Brief · 2026-05-08</span>
+    <span class="brand-meta">Brief · 2026-04-22</span>
   </header>
+
+  <section class="off-script-banner" role="alert">
+    <div class="off-script-banner-stamp" aria-hidden="true">
+      <svg class="off-script-banner-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+    </div>
+    <div class="off-script-banner-body">
+      <span class="off-script-banner-eyebrow">Aviso · calidad del reporte</span>
+      <h2 class="off-script-banner-title">Esta reunión no siguió el cuestionario estándar</h2>
+      <p class="off-script-banner-text">Solo 2 de 10 bloques del cuestionario fueron cubiertos <strong>(20%)</strong>. La confianza del análisis es menor y los resultados pueden variar entre ejecuciones.</p>
+    </div>
+  </section>
 
   <section class="hero">
     <div class="hero-eyebrow">Cliente · Onboarding</div>
     <div class="hero-top">
-      <h1 class="hero-h1">Example Corp SA</h1>
-      <span class="verdict-pill verdict-pill--ready">Listo para implementar</span>
+      <h1 class="hero-h1">Aceros del Sur SA</h1>
+      <span class="verdict-pill verdict-pill--blocked">Bloqueado</span>
     </div>
     <div class="hero-meta">
-      <span>Beverages</span>
+      <span>Metalmecánica</span>
       <span class="sep"></span>
       <span>Argentina</span>
       <span class="sep"></span>
-      <span>Reunión <span class="meta-date">2026-05-08</span></span>
+      <span>Reunión <span class="meta-date">2026-04-22</span></span>
     </div>
 
+    <div class="next-meeting">
+      <div class="next-meeting-stamp" aria-hidden="true">
+        <svg class="next-meeting-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg>
+      </div>
+      <div class="next-meeting-body">
+        <span class="next-meeting-label">Próxima reunión · Relevamiento operativo</span>
+        <span class="next-meeting-text">Recorrer el cuestionario estándar.</span>
+      </div>
+      <div>
+        <div class="next-meeting-date">29 Abr 2026</div>
+        <div class="next-meeting-time">10:00 hs</div>
+      </div>
+    </div>
 
     <div class="hero-summary">
       <div class="summary-cell">
         <div class="summary-label">Resumen</div>
-        <div class="summary-value summary-value--ok">10 bloques en orden</div>
-        <div class="summary-detail">Sin pendientes ni avisos</div>
+        <div class="summary-value summary-value--danger">Reunión sin recorrer el cuestionario</div>
+        <div class="summary-detail">Solo 2 de 10 bloques relevados. Hace falta una segunda reunión enfocada.</div>
       </div>
       <div class="summary-cell">
         <div class="summary-label">Pendientes cliente</div>
@@ -44,7 +68,7 @@
       </div>
       <div class="summary-cell">
         <div class="summary-label">Pedidos custom</div>
-        <div class="summary-value summary-value--big">0</div>
+        <div class="summary-value summary-value--big">1</div>
         <div class="summary-detail">fuera del estándar</div>
       </div>
     </div>
@@ -53,58 +77,58 @@
       <div class="coverage-h">
         <span class="coverage-label">Cobertura · 10 bloques</span>
         <div class="coverage-legend">
-          <span class="coverage-legend--ok">10 ok</span>
-          <span class="coverage-legend--warning">0 aviso</span>
-          <span class="coverage-legend--blocker">0 bloqueo</span>
+          <span class="coverage-legend--ok">0 ok</span>
+          <span class="coverage-legend--warning">2 aviso</span>
+          <span class="coverage-legend--blocker">8 bloqueo</span>
         </div>
       </div>
       <div class="coverage-tiles">
-        <div class="coverage-tile coverage-tile--ok">
+        <div class="coverage-tile coverage-tile--warning">
           <svg class="coverage-tile-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
           <span class="coverage-tile-num">01</span>
           <span class="coverage-tile-name">Información</span>
         </div>
-        <div class="coverage-tile coverage-tile--ok">
+        <div class="coverage-tile coverage-tile--blocker">
           <svg class="coverage-tile-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></svg>
           <span class="coverage-tile-num">02</span>
           <span class="coverage-tile-name">Clasificación</span>
         </div>
-        <div class="coverage-tile coverage-tile--ok">
+        <div class="coverage-tile coverage-tile--blocker">
           <svg class="coverage-tile-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></svg>
           <span class="coverage-tile-num">03</span>
           <span class="coverage-tile-name">Workflow</span>
         </div>
-        <div class="coverage-tile coverage-tile--ok">
+        <div class="coverage-tile coverage-tile--blocker">
           <svg class="coverage-tile-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
           <span class="coverage-tile-num">04</span>
           <span class="coverage-tile-name">Actores</span>
         </div>
-        <div class="coverage-tile coverage-tile--ok">
+        <div class="coverage-tile coverage-tile--blocker">
           <svg class="coverage-tile-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
           <span class="coverage-tile-num">05</span>
           <span class="coverage-tile-name">Agenda</span>
         </div>
-        <div class="coverage-tile coverage-tile--ok">
+        <div class="coverage-tile coverage-tile--blocker">
           <svg class="coverage-tile-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></svg>
           <span class="coverage-tile-num">06</span>
           <span class="coverage-tile-name">Órdenes</span>
         </div>
-        <div class="coverage-tile coverage-tile--ok">
+        <div class="coverage-tile coverage-tile--blocker">
           <svg class="coverage-tile-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 5h8"/><path d="M13 12h8"/><path d="M13 19h8"/><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/></svg>
           <span class="coverage-tile-num">07</span>
           <span class="coverage-tile-name">Formularios</span>
         </div>
-        <div class="coverage-tile coverage-tile--ok">
+        <div class="coverage-tile coverage-tile--blocker">
           <svg class="coverage-tile-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
           <span class="coverage-tile-num">08</span>
           <span class="coverage-tile-name">Mensajes</span>
         </div>
-        <div class="coverage-tile coverage-tile--ok">
+        <div class="coverage-tile coverage-tile--blocker">
           <svg class="coverage-tile-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 17H5"/><path d="M19 7h-9"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg>
           <span class="coverage-tile-num">09</span>
           <span class="coverage-tile-name">Integraciones</span>
         </div>
-        <div class="coverage-tile coverage-tile--ok">
+        <div class="coverage-tile coverage-tile--warning">
           <svg class="coverage-tile-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
           <span class="coverage-tile-num">10</span>
           <span class="coverage-tile-name">Cierre</span>
@@ -122,15 +146,15 @@
         <ol class="narrative-list">
           <li class="narrative-item">
             <h3 class="narrative-label">Brief</h3>
-            <p class="narrative-text">Example Corp SA opera una planta industrial de embotellado en Mendoza, sin sistema formal de turnos. Hoy coordinan con un Excel compartido por WhatsApp del supervisor: reciben insumos durante todo el día y despachan producto terminado a CDs y clientes. La operación de carga es estacional con pico noviembre–febrero.</p>
+            <p class="narrative-text">Aceros del Sur opera una planta en Rosario con flujo de despachos diarios. La reunión introductoria recorrió de forma libre el contexto, pero no se siguió el cuestionario de onboarding.</p>
           </li>
           <li class="narrative-item">
             <h3 class="narrative-label">Qué buscan</h3>
-            <p class="narrative-text">Implementar YMS + Dock Scheduling + Inducción para ordenar el ingreso de camiones, con módulo de Órdenes operando desde el día 1 contra órdenes exportadas de SAP (Excel en fase 1, integración API en fase 2). Una sola planta con 6 docks, go-live el 15 de julio.</p>
+            <p class="narrative-text">Pendiente: no se profundizó en alcance ni en módulos a implementar.</p>
           </li>
           <li class="narrative-item">
             <h3 class="narrative-label">Cierre de la reunión</h3>
-            <p class="narrative-text">Configuración base completa y validada: módulos, workflow, actores, agenda, reglas de órdenes, mensajería e integraciones. Sin pendientes operativos. Validación con cliente 2026-05-22.</p>
+            <p class="narrative-text">Pablo Sosa acordó una segunda reunión para recorrer el cuestionario y completar el relevamiento.</p>
           </li>
         </ol>
       </article>
@@ -155,17 +179,17 @@
         <div class="chk-row">
           <span class="chk-row-label">Tipo de sitio</span>
           <div class="chk-row-chips">
-            <span class="chk-chip chk-chip--yes">Planta industrial</span>
-            <span class="chk-chip chk-chip--no">Centro de distribución</span>
-            <span class="chk-chip chk-chip--no">Almacén</span>
+            <span class="chk-chip chk-chip--unknown">Planta industrial</span>
+            <span class="chk-chip chk-chip--unknown">Centro de distribución</span>
+            <span class="chk-chip chk-chip--unknown">Almacén</span>
           </div>
         </div>
         <div class="chk-row">
           <span class="chk-row-label">Objetivo principal</span>
           <div class="chk-row-chips">
-            <span class="chk-chip chk-chip--no">Turnos</span>
-            <span class="chk-chip chk-chip--no">YMS</span>
-            <span class="chk-chip chk-chip--yes">Ambos</span>
+            <span class="chk-chip chk-chip--unknown">Turnos</span>
+            <span class="chk-chip chk-chip--unknown">YMS</span>
+            <span class="chk-chip chk-chip--unknown">Ambos</span>
           </div>
         </div>
       </div>
@@ -177,62 +201,62 @@
         <div class="chk-row">
           <span class="chk-row-label">Operaciones</span>
           <div class="chk-row-chips">
-            <span class="chk-chip chk-chip--yes">Descarga</span>
-            <span class="chk-chip chk-chip--yes">Carga</span>
-            <span class="chk-chip chk-chip--no">Retira Cliente</span>
-            <span class="chk-chip chk-chip--no">Interplantas</span>
-            <span class="chk-chip chk-chip--no">Otro</span>
+            <span class="chk-chip chk-chip--unknown">Descarga</span>
+            <span class="chk-chip chk-chip--unknown">Carga</span>
+            <span class="chk-chip chk-chip--unknown">Retira Cliente</span>
+            <span class="chk-chip chk-chip--unknown">Interplantas</span>
+            <span class="chk-chip chk-chip--unknown">Otro</span>
           </div>
         </div>
         <div class="chk-row">
           <span class="chk-row-label">Módulos</span>
           <div class="chk-row-chips">
-            <span class="chk-chip chk-chip--yes">YMS</span>
-            <span class="chk-chip chk-chip--yes">Dock Scheduling</span>
-            <span class="chk-chip chk-chip--yes">Inducción</span>
-            <span class="chk-chip chk-chip--no">Control Documental</span>
+            <span class="chk-chip chk-chip--unknown">YMS</span>
+            <span class="chk-chip chk-chip--unknown">Dock Scheduling</span>
+            <span class="chk-chip chk-chip--unknown">Inducción</span>
+            <span class="chk-chip chk-chip--unknown">Control Documental</span>
           </div>
         </div>
       </div>
       <div class="chk-section">
         <div class="chk-section-head">
-          <span class="chk-section-num">06</span>
+          <span class="chk-section-num">03</span>
           <span class="chk-section-name">Módulo de Órdenes</span>
         </div>
         <div class="chk-row">
           <span class="chk-row-label">Decisión módulo Órdenes</span>
           <div class="chk-row-chips">
-            <span class="chk-chip chk-chip--yes">Con módulo de Órdenes</span>
-            <span class="chk-chip chk-chip--no">Sin módulo de Órdenes</span>
+            <span class="chk-chip chk-chip--unknown">Con módulo de Órdenes</span>
+            <span class="chk-chip chk-chip--unknown">Sin módulo de Órdenes</span>
           </div>
         </div>
       </div>
       <div class="chk-section">
         <div class="chk-section-head">
-          <span class="chk-section-num">07</span>
+          <span class="chk-section-num">04</span>
           <span class="chk-section-name">Campos y formularios</span>
         </div>
         <div class="chk-row">
           <span class="chk-row-label">Formularios a revisar</span>
           <div class="chk-row-chips">
-            <span class="chk-chip chk-chip--yes">Planificación</span>
-            <span class="chk-chip chk-chip--yes">Confirmación de turno</span>
-            <span class="chk-chip chk-chip--yes">Check-in</span>
-            <span class="chk-chip chk-chip--yes">Checklists</span>
-            <span class="chk-chip chk-chip--yes">Asignación de dock</span>
+            <span class="chk-chip chk-chip--unknown">Planificación</span>
+            <span class="chk-chip chk-chip--unknown">Confirmación de turno</span>
+            <span class="chk-chip chk-chip--unknown">Check-in</span>
+            <span class="chk-chip chk-chip--unknown">Checklists</span>
+            <span class="chk-chip chk-chip--unknown">Asignación de dock</span>
           </div>
         </div>
       </div>
       <div class="chk-section">
         <div class="chk-section-head">
-          <span class="chk-section-num">08</span>
+          <span class="chk-section-num">05</span>
           <span class="chk-section-name">Mensajes y notificaciones</span>
         </div>
         <div class="chk-row">
           <span class="chk-row-label">Canales de comunicación</span>
           <div class="chk-row-chips">
-            <span class="chk-chip chk-chip--yes">Mail</span>
-            <span class="chk-chip chk-chip--yes">WhatsApp</span>
+            <span class="chk-chip chk-chip--unknown">Mail</span>
+            <span class="chk-chip chk-chip--unknown">WhatsApp</span>
           </div>
         </div>
       </div>
@@ -240,31 +264,48 @@
   </section>
 
   <section class="section">
-    <div class="action-empty">
-      <div class="action-empty-icon-wrap">
-        <svg class="action-empty-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-      </div>
-      <div class="action-empty-body">
-        <span class="action-empty-title">Sin acciones pendientes</span>
-        <span class="action-empty-text">No quedaron compromisos abiertos ni pedidos custom en la reunión.</span>
+    <div class="action-grid">
+      <div class="action-box action-box--custom">
+        <div class="action-box-h">
+          Requerimientos custom
+          <span class="action-box-h-badge">1</span>
+        </div>
+        <div class="deliverable deliverable--custom">
+          <svg class="deliverable-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528"/></svg>
+          <div class="deliverable-body">
+            <span class="deliverable-title">Plantilla de mail con branding propio (logo + firma de logística)</span>
+            <span class="deliverable-cite">el mail tiene que salir con nuestro logo y la firma de logística</span>
+          </div>
+          <span class="deliverable-source">08 · Mensajes y notificaciones</span>
+        </div>
+        <div class="action-box-note">
+          Fuera del estándar de EasyDocking. Producto debe evaluar costo de implementación.
+        </div>
       </div>
     </div>
   </section>
 
   <section class="section">
-    <div class="block block--ok">
+    <div class="block block--warning">
       <div class="block-h">
         <span class="block-h-num">01</span>
         <svg class="block-h-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 12h4"/><path d="M10 8h4"/><path d="M14 21v-3a2 2 0 0 0-4 0v3"/><path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2"/><path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/></svg>
         <span class="block-h-title">Información general</span>
-        <span class="block-h-status block-h-status--ok">ok</span>
+        <span class="block-h-status block-h-status--warning">aviso</span>
+      </div>
+      <div class="block-reason block-reason--warning">
+        <svg class="block-reason-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+        <div class="block-reason-content">
+          <span class="block-reason-label">aviso</span>
+          <span class="block-reason-text">Cobertura parcial: 3 ok, 3 missing.</span>
+        </div>
       </div>
       <div class="identity-grid">
         <div class="identity-card identity-card--scalar">
           <div class="identity-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></svg></div>
           <div class="identity-body">
             <span class="identity-label">Industria</span>
-            <span class="identity-value">Bebidas no alcohólicas</span>
+            <span class="identity-value">Metalmecánica</span>
           </div>
         </div>
         <div class="identity-card identity-card--scalar">
@@ -278,58 +319,72 @@
           <div class="identity-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></div>
           <div class="identity-body">
             <span class="identity-label">Ciudad</span>
-            <span class="identity-value">Mendoza</span>
+            <span class="identity-value">Rosario</span>
           </div>
         </div>
-        <div class="identity-card identity-card--person">
+        <div class="identity-card identity-card--person identity-card--missing">
           <div class="identity-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
           <div class="identity-body">
             <span class="identity-label">Contacto principal</span>
-            <span class="identity-value">Lucía Fernández (Jefa de Logística)</span>
+            <span class="identity-value identity-value--missing"><span class="identity-falta-tag">Falta</span>Sin definir</span>
           </div>
         </div>
-        <div class="identity-card identity-card--person">
+        <div class="identity-card identity-card--person identity-card--missing">
           <div class="identity-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/><path d="m17 11 1 2 2 .5-1.5 1.5.5 2.5-2-1-2 1 .5-2.5L14 13.5 16 13Z"/></svg></div>
           <div class="identity-body">
             <span class="identity-label">Contacto operativo diario</span>
-            <span class="identity-value">Mariano Sosa (Supervisor de Patio)</span>
+            <span class="identity-value identity-value--missing"><span class="identity-falta-tag">Falta</span>Sin definir</span>
           </div>
         </div>
-        <div class="identity-card identity-card--date">
+        <div class="identity-card identity-card--date identity-card--missing">
           <div class="identity-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
           <div class="identity-body">
             <span class="identity-label">Fecha objetivo go-live</span>
-            <span class="identity-value">2026-07-15</span>
+            <span class="identity-value identity-value--missing"><span class="identity-falta-tag">Falta</span>Sin definir</span>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="block block--ok">
+    <div class="block block--blocker">
       <div class="block-h">
         <span class="block-h-num">02</span>
         <svg class="block-h-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></svg>
         <span class="block-h-title">Clasificación</span>
-        <span class="block-h-status block-h-status--ok">ok</span>
+        <span class="block-h-status block-h-status--blocker">bloqueante</span>
+      </div>
+      <div class="block-reason block-reason--blocker">
+        <svg class="block-reason-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.586 16.726A2 2 0 0 1 2 15.312V8.688a2 2 0 0 1 .586-1.414l4.688-4.688A2 2 0 0 1 8.688 2h6.624a2 2 0 0 1 1.414.586l4.688 4.688A2 2 0 0 1 22 8.688v6.624a2 2 0 0 1-.586 1.414l-4.688 4.688a2 2 0 0 1-1.414.586H8.688a2 2 0 0 1-1.414-.586z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+        <div class="block-reason-content">
+          <span class="block-reason-label">bloqueante</span>
+          <span class="block-reason-text">El bloque no fue tocado en la reunión.</span>
+        </div>
       </div>
       <ul class="bullets">
         <li class="bullet">
           <span class="bullet-q">Método de agendamiento actual</span>
-          <span class="bullet-a">Excel compartido + WhatsApp del supervisor</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
         <li class="bullet">
           <span class="bullet-q">Usan Excel para órdenes/turnos</span>
-          <span class="bullet-a">Sí, Excel diario de turnos</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
       </ul>
     </div>
 
-    <div class="block block--ok">
+    <div class="block block--blocker">
       <div class="block-h">
         <span class="block-h-num">03</span>
         <svg class="block-h-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></svg>
         <span class="block-h-title">Workflow operativo</span>
-        <span class="block-h-status block-h-status--ok">ok</span>
+        <span class="block-h-status block-h-status--blocker">bloqueante</span>
+      </div>
+      <div class="block-reason block-reason--blocker">
+        <svg class="block-reason-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.586 16.726A2 2 0 0 1 2 15.312V8.688a2 2 0 0 1 .586-1.414l4.688-4.688A2 2 0 0 1 8.688 2h6.624a2 2 0 0 1 1.414.586l4.688 4.688A2 2 0 0 1 22 8.688v6.624a2 2 0 0 1-.586 1.414l-4.688 4.688a2 2 0 0 1-1.414.586H8.688a2 2 0 0 1-1.414-.586z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+        <div class="block-reason-content">
+          <span class="block-reason-label">bloqueante</span>
+          <span class="block-reason-text">Solo 1 de 3 preguntas tienen respuesta.</span>
+        </div>
       </div>
       <ul class="bullets">
         <li class="bullet">
@@ -338,21 +393,28 @@
         </li>
         <li class="bullet">
           <span class="bullet-q">Requiere modificaciones</span>
-          <span class="bullet-a">No</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
         <li class="bullet">
           <span class="bullet-q">Etapas adicionales o faltantes</span>
-          <span class="bullet-a">Ninguna</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
       </ul>
     </div>
 
-    <div class="block block--ok">
+    <div class="block block--blocker">
       <div class="block-h">
         <span class="block-h-num">04</span>
         <svg class="block-h-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
         <span class="block-h-title">Actores del proceso</span>
-        <span class="block-h-status block-h-status--ok">ok</span>
+        <span class="block-h-status block-h-status--blocker">bloqueante</span>
+      </div>
+      <div class="block-reason block-reason--blocker">
+        <svg class="block-reason-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.586 16.726A2 2 0 0 1 2 15.312V8.688a2 2 0 0 1 .586-1.414l4.688-4.688A2 2 0 0 1 8.688 2h6.624a2 2 0 0 1 1.414.586l4.688 4.688A2 2 0 0 1 22 8.688v6.624a2 2 0 0 1-.586 1.414l-4.688 4.688a2 2 0 0 1-1.414.586H8.688a2 2 0 0 1-1.414-.586z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+        <div class="block-reason-content">
+          <span class="block-reason-label">bloqueante</span>
+          <span class="block-reason-text">Solo 1 de 7 preguntas tienen respuesta.</span>
+        </div>
       </div>
       <ul class="bullets">
         <li class="bullet">
@@ -361,72 +423,86 @@
         </li>
         <li class="bullet">
           <span class="bullet-q">Realiza el check-in</span>
-          <span class="bullet-a">Seguridad de portería</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
         <li class="bullet">
           <span class="bullet-q">Asigna el dock</span>
-          <span class="bullet-a">Supervisor de patio (Mariano)</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
         <li class="bullet">
           <span class="bullet-q">Completa checklists</span>
-          <span class="bullet-a">Operadores de patio</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
         <li class="bullet">
           <span class="bullet-q">Supervisa la operación</span>
-          <span class="bullet-a">Supervisor de patio (Mariano)</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
         <li class="bullet">
           <span class="bullet-q">Usuarios externos</span>
-          <span class="bullet-a">Conductores reciben WhatsApp; transportistas pueden ver turnos vía portal</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
         <li class="bullet">
           <span class="bullet-q">Valida documentación</span>
-          <span class="bullet-a">Seguridad de portería contra checklist precargado</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
       </ul>
     </div>
 
-    <div class="block block--ok">
+    <div class="block block--blocker">
       <div class="block-h">
         <span class="block-h-num">05</span>
         <svg class="block-h-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
         <span class="block-h-title">Agenda, docks y warehouse</span>
-        <span class="block-h-status block-h-status--ok">ok</span>
+        <span class="block-h-status block-h-status--blocker">bloqueante</span>
+      </div>
+      <div class="block-reason block-reason--blocker">
+        <svg class="block-reason-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.586 16.726A2 2 0 0 1 2 15.312V8.688a2 2 0 0 1 .586-1.414l4.688-4.688A2 2 0 0 1 8.688 2h6.624a2 2 0 0 1 1.414.586l4.688 4.688A2 2 0 0 1 22 8.688v6.624a2 2 0 0 1-.586 1.414l-4.688 4.688a2 2 0 0 1-1.414.586H8.688a2 2 0 0 1-1.414-.586z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+        <div class="block-reason-content">
+          <span class="block-reason-label">bloqueante</span>
+          <span class="block-reason-text">El bloque no fue tocado en la reunión.</span>
+        </div>
       </div>
       <ul class="bullets">
         <li class="bullet">
           <span class="bullet-q">Cantidad de warehouses</span>
-          <span class="bullet-a">1</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
         <li class="bullet">
           <span class="bullet-q">Docks por warehouse</span>
-          <span class="bullet-a">6 docks (4 carga, 2 descarga)</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
         <li class="bullet">
           <span class="bullet-q">Operaciones por dock</span>
-          <span class="bullet-a">Carga y descarga separadas físicamente</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
         <li class="bullet">
           <span class="bullet-q">Duración del turno</span>
-          <span class="bullet-a">Carga: 45 min. Descarga: 60 min.</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
         <li class="bullet">
           <span class="bullet-q">Días y horarios habilitados</span>
-          <span class="bullet-a">Lunes a sábado, 6:00–22:00</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
         <li class="bullet">
           <span class="bullet-q">Restricciones horarias</span>
-          <span class="bullet-a">No se reciben turnos entre 14:00 y 15:00 (cambio de turno operativo)</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
       </ul>
     </div>
 
-    <div class="block block--ok">
+    <div class="block block--blocker">
       <div class="block-h">
         <span class="block-h-num">06</span>
         <svg class="block-h-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></svg>
         <span class="block-h-title">Módulo de Órdenes</span>
-        <span class="block-h-status block-h-status--ok">ok</span>
+        <span class="block-h-status block-h-status--blocker">bloqueante</span>
+      </div>
+      <div class="block-reason block-reason--blocker">
+        <svg class="block-reason-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.586 16.726A2 2 0 0 1 2 15.312V8.688a2 2 0 0 1 .586-1.414l4.688-4.688A2 2 0 0 1 8.688 2h6.624a2 2 0 0 1 1.414.586l4.688 4.688A2 2 0 0 1 22 8.688v6.624a2 2 0 0 1-.586 1.414l-4.688 4.688a2 2 0 0 1-1.414.586H8.688a2 2 0 0 1-1.414-.586z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+        <div class="block-reason-content">
+          <span class="block-reason-label">bloqueante</span>
+          <span class="block-reason-text">Solo 1 de 12 preguntas tienen respuesta.</span>
+        </div>
       </div>
       <ul class="bullets">
         <li class="bullet">
@@ -435,91 +511,112 @@
         </li>
         <li class="bullet">
           <span class="bullet-q">Debe existir antes de agendar</span>
-          <span class="bullet-a">Sí</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
         <li class="bullet">
           <span class="bullet-q">Puede operar sin órdenes precargadas</span>
-          <span class="bullet-a">No</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
         <li class="bullet">
           <span class="bullet-q">Cita puede incluir varias órdenes</span>
-          <span class="bullet-a">Sí, hasta 3 órdenes por turno</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
         <li class="bullet">
           <span class="bullet-q">Usa Excel para órdenes</span>
-          <span class="bullet-a">Hoy sí (SAP exporta a Excel)</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
         <li class="bullet">
           <span class="bullet-q">Asignar a tercero antes de agendar</span>
-          <span class="bullet-a">Sí, a la transportadora</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
         <li class="bullet">
           <span class="bullet-q">Ubicación actual de gestión</span>
-          <span class="bullet-a">SAP (export a Excel)</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
         <li class="bullet">
           <span class="bullet-q">Método de carga en EasyDocking</span>
-          <span class="bullet-a">Excel inicial, integración API con SAP en fase 2</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
         <li class="bullet">
           <span class="bullet-q">Campos requeridos en la orden</span>
-          <span class="bullet-a">Número OC, proveedor, fecha, productos con códigos, cantidades, transportadora</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
         <li class="bullet">
           <span class="bullet-q">Coordina orden existente o on-demand</span>
-          <span class="bullet-a">Existente (siempre hay OC)</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
         <li class="bullet">
           <span class="bullet-q">Nivel de detalle de mercadería</span>
-          <span class="bullet-a">SKU + cantidades</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
         <li class="bullet">
           <span class="bullet-q">Duración del turno depende de datos de la orden</span>
-          <span class="bullet-a">Sí, por cantidad de pallets</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
       </ul>
     </div>
 
-    <div class="block block--ok">
+    <div class="block block--blocker">
       <div class="block-h">
         <span class="block-h-num">07</span>
         <svg class="block-h-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 5h8"/><path d="M13 12h8"/><path d="M13 19h8"/><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/></svg>
         <span class="block-h-title">Campos y formularios</span>
-        <span class="block-h-status block-h-status--ok">ok</span>
+        <span class="block-h-status block-h-status--blocker">bloqueante</span>
+      </div>
+      <div class="block-reason block-reason--blocker">
+        <svg class="block-reason-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.586 16.726A2 2 0 0 1 2 15.312V8.688a2 2 0 0 1 .586-1.414l4.688-4.688A2 2 0 0 1 8.688 2h6.624a2 2 0 0 1 1.414.586l4.688 4.688A2 2 0 0 1 22 8.688v6.624a2 2 0 0 1-.586 1.414l-4.688 4.688a2 2 0 0 1-1.414.586H8.688a2 2 0 0 1-1.414-.586z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+        <div class="block-reason-content">
+          <span class="block-reason-label">bloqueante</span>
+          <span class="block-reason-text">El bloque no fue tocado en la reunión.</span>
+        </div>
       </div>
       <ul class="bullets">
         <li class="bullet">
           <span class="bullet-q">Resumen de modificaciones</span>
-          <span class="bullet-a">Ningún campo extra, todos los estándar alcanzan</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
       </ul>
     </div>
 
-    <div class="block block--ok">
+    <div class="block block--blocker">
       <div class="block-h">
         <span class="block-h-num">08</span>
         <svg class="block-h-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
         <span class="block-h-title">Mensajes y notificaciones</span>
-        <span class="block-h-status block-h-status--ok">ok</span>
+        <span class="block-h-status block-h-status--blocker">bloqueante</span>
+      </div>
+      <div class="block-reason block-reason--blocker">
+        <svg class="block-reason-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.586 16.726A2 2 0 0 1 2 15.312V8.688a2 2 0 0 1 .586-1.414l4.688-4.688A2 2 0 0 1 8.688 2h6.624a2 2 0 0 1 1.414.586l4.688 4.688A2 2 0 0 1 22 8.688v6.624a2 2 0 0 1-.586 1.414l-4.688 4.688a2 2 0 0 1-1.414.586H8.688a2 2 0 0 1-1.414-.586z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+        <div class="block-reason-content">
+          <span class="block-reason-label">bloqueante</span>
+          <span class="block-reason-text">El bloque no fue tocado en la reunión.</span>
+        </div>
       </div>
       <ul class="bullets">
         <li class="bullet">
           <span class="bullet-q">Ajustes a plantillas</span>
-          <span class="bullet-a">Plantilla de mail con logo de Example Corp y firma del área de logística</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
         <li class="bullet">
           <span class="bullet-q">Mensaje clave faltante</span>
-          <span class="bullet-a">Ninguno</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
       </ul>
     </div>
 
-    <div class="block block--ok">
+    <div class="block block--blocker">
       <div class="block-h">
         <span class="block-h-num">09</span>
         <svg class="block-h-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 17H5"/><path d="M19 7h-9"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg>
         <span class="block-h-title">Excepciones e integraciones</span>
-        <span class="block-h-status block-h-status--ok">ok</span>
+        <span class="block-h-status block-h-status--blocker">bloqueante</span>
+      </div>
+      <div class="block-reason block-reason--blocker">
+        <svg class="block-reason-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.586 16.726A2 2 0 0 1 2 15.312V8.688a2 2 0 0 1 .586-1.414l4.688-4.688A2 2 0 0 1 8.688 2h6.624a2 2 0 0 1 1.414.586l4.688 4.688A2 2 0 0 1 22 8.688v6.624a2 2 0 0 1-.586 1.414l-4.688 4.688a2 2 0 0 1-1.414.586H8.688a2 2 0 0 1-1.414-.586z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+        <div class="block-reason-content">
+          <span class="block-reason-label">bloqueante</span>
+          <span class="block-reason-text">Solo 1 de 3 preguntas tienen respuesta.</span>
+        </div>
       </div>
       <ul class="bullets">
         <li class="bullet">
@@ -528,21 +625,28 @@
         </li>
         <li class="bullet">
           <span class="bullet-q">Integraciones requeridas</span>
-          <span class="bullet-a">SAP (fase 2)</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
         <li class="bullet">
           <span class="bullet-q">Datos iniciales a importar</span>
-          <span class="bullet-a">Listado de transportadoras + listado de proveedores recurrentes</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
       </ul>
     </div>
 
-    <div class="block block--ok">
+    <div class="block block--warning">
       <div class="block-h">
         <span class="block-h-num">10</span>
         <svg class="block-h-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
         <span class="block-h-title">Cierre</span>
-        <span class="block-h-status block-h-status--ok">ok</span>
+        <span class="block-h-status block-h-status--warning">aviso</span>
+      </div>
+      <div class="block-reason block-reason--warning">
+        <svg class="block-reason-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+        <div class="block-reason-content">
+          <span class="block-reason-label">aviso</span>
+          <span class="block-reason-text">Cobertura parcial: 2 ok, 2 missing.</span>
+        </div>
       </div>
       <ul class="bullets">
         <li class="bullet">
@@ -551,15 +655,15 @@
         </li>
         <li class="bullet">
           <span class="bullet-q">Pendientes abiertos</span>
-          <span class="bullet-a">Ninguno</span>
+          <span class="bullet-a">Excel de turnos, export SAP, logo + firma para plantilla mail</span>
         </li>
         <li class="bullet">
           <span class="bullet-q">Debe enviar el cliente</span>
-          <span class="bullet-a">Nada</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
         <li class="bullet">
           <span class="bullet-q">Próximo paso</span>
-          <span class="bullet-a">Validación con cliente 2026-05-22</span>
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
       </ul>
     </div>
@@ -567,7 +671,7 @@
 
   <footer class="doc-footer">
     <span>EasyDocking · Brief generado por agente</span>
-    <span>2026-05-08</span>
+    <span>2026-04-22</span>
   </footer>
 </article>
 </body>

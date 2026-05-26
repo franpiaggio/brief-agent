@@ -1,0 +1,223 @@
+{
+  "meta": {
+    "client_name": "Laboratorio Pharmed SA",
+    "industry": "Farmacéutica",
+    "country": "Argentina",
+    "meeting_date": "2026-05-19"
+  },
+  "verdict": {
+    "status": "blocked",
+    "summary": "7 bloqueantes · 0 avisos",
+    "blockers_count": 7,
+    "warnings_count": 0,
+    "detail": "Reunión introductoria — solo se cubrió el contexto general y las operaciones"
+  },
+  "custom": { "count": 0, "items": [] },
+  "narrative": {
+    "current_situation": "Laboratorio Pharmed SA opera una planta de manufactura y distribución de medicamentos en Pilar. Tienen camiones de proveedores de materias primas farmacéuticas y distribuidoras propias. La reunión fue introductoria y no siguió el cuestionario de relevamiento.",
+    "what_they_want": "Ordenar el acceso de camiones de reparto y de proveedores. Tienen restricciones de temperatura y BPM (Buenas Prácticas de Manufactura) que condicionan el check-in. Próxima reunión para relevar el workflow completo.",
+    "closure": null
+  },
+  "coverage": {
+    "blocks_covered": 3,
+    "blocks_total": 10
+  },
+  "next_meeting": {
+    "label": "Relevamiento operativo",
+    "summary": "Recorrer el workflow completo de recepción y despacho con el jefe de logística y el responsable de BPM",
+    "date": "2026-06-08",
+    "time": null
+  },
+  "blocks": [
+    {
+      "id": 1,
+      "name": "general_info",
+      "status": "ok",
+      "status_reason": "",
+      "options": [
+        { "group_name": "site_type", "label": "Planta industrial", "needed": true, "citation": "Somos una planta farmacéutica — producción y distribución" },
+        { "group_name": "site_type", "label": "Centro de distribución", "needed": false, "citation": null },
+        { "group_name": "implementation_focus", "label": "Scheduling", "needed": true, "citation": "Necesitamos ordenar el acceso de camiones" },
+        { "group_name": "implementation_focus", "label": "Yard management", "needed": false, "citation": null },
+        { "group_name": "implementation_focus", "label": "Ambos", "needed": false, "citation": null }
+      ],
+      "fields": [
+        { "key": "industry", "answer": "Farmacéutica — manufactura y distribución", "citation": null, "state": "ok" },
+        { "key": "country", "answer": "Argentina", "citation": null, "state": "ok" },
+        { "key": "city", "answer": "Pilar, Buenos Aires", "citation": null, "state": "ok" },
+        { "key": "project_contact", "answer": "Daniela Ríos — Gerente de Logística y Supply Chain", "citation": null, "state": "ok" },
+        { "key": "operational_contact", "answer": "Daniela Ríos — Gerente de Logística y Supply Chain", "citation": "Todavía no identificamos al responsable operativo del patio", "state": "ok" },
+        { "key": "target_go_live_date", "answer": "Primer trimestre 2027", "citation": "Tenemos una auditoria de ANMAT a fin de año, preferimos arrancar después", "state": "ok" }
+      ],
+      "flags": [],
+      "pending": [],
+      "additional_notes": [],
+      "workflow_states": []
+    },
+    {
+      "id": 2,
+      "name": "classification",
+      "status": "ok",
+      "status_reason": "",
+      "options": [
+        { "group_name": "operations", "label": "Recepción", "needed": true, "citation": "Recibimos materias primas farmacéuticas de proveedores certificados" },
+        { "group_name": "operations", "label": "Despacho", "needed": true, "citation": "Despachamos a droguerías y cadenas de farmacias" },
+        { "group_name": "operations", "label": "Transferencia", "needed": false, "citation": null },
+        { "group_name": "operations", "label": "Retira cliente", "needed": false, "citation": null },
+        { "group_name": "modules", "label": "Agenda de docks", "needed": true, "citation": null },
+        { "group_name": "modules", "label": "Check-in", "needed": true, "citation": null },
+        { "group_name": "modules", "label": "Módulo de órdenes", "needed": null, "citation": "Hay órdenes de compra en SAP — no vimos si las integramos" },
+        { "group_name": "modules", "label": "Control documental", "needed": null, "citation": "BPM exige verificar Certificado de Análisis en cada recepción de MP" }
+      ],
+      "fields": [
+        { "key": "current_scheduling_method", "answer": "Email entre coordinadora y transportistas, agenda física en portería", "citation": null, "state": "ok" },
+        { "key": "uses_excel_for_orders", "answer": null, "citation": null, "state": "missing" }
+      ],
+      "flags": [],
+      "pending": [],
+      "additional_notes": [],
+      "workflow_states": []
+    },
+    {
+      "id": 3,
+      "name": "workflow",
+      "status": "blocker",
+      "status_reason": "Workflow no relevado — queda para la próxima reunión operativa",
+      "options": [],
+      "fields": [
+        { "key": "workflow_per_operation", "answer": null, "citation": null, "state": "missing" },
+        { "key": "requires_modifications", "answer": null, "citation": null, "state": "missing" },
+        { "key": "additional_or_missing_stages", "answer": null, "citation": null, "state": "missing" }
+      ],
+      "flags": [],
+      "pending": [{ "description": "Relevar workflow completo de recepción de MP y despacho en próxima reunión", "citation": null }],
+      "additional_notes": [],
+      "workflow_states": []
+    },
+    {
+      "id": 4,
+      "name": "process_actors",
+      "status": "blocker",
+      "status_reason": "Actores no relevados",
+      "options": [],
+      "fields": [
+        { "key": "shift_creator", "answer": null, "citation": null, "state": "missing" },
+        { "key": "check_in_actor", "answer": null, "citation": null, "state": "missing" },
+        { "key": "dock_assigner", "answer": null, "citation": null, "state": "missing" },
+        { "key": "checklist_completer", "answer": null, "citation": null, "state": "missing" },
+        { "key": "operation_supervisor", "answer": null, "citation": null, "state": "missing" },
+        { "key": "external_users", "answer": null, "citation": null, "state": "missing" },
+        { "key": "document_validator", "answer": null, "citation": null, "state": "missing" }
+      ],
+      "flags": [],
+      "pending": [],
+      "additional_notes": [],
+      "workflow_states": []
+    },
+    {
+      "id": 5,
+      "name": "schedule_docks_warehouse",
+      "status": "blocker",
+      "status_reason": "Datos de docks y warehouse no relevados",
+      "options": [],
+      "fields": [
+        { "key": "warehouses_count", "answer": null, "citation": null, "state": "missing" },
+        { "key": "docks_per_warehouse", "answer": null, "citation": null, "state": "missing" },
+        { "key": "operations_per_dock", "answer": null, "citation": null, "state": "missing" },
+        { "key": "shift_duration", "answer": null, "citation": null, "state": "missing" },
+        { "key": "available_days_hours", "answer": null, "citation": null, "state": "missing" },
+        { "key": "time_restrictions", "answer": null, "citation": null, "state": "missing" }
+      ],
+      "flags": [],
+      "pending": [],
+      "additional_notes": [],
+      "workflow_states": []
+    },
+    {
+      "id": 6,
+      "name": "orders_module",
+      "status": "blocker",
+      "status_reason": "Decisión de módulo de órdenes sin definir",
+      "options": [
+        { "group_name": "module_decision", "label": "Con módulo de Órdenes", "needed": null, "citation": null },
+        { "group_name": "module_decision", "label": "Sin módulo de Órdenes", "needed": null, "citation": null }
+      ],
+      "fields": [],
+      "flags": [],
+      "pending": [],
+      "additional_notes": [],
+      "workflow_states": []
+    },
+    {
+      "id": 7,
+      "name": "fields_and_forms",
+      "status": "blocker",
+      "status_reason": "No relevado",
+      "options": [
+        { "group_name": "forms_to_review", "label": "Formulario de turno", "needed": null, "citation": null },
+        { "group_name": "forms_to_review", "label": "Formulario de check-in", "needed": null, "citation": null },
+        { "group_name": "forms_to_review", "label": "Checklist de descarga", "needed": null, "citation": null },
+        { "group_name": "forms_to_review", "label": "Asignación de dock", "needed": null, "citation": null }
+      ],
+      "fields": [
+        { "key": "modifications_summary", "answer": null, "citation": null, "state": "missing" }
+      ],
+      "flags": [],
+      "pending": [],
+      "additional_notes": [],
+      "workflow_states": []
+    },
+    {
+      "id": 8,
+      "name": "messages_notifications",
+      "status": "blocker",
+      "status_reason": "No relevado",
+      "options": [
+        { "group_name": "channels", "label": "Email", "needed": null, "citation": null },
+        { "group_name": "channels", "label": "SMS", "needed": null, "citation": null },
+        { "group_name": "channels", "label": "WhatsApp", "needed": null, "citation": null }
+      ],
+      "fields": [
+        { "key": "template_adjustments_needed", "answer": null, "citation": null, "state": "missing" },
+        { "key": "missing_key_message", "answer": null, "citation": null, "state": "missing" }
+      ],
+      "flags": [],
+      "pending": [],
+      "additional_notes": [],
+      "workflow_states": []
+    },
+    {
+      "id": 9,
+      "name": "exceptions_integrations",
+      "status": "blocker",
+      "status_reason": "No relevado",
+      "options": [],
+      "fields": [
+        { "key": "non_standard_requirements", "answer": null, "citation": null, "state": "missing" },
+        { "key": "required_integrations", "answer": null, "citation": null, "state": "missing" },
+        { "key": "initial_data_import", "answer": null, "citation": null, "state": "missing" }
+      ],
+      "flags": [],
+      "pending": [],
+      "additional_notes": [],
+      "workflow_states": []
+    },
+    {
+      "id": 10,
+      "name": "closure",
+      "status": "ok",
+      "status_reason": "",
+      "options": [],
+      "fields": [
+        { "key": "defined_in_meeting", "answer": "Presentación general del producto y relevamiento inicial de operaciones y clasificación", "citation": null, "state": "ok" },
+        { "key": "open_pending_items", "answer": "Todo el relevamiento operativo queda para la próxima reunión", "citation": null, "state": "ok" },
+        { "key": "client_deliverables", "answer": "Organgigrama del área logística y plano del patio si está disponible", "citation": null, "state": "ok" },
+        { "key": "next_step", "answer": "Reunión operativa el 8 de junio con Daniela y el responsable de BPM y el jefe de playa", "citation": null, "state": "ok" }
+      ],
+      "flags": [],
+      "pending": [],
+      "additional_notes": [],
+      "workflow_states": []
+    }
+  ]
+}

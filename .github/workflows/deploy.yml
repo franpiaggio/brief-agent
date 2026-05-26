@@ -1,4 +1,4 @@
-name: Deploy templates to GitHub Pages
+name: Deploy example templates to GitHub Pages
 
 on:
   push:
@@ -25,7 +25,7 @@ jobs:
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: templates
+          path: example-templates
 
       - id: deployment
         uses: actions/deploy-pages@v4
