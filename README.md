@@ -13,13 +13,13 @@ Contratos del agente, templates y herramientas para el pipeline de briefs de onb
 
 ### Brief Editor
 
-Editor local para pulir briefs antes de enviarlos al cliente. Acepta el HTML del brief con JSON embebido o el JSON canónico suelto. Permite corregir cualquier dato haciendo click sobre el documento y exporta el HTML actualizado. Sin servidor, sin LLM, sin auto-save.
+Editor web para **generar reportes desde el JSON estructurado que emite el LLM** o para **editar briefs ya generados** después del onboarding. Acepta el HTML del brief con JSON embebido o el JSON canónico suelto, permite corregir cualquier dato haciendo click sobre el documento y exporta el HTML actualizado. Sin servidor, sin LLM, sin auto-save.
 
 → [`tools/brief-editor/`](tools/brief-editor/) · [README](tools/brief-editor/README.md) · [Sitio publicado](https://franpiaggio.github.io/brief-agent/brief-editor/)
 
 ### Render
 
-CLI TypeScript que valida el JSON del agente contra el schema Zod, calcula campos derivados y genera el HTML final del brief. Es la fuente de verdad del output. El Brief Editor y el Runner lo usan internamente.
+CLI TypeScript que valida el JSON del agente contra el schema Zod, calcula campos derivados y genera el HTML final del brief. Es la fuente de verdad del output. Pensado para convertir `data.json` a HTML desde la línea de comandos cuando no hace falta interfaz web — por ejemplo, en pipelines orquestados con `make` u otros entornos automatizados. El Brief Editor y el Runner lo usan internamente.
 
 ```bash
 cd tools/render
