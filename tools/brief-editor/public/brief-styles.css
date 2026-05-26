@@ -1240,21 +1240,28 @@ body {
   /* Checks: keep border for structure, drop shadow */
   .checks-shell { box-shadow: none; }
 
-  /* Identity cards: drop colored shadows (missing card has red shadow → prints as pink overlay) */
+  /* Drop all box-shadows — colored shadows print as tinted overlays */
+  .coverage-tile,
   .identity-card,
   .identity-card--missing,
-  .identity-card--vague { box-shadow: none; }
-  .identity-card .identity-icon { box-shadow: none; }
+  .identity-card--vague,
+  .action-box { box-shadow: none; }
+  .identity-card .identity-icon,
   .identity-card--missing .identity-icon { box-shadow: none; }
 
-  /* Page-break control */
+  /* Each detail block starts on its own page */
+  .section {
+    page-break-before: always;
+    break-before: page;
+  }
+
+  /* Page-break control — prevent splitting within elements */
   .narrative,
   .narrative-card,
   .checks-shell,
   .chk-section,
   .action-box,
   .deliverable,
-  .section,
   .block,
   .identity-grid,
   .identity-card,
