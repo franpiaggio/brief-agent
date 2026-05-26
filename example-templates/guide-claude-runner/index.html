@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Generación del brief · Documentación</title>
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Sora:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #3db27c;
+    --green-deep: #2f8c61;
+    --green-ink: #1f6b48;
+    --green-pale: #ecf9f3;
+    --green-mist: #f5fbf8;
+    --green-border: #c4ebd6;
+
+    --ink: #2d2f49;
+    --ink-muted: #6c6c7a;
+    --ink-soft: #475569;
+    --ink-subtle: #a0a0ad;
+
+    --paper: #ffffff;
+    --paper-tint: #fafafb;
+    --code-bg: #f5f6f8;
+    --desk: #f1f2f5;
+    --border: #e6e6ea;
+    --border-soft: #f0f0f3;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Poppins', Helvetica, Arial, sans-serif;
+    font-size: 14.5px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 64px 32px 96px;
+  }
+
+  /* Topbar */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 28px;
+    margin-bottom: 56px;
+    border-bottom: 1px solid var(--border);
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .topbar-logo { height: 18px; width: auto; display: block; }
+  .topbar-meta {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10.5px;
+    color: var(--ink-subtle);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* Head */
+  .head { margin-bottom: 48px; }
+  .head-eyebrow {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px;
+    color: var(--green-ink);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 0 0 14px;
+    display: block;
+  }
+  .head h1 {
+    font-family: 'Sora', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    margin: 0 0 14px;
+    color: var(--ink);
+  }
+  .head-version {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11.5px;
+    color: var(--ink-muted);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+  }
+  .head-lede {
+    margin: 20px 0 0;
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.65;
+    max-width: 640px;
+  }
+
+  /* Section */
+  .sec { margin-top: 56px; }
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding-bottom: 14px;
+    margin-bottom: 22px;
+    border-bottom: 1px solid var(--border);
+  }
+  .sec-num {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px;
+    color: var(--ink-subtle);
+    letter-spacing: 0.14em;
+    font-weight: 600;
+  }
+  .sec h2 {
+    font-family: 'Sora', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+    margin: 0;
+    color: var(--ink);
+  }
+
+  .sec p {
+    margin: 0 0 16px;
+    color: var(--ink-soft);
+    max-width: 640px;
+  }
+  .sec p:last-child { margin-bottom: 0; }
+
+  /* Code-like ASCII block */
+  .diagram {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 22px 24px;
+    margin: 8px 0 20px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: var(--ink);
+    overflow-x: auto;
+    white-space: pre;
+  }
+  .diagram .rec {
+    color: var(--green-ink);
+    font-weight: 600;
+  }
+  .diagram .next {
+    color: #854d0e;
+    font-weight: 500;
+  }
+  .diagram .arrow { color: var(--ink-subtle); }
+  .diagram .branch { color: var(--ink-muted); }
+
+  /* Inline code */
+  code, .mono {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  code {
+    background: var(--code-bg);
+    border: 1px solid var(--border-soft);
+    padding: 1.5px 6px;
+    border-radius: 4px;
+    font-size: 12.5px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* Sub-option block */
+  .opt {
+    padding: 22px 0;
+    border-top: 1px solid var(--border-soft);
+  }
+  .opt:first-child { border-top: none; padding-top: 4px; }
+  .opt:last-child { padding-bottom: 4px; }
+  .opt-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .opt-name {
+    font-family: 'Sora', sans-serif;
+    font-size: 15.5px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .opt-tag {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 3px;
+    background: var(--green-pale);
+    color: var(--green-ink);
+    border: 1px solid var(--green-border);
+  }
+  .opt-tag--next {
+    background: #fefce8;
+    color: #854d0e;
+    border-color: #fde68a;
+  }
+  .opt--next {
+    background: #fefdf5;
+    margin: 0 -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 6px;
+    border-top-color: #fde68a;
+  }
+  .opt--next + .opt { border-top-color: var(--border-soft); }
+  .opt-next-callout {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11.5px;
+    color: #854d0e;
+    background: #fefce8;
+    border: 1px solid #fde68a;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin: 0 0 14px;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+  .opt-next-callout strong {
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 9.5px;
+    font-weight: 700;
+    margin-right: 6px;
+  }
+  .opt-desc {
+    margin: 0 0 14px;
+    color: var(--ink-soft);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .opt-desc:last-child { margin-bottom: 0; }
+
+  /* Spec table */
+  .spec {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 4px 18px;
+    margin: 4px 0 0;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 12.5px;
+    line-height: 1.65;
+  }
+  .spec dt {
+    color: var(--ink-muted);
+    text-transform: lowercase;
+    letter-spacing: 0.02em;
+    font-weight: 500;
+  }
+  .spec dd {
+    margin: 0;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .spec dd code {
+    background: transparent;
+    border: none;
+    padding: 0;
+    font-size: 12.5px;
+  }
+
+  /* Notes list */
+  .notes {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .notes li {
+    padding: 8px 0 8px 18px;
+    position: relative;
+    color: var(--ink-soft);
+    font-size: 14px;
+    line-height: 1.6;
+    border-top: 1px solid var(--border-soft);
+  }
+  .notes li:first-child { border-top: none; }
+  .notes li::before {
+    content: "·";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    color: var(--green);
+    font-weight: 700;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  /* File list */
+  .files {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    border-top: 1px solid var(--border-soft);
+  }
+  .file {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  @media (min-width: 640px) {
+    .file {
+      grid-template-columns: 240px 1fr;
+      gap: 20px;
+      align-items: baseline;
+    }
+  }
+  .file-path {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 12.5px;
+    color: var(--green-ink);
+    font-weight: 500;
+  }
+  .file-desc {
+    color: var(--ink-soft);
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+
+  /* Inline link */
+  a { color: var(--green-deep); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; }
+  a:hover { color: var(--green-ink); }
+
+  /* Footer */
+  .foot {
+    margin-top: 80px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10.5px;
+    color: var(--ink-subtle);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header class="topbar">
+  <img src="assets/logo.png" alt="EasyDocking" class="topbar-logo" />
+  <span class="topbar-meta">Doc · brief-agent-templates</span>
+</header>
+
+<section class="head">
+  <span class="head-eyebrow">Generación del brief</span>
+  <h1>Cómo se genera el brief hoy</h1>
+  <div class="head-version">v1 · 2026-05</div>
+  <p class="head-lede">El brief de onboarding se arma en dos etapas independientes. Primero un agente lee el transcript de la reunión y devuelve los datos del brief. Después un editor toma esos datos y los convierte en el reporte final, con posibilidad de ajustar lo que haga falta antes de enviarlo.</p>
+</section>
+
+<section class="sec">
+  <div class="sec-head">
+    <span class="sec-num">01</span>
+    <h2>Qué entregamos</h2>
+  </div>
+  <p>Tres piezas que cubren todo el ciclo del brief: lo que el agente entiende, lo que el reporte muestra y dónde se edita antes de enviarlo al cliente.</p>
+
+  <div class="opt">
+    <div class="opt-head">
+      <span class="opt-name">Prompt del agente</span>
+      <span class="opt-tag">Arquitectura</span>
+    </div>
+    <p class="opt-desc">Los tres archivos del repo que definen cómo el modelo lee el transcript y qué debe devolver. Son la base sobre la que corre cualquiera de las opciones de la etapa 1.</p>
+  </div>
+
+  <div class="opt">
+    <div class="opt-head">
+      <span class="opt-name">Template del reporte</span>
+      <span class="opt-tag">Diseño</span>
+    </div>
+    <p class="opt-desc">El diseño visual del brief en sus cinco estados: listo, listo con pendientes, bloqueado, reunión fuera de cuestionario y sin reunión. Se usa tanto en navegador como en PDF.</p>
+  </div>
+
+  <div class="opt">
+    <div class="opt-head">
+      <span class="opt-name">Editor web</span>
+      <span class="opt-tag">Herramienta</span>
+    </div>
+    <p class="opt-desc">La pieza que toma los datos del agente, renderiza el reporte y permite ajustar cualquier campo antes de exportarlo. Funciona en el navegador, sin necesidad de instalar nada.</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="sec-head">
+    <span class="sec-num">02</span>
+    <h2>Arquitectura</h2>
+  </div>
+<pre class="diagram">transcript  <span class="arrow">──►</span>  agente  <span class="arrow">──►</span>  datos  <span class="arrow">──►</span>  editor  <span class="arrow">──►</span>  reporte
+              <span class="branch">│</span>
+              <span class="branch">├──</span> <span class="rec">claude.ai · projects     (recomendado)</span>
+              <span class="branch">├──</span> claude code (CLI)
+              <span class="branch">└──</span> <span class="next">API de Anthropic         (próxima etapa)</span></pre>
+  <p>La estructura de los datos que devuelve el agente es siempre la misma, sin importar la opción que se use. El editor verifica esa estructura al cargarlos. Cambiar de una opción a otra no obliga a rehacer ningún brief anterior.</p>
+</section>
+
+<section class="sec">
+  <div class="sec-head">
+    <span class="sec-num">03</span>
+    <h2>Etapa 1 · Agente</h2>
+  </div>
+  <p>Las dos primeras opciones están operativas hoy. La tercera (API) es el paso siguiente y se orquestaría con Make o un sistema propio.</p>
+
+  <div class="opt">
+    <div class="opt-head">
+      <span class="opt-name">Claude.ai · Projects</span>
+      <span class="opt-tag">Recomendado</span>
+    </div>
+    <p class="opt-desc">Se crea un Project en una cuenta de Claude.ai y se le cargan los tres archivos del repo. Después de cada reunión, se abre una conversación nueva, se pega el transcript y el agente devuelve los datos.</p>
+    <dl class="spec">
+      <dt>setup</dt><dd>~10 min, una sola vez</dd>
+      <dt>por reunión</dt><dd>pegar transcript</dd>
+      <dt>plan</dt><dd>Claude Pro</dd>
+      <dt>requiere</dt><dd>cuenta de Claude.ai</dd>
+      <dt>perfil</dt><dd>cualquier persona del equipo</dd>
+    </dl>
+  </div>
+
+  <div class="opt">
+    <div class="opt-head">
+      <span class="opt-name">Claude Code (CLI)</span>
+    </div>
+    <p class="opt-desc">Con el repo clonado en una computadora y Claude Code instalado. El archivo <code>CLAUDE.md</code> del repo le explica al modelo cómo trabajar. Útil cuando alguien del equipo ya usa Claude Code para otras tareas.</p>
+    <dl class="spec">
+      <dt>setup</dt><dd>clone del repo + Claude Code</dd>
+      <dt>por reunión</dt><dd>sesión local</dd>
+      <dt>plan</dt><dd>Claude Pro o Max</dd>
+      <dt>requiere</dt><dd>familiaridad con terminal</dd>
+      <dt>perfil</dt><dd>developer</dd>
+    </dl>
+  </div>
+
+  <div class="opt opt--next">
+    <div class="opt-head">
+      <span class="opt-name">API de Anthropic</span>
+      <span class="opt-tag opt-tag--next">Próxima etapa</span>
+    </div>
+    <p class="opt-next-callout"><strong>Aún no implementado.</strong> Es el paso siguiente: orquestar el agente con Make (o una herramienta propia) para que el transcript llegue por una integración y el brief salga sin intervención manual.</p>
+    <p class="opt-desc">Integración directa con la API de Anthropic desde un sistema propio. Pensado para flujos automatizados de alto volumen, donde no tiene sentido que una persona ejecute el agente reunión por reunión.</p>
+    <dl class="spec">
+      <dt>setup</dt><dd>implementación propia</dd>
+      <dt>por reunión</dt><dd>llamada automática</dd>
+      <dt>plan</dt><dd>se paga por uso</dd>
+      <dt>requiere</dt><dd>desarrollo propio + orquestador (Make o similar)</dd>
+      <dt>perfil</dt><dd>flujo automatizado</dd>
+    </dl>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="sec-head">
+    <span class="sec-num">04</span>
+    <h2>Etapa 2 · Editor</h2>
+  </div>
+  <p>El editor toma los datos del agente y los convierte en el reporte final. Permite ajustar cualquier dato con un click antes de exportarlo. Funciona enteramente en el navegador, sin servidor que guarde nada. El reporte exportado lleva los datos adentro, así que más adelante se puede reabrir y seguir editando.</p>
+  <dl class="spec">
+    <dt>acceso</dt><dd><a href="https://franpiaggio.github.io/brief-agent/brief-editor/" target="_blank" rel="noopener">franpiaggio.github.io/brief-agent/brief-editor/</a></dd>
+    <dt>cómo abrirlo</dt><dd>desde cualquier navegador, sin cuenta ni login</dd>
+    <dt>qué acepta</dt><dd>el archivo del agente, o un reporte ya exportado</dd>
+    <dt>qué genera</dt><dd>un HTML standalone que se puede enviar por mail</dd>
+    <dt>edición</dt><dd>click sobre cualquier dato del reporte</dd>
+    <dt>guardado</dt><dd>solo al exportar; no hay auto-save</dd>
+  </dl>
+</section>
+
+<section class="sec">
+  <div class="sec-head">
+    <span class="sec-num">05</span>
+    <h2>Insumos del repo</h2>
+  </div>
+  <div class="files">
+    <div class="file">
+      <span class="file-path">agent/system-prompt.md</span>
+      <span class="file-desc">Las instrucciones que recibe el modelo. Cómo leer el transcript, qué citar de la reunión y cómo marcar lo que quedó incompleto.</span>
+    </div>
+    <div class="file">
+      <span class="file-path">agent/cuestionario-onboarding.md</span>
+      <span class="file-desc">Los 10 bloques temáticos que se esperan en la reunión.</span>
+    </div>
+    <div class="file">
+      <span class="file-path">agent/output-schema.md</span>
+      <span class="file-desc">La estructura que debe tener el archivo que devuelve el agente.</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="sec-head">
+    <span class="sec-num">06</span>
+    <h2>Notas</h2>
+  </div>
+  <ul class="notes">
+    <li>Cada reporte exportado lleva los datos adentro. Eso permite reabrir un brief generado hace meses, corregir algo y volver a exportarlo sin pasar de nuevo por el agente.</li>
+    <li>Se puede empezar con Claude.ai Projects y migrar a CLI o API más adelante sin perder ninguno de los briefs ya generados.</li>
+    <li>Si en algún momento cambia el contenido del brief (qué bloques aparecen, qué campos pide), hay que actualizar tanto el agente como el editor. No es algo que cambie seguido.</li>
+    <li>El editor es público: cualquiera con el link puede abrirlo. Si en algún momento se necesita restringir el acceso, se resuelve a nivel del hosting.</li>
+  </ul>
+</section>
+
+<footer class="foot">
+  <span>EasyDocking · Onboarding</span>
+  <span>v1 · 2026-05</span>
+</footer>
+
+</div>
+
+</body>
+</html>
