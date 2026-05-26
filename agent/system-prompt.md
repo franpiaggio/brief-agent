@@ -271,8 +271,8 @@ REGLAS DE `ok`:
 
 `custom.items[]` agrega TODOS los flags con `type:"custom"` de cualquier
 bloque. `custom.count` = `custom.items.length`. Cada item lleva
-`description` y `citation` (string o `null`; idealmente igual al
-`citation` del flag de origen).
+`description` (string no vacío, REQUERIDO) y `citation` (string o `null`;
+idealmente igual al `citation` del flag de origen).
 
 # Output
 
