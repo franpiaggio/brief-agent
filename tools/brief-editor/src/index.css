@@ -300,6 +300,23 @@ body.app {
   white-space: nowrap;
 }
 
+.toolbar-dropdown-menu--compact {
+  width: 160px;
+}
+
+.toolbar-dropdown-item--export {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toolbar-dropdown-ext {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-subtle);
+  letter-spacing: 0.04em;
+}
+
 .block-status {
   font-family: var(--font-mono);
   font-size: 9px;

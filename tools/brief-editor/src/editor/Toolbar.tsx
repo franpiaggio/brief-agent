@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useBrief } from '../state/BriefContext'
 import { toHtml } from '../export/toHtml'
 import { downloadHtml, buildFilename } from '../export/downloadHtml'
+import { downloadJson } from '../export/downloadJson'
 import { downloadPdf } from '../export/downloadPdf'
 import { BLOCK_DEFS } from '../constants/blockDefs'
 import { VERDICT_DEFS, VERDICT_BY_STATUS } from '../constants/verdictDefs'
@@ -10,13 +11,14 @@ import { BLOCK_STATUS_LABELS } from '../constants/groupLabels'
 export function Toolbar() {
   const { state, dispatch, actions, isDirty, markExported, resetEditor } = useBrief()
   const [blocksOpen, setBlocksOpen] = useState(false)
+  const [exportOpen, setExportOpen] = useState(false)
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       const meta = e.metaKey || e.ctrlKey
       if (meta && e.key.toLowerCase() === 'e') {
         e.preventDefault()
-        handleExport()
+        handleExportHtml()
       }
     }
     window.addEventListener('keydown', onKey)
@@ -28,11 +30,20 @@ export function Toolbar() {
   const filename = buildFilename(state).replace(/\.html$/, '')
   const verdictDef = VERDICT_BY_STATUS[state.verdict.status]
 
-  async function handleExport() {
+  async function handleExportHtml() {
     if (!state) return
     const html = await toHtml(state)
     downloadHtml(html, buildFilename(state))
     markExported()
+    setExportOpen(false)
+  }
+
+  function handleExportJson() {
+    if (!state) return
+    const jsonFilename = buildFilename(state).replace(/\.html$/, '.json')
+    downloadJson(state, jsonFilename)
+    markExported()
+    setExportOpen(false)
   }
 
   async function handleExportPdf() {
@@ -154,14 +165,48 @@ export function Toolbar() {
           </svg>
           Exportar PDF
         </button>
-        <button className="btn btn--primary" type="button" onClick={handleExport} title="Exportar (⌘E)">
-          <svg className="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-            <polyline points="7 10 12 15 17 10" />
-            <line x1="12" y1="15" x2="12" y2="3" />
-          </svg>
-          Exportar HTML
-        </button>
+        <div className="toolbar-dropdown">
+          <button
+            type="button"
+            className="btn btn--primary"
+            aria-expanded={exportOpen}
+            onClick={() => setExportOpen((v) => !v)}
+            onBlur={() => setTimeout(() => setExportOpen(false), 120)}
+            title="Exportar (⌘E para HTML)"
+          >
+            <svg className="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Exportar
+            <svg className="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          {exportOpen && (
+            <div className="toolbar-dropdown-menu toolbar-dropdown-menu--compact" role="menu">
+              <button
+                type="button"
+                className="toolbar-dropdown-item toolbar-dropdown-item--export"
+                onMouseDown={(e) => e.preventDefault()}
+                onClick={handleExportHtml}
+              >
+                <span>HTML</span>
+                <span className="toolbar-dropdown-ext">.html</span>
+              </button>
+              <button
+                type="button"
+                className="toolbar-dropdown-item toolbar-dropdown-item--export"
+                onMouseDown={(e) => e.preventDefault()}
+                onClick={handleExportJson}
+              >
+                <span>JSON</span>
+                <span className="toolbar-dropdown-ext">.json</span>
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </header>
   )

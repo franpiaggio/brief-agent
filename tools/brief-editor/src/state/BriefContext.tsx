@@ -1,4 +1,4 @@
-import { createContext, use, useCallback, useEffect, useReducer, useState } from 'react'
+import { createContext, use, useCallback, useEffect, useReducer, useRef, useState } from 'react'
 import type { Dispatch } from 'react'
 import type { BriefData } from '../types'
 import { actions } from './actions'
@@ -19,6 +19,7 @@ export const BriefContext = createContext<BriefContextValue | null>(null)
 export function BriefProvider({ children }: { children: React.ReactNode }) {
   const [state, rawDispatch] = useReducer(reducer, null)
   const [isDirty, setIsDirty] = useState(false)
+  const historyPushed = useRef(false)
 
   const dispatch = useCallback<Dispatch<Action>>((action) => {
     rawDispatch(action)
@@ -35,6 +36,37 @@ export function BriefProvider({ children }: { children: React.ReactNode }) {
     rawDispatch({ type: 'RESET' })
     setIsDirty(false)
   }, [])
+
+  useEffect(() => {
+    history.replaceState({ view: 'dropzone' }, '')
+  }, [])
+
+  useEffect(() => {
+    if (state !== null && !historyPushed.current) {
+      history.pushState({ view: 'editor' }, '')
+      historyPushed.current = true
+    } else if (state === null) {
+      historyPushed.current = false
+    }
+  }, [state])
+
+  useEffect(() => {
+    function onPopState() {
+      if (state === null) return
+      if (isDirty) {
+        const ok = window.confirm('Hay cambios sin exportar. ¿Querés descartarlos y cargar otro brief?')
+        if (!ok) {
+          history.pushState({ view: 'editor' }, '')
+          return
+        }
+      }
+      historyPushed.current = false
+      rawDispatch({ type: 'RESET' })
+      setIsDirty(false)
+    }
+    window.addEventListener('popstate', onPopState)
+    return () => window.removeEventListener('popstate', onPopState)
+  }, [state, isDirty])
 
   useEffect(() => {
     if (!isDirty) return
