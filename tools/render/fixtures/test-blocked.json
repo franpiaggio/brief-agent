@@ -62,12 +62,6 @@
           "label": "Yard management",
           "needed": false,
           "citation": null
-        },
-        {
-          "group_name": "implementation_focus",
-          "label": "Ambos",
-          "needed": false,
-          "citation": null
         }
       ],
       "fields": [

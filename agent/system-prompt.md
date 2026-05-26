@@ -98,7 +98,7 @@ options, emitís `options: []`.
 
 Options:
 - `Tipo de sitio` (single-select): "Planta industrial", "Centro de distribución", "Almacén"
-- `Objetivo principal` (single-select): "Turnos", "YMS", "Ambos"
+- `Objetivo principal` (multi-select): "Turnos", "YMS" (si contrata los dos, ambos quedan en `needed: true`)
 
 Fields (en este orden):
 - `Industria`

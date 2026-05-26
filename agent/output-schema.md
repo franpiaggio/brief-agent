@@ -111,7 +111,7 @@ Options van en `options[]` del bloque con cada ítem como entrada plana (con `gr
 | `name` | `group_name` | Ítems posibles |
 |---|---|---|
 | `general_info` | `site_type` | `"Puerto"`, `"Aeropuerto"`, `"Centro de distribución"`, `"Planta industrial"`, `"Almacén"` |
-| `general_info` | `implementation_focus` | `"Scheduling"`, `"Yard management"`, `"Ambos"` |
+| `general_info` | `implementation_focus` | `"Scheduling"`, `"Yard management"` (multi: si los dos quedan en `needed: true`, es porque contratan ambos) |
 | `classification` | `operations` | `"Recepción"`, `"Despacho"`, `"Transferencia"`, `"Retira cliente"`, `"Otro"` |
 | `classification` | `modules` | `"Agenda de docks"`, `"Check-in"`, `"Módulo de órdenes"`, `"Control documental"` |
 | `orders_module` | `module_decision` | `"Módulo de Órdenes"` (binario, single item: `needed: true` activa, `false` descarta, `null` por definir) |
