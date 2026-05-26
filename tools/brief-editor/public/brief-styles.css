@@ -1222,7 +1222,7 @@ body {
   .doc {
     max-width: none;
     margin: 0;
-    padding: 0;
+    padding: 0 var(--doc-pad-x); /* keep horizontal padding so section content isn't edge-to-edge */
     box-shadow: none;
     border-radius: 0;
     background: white;
@@ -1240,6 +1240,13 @@ body {
   /* Checks: keep border for structure, drop shadow */
   .checks-shell { box-shadow: none; }
 
+  /* Identity cards: drop colored shadows (missing card has red shadow → prints as pink overlay) */
+  .identity-card,
+  .identity-card--missing,
+  .identity-card--vague { box-shadow: none; }
+  .identity-card .identity-icon { box-shadow: none; }
+  .identity-card--missing .identity-icon { box-shadow: none; }
+
   /* Page-break control */
   .narrative,
   .narrative-card,
@@ -1249,6 +1256,8 @@ body {
   .deliverable,
   .section,
   .block,
+  .identity-grid,
+  .identity-card,
   .doc-footer {
     page-break-inside: avoid;
     break-inside: avoid;
