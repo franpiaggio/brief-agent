@@ -8,7 +8,7 @@ import { Brief } from '../brief/Brief'
 const NATIVE_WIDTH = 920
 
 const EDITOR_OVERLAY_CSS = `
-  html, body { margin: 0; padding: 0; }
+  html, body { margin: 0; padding: 0; overflow: hidden; }
   body { width: ${NATIVE_WIDTH}px; }
   [data-edit-type] {
     cursor: pointer;

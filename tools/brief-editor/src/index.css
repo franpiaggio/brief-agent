@@ -79,6 +79,8 @@ body.app {
   display: flex;
   align-items: center;
   gap: 12px;
+  min-width: 0;
+  flex: 1 1 0;
 }
 
 .brand {
@@ -113,6 +115,11 @@ body.app {
   font-size: 12px;
   color: var(--ink-muted);
   letter-spacing: -0.01em;
+  min-width: 0;
+  flex: 1 1 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .file-name .file-name-ext {
@@ -123,6 +130,7 @@ body.app {
   display: flex;
   align-items: center;
   gap: 6px;
+  flex: 0 0 auto;
 }
 
 .toolbar-divider {
@@ -1310,13 +1318,6 @@ body.app {
 @media (max-width: 1100px) {
   .toolbar {
     gap: 12px;
-  }
-
-  .file-name {
-    max-width: 26vw;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
   }
 }
 
