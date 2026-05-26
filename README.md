@@ -51,6 +51,15 @@ npm run render -- test-ready.json output.html
 
 Para revisar ejemplos generados localmente, usar `tools/render/output-examples/`. Esa carpeta esta ignorada por git.
 
+## `docs/`
+
+Documentación de producto y diseño.
+
+| Archivo | Qué es |
+|---|---|
+| `product.md` | Propósito, usuarios, personalidad y principios del brief. |
+| `design.md` | Tokens, componentes y reglas visuales. |
+
 ## `transcripts/`
 
 Transcripts de ejemplo para probar el agente (cliente ficticio).

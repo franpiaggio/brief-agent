@@ -1,77 +1,70 @@
 # AGENTS.md
 
-Guía para Codex (Codex.ai/code) sobre cómo trabajar en este repo.
+Guía para Codex sobre cómo trabajar en este repo.
 
 ## Qué es este repo
 
-Casa canónica del **brief de onboarding de EasyDocking**: el reporte que se entrega después de cada reunión de relevamiento con un cliente. Todo el contenido es en español.
+Casa canónica del **brief de onboarding de EasyDocking**: el reporte en español que se entrega después de una reunión de relevamiento con un cliente.
 
-El repo se organiza en dos pilares:
+El repo se organiza en cuatro partes:
 
-1. **Contratos del agente** (`agent/`) — el cuestionario canónico, el system prompt y el output schema. Cuestionario = fuente de verdad sobre la que se construye todo. Prompt y schema = cómo el agente toma un transcript de reunión y emite el JSON del brief.
-2. **Templates HTML** (`templates/`) — la representación visual del brief en sus distintos estados, alimentada por el JSON que produce el agente.
+1. **Contratos del agente** (`agent/`) — cuestionario, system prompt y schema JSON.
+2. **Renderer** (`tools/render/`) — valida el JSON y genera el HTML final.
+3. **Example templates** (`example-templates/`) — briefs HTML estáticos para revisar los cinco estados visuales.
+4. **Documentación de producto/diseño** (`docs/`) — contexto cualitativo y design system.
 
-El orden es jerárquico: el cuestionario manda. El agente extrae respuestas contra esos bloques. Los templates renderizan esas respuestas. Cualquier producto interactivo futuro se valida contra los tres artefactos de `agent/` más los templates.
+El orden de verdad es: cuestionario → schema/prompt → renderer → examples. Los examples no son runtime; son referencia visual publicada.
 
-## El cuestionario es la fuente de verdad
+## Contratos vivos
 
-`agent/cuestionario-onboarding.md` define los **10 bloques temáticos** que toda reunión de onboarding cubre, en orden:
+`agent/cuestionario-onboarding.md` define los 10 bloques temáticos de la reunión. Toda sección del brief tiene que mapear a esos bloques.
 
-1. Información general
-2. Clasificación
-3. Workflow operativo
-4. Actores del proceso
-5. Agenda, docks y warehouse
-6. Módulo de Órdenes
-7. Campos y formularios
-8. Mensajes y notificaciones
-9. Excepciones e integraciones
-10. Cierre
+`agent/output-schema.md` define el JSON que emite el agente. Si cambia el schema, revisar también `tools/render/core/schema.ts`.
 
-Toda decisión sobre el brief tiene que poder justificarse contra estos 10 bloques. Si una sección del brief no mapea a un bloque del cuestionario, sobra; si un bloque del cuestionario no aparece en el brief, falta.
+`agent/system-prompt.md` define cómo extraer datos del transcript: no inventar, citar datos, respetar labels cerrados y clasificar `ok | vague | missing`.
 
-## Agente
+## Renderer
 
-`agent/` contiene los tres contratos vivos:
+`tools/render/` es el código activo de generación:
 
-- **`agent/cuestionario-onboarding.md`** — guía operativa para el equipo humano que conduce la reunión, y fuente de verdad de los 10 bloques contra los que extrae el agente.
-- **`agent/output-schema.md`** — forma exacta del JSON que el agente emite. Enums cerrados por bloque, reglas de `block.status` y `verdict.status`, qué deriva el renderer y qué emite el agente.
-- **`agent/system-prompt.md`** — el system prompt operativo. Reglas estrictas (no inventar, citar todo, labels exactos), schema por bloque embebido, autocontrol antes de emitir.
+- `template.html` — plantilla Handlebars activa.
+- `styles.css` — CSS activo del HTML generado.
+- `core/schema.ts` — validación Zod.
+- `core/compute.ts` — campos derivados.
+- `core/mappings.ts` — labels, iconos y clases.
+- `core/render.ts` — compila la plantilla.
+- `adapters/cli.ts` — CLI.
 
-El cuestionario manda; el schema es el contrato de salida; el prompt los une. Cualquier cambio en uno impacta a los otros.
+Uso:
 
-## Templates HTML
+```bash
+cd tools/render
+npm run render -- test-ready.json output-examples/ready.html
+```
 
-`templates/` contiene los 5 estados de verdict del brief. Cada estado es una carpeta con su `index.html`; el `styles.css`, los `assets/` (logo, etc.) y el `template.html` scaffold viven compartidos en `templates/`. El sidecar de tokens vive en `.impeccable/design.json`.
+`tools/render/output-examples/` es para inspección local y está ignorado por git.
 
-- `brief-html-ready/` — todo respondido, sin pendientes, listo para configurar.
-- `brief-html-with-pendings/` — mayoría respondida, faltan datos puntuales.
-- `brief-html-blocked/` — gaps críticos que impiden seguir.
-- `brief-html-off-script/` — la reunión cubrió temas fuera del cuestionario o se salió del orden.
-- `brief-html-no-meeting/` — no hubo reunión / no hay material para armar el brief.
+## Example Templates
 
-`templates/index.html` es la landing que linkea a los cinco estados. Es lo que se publica vía GitHub Pages.
+`example-templates/` contiene los cinco briefs estáticos:
 
-### Cómo deployar
+- `brief-html-ready/`
+- `brief-html-with-pendings/`
+- `brief-html-blocked/`
+- `brief-html-off-script/`
+- `brief-html-no-meeting/`
 
-`.github/workflows/deploy.yml` publica el contenido de `templates/` a GitHub Pages en cada push a `main`. No hay build step — los templates son HTML estático con `styles.css` adyacente.
+`.github/workflows/deploy.yml` publica `example-templates/` en GitHub Pages. No hay build step.
 
-## Design system
+## Docs
 
-`DESIGN.md` contiene **todos los tokens** del brief: paleta, tipografía, radios, spacing, especificación de componentes. Es la referencia normativa. Cualquier nuevo template o variante respeta estos tokens. Si una pieza necesita un token que no existe, primero se agrega a `DESIGN.md`, después se usa.
-
-`PRODUCT.md` define el producto: usuarios (equipo EasyDocking + stakeholders del cliente), personalidad de marca (sistemático · grounded · calm), principios de diseño, anti-references. Es el norte cualitativo cuando hay decisiones ambiguas.
+- `docs/product.md` — propósito, usuarios, personalidad y principios del producto.
+- `docs/design.md` — tokens, componentes y reglas visuales.
 
 ## Convenciones
 
-- **Todo en español.** Contenido del brief, prosa de notas, copies de UI.
-- **Tokens cerrados.** No introducir colores ni tipografías fuera de `DESIGN.md` sin actualizar el archivo.
-- **Print = web.** Cada template tiene que verse igual de bien como HTML en browser y como PDF. No optimizar uno a costa del otro.
-- **Verdict legible sin color.** Estado del brief siempre se refuerza con label/texto, nunca depende solo de color (accesibilidad + impresión B&N).
-- **Citas opcionales, no decorativas.** Cuando un template muestra una cita de Read.AI, es para respaldar una afirmación concreta. No se usan como adorno.
-
-## Qué NO hacer
-
-- **No crear documentación que no se pidió.** No generes READMEs, CHANGELOGs, notas de planning, ni docs de "qué cambió". Si la información no es contrato vigente, no pertenece al repo.
-- **No agregar genealogía a los documentos.** Notas de "antes era X, ahora es Y" o referencias a versiones pasadas no van. Cada doc dice qué es ahora; el historial vive en git.
-- **No mezclar productos interactivos con templates.** Cuando aparezca tooling interactivo, vive en su propia carpeta (probablemente `tools/`). Los templates de `templates/` siguen siendo HTML estático rendereable como referencia visual pura.
+- Todo contenido visible del brief va en español.
+- El renderer es fuente de verdad para el HTML generado; no duplicar contratos en Markdown.
+- Los examples sirven para revisar visualmente estados, no para meter lógica runtime.
+- Si cambia el JSON del agente, revisar schema, mappings, fixtures y examples.
+- Si cambia el look, actualizar `tools/render/styles.css` y sincronizar `example-templates/styles.css` si corresponde.
