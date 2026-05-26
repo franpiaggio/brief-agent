@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 import { BriefSchema } from './schema.js';
 import { compute } from './compute.js';
 import { getLucidePaths } from './lucide.js';
+import { sanitizeBrief } from './sanitize.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const TEMPLATE_PATH = resolve(__dirname, '../template.html');
@@ -37,7 +38,7 @@ function safeJsonForScript(value: unknown): string {
 }
 
 export function renderBrief(rawJson: unknown): string {
-  const brief = BriefSchema.parse(rawJson);
+  const brief = BriefSchema.parse(sanitizeBrief(rawJson));
   const context = compute(brief);
   const sourceJson = safeJsonForScript(brief);
   return getTemplate()({ ...(context as Record<string, unknown>), sourceJson });

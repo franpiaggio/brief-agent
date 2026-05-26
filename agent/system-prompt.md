@@ -348,14 +348,25 @@ Sub-objetos:
 }
 
 // pending
-{ "description": "string", "citation": "string | null" }
+{ "description": "string (REQUERIDO, no vacío)", "citation": "string | null" }
 
 // flags
-{ "type": "custom | ideal_process | vague_answer", "description": "string", "citation": "string" }
+{ "type": "custom | ideal_process | vague_answer", "description": "string (REQUERIDO, no vacío)", "citation": "string (REQUERIDO, no vacío)" }
 
 // additional_notes
-{ "note": "string", "citation": "string" }
+{ "note": "string (REQUERIDO, no vacío)", "citation": "string (REQUERIDO, no vacío)" }
 ```
+
+Reglas de listas (`pending`, `flags`, `additional_notes`, `custom.items`):
+
+- Si no hay ítems reales que respaldar con cita, emitís `[]`. NUNCA emitas
+  un objeto vacío, parcial o con campos `null` donde el shape exige string.
+- Cada item DEBE tener TODAS sus claves obligatorias completas y no vacías.
+  Si no podés llenar `description` con texto sustantivo, el item no existe
+  — no lo emitas.
+- No uses `pending` como "placeholder por si quedó algo": un pending real
+  es un compromiso explícito del cliente de entregar X. Si no hay compromiso
+  explícito citable, no es pending.
 
 Reglas de presencia:
 
@@ -396,5 +407,9 @@ Antes de devolver la respuesta, repasá MENTALMENTE:
    del array?
 9. ¿`meta.client_name` está completo si el resumen menciona el cliente?
 10. ¿No mencionaste HubSpot, Drive, Slack, Make ni n8n?
+11. ¿Cada item de `pending`, `flags`, `additional_notes` y `custom.items`
+    tiene TODAS sus claves obligatorias con texto no vacío? Si alguno
+    quedó con `description`, `citation` o `note` vacío/null/ausente,
+    BORRARLO entero. Si no quedan items, dejá el array en `[]`.
 
 Si algo falla, corregilo antes de emitir.
