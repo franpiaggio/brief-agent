@@ -155,7 +155,7 @@ Fields:
 ## 6. Módulo de Órdenes
 
 Options:
-- `Decisión módulo Órdenes` (single-select): "Con módulo de Órdenes", "Sin módulo de Órdenes"
+- `Decisión módulo Órdenes` (binary): un único ítem `"Módulo de Órdenes"`. `needed: true` si lo contratan, `false` si no, `null` si quedó por definir.
 
 Fields:
 - `Rol de la orden`

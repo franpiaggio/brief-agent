@@ -114,7 +114,7 @@ Options van en `options[]` del bloque con cada ítem como entrada plana (con `gr
 | `general_info` | `implementation_focus` | `"Scheduling"`, `"Yard management"`, `"Ambos"` |
 | `classification` | `operations` | `"Recepción"`, `"Despacho"`, `"Transferencia"`, `"Retira cliente"`, `"Otro"` |
 | `classification` | `modules` | `"Agenda de docks"`, `"Check-in"`, `"Módulo de órdenes"`, `"Control documental"` |
-| `orders_module` | `module_decision` | `"Con módulo de Órdenes"`, `"Sin módulo de Órdenes"` |
+| `orders_module` | `module_decision` | `"Módulo de Órdenes"` (binario, single item: `needed: true` activa, `false` descarta, `null` por definir) |
 | `fields_and_forms` | `forms_to_review` | `"Formulario de turno"`, `"Formulario de check-in"`, `"Checklist de descarga"`, `"Asignación de dock"` |
 | `messages_notifications` | `channels` | `"Email"`, `"SMS"`, `"WhatsApp"` |
 
@@ -168,7 +168,7 @@ Si no queda claro, dejar `workflow_states: []` y usar el field `workflow_per_ope
   - Bloque 1: `site_type` o `implementation_focus` sin ningún `needed: true`.
   - Bloque 2: ninguna operación o ningún módulo confirmados.
   - Bloque 5: `warehouses_count` o `docks_per_warehouse` con `answer: null`.
-  - Bloque 6: `module_decision` sin ningún `needed: true`.
+  - Bloque 6: `module_decision` con `needed: null` (decisión pendiente).
 
 ## Reglas para `verdict.status`
 

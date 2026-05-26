@@ -43,25 +43,88 @@
       "status": "warning",
       "status_reason": "Faltan contactos operativos",
       "options": [
-        { "group_name": "site_type", "label": "Puerto", "needed": false, "citation": null },
-        { "group_name": "site_type", "label": "Aeropuerto", "needed": false, "citation": null },
-        { "group_name": "site_type", "label": "Centro de distribución", "needed": true, "citation": "Somos un CD en Mendoza" },
-        { "group_name": "implementation_focus", "label": "Scheduling", "needed": true, "citation": "El foco es la agenda de docks" },
-        { "group_name": "implementation_focus", "label": "Yard management", "needed": false, "citation": null },
-        { "group_name": "implementation_focus", "label": "Ambos", "needed": false, "citation": null }
+        {
+          "group_name": "site_type",
+          "label": "Puerto",
+          "needed": false,
+          "citation": null
+        },
+        {
+          "group_name": "site_type",
+          "label": "Aeropuerto",
+          "needed": false,
+          "citation": null
+        },
+        {
+          "group_name": "site_type",
+          "label": "Centro de distribución",
+          "needed": true,
+          "citation": "Somos un CD en Mendoza"
+        },
+        {
+          "group_name": "implementation_focus",
+          "label": "Scheduling",
+          "needed": true,
+          "citation": "El foco es la agenda de docks"
+        },
+        {
+          "group_name": "implementation_focus",
+          "label": "Yard management",
+          "needed": false,
+          "citation": null
+        },
+        {
+          "group_name": "implementation_focus",
+          "label": "Ambos",
+          "needed": false,
+          "citation": null
+        }
       ],
       "fields": [
-        { "key": "industry", "answer": "Logística y distribución", "citation": "Operamos como 3PL", "state": "ok" },
-        { "key": "country", "answer": "Argentina", "citation": null, "state": "ok" },
-        { "key": "city", "answer": "Mendoza", "citation": "Nuestro CD está en Mendoza capital", "state": "ok" },
-        { "key": "project_contact", "answer": "Martina Sosa — Gerente de Operaciones", "citation": "Soy yo quien lidera el proyecto", "state": "ok" },
-        { "key": "operational_contact", "answer": null, "citation": null, "state": "missing" },
-        { "key": "target_go_live_date", "answer": "Q4 2026", "citation": "Queremos estar operativos antes de fin de año", "state": "ok" }
+        {
+          "key": "industry",
+          "answer": "Logística y distribución",
+          "citation": "Operamos como 3PL",
+          "state": "ok"
+        },
+        {
+          "key": "country",
+          "answer": "Argentina",
+          "citation": null,
+          "state": "ok"
+        },
+        {
+          "key": "city",
+          "answer": "Mendoza",
+          "citation": "Nuestro CD está en Mendoza capital",
+          "state": "ok"
+        },
+        {
+          "key": "project_contact",
+          "answer": "Martina Sosa — Gerente de Operaciones",
+          "citation": "Soy yo quien lidera el proyecto",
+          "state": "ok"
+        },
+        {
+          "key": "operational_contact",
+          "answer": null,
+          "citation": null,
+          "state": "missing"
+        },
+        {
+          "key": "target_go_live_date",
+          "answer": "Q4 2026",
+          "citation": "Queremos estar operativos antes de fin de año",
+          "state": "ok"
+        }
       ],
       "additional_notes": [],
       "flags": [],
       "pending": [
-        { "description": "Nombre y contacto del responsable operativo de docks", "citation": "Lo consigo y se los mando esta semana" }
+        {
+          "description": "Nombre y contacto del responsable operativo de docks",
+          "citation": "Lo consigo y se los mando esta semana"
+        }
       ],
       "workflow_states": []
     },
@@ -71,16 +134,56 @@
       "status": "ok",
       "status_reason": "",
       "options": [
-        { "group_name": "operations", "label": "Recepción", "needed": true, "citation": "Recibimos mercadería todos los días" },
-        { "group_name": "operations", "label": "Despacho", "needed": true, "citation": "Despachamos a última milla" },
-        { "group_name": "operations", "label": "Transferencia", "needed": false, "citation": null },
-        { "group_name": "modules", "label": "Agenda de docks", "needed": true, "citation": null },
-        { "group_name": "modules", "label": "Check-in", "needed": true, "citation": null },
-        { "group_name": "modules", "label": "Módulo de órdenes", "needed": null, "citation": null }
+        {
+          "group_name": "operations",
+          "label": "Recepción",
+          "needed": true,
+          "citation": "Recibimos mercadería todos los días"
+        },
+        {
+          "group_name": "operations",
+          "label": "Despacho",
+          "needed": true,
+          "citation": "Despachamos a última milla"
+        },
+        {
+          "group_name": "operations",
+          "label": "Transferencia",
+          "needed": false,
+          "citation": null
+        },
+        {
+          "group_name": "modules",
+          "label": "Agenda de docks",
+          "needed": true,
+          "citation": null
+        },
+        {
+          "group_name": "modules",
+          "label": "Check-in",
+          "needed": true,
+          "citation": null
+        },
+        {
+          "group_name": "modules",
+          "label": "Módulo de órdenes",
+          "needed": null,
+          "citation": null
+        }
       ],
       "fields": [
-        { "key": "current_scheduling_method", "answer": "WhatsApp y llamadas telefónicas, sin sistema", "citation": "Hoy lo hacemos todo por WhatsApp", "state": "ok" },
-        { "key": "uses_excel_for_orders", "answer": "Sí, Excel compartido en Drive", "citation": "Tenemos un Excel que actualiza el equipo de logística", "state": "ok" }
+        {
+          "key": "current_scheduling_method",
+          "answer": "WhatsApp y llamadas telefónicas, sin sistema",
+          "citation": "Hoy lo hacemos todo por WhatsApp",
+          "state": "ok"
+        },
+        {
+          "key": "uses_excel_for_orders",
+          "answer": "Sí, Excel compartido en Drive",
+          "citation": "Tenemos un Excel que actualiza el equipo de logística",
+          "state": "ok"
+        }
       ],
       "additional_notes": [],
       "flags": [],
@@ -94,9 +197,24 @@
       "status_reason": "",
       "options": [],
       "fields": [
-        { "key": "workflow_per_operation", "answer": "Recepción: el transportista llama para reservar → operaciones asigna dock → el día del turno hace check-in en portería → descarga → cierre de turno. Despacho: similar pero el turno lo pide el shipper.", "citation": "Así funciona hoy básicamente", "state": "ok" },
-        { "key": "requires_modifications", "answer": "Sí, necesitamos validar número de orden antes del check-in", "citation": "Sin número de orden no puede entrar", "state": "ok" },
-        { "key": "additional_or_missing_stages", "answer": "Agrega validación documental antes del dock assignment", "citation": "El guardia revisa papeles antes de asignar dock", "state": "vague" }
+        {
+          "key": "workflow_per_operation",
+          "answer": "Recepción: el transportista llama para reservar → operaciones asigna dock → el día del turno hace check-in en portería → descarga → cierre de turno. Despacho: similar pero el turno lo pide el shipper.",
+          "citation": "Así funciona hoy básicamente",
+          "state": "ok"
+        },
+        {
+          "key": "requires_modifications",
+          "answer": "Sí, necesitamos validar número de orden antes del check-in",
+          "citation": "Sin número de orden no puede entrar",
+          "state": "ok"
+        },
+        {
+          "key": "additional_or_missing_stages",
+          "answer": "Agrega validación documental antes del dock assignment",
+          "citation": "El guardia revisa papeles antes de asignar dock",
+          "state": "vague"
+        }
       ],
       "additional_notes": [],
       "flags": [],
@@ -110,13 +228,48 @@
       "status_reason": "",
       "options": [],
       "fields": [
-        { "key": "shift_creator", "answer": "Coordinador de logística", "citation": "Lo crea el coordinador desde la oficina", "state": "ok" },
-        { "key": "check_in_actor", "answer": "Guardia de portería", "citation": "El guardia registra la llegada", "state": "ok" },
-        { "key": "dock_assigner", "answer": "Coordinador de logística", "citation": null, "state": "ok" },
-        { "key": "checklist_completer", "answer": "Operario de playa", "citation": null, "state": "ok" },
-        { "key": "operation_supervisor", "answer": "Jefe de turno", "citation": null, "state": "ok" },
-        { "key": "external_users", "answer": "Transportistas y shippers solicitan turno por portal", "citation": "Los transportistas van a querer reservar ellos mismos", "state": "ok" },
-        { "key": "document_validator", "answer": null, "citation": null, "state": "missing" }
+        {
+          "key": "shift_creator",
+          "answer": "Coordinador de logística",
+          "citation": "Lo crea el coordinador desde la oficina",
+          "state": "ok"
+        },
+        {
+          "key": "check_in_actor",
+          "answer": "Guardia de portería",
+          "citation": "El guardia registra la llegada",
+          "state": "ok"
+        },
+        {
+          "key": "dock_assigner",
+          "answer": "Coordinador de logística",
+          "citation": null,
+          "state": "ok"
+        },
+        {
+          "key": "checklist_completer",
+          "answer": "Operario de playa",
+          "citation": null,
+          "state": "ok"
+        },
+        {
+          "key": "operation_supervisor",
+          "answer": "Jefe de turno",
+          "citation": null,
+          "state": "ok"
+        },
+        {
+          "key": "external_users",
+          "answer": "Transportistas y shippers solicitan turno por portal",
+          "citation": "Los transportistas van a querer reservar ellos mismos",
+          "state": "ok"
+        },
+        {
+          "key": "document_validator",
+          "answer": null,
+          "citation": null,
+          "state": "missing"
+        }
       ],
       "additional_notes": [],
       "flags": [],
@@ -130,12 +283,42 @@
       "status_reason": "",
       "options": [],
       "fields": [
-        { "key": "warehouses_count", "answer": "3", "citation": "Tenemos 3 galpones", "state": "ok" },
-        { "key": "docks_per_warehouse", "answer": "4 docks por galpón (12 en total)", "citation": "Cada galpón tiene 4 bocas de carga", "state": "ok" },
-        { "key": "operations_per_dock", "answer": "Recepción y despacho en el mismo dock según horario", "citation": "Usamos el mismo dock para las dos operaciones", "state": "ok" },
-        { "key": "shift_duration", "answer": "2 horas estándar, 3 para contenedores", "citation": "Un turno normal son 2 horas", "state": "ok" },
-        { "key": "available_days_hours", "answer": "Lunes a sábado, 7:00 a 19:00", "citation": null, "state": "ok" },
-        { "key": "time_restrictions", "answer": "Sin restricciones especiales, salvo bloqueo por mantenimiento mensual", "citation": null, "state": "ok" }
+        {
+          "key": "warehouses_count",
+          "answer": "3",
+          "citation": "Tenemos 3 galpones",
+          "state": "ok"
+        },
+        {
+          "key": "docks_per_warehouse",
+          "answer": "4 docks por galpón (12 en total)",
+          "citation": "Cada galpón tiene 4 bocas de carga",
+          "state": "ok"
+        },
+        {
+          "key": "operations_per_dock",
+          "answer": "Recepción y despacho en el mismo dock según horario",
+          "citation": "Usamos el mismo dock para las dos operaciones",
+          "state": "ok"
+        },
+        {
+          "key": "shift_duration",
+          "answer": "2 horas estándar, 3 para contenedores",
+          "citation": "Un turno normal son 2 horas",
+          "state": "ok"
+        },
+        {
+          "key": "available_days_hours",
+          "answer": "Lunes a sábado, 7:00 a 19:00",
+          "citation": null,
+          "state": "ok"
+        },
+        {
+          "key": "time_restrictions",
+          "answer": "Sin restricciones especiales, salvo bloqueo por mantenimiento mensual",
+          "citation": null,
+          "state": "ok"
+        }
       ],
       "additional_notes": [],
       "flags": [],
@@ -148,21 +331,52 @@
       "status": "warning",
       "status_reason": "Decisión de módulo de órdenes sin confirmar",
       "options": [
-        { "group_name": "module_decision", "label": "Con módulo de Órdenes", "needed": null, "citation": "Aún evaluando si lo activan" },
-        { "group_name": "module_decision", "label": "Sin módulo de Órdenes", "needed": null, "citation": null }
+        {
+          "group_name": "module_decision",
+          "label": "Módulo de Órdenes",
+          "needed": null,
+          "citation": "Aún evaluando si lo activan"
+        }
       ],
       "fields": [
-        { "key": "order_role", "answer": "La orden identifica la carga y valida el acceso al dock", "citation": "Sin orden de compra no entra el camión", "state": "ok" },
-        { "key": "must_exist_before_booking", "answer": "Sí, siempre", "citation": "Primero tiene que existir la orden en el TMS", "state": "ok" },
-        { "key": "uses_excel_for_orders", "answer": "Sí, Excel en Drive sincronizado manualmente con TMS", "citation": null, "state": "ok" },
-        { "key": "load_method_into_easydocking", "answer": null, "citation": null, "state": "missing" }
+        {
+          "key": "order_role",
+          "answer": "La orden identifica la carga y valida el acceso al dock",
+          "citation": "Sin orden de compra no entra el camión",
+          "state": "ok"
+        },
+        {
+          "key": "must_exist_before_booking",
+          "answer": "Sí, siempre",
+          "citation": "Primero tiene que existir la orden en el TMS",
+          "state": "ok"
+        },
+        {
+          "key": "uses_excel_for_orders",
+          "answer": "Sí, Excel en Drive sincronizado manualmente con TMS",
+          "citation": null,
+          "state": "ok"
+        },
+        {
+          "key": "load_method_into_easydocking",
+          "answer": null,
+          "citation": null,
+          "state": "missing"
+        }
       ],
       "additional_notes": [],
       "flags": [
-        { "type": "custom", "description": "Integración con TMS interno vía API REST para sincronizar órdenes automáticamente", "citation": "Necesitamos conectar con nuestro TMS interno" }
+        {
+          "type": "custom",
+          "description": "Integración con TMS interno vía API REST para sincronizar órdenes automáticamente",
+          "citation": "Necesitamos conectar con nuestro TMS interno"
+        }
       ],
       "pending": [
-        { "description": "Confirmación si activan módulo de órdenes (decisión de Gerencia)", "citation": "Lo tienen que hablar con el gerente general" }
+        {
+          "description": "Confirmación si activan módulo de órdenes (decisión de Gerencia)",
+          "citation": "Lo tienen que hablar con el gerente general"
+        }
       ],
       "workflow_states": []
     },
@@ -172,12 +386,32 @@
       "status": "ok",
       "status_reason": "",
       "options": [
-        { "group_name": "forms_to_review", "label": "Formulario de turno", "needed": true, "citation": "Sí, agregar campo de número de orden" },
-        { "group_name": "forms_to_review", "label": "Formulario de check-in", "needed": true, "citation": "Agregar campo de patente" },
-        { "group_name": "forms_to_review", "label": "Checklist de descarga", "needed": false, "citation": null }
+        {
+          "group_name": "forms_to_review",
+          "label": "Formulario de turno",
+          "needed": true,
+          "citation": "Sí, agregar campo de número de orden"
+        },
+        {
+          "group_name": "forms_to_review",
+          "label": "Formulario de check-in",
+          "needed": true,
+          "citation": "Agregar campo de patente"
+        },
+        {
+          "group_name": "forms_to_review",
+          "label": "Checklist de descarga",
+          "needed": false,
+          "citation": null
+        }
       ],
       "fields": [
-        { "key": "modifications_summary", "answer": "Agregar número de orden en formulario de turno; agregar patente en check-in", "citation": "Esos dos campos son imprescindibles", "state": "ok" }
+        {
+          "key": "modifications_summary",
+          "answer": "Agregar número de orden en formulario de turno; agregar patente en check-in",
+          "citation": "Esos dos campos son imprescindibles",
+          "state": "ok"
+        }
       ],
       "additional_notes": [],
       "flags": [],
@@ -190,17 +424,46 @@
       "status": "warning",
       "status_reason": "Canal WhatsApp Business fuera del estándar, requiere evaluación",
       "options": [
-        { "group_name": "channels", "label": "Email", "needed": true, "citation": null },
-        { "group_name": "channels", "label": "SMS", "needed": false, "citation": null },
-        { "group_name": "channels", "label": "WhatsApp", "needed": true, "citation": "El 80% de los transportistas solo usa WhatsApp" }
+        {
+          "group_name": "channels",
+          "label": "Email",
+          "needed": true,
+          "citation": null
+        },
+        {
+          "group_name": "channels",
+          "label": "SMS",
+          "needed": false,
+          "citation": null
+        },
+        {
+          "group_name": "channels",
+          "label": "WhatsApp",
+          "needed": true,
+          "citation": "El 80% de los transportistas solo usa WhatsApp"
+        }
       ],
       "fields": [
-        { "key": "template_adjustments_needed", "answer": "Agregar número de dock al mensaje de confirmación de turno", "citation": "El transportista necesita saber a qué dock ir", "state": "ok" },
-        { "key": "missing_key_message", "answer": null, "citation": null, "state": "missing" }
+        {
+          "key": "template_adjustments_needed",
+          "answer": "Agregar número de dock al mensaje de confirmación de turno",
+          "citation": "El transportista necesita saber a qué dock ir",
+          "state": "ok"
+        },
+        {
+          "key": "missing_key_message",
+          "answer": null,
+          "citation": null,
+          "state": "missing"
+        }
       ],
       "additional_notes": [],
       "flags": [
-        { "type": "custom", "description": "Notificación vía WhatsApp Business en lugar de / además del email estándar", "citation": "El 80% de nuestros transportistas solo usa WhatsApp" }
+        {
+          "type": "custom",
+          "description": "Notificación vía WhatsApp Business en lugar de / además del email estándar",
+          "citation": "El 80% de nuestros transportistas solo usa WhatsApp"
+        }
       ],
       "pending": [],
       "workflow_states": []
@@ -212,14 +475,32 @@
       "status_reason": "",
       "options": [],
       "fields": [
-        { "key": "non_standard_requirements", "answer": "Integración API con TMS propio y WhatsApp Business", "citation": null, "state": "ok" },
-        { "key": "required_integrations", "answer": "TMS interno (API REST), WhatsApp Business API", "citation": "Son las dos integraciones que necesitamos", "state": "ok" },
-        { "key": "initial_data_import", "answer": "Catálogo de transportistas y shippers (aprox. 200 registros)", "citation": "Ya tenemos la base de datos, podemos exportar un CSV", "state": "ok" }
+        {
+          "key": "non_standard_requirements",
+          "answer": "Integración API con TMS propio y WhatsApp Business",
+          "citation": null,
+          "state": "ok"
+        },
+        {
+          "key": "required_integrations",
+          "answer": "TMS interno (API REST), WhatsApp Business API",
+          "citation": "Son las dos integraciones que necesitamos",
+          "state": "ok"
+        },
+        {
+          "key": "initial_data_import",
+          "answer": "Catálogo de transportistas y shippers (aprox. 200 registros)",
+          "citation": "Ya tenemos la base de datos, podemos exportar un CSV",
+          "state": "ok"
+        }
       ],
       "additional_notes": [],
       "flags": [],
       "pending": [
-        { "description": "Documentación técnica del TMS (endpoints, autenticación)", "citation": "El área de IT nos la puede pasar" }
+        {
+          "description": "Documentación técnica del TMS (endpoints, autenticación)",
+          "citation": "El área de IT nos la puede pasar"
+        }
       ],
       "workflow_states": []
     },
@@ -230,10 +511,30 @@
       "status_reason": "",
       "options": [],
       "fields": [
-        { "key": "defined_in_meeting", "answer": "Scope: CD Mendoza, operaciones recepción y despacho, módulo de agenda y check-in", "citation": null, "state": "ok" },
-        { "key": "open_pending_items", "answer": "Decisión módulo órdenes, contacto operativo, doc técnica TMS", "citation": null, "state": "ok" },
-        { "key": "client_deliverables", "answer": "Organigrama operativo, decisión módulo órdenes, doc TMS", "citation": "Lo mando esta semana", "state": "ok" },
-        { "key": "next_step", "answer": "Reunión de validación técnica el 3 de junio", "citation": null, "state": "ok" }
+        {
+          "key": "defined_in_meeting",
+          "answer": "Scope: CD Mendoza, operaciones recepción y despacho, módulo de agenda y check-in",
+          "citation": null,
+          "state": "ok"
+        },
+        {
+          "key": "open_pending_items",
+          "answer": "Decisión módulo órdenes, contacto operativo, doc técnica TMS",
+          "citation": null,
+          "state": "ok"
+        },
+        {
+          "key": "client_deliverables",
+          "answer": "Organigrama operativo, decisión módulo órdenes, doc TMS",
+          "citation": "Lo mando esta semana",
+          "state": "ok"
+        },
+        {
+          "key": "next_step",
+          "answer": "Reunión de validación técnica el 3 de junio",
+          "citation": null,
+          "state": "ok"
+        }
       ],
       "additional_notes": [],
       "flags": [],

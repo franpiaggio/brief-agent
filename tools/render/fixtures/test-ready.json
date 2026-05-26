@@ -12,7 +12,10 @@
     "warnings_count": 0,
     "detail": null
   },
-  "custom": { "count": 0, "items": [] },
+  "custom": {
+    "count": 0,
+    "items": []
+  },
   "narrative": {
     "current_situation": "MercaFresh opera un centro de distribución de última milla en Quilmes con 2 naves y 14 docks. Reciben mercadería de proveedores nacionales e internacionales y despachan a puntos de entrega y clientes corporativos. Hoy el agendamiento de turnos se hace por email y los transportistas llegan sin turno asignado generando colas en la playa.",
     "what_they_want": "Implementar EasyDocking para eliminar la gestión manual de docks, dar visibilidad al jefe de playa en tiempo real y reducir el tiempo de espera de camiones. Sin módulo de órdenes en fase 1 — arrancan solo con agenda y check-in.",
@@ -31,20 +34,80 @@
       "status": "ok",
       "status_reason": "",
       "options": [
-        { "group_name": "site_type", "label": "Centro de distribución", "needed": true, "citation": "Somos un CD de última milla, no una planta" },
-        { "group_name": "site_type", "label": "Planta industrial", "needed": false, "citation": null },
-        { "group_name": "site_type", "label": "Puerto", "needed": false, "citation": null },
-        { "group_name": "implementation_focus", "label": "Scheduling", "needed": true, "citation": "El problema es la falta de turnos — los camiones llegan a cualquier hora" },
-        { "group_name": "implementation_focus", "label": "Yard management", "needed": false, "citation": null },
-        { "group_name": "implementation_focus", "label": "Ambos", "needed": false, "citation": null }
+        {
+          "group_name": "site_type",
+          "label": "Centro de distribución",
+          "needed": true,
+          "citation": "Somos un CD de última milla, no una planta"
+        },
+        {
+          "group_name": "site_type",
+          "label": "Planta industrial",
+          "needed": false,
+          "citation": null
+        },
+        {
+          "group_name": "site_type",
+          "label": "Puerto",
+          "needed": false,
+          "citation": null
+        },
+        {
+          "group_name": "implementation_focus",
+          "label": "Scheduling",
+          "needed": true,
+          "citation": "El problema es la falta de turnos — los camiones llegan a cualquier hora"
+        },
+        {
+          "group_name": "implementation_focus",
+          "label": "Yard management",
+          "needed": false,
+          "citation": null
+        },
+        {
+          "group_name": "implementation_focus",
+          "label": "Ambos",
+          "needed": false,
+          "citation": null
+        }
       ],
       "fields": [
-        { "key": "industry", "answer": "E-commerce y distribución de última milla", "citation": null, "state": "ok" },
-        { "key": "country", "answer": "Argentina", "citation": null, "state": "ok" },
-        { "key": "city", "answer": "Quilmes, Buenos Aires", "citation": null, "state": "ok" },
-        { "key": "project_contact", "answer": "Sofía Marchetti — Directora de Operaciones", "citation": "Yo llevo el proyecto del lado nuestro", "state": "ok" },
-        { "key": "operational_contact", "answer": "Hernán Voss — Jefe de Depósito", "citation": "Hernán es quien maneja el día a día de la playa", "state": "ok" },
-        { "key": "target_go_live_date", "answer": "2026-07-01", "citation": "Queremos arrancar antes del 1 de julio, antes del pico de invierno", "state": "ok" }
+        {
+          "key": "industry",
+          "answer": "E-commerce y distribución de última milla",
+          "citation": null,
+          "state": "ok"
+        },
+        {
+          "key": "country",
+          "answer": "Argentina",
+          "citation": null,
+          "state": "ok"
+        },
+        {
+          "key": "city",
+          "answer": "Quilmes, Buenos Aires",
+          "citation": null,
+          "state": "ok"
+        },
+        {
+          "key": "project_contact",
+          "answer": "Sofía Marchetti — Directora de Operaciones",
+          "citation": "Yo llevo el proyecto del lado nuestro",
+          "state": "ok"
+        },
+        {
+          "key": "operational_contact",
+          "answer": "Hernán Voss — Jefe de Depósito",
+          "citation": "Hernán es quien maneja el día a día de la playa",
+          "state": "ok"
+        },
+        {
+          "key": "target_go_live_date",
+          "answer": "2026-07-01",
+          "citation": "Queremos arrancar antes del 1 de julio, antes del pico de invierno",
+          "state": "ok"
+        }
       ],
       "flags": [],
       "pending": [],
@@ -57,18 +120,68 @@
       "status": "ok",
       "status_reason": "",
       "options": [
-        { "group_name": "operations", "label": "Recepción", "needed": true, "citation": "Recibimos mercadería de proveedores todos los días hábiles" },
-        { "group_name": "operations", "label": "Despacho", "needed": true, "citation": "Salimos con unidades propias y con transportes tercerizados" },
-        { "group_name": "operations", "label": "Retira cliente", "needed": true, "citation": "Tenemos clientes corporativos que retiran con flota propia" },
-        { "group_name": "operations", "label": "Transferencia", "needed": false, "citation": null },
-        { "group_name": "modules", "label": "Agenda de docks", "needed": true, "citation": null },
-        { "group_name": "modules", "label": "Check-in", "needed": true, "citation": null },
-        { "group_name": "modules", "label": "Módulo de órdenes", "needed": false, "citation": "En fase 1 no, empezamos simple" },
-        { "group_name": "modules", "label": "Control documental", "needed": false, "citation": null }
+        {
+          "group_name": "operations",
+          "label": "Recepción",
+          "needed": true,
+          "citation": "Recibimos mercadería de proveedores todos los días hábiles"
+        },
+        {
+          "group_name": "operations",
+          "label": "Despacho",
+          "needed": true,
+          "citation": "Salimos con unidades propias y con transportes tercerizados"
+        },
+        {
+          "group_name": "operations",
+          "label": "Retira cliente",
+          "needed": true,
+          "citation": "Tenemos clientes corporativos que retiran con flota propia"
+        },
+        {
+          "group_name": "operations",
+          "label": "Transferencia",
+          "needed": false,
+          "citation": null
+        },
+        {
+          "group_name": "modules",
+          "label": "Agenda de docks",
+          "needed": true,
+          "citation": null
+        },
+        {
+          "group_name": "modules",
+          "label": "Check-in",
+          "needed": true,
+          "citation": null
+        },
+        {
+          "group_name": "modules",
+          "label": "Módulo de órdenes",
+          "needed": false,
+          "citation": "En fase 1 no, empezamos simple"
+        },
+        {
+          "group_name": "modules",
+          "label": "Control documental",
+          "needed": false,
+          "citation": null
+        }
       ],
       "fields": [
-        { "key": "current_scheduling_method", "answer": "Email entre coordinadores y transportistas, sin sistema centralizado", "citation": "Cada coordinador tiene su propia planilla y no las cruzamos", "state": "ok" },
-        { "key": "uses_excel_for_orders", "answer": "Sí, Excel compartido en Drive con el listado de recepciones del día", "citation": null, "state": "ok" }
+        {
+          "key": "current_scheduling_method",
+          "answer": "Email entre coordinadores y transportistas, sin sistema centralizado",
+          "citation": "Cada coordinador tiene su propia planilla y no las cruzamos",
+          "state": "ok"
+        },
+        {
+          "key": "uses_excel_for_orders",
+          "answer": "Sí, Excel compartido en Drive con el listado de recepciones del día",
+          "citation": null,
+          "state": "ok"
+        }
       ],
       "flags": [],
       "pending": [],
@@ -82,9 +195,24 @@
       "status_reason": "",
       "options": [],
       "fields": [
-        { "key": "workflow_per_operation", "answer": "Recepción: el proveedor reserva turno 24 hs antes → check-in en portería → asignación de dock → descarga → cierre de operación. Despacho: coordinador crea turno → transportista recibe confirmación → check-in → carga → cierre. Retiro de cliente: igual a despacho pero el cliente agenda directamente.", "citation": "Así funciona, el workflow estándar nos sirve", "state": "ok" },
-        { "key": "requires_modifications", "answer": "No — el workflow estándar de EasyDocking cubre todas las operaciones", "citation": "El workflow estándar nos sirve", "state": "ok" },
-        { "key": "additional_or_missing_stages", "answer": "Ninguna etapa adicional necesaria en fase 1", "citation": null, "state": "ok" }
+        {
+          "key": "workflow_per_operation",
+          "answer": "Recepción: el proveedor reserva turno 24 hs antes → check-in en portería → asignación de dock → descarga → cierre de operación. Despacho: coordinador crea turno → transportista recibe confirmación → check-in → carga → cierre. Retiro de cliente: igual a despacho pero el cliente agenda directamente.",
+          "citation": "Así funciona, el workflow estándar nos sirve",
+          "state": "ok"
+        },
+        {
+          "key": "requires_modifications",
+          "answer": "No — el workflow estándar de EasyDocking cubre todas las operaciones",
+          "citation": "El workflow estándar nos sirve",
+          "state": "ok"
+        },
+        {
+          "key": "additional_or_missing_stages",
+          "answer": "Ninguna etapa adicional necesaria en fase 1",
+          "citation": null,
+          "state": "ok"
+        }
       ],
       "flags": [],
       "pending": [],
@@ -98,13 +226,48 @@
       "status_reason": "",
       "options": [],
       "fields": [
-        { "key": "shift_creator", "answer": "Coordinador logístico (para recepciones) y jefe de depósito (para despachos)", "citation": null, "state": "ok" },
-        { "key": "check_in_actor", "answer": "Guardia de seguridad en portería — registra llegada y verifica documentación del chofer", "citation": null, "state": "ok" },
-        { "key": "dock_assigner", "answer": "Jefe de depósito", "citation": null, "state": "ok" },
-        { "key": "checklist_completer", "answer": "Operario de depósito asignado al dock", "citation": null, "state": "ok" },
-        { "key": "operation_supervisor", "answer": "Jefe de turno (rotativos)", "citation": null, "state": "ok" },
-        { "key": "external_users", "answer": "Proveedores nacionales e internacionales (agendan por portal) y clientes corporativos (retiro propio)", "citation": null, "state": "ok" },
-        { "key": "document_validator", "answer": "Guardia de portería — valida remito y DNI del chofer", "citation": null, "state": "ok" }
+        {
+          "key": "shift_creator",
+          "answer": "Coordinador logístico (para recepciones) y jefe de depósito (para despachos)",
+          "citation": null,
+          "state": "ok"
+        },
+        {
+          "key": "check_in_actor",
+          "answer": "Guardia de seguridad en portería — registra llegada y verifica documentación del chofer",
+          "citation": null,
+          "state": "ok"
+        },
+        {
+          "key": "dock_assigner",
+          "answer": "Jefe de depósito",
+          "citation": null,
+          "state": "ok"
+        },
+        {
+          "key": "checklist_completer",
+          "answer": "Operario de depósito asignado al dock",
+          "citation": null,
+          "state": "ok"
+        },
+        {
+          "key": "operation_supervisor",
+          "answer": "Jefe de turno (rotativos)",
+          "citation": null,
+          "state": "ok"
+        },
+        {
+          "key": "external_users",
+          "answer": "Proveedores nacionales e internacionales (agendan por portal) y clientes corporativos (retiro propio)",
+          "citation": null,
+          "state": "ok"
+        },
+        {
+          "key": "document_validator",
+          "answer": "Guardia de portería — valida remito y DNI del chofer",
+          "citation": null,
+          "state": "ok"
+        }
       ],
       "flags": [],
       "pending": [],
@@ -118,12 +281,42 @@
       "status_reason": "",
       "options": [],
       "fields": [
-        { "key": "warehouses_count", "answer": "2 naves (Nave A y Nave B)", "citation": "Tenemos dos galpones separados por tipo de mercadería", "state": "ok" },
-        { "key": "docks_per_warehouse", "answer": "8 en Nave A (recepción), 6 en Nave B (expedición) — 14 en total", "citation": null, "state": "ok" },
-        { "key": "operations_per_dock", "answer": "Docks de Nave A solo recepción. Nave B: 4 docks despacho puro, 2 docks mixtos para retiro de cliente", "citation": null, "state": "ok" },
-        { "key": "shift_duration", "answer": "2 horas estándar. Pallets de gran volumen: 3 horas. Contenedores: 4 horas.", "citation": "Los contenedores tardan más porque van a zona de cuarentena primero", "state": "ok" },
-        { "key": "available_days_hours", "answer": "Lunes a viernes 6:00–22:00, sábados 7:00–14:00", "citation": null, "state": "ok" },
-        { "key": "time_restrictions", "answer": "Sin bloqueos en horarios habilitados. Los domingos no operan.", "citation": null, "state": "ok" }
+        {
+          "key": "warehouses_count",
+          "answer": "2 naves (Nave A y Nave B)",
+          "citation": "Tenemos dos galpones separados por tipo de mercadería",
+          "state": "ok"
+        },
+        {
+          "key": "docks_per_warehouse",
+          "answer": "8 en Nave A (recepción), 6 en Nave B (expedición) — 14 en total",
+          "citation": null,
+          "state": "ok"
+        },
+        {
+          "key": "operations_per_dock",
+          "answer": "Docks de Nave A solo recepción. Nave B: 4 docks despacho puro, 2 docks mixtos para retiro de cliente",
+          "citation": null,
+          "state": "ok"
+        },
+        {
+          "key": "shift_duration",
+          "answer": "2 horas estándar. Pallets de gran volumen: 3 horas. Contenedores: 4 horas.",
+          "citation": "Los contenedores tardan más porque van a zona de cuarentena primero",
+          "state": "ok"
+        },
+        {
+          "key": "available_days_hours",
+          "answer": "Lunes a viernes 6:00–22:00, sábados 7:00–14:00",
+          "citation": null,
+          "state": "ok"
+        },
+        {
+          "key": "time_restrictions",
+          "answer": "Sin bloqueos en horarios habilitados. Los domingos no operan.",
+          "citation": null,
+          "state": "ok"
+        }
       ],
       "flags": [],
       "pending": [],
@@ -136,8 +329,12 @@
       "status": "ok",
       "status_reason": "",
       "options": [
-        { "group_name": "module_decision", "label": "Con módulo de Órdenes", "needed": false, "citation": "En fase 1 no, empezamos simple" },
-        { "group_name": "module_decision", "label": "Sin módulo de Órdenes", "needed": true, "citation": "En fase 1 no, empezamos simple" }
+        {
+          "group_name": "module_decision",
+          "label": "Módulo de Órdenes",
+          "needed": false,
+          "citation": "En fase 1 no, empezamos simple"
+        }
       ],
       "fields": [],
       "flags": [],
@@ -151,13 +348,38 @@
       "status": "ok",
       "status_reason": "",
       "options": [
-        { "group_name": "forms_to_review", "label": "Formulario de turno", "needed": true, "citation": "Agregar campo de tipo de mercadería y número de pallets estimados" },
-        { "group_name": "forms_to_review", "label": "Formulario de check-in", "needed": true, "citation": "Agregar patente del camión y número de precinto si aplica" },
-        { "group_name": "forms_to_review", "label": "Checklist de descarga", "needed": false, "citation": null },
-        { "group_name": "forms_to_review", "label": "Asignación de dock", "needed": false, "citation": null }
+        {
+          "group_name": "forms_to_review",
+          "label": "Formulario de turno",
+          "needed": true,
+          "citation": "Agregar campo de tipo de mercadería y número de pallets estimados"
+        },
+        {
+          "group_name": "forms_to_review",
+          "label": "Formulario de check-in",
+          "needed": true,
+          "citation": "Agregar patente del camión y número de precinto si aplica"
+        },
+        {
+          "group_name": "forms_to_review",
+          "label": "Checklist de descarga",
+          "needed": false,
+          "citation": null
+        },
+        {
+          "group_name": "forms_to_review",
+          "label": "Asignación de dock",
+          "needed": false,
+          "citation": null
+        }
       ],
       "fields": [
-        { "key": "modifications_summary", "answer": "Formulario de turno: agregar tipo de mercadería y cantidad de pallets estimados. Check-in: agregar patente y número de precinto.", "citation": null, "state": "ok" }
+        {
+          "key": "modifications_summary",
+          "answer": "Formulario de turno: agregar tipo de mercadería y cantidad de pallets estimados. Check-in: agregar patente y número de precinto.",
+          "citation": null,
+          "state": "ok"
+        }
       ],
       "flags": [],
       "pending": [],
@@ -170,13 +392,38 @@
       "status": "ok",
       "status_reason": "",
       "options": [
-        { "group_name": "channels", "label": "Email", "needed": true, "citation": null },
-        { "group_name": "channels", "label": "SMS", "needed": false, "citation": null },
-        { "group_name": "channels", "label": "WhatsApp", "needed": true, "citation": "Los choferes no leen el email, solo WhatsApp" }
+        {
+          "group_name": "channels",
+          "label": "Email",
+          "needed": true,
+          "citation": null
+        },
+        {
+          "group_name": "channels",
+          "label": "SMS",
+          "needed": false,
+          "citation": null
+        },
+        {
+          "group_name": "channels",
+          "label": "WhatsApp",
+          "needed": true,
+          "citation": "Los choferes no leen el email, solo WhatsApp"
+        }
       ],
       "fields": [
-        { "key": "template_adjustments_needed", "answer": "Confirmar turno con número de dock y nombre del jefe de turno de ese día", "citation": "El chofer tiene que saber con quién hablar si hay un problema", "state": "ok" },
-        { "key": "missing_key_message", "answer": "Ninguno identificado en la reunión", "citation": null, "state": "ok" }
+        {
+          "key": "template_adjustments_needed",
+          "answer": "Confirmar turno con número de dock y nombre del jefe de turno de ese día",
+          "citation": "El chofer tiene que saber con quién hablar si hay un problema",
+          "state": "ok"
+        },
+        {
+          "key": "missing_key_message",
+          "answer": "Ninguno identificado en la reunión",
+          "citation": null,
+          "state": "ok"
+        }
       ],
       "flags": [],
       "pending": [],
@@ -190,9 +437,24 @@
       "status_reason": "",
       "options": [],
       "fields": [
-        { "key": "non_standard_requirements", "answer": "Ninguno en fase 1", "citation": null, "state": "ok" },
-        { "key": "required_integrations", "answer": "Ninguna en fase 1", "citation": null, "state": "ok" },
-        { "key": "initial_data_import", "answer": "Lista de proveedores habituales (~120 empresas) y transportistas externos (~40 empresas)", "citation": null, "state": "ok" }
+        {
+          "key": "non_standard_requirements",
+          "answer": "Ninguno en fase 1",
+          "citation": null,
+          "state": "ok"
+        },
+        {
+          "key": "required_integrations",
+          "answer": "Ninguna en fase 1",
+          "citation": null,
+          "state": "ok"
+        },
+        {
+          "key": "initial_data_import",
+          "answer": "Lista de proveedores habituales (~120 empresas) y transportistas externos (~40 empresas)",
+          "citation": null,
+          "state": "ok"
+        }
       ],
       "flags": [],
       "pending": [],
@@ -206,10 +468,30 @@
       "status_reason": "",
       "options": [],
       "fields": [
-        { "key": "defined_in_meeting", "answer": "Scope completo: 2 naves, 14 docks, 3 operaciones (recepción, despacho, retiro de cliente), sin módulo de órdenes en fase 1", "citation": null, "state": "ok" },
-        { "key": "open_pending_items", "answer": "Ninguno", "citation": null, "state": "ok" },
-        { "key": "client_deliverables", "answer": "Ninguno — toda la info está disponible", "citation": null, "state": "ok" },
-        { "key": "next_step", "answer": "EasyDocking arma entorno de prueba y presenta demo el 10 de junio", "citation": null, "state": "ok" }
+        {
+          "key": "defined_in_meeting",
+          "answer": "Scope completo: 2 naves, 14 docks, 3 operaciones (recepción, despacho, retiro de cliente), sin módulo de órdenes en fase 1",
+          "citation": null,
+          "state": "ok"
+        },
+        {
+          "key": "open_pending_items",
+          "answer": "Ninguno",
+          "citation": null,
+          "state": "ok"
+        },
+        {
+          "key": "client_deliverables",
+          "answer": "Ninguno — toda la info está disponible",
+          "citation": null,
+          "state": "ok"
+        },
+        {
+          "key": "next_step",
+          "answer": "EasyDocking arma entorno de prueba y presenta demo el 10 de junio",
+          "citation": null,
+          "state": "ok"
+        }
       ],
       "flags": [],
       "pending": [],
