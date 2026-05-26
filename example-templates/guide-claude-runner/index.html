@@ -131,6 +131,56 @@
     margin: 0;
     color: var(--ink);
   }
+  .sec-status {
+    margin-left: auto;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 4px 10px 4px 9px;
+    border-radius: 3px;
+    background: var(--green-pale);
+    color: var(--green-ink);
+    border: 1px solid var(--green-border);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .sec-status::before {
+    content: "✓";
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  /* Inline action link inside opt-head */
+  .opt-link {
+    font-family: 'Poppins', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--green-deep);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 3px;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 1px;
+    transition: color 160ms ease, border-color 160ms ease;
+  }
+  .opt-link::after {
+    content: "↗";
+    font-size: 11px;
+    margin-left: 1px;
+    color: var(--green);
+  }
+  .opt-link:hover {
+    color: var(--green-ink);
+    border-bottom-color: var(--green);
+  }
+  .opt-link:hover::after {
+    color: var(--green-ink);
+  }
 
   .sec p {
     margin: 0 0 16px;
@@ -243,6 +293,161 @@
     font-size: 9.5px;
     font-weight: 700;
     margin-right: 6px;
+  }
+
+  /* Assembly equation */
+  .equation {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 4px 0 26px;
+    font-family: 'Sora', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+  .equation-op {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-weight: 500;
+    color: var(--ink-subtle);
+    font-size: 18px;
+    margin: 0 2px;
+  }
+  .equation-result {
+    color: var(--green);
+  }
+
+  /* Comparison matrix */
+  .matrix {
+    margin: 6px 0 32px;
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+  .matrix table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 12px;
+  }
+  .matrix th,
+  .matrix td {
+    padding: 11px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-soft);
+    vertical-align: top;
+    line-height: 1.45;
+  }
+  .matrix tbody tr:last-child th,
+  .matrix tbody tr:last-child td { border-bottom: none; }
+  .matrix thead th {
+    background: var(--paper-tint);
+    border-bottom: 1px solid var(--border);
+    font-family: 'Sora', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+  .matrix thead th.is-rec {
+    color: var(--green-ink);
+    background: var(--green-pale);
+  }
+  .matrix thead th.is-next {
+    color: #854d0e;
+    background: #fefce8;
+  }
+  .matrix tbody th {
+    color: var(--ink-muted);
+    font-weight: 500;
+    width: 110px;
+    background: var(--paper);
+  }
+  .matrix tbody td {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .matrix tbody td.is-next-cell {
+    color: #854d0e;
+    background: #fefdf5;
+  }
+  .matrix tbody td.is-rec-cell {
+    background: #f5fbf8;
+  }
+
+  /* How-to compact steps */
+  .howto {
+    margin: 14px 0 4px;
+    padding: 16px 20px 18px;
+    background: var(--paper-tint);
+    border: 1px solid var(--border-soft);
+    border-radius: 6px;
+  }
+  .howto-title {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--ink-muted);
+    margin: 0 0 8px;
+  }
+  .howto-title + .howto-title,
+  .howto-list + .howto-title {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border);
+  }
+  .howto-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    counter-reset: step;
+  }
+  .howto-list li {
+    position: relative;
+    padding: 4px 0 4px 32px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    counter-increment: step;
+  }
+  .howto-list li::before {
+    content: counter(step, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 6px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10.5px;
+    color: var(--ink-subtle);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  .howto-list li code {
+    white-space: nowrap;
+    font-size: 12px;
+    padding: 0 6px;
+  }
+
+  /* Subsection inside a section */
+  .subsec {
+    margin: 28px 0 12px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--ink-muted);
+    padding-bottom: 8px;
+    border-bottom: 1px dashed var(--border);
+  }
+  .subsec--next {
+    color: #854d0e;
   }
   .opt-desc {
     margin: 0 0 14px;
@@ -369,47 +574,50 @@
 </header>
 
 <section class="head">
-  <span class="head-eyebrow">Generación del brief</span>
-  <h1>Cómo se genera el brief hoy</h1>
+  <h1>Generación del brief</h1>
   <div class="head-version">v1 · 2026-05</div>
-  <p class="head-lede">El brief de onboarding se arma en dos etapas independientes. Primero un agente lee el transcript de la reunión y devuelve los datos del brief. Después un editor toma esos datos y los convierte en el reporte final, con posibilidad de ajustar lo que haga falta antes de enviarlo.</p>
+  <p class="head-lede">Dos etapas independientes. Un agente convierte el transcript en datos; un editor convierte los datos en el reporte final.</p>
 </section>
 
-<section class="sec">
-  <div class="sec-head">
-    <span class="sec-num">01</span>
-    <h2>Qué entregamos</h2>
+<section class="sec sec--intro">
+  <div class="equation">
+    <span>prompt</span>
+    <span class="equation-op">+</span>
+    <span>template</span>
+    <span class="equation-op">+</span>
+    <span>editor</span>
+    <span class="equation-op">=</span>
+    <span class="equation-result">brief</span>
   </div>
-  <p>Tres piezas que cubren todo el ciclo del brief: lo que el agente entiende, lo que el reporte muestra y dónde se edita antes de enviarlo al cliente.</p>
 
   <div class="opt">
     <div class="opt-head">
       <span class="opt-name">Prompt del agente</span>
       <span class="opt-tag">Arquitectura</span>
     </div>
-    <p class="opt-desc">Los tres archivos del repo que definen cómo el modelo lee el transcript y qué debe devolver. Son la base sobre la que corre cualquiera de las opciones de la etapa 1.</p>
+    <p class="opt-desc">Los archivos que definen cómo el modelo lee el transcript y qué debe devolver.</p>
   </div>
 
   <div class="opt">
     <div class="opt-head">
       <span class="opt-name">Template del reporte</span>
-      <span class="opt-tag">Diseño</span>
+      <a class="opt-link" href="https://franpiaggio.github.io/brief-agent/" target="_blank" rel="noopener">Ver templates</a>
     </div>
-    <p class="opt-desc">El diseño visual del brief en sus cinco estados: listo, listo con pendientes, bloqueado, reunión fuera de cuestionario y sin reunión. Se usa tanto en navegador como en PDF.</p>
+    <p class="opt-desc">El diseño visual del brief en sus cinco estados: listo, listo con pendientes, bloqueado, fuera de cuestionario y sin reunión.</p>
   </div>
 
   <div class="opt">
     <div class="opt-head">
       <span class="opt-name">Editor web</span>
-      <span class="opt-tag">Herramienta</span>
+      <a class="opt-link" href="https://franpiaggio.github.io/brief-agent/brief-editor/" target="_blank" rel="noopener">Abrir editor</a>
     </div>
-    <p class="opt-desc">La pieza que toma los datos del agente, renderiza el reporte y permite ajustar cualquier campo antes de exportarlo. Funciona en el navegador, sin necesidad de instalar nada.</p>
+    <p class="opt-desc">Renderiza el reporte a partir de los datos del agente y permite ajustar cualquier campo antes de exportarlo.</p>
   </div>
 </section>
 
 <section class="sec">
   <div class="sec-head">
-    <span class="sec-num">02</span>
+    <span class="sec-num">01</span>
     <h2>Arquitectura</h2>
   </div>
 <pre class="diagram">transcript  <span class="arrow">──►</span>  agente  <span class="arrow">──►</span>  datos  <span class="arrow">──►</span>  editor  <span class="arrow">──►</span>  reporte
@@ -417,108 +625,141 @@
               <span class="branch">├──</span> <span class="rec">claude.ai · projects     (recomendado)</span>
               <span class="branch">├──</span> claude code (CLI)
               <span class="branch">└──</span> <span class="next">API de Anthropic         (próxima etapa)</span></pre>
-  <p>La estructura de los datos que devuelve el agente es siempre la misma, sin importar la opción que se use. El editor verifica esa estructura al cargarlos. Cambiar de una opción a otra no obliga a rehacer ningún brief anterior.</p>
+  <p>Las tres opciones del agente devuelven la misma estructura de datos, así que se puede empezar con una y migrar a otra sin rehacer briefs anteriores.</p>
 </section>
 
 <section class="sec">
   <div class="sec-head">
-    <span class="sec-num">03</span>
-    <h2>Etapa 1 · Agente</h2>
+    <span class="sec-num">02</span>
+    <h2>Etapa 1 · Cómo ejecutar el agente</h2>
   </div>
-  <p>Las dos primeras opciones están operativas hoy. La tercera (API) es el paso siguiente y se orquestaría con Make o un sistema propio.</p>
+
+  <div class="matrix">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th class="is-rec">Claude.ai Projects</th>
+          <th>Claude Code (CLI)</th>
+          <th class="is-next">API de Anthropic</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>estado</th>
+          <td class="is-rec-cell">disponible</td>
+          <td>disponible</td>
+          <td class="is-next-cell">próxima etapa</td>
+        </tr>
+        <tr>
+          <th>setup</th>
+          <td class="is-rec-cell">~10 min, una vez</td>
+          <td>clone + Claude Code</td>
+          <td class="is-next-cell">desarrollo + Make</td>
+        </tr>
+        <tr>
+          <th>por reunión</th>
+          <td class="is-rec-cell">pegar transcript</td>
+          <td>sesión local</td>
+          <td class="is-next-cell">llamada automática</td>
+        </tr>
+        <tr>
+          <th>plan</th>
+          <td class="is-rec-cell">Claude Pro</td>
+          <td>Claude Pro o Max</td>
+          <td class="is-next-cell">se paga por uso</td>
+        </tr>
+        <tr>
+          <th>perfil</th>
+          <td class="is-rec-cell">cualquier persona</td>
+          <td>developer</td>
+          <td class="is-next-cell">flujo automatizado</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <div class="opt">
     <div class="opt-head">
       <span class="opt-name">Claude.ai · Projects</span>
       <span class="opt-tag">Recomendado</span>
     </div>
-    <p class="opt-desc">Se crea un Project en una cuenta de Claude.ai y se le cargan los tres archivos del repo. Después de cada reunión, se abre una conversación nueva, se pega el transcript y el agente devuelve los datos.</p>
-    <dl class="spec">
-      <dt>setup</dt><dd>~10 min, una sola vez</dd>
-      <dt>por reunión</dt><dd>pegar transcript</dd>
-      <dt>plan</dt><dd>Claude Pro</dd>
-      <dt>requiere</dt><dd>cuenta de Claude.ai</dd>
-      <dt>perfil</dt><dd>cualquier persona del equipo</dd>
-    </dl>
+    <div class="howto">
+      <p class="howto-title">Cómo configurar · una sola vez</p>
+      <ol class="howto-list">
+        <li>Crear un Project en <code>claude.ai</code></li>
+        <li>Pegar el contenido de <code>system-prompt.md</code> en las instrucciones del Project</li>
+        <li>Subir <code>cuestionario-onboarding.md</code> y <code>output-schema.md</code> como knowledge</li>
+      </ol>
+      <p class="howto-title">Cómo usar · cada reunión</p>
+      <ol class="howto-list">
+        <li>Abrir una conversación nueva dentro del Project</li>
+        <li>Pegar el transcript y enviar</li>
+        <li>Copiar la respuesta y abrirla en el editor (sección 03)</li>
+      </ol>
+    </div>
   </div>
 
   <div class="opt">
     <div class="opt-head">
       <span class="opt-name">Claude Code (CLI)</span>
     </div>
-    <p class="opt-desc">Con el repo clonado en una computadora y Claude Code instalado. El archivo <code>CLAUDE.md</code> del repo le explica al modelo cómo trabajar. Útil cuando alguien del equipo ya usa Claude Code para otras tareas.</p>
-    <dl class="spec">
-      <dt>setup</dt><dd>clone del repo + Claude Code</dd>
-      <dt>por reunión</dt><dd>sesión local</dd>
-      <dt>plan</dt><dd>Claude Pro o Max</dd>
-      <dt>requiere</dt><dd>familiaridad con terminal</dd>
-      <dt>perfil</dt><dd>developer</dd>
-    </dl>
+    <p class="opt-desc">Útil cuando alguien del equipo ya usa Claude Code para otras tareas. Corre el agente y, opcionalmente, el renderer en la misma sesión local.</p>
   </div>
 
   <div class="opt opt--next">
     <div class="opt-head">
       <span class="opt-name">API de Anthropic</span>
-      <span class="opt-tag opt-tag--next">Próxima etapa</span>
+      <span class="opt-tag opt-tag--next">No implementado</span>
     </div>
-    <p class="opt-next-callout"><strong>Aún no implementado.</strong> Es el paso siguiente: orquestar el agente con Make (o una herramienta propia) para que el transcript llegue por una integración y el brief salga sin intervención manual.</p>
-    <p class="opt-desc">Integración directa con la API de Anthropic desde un sistema propio. Pensado para flujos automatizados de alto volumen, donde no tiene sentido que una persona ejecute el agente reunión por reunión.</p>
-    <dl class="spec">
-      <dt>setup</dt><dd>implementación propia</dd>
-      <dt>por reunión</dt><dd>llamada automática</dd>
-      <dt>plan</dt><dd>se paga por uso</dd>
-      <dt>requiere</dt><dd>desarrollo propio + orquestador (Make o similar)</dd>
-      <dt>perfil</dt><dd>flujo automatizado</dd>
-    </dl>
+    <p class="opt-desc">Integración directa con la API, orquestada con Make o un sistema propio. El transcript llega por una integración y el brief sale sin intervención manual.</p>
   </div>
 </section>
 
 <section class="sec">
   <div class="sec-head">
-    <span class="sec-num">04</span>
-    <h2>Etapa 2 · Editor</h2>
+    <span class="sec-num">03</span>
+    <h2>Etapa 2 · Cómo usar el editor</h2>
   </div>
-  <p>El editor toma los datos del agente y los convierte en el reporte final. Permite ajustar cualquier dato con un click antes de exportarlo. Funciona enteramente en el navegador, sin servidor que guarde nada. El reporte exportado lleva los datos adentro, así que más adelante se puede reabrir y seguir editando.</p>
+  <p>El HTML exportado lleva los datos adentro, así que un brief generado meses atrás se puede reabrir y editar de nuevo sin pasar por el agente.</p>
   <dl class="spec">
     <dt>acceso</dt><dd><a href="https://franpiaggio.github.io/brief-agent/brief-editor/" target="_blank" rel="noopener">franpiaggio.github.io/brief-agent/brief-editor/</a></dd>
-    <dt>cómo abrirlo</dt><dd>desde cualquier navegador, sin cuenta ni login</dd>
-    <dt>qué acepta</dt><dd>el archivo del agente, o un reporte ya exportado</dd>
-    <dt>qué genera</dt><dd>un HTML standalone que se puede enviar por mail</dd>
-    <dt>edición</dt><dd>click sobre cualquier dato del reporte</dd>
-    <dt>guardado</dt><dd>solo al exportar; no hay auto-save</dd>
+    <dt>cómo abrirlo</dt><dd>cualquier navegador, sin cuenta</dd>
+    <dt>qué acepta</dt><dd>archivo del agente o un HTML ya exportado</dd>
+    <dt>qué genera</dt><dd>HTML editable + PDF estático</dd>
+    <dt>edición</dt><dd>click sobre cualquier campo del reporte</dd>
   </dl>
 </section>
 
 <section class="sec">
   <div class="sec-head">
-    <span class="sec-num">05</span>
+    <span class="sec-num">04</span>
     <h2>Insumos del repo</h2>
   </div>
   <div class="files">
     <div class="file">
       <span class="file-path">agent/system-prompt.md</span>
-      <span class="file-desc">Las instrucciones que recibe el modelo. Cómo leer el transcript, qué citar de la reunión y cómo marcar lo que quedó incompleto.</span>
+      <span class="file-desc">Instrucciones del agente: cómo leer el transcript, qué citar y cómo marcar lo que falta.</span>
     </div>
     <div class="file">
       <span class="file-path">agent/cuestionario-onboarding.md</span>
-      <span class="file-desc">Los 10 bloques temáticos que se esperan en la reunión.</span>
+      <span class="file-desc">Los 10 bloques temáticos que se cubren en la reunión.</span>
     </div>
     <div class="file">
       <span class="file-path">agent/output-schema.md</span>
-      <span class="file-desc">La estructura que debe tener el archivo que devuelve el agente.</span>
+      <span class="file-desc">Estructura del archivo que devuelve el agente.</span>
     </div>
   </div>
 </section>
 
 <section class="sec">
   <div class="sec-head">
-    <span class="sec-num">06</span>
+    <span class="sec-num">05</span>
     <h2>Notas</h2>
   </div>
   <ul class="notes">
-    <li>Cada reporte exportado lleva los datos adentro. Eso permite reabrir un brief generado hace meses, corregir algo y volver a exportarlo sin pasar de nuevo por el agente.</li>
-    <li>Se puede empezar con Claude.ai Projects y migrar a CLI o API más adelante sin perder ninguno de los briefs ya generados.</li>
-    <li>Si en algún momento cambia el contenido del brief (qué bloques aparecen, qué campos pide), hay que actualizar tanto el agente como el editor. No es algo que cambie seguido.</li>
+    <li>El PDF es solo lectura: no contiene los datos y no se puede reabrir en el editor. Para preservar la posibilidad de editar más adelante, hay que guardar el HTML exportado (o la respuesta original del agente). El PDF sirve para enviar; el HTML, para archivar.</li>
+    <li>Si cambia el contenido del brief (qué bloques aparecen, qué campos pide), hay que actualizar tanto el agente como el editor. No es algo que cambie seguido.</li>
     <li>El editor es público: cualquiera con el link puede abrirlo. Si en algún momento se necesita restringir el acceso, se resuelve a nivel del hosting.</li>
   </ul>
 </section>
