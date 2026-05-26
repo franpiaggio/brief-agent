@@ -1,9 +1,6 @@
 import type { BriefData } from '../types'
 import { toHtml } from './toHtml'
 
-// Opens the rendered HTML via document.write() on about:blank so Chrome's print
-// header shows nothing (blank URL) instead of the blob URL.
-// The browser renders with its full engine → vector PDF with selectable text.
 export async function downloadPdf(data: BriefData): Promise<void> {
   const html = await toHtml(data)
 
