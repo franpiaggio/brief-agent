@@ -1,6 +1,6 @@
 {
   "meta": {
-    "client_name": "MercaFresh Distribución SA",
+    "client_name": "Sur Logística SA",
     "industry": "E-commerce y distribución",
     "country": "Argentina",
     "meeting_date": "2026-05-22"
@@ -17,7 +17,7 @@
     "items": []
   },
   "narrative": {
-    "current_situation": "MercaFresh opera un centro de distribución de última milla en Quilmes con 2 naves y 14 docks. Reciben mercadería de proveedores nacionales e internacionales y despachan a puntos de entrega y clientes corporativos. Hoy el agendamiento de turnos se hace por email y los transportistas llegan sin turno asignado generando colas en la playa.",
+    "current_situation": "Sur Logística opera un centro de distribución de última milla en Quilmes con 2 naves y 14 docks. Reciben mercadería de proveedores nacionales e internacionales y despachan a puntos de entrega y clientes corporativos. Hoy el agendamiento de turnos se hace por email y los transportistas llegan sin turno asignado generando colas en la playa.",
     "what_they_want": "Implementar EasyDocking para eliminar la gestión manual de docks, dar visibilidad al jefe de playa en tiempo real y reducir el tiempo de espera de camiones. Sin módulo de órdenes en fase 1 — arrancan solo con agenda y check-in.",
     "closure": "Configuración base acordada. EasyDocking arma el entorno de prueba esta semana y presenta demo el 10 de junio."
   },
