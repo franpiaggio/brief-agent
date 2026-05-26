@@ -15,9 +15,10 @@ tools/render/test-output.html
 # Skills installed locally (reproducible from skills-lock.json)
 .agents/
 
-# Docs internas / dev — no se publican (el repo va al cliente)
+# Docs internas / dev (no se publican, el repo va al cliente)
 CLAUDE.md
 RENDER-CONTRACT.md
+AGENTS.md
 .impeccable/
 .claude/
 
