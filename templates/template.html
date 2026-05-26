@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Brief · {{meta.client_name}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+{{!--
+  Plantilla esqueleto para el generador HTML.
+  Convenciones:
+    {{path.to.field}}            — sustitución desde el JSON del agente
+    {{computed.X}}               — campo derivado (ver RENDER-CONTRACT.md §3)
+    {{#if cond}}…{{/if}}          — sección condicional (ver §4)
+    {{#each items}}…{{/each}}     — loop sobre array; usa {{this.field}} adentro
+    {{> lucide name="..."}}       — partial: inyecta paths del icono lucide
+  Schema de input: ver `easy-docking-agent/entregables/system-prompt.md`.
+  Mapping completo: ver `RENDER-CONTRACT.md` (root del repo).
+--}}
+<article class="doc">
+  <header class="brand-bar">
+    <img src="assets/logo.png" alt="EasyDocking" class="brand-logo" />
+    <span class="brand-meta">Brief · {{meta.meeting_date}}</span>
+  </header>
+
+  {{#if coverage}}
+  <section class="off-script-banner" role="alert">
+    <div class="off-script-banner-stamp" aria-hidden="true">
+      <svg class="off-script-banner-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">{{> lucide name="triangle-alert"}}</svg>
+    </div>
+    <div class="off-script-banner-body">
+      <span class="off-script-banner-eyebrow">Aviso · calidad del reporte</span>
+      <h2 class="off-script-banner-title">Esta reunión no siguió el cuestionario estándar</h2>
+      <p class="off-script-banner-text">Solo {{coverage.blocks_covered}} de {{coverage.blocks_total}} bloques del cuestionario fueron cubiertos <strong>({{computed.coverage_percent}}%)</strong>. La confianza del análisis es menor y los resultados pueden variar entre ejecuciones.</p>
+    </div>
+  </section>
+  {{/if}}
+
+  <section class="hero">
+    <div class="hero-eyebrow">Cliente · Onboarding</div>
+    <div class="hero-top">
+      <h1 class="hero-h1">{{meta.client_name}}</h1>
+      <span class="verdict-pill verdict-pill--{{computed.verdict_class}}">{{computed.verdict_label}}</span>
+    </div>
+    <div class="hero-meta">
+      <span>{{meta.industry}}</span>
+      <span class="sep"></span>
+      <span>{{meta.country}}</span>
+      <span class="sep"></span>
+      <span>Reunión <span class="meta-date">{{meta.meeting_date}}</span></span>
+    </div>
+
+    {{#if next_meeting}}
+    <div class="next-meeting">
+      <div class="next-meeting-stamp" aria-hidden="true">
+        <svg class="next-meeting-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">{{> lucide name="calendar-days"}}</svg>
+      </div>
+      <div class="next-meeting-body">
+        <span class="next-meeting-label">Próxima reunión · {{next_meeting.label}}</span>
+        <span class="next-meeting-text">{{next_meeting.summary}}</span>
+      </div>
+      <div>
+        <div class="next-meeting-date">{{computed.next_meeting_date_display}}</div>
+        {{#if next_meeting.time}}
+        <div class="next-meeting-time">{{next_meeting.time}} hs</div>
+        {{/if}}
+      </div>
+    </div>
+    {{/if}}
+
+    <div class="hero-summary">
+      <div class="summary-cell">
+        <div class="summary-label">Resumen</div>
+        <div class="summary-value summary-value--{{computed.summary_color_class}}">{{verdict.summary}}</div>
+        {{#if verdict.detail}}
+        <div class="summary-detail">{{verdict.detail}}</div>
+        {{/if}}
+      </div>
+      <div class="summary-cell">
+        <div class="summary-label">Pendientes cliente</div>
+        <div class="summary-value summary-value--big">{{computed.pending_total}}</div>
+        <div class="summary-detail">entregables comprometidos</div>
+      </div>
+      <div class="summary-cell">
+        <div class="summary-label">Pedidos custom</div>
+        <div class="summary-value summary-value--big">{{custom.count}}</div>
+        <div class="summary-detail">fuera del estándar</div>
+      </div>
+    </div>
+
+    <div class="coverage">
+      <div class="coverage-h">
+        <span class="coverage-label">Cobertura · 10 bloques</span>
+        <div class="coverage-legend">
+          <span class="coverage-legend--ok">{{computed.ok_count}} ok</span>
+          <span class="coverage-legend--warning">{{computed.warning_count}} aviso</span>
+          <span class="coverage-legend--blocker">{{computed.blocker_count}} bloqueo</span>
+        </div>
+      </div>
+      <div class="coverage-tiles">
+        {{#each blocks}}
+        <div class="coverage-tile coverage-tile--{{this.status}}">
+          <svg class="coverage-tile-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{{> lucide name=this.iconName}}</svg>
+          <span class="coverage-tile-num">{{this.idPadded}}</span>
+          <span class="coverage-tile-name">{{this.shortName}}</span>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </section>
+
+  {{#if computed.has_any_narrative}}
+  <section class="narrative">
+    <div class="narrative-shell">
+      <article class="narrative-card">
+        <header class="narrative-header">
+          <span class="narrative-eyebrow">Resumen ejecutivo</span>
+        </header>
+        <ol class="narrative-list">
+          {{#if narrative.current_situation}}
+          <li class="narrative-item">
+            <h3 class="narrative-label">Brief</h3>
+            <p class="narrative-text">{{narrative.current_situation}}</p>
+          </li>
+          {{/if}}
+          {{#if narrative.what_they_want}}
+          <li class="narrative-item">
+            <h3 class="narrative-label">Qué buscan</h3>
+            <p class="narrative-text">{{narrative.what_they_want}}</p>
+          </li>
+          {{/if}}
+          {{#if narrative.closure}}
+          <li class="narrative-item">
+            <h3 class="narrative-label">Cierre de la reunión</h3>
+            <p class="narrative-text">{{narrative.closure}}</p>
+          </li>
+          {{/if}}
+        </ol>
+      </article>
+    </div>
+  </section>
+  {{/if}}
+
+  {{#if computed.blocks_with_options}}
+  <section class="checks">
+    <div class="checks-shell">
+      <div class="checks-head">
+        <span class="checks-eyebrow">Configuración elegida</span>
+        <div class="checks-legend">
+          <span class="chk-chip chk-chip--yes">activo</span>
+          <span class="chk-chip chk-chip--no">descartado</span>
+          <span class="chk-chip chk-chip--unknown">por definir</span>
+        </div>
+      </div>
+      {{#each computed.blocks_with_options}}
+      <div class="chk-section">
+        <div class="chk-section-head">
+          <span class="chk-section-num">{{this.idPadded}}</span>
+          <span class="chk-section-name">{{this.title}}</span>
+        </div>
+        {{#each this.options}}
+        <div class="chk-row">
+          <span class="chk-row-label">{{this.groupLabel}}</span>
+          <div class="chk-row-chips">
+            {{#each this.items}}
+            <span class="chk-chip chk-chip--{{this.neededClass}}">{{this.label}}</span>
+            {{/each}}
+          </div>
+        </div>
+        {{/each}}
+      </div>
+      {{/each}}
+    </div>
+  </section>
+  {{/if}}
+
+  <section class="section">
+    {{#if computed.has_any_actions}}
+    <div class="action-grid">
+      {{#if computed.pending_total}}
+      <div class="action-box action-box--pending">
+        <div class="action-box-h">
+          Cliente debe enviar
+          <span class="action-box-h-badge">{{computed.pending_total}}</span>
+        </div>
+        {{#each computed.pending_flat}}
+        <div class="deliverable">
+          <svg class="deliverable-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{{> lucide name="file-text"}}</svg>
+          <div class="deliverable-body">
+            <span class="deliverable-title">{{this.description}}</span>
+            {{#if this.citation}}
+            <span class="deliverable-cite">{{this.citation}}</span>
+            {{/if}}
+          </div>
+          <span class="deliverable-source">{{this.sourceLabel}}</span>
+        </div>
+        {{/each}}
+      </div>
+      {{/if}}
+      {{#if custom.count}}
+      <div class="action-box action-box--custom">
+        <div class="action-box-h">
+          Requerimientos custom
+          <span class="action-box-h-badge">{{custom.count}}</span>
+        </div>
+        {{#each custom.items}}
+        <div class="deliverable deliverable--custom">
+          <svg class="deliverable-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{{> lucide name="flag"}}</svg>
+          <div class="deliverable-body">
+            <span class="deliverable-title">{{this.description}}</span>
+            {{#if this.citation}}
+            <span class="deliverable-cite">{{this.citation}}</span>
+            {{/if}}
+          </div>
+          {{#if this.sourceLabel}}
+          <span class="deliverable-source">{{this.sourceLabel}}</span>
+          {{/if}}
+        </div>
+        {{/each}}
+        <div class="action-box-note">
+          Fuera del estándar de EasyDocking. Producto debe evaluar costo de implementación.
+        </div>
+      </div>
+      {{/if}}
+    </div>
+    {{else}}
+    <div class="action-empty">
+      <div class="action-empty-icon-wrap">
+        <svg class="action-empty-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{{> lucide name="circle-check"}}</svg>
+      </div>
+      <div class="action-empty-body">
+        <span class="action-empty-title">Sin acciones pendientes</span>
+        <span class="action-empty-text">No quedaron compromisos abiertos ni pedidos custom en la reunión.</span>
+      </div>
+    </div>
+    {{/if}}
+  </section>
+
+  <section class="section">
+    {{#each blocks}}
+    <div class="block block--{{this.status}}">
+      <div class="block-h">
+        <span class="block-h-num">{{this.idPadded}}</span>
+        <svg class="block-h-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{{> lucide name=this.iconName}}</svg>
+        <span class="block-h-title">{{this.title}}</span>
+        <span class="block-h-status block-h-status--{{this.status}}">{{this.statusLabel}}</span>
+      </div>
+
+      {{#if this.status_reason}}
+      <div class="block-reason block-reason--{{this.status}}">
+        <svg class="block-reason-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{{> lucide name=this.reasonIconName}}</svg>
+        <div class="block-reason-content">
+          <span class="block-reason-label">{{this.statusLabel}}</span>
+          <span class="block-reason-text">{{this.status_reason}}</span>
+        </div>
+      </div>
+      {{/if}}
+
+      {{#if this.isBlock1}}
+      <div class="identity-grid">
+        {{#each this.identityCards}}
+        <div class="identity-card identity-card--{{this.cardClass}}{{#if this.missing}} identity-card--missing{{/if}}">
+          <div class="identity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">{{> lucide name=this.iconName}}</svg>
+          </div>
+          <div class="identity-body">
+            <span class="identity-label">{{this.label}}</span>
+            {{#if this.missing}}
+            <span class="identity-value identity-value--missing"><span class="identity-falta-tag">Falta</span>Sin definir</span>
+            {{else}}
+            <span class="identity-value">{{this.value}}</span>
+            {{/if}}
+          </div>
+        </div>
+        {{/each}}
+      </div>
+      {{else}}
+      <ul class="bullets">
+        {{#each this.fieldsForRender}}
+        <li class="bullet">
+          <span class="bullet-q">{{this.label}}</span>
+          {{#if this.missing}}
+          <span class="bullet-a bullet-a--missing">Sin definir</span>
+          {{else}}
+          <span class="bullet-a">{{this.value}}</span>
+          {{/if}}
+        </li>
+        {{/each}}
+      </ul>
+      {{/if}}
+    </div>
+    {{/each}}
+  </section>
+
+  <footer class="doc-footer">
+    <span>EasyDocking · Brief generado por agente</span>
+    <span>{{meta.meeting_date}}</span>
+  </footer>
+</article>
+</body>
+</html>
+</content>
+</invoke>

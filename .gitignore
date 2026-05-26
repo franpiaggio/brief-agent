@@ -1,6 +1,23 @@
+# OS / editor
 .DS_Store
 *.swp
 *.swo
-node_modules/
 .idea/
 .vscode/
+
+# Deps (por si más adelante aparece tooling)
+node_modules/
+
+# Docs internas / dev — no se publican (el repo va al cliente)
+CLAUDE.md
+DESIGN.md
+PRODUCT.md
+RENDER-CONTRACT.md
+.impeccable/
+.claude/
+brief-editor/
+
+# Transcripts de clientes reales — solo se trackean los simulados
+transcripts/*
+!transcripts/simulado.txt
+!transcripts/simulado-transcripcion.txt

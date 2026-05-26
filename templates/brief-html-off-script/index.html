@@ -7,637 +7,23 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-<!--
-  El JSON que sigue es el insumo exacto que produjo este HTML.
-  Inspectable desde DevTools:
-    JSON.parse(document.getElementById('brief-source').textContent)
--->
-<script type="application/json" id="brief-source" data-source="data.json">
-{
-  "meta": {
-    "client_name": "Aceros del Sur SA",
-    "industry": "Metalmecánica",
-    "country": "Argentina",
-    "meeting_date": "2026-04-22",
-    "city": "Rosario",
-    "contact_main": "Pablo Sosa"
-  },
-  "verdict": {
-    "status": "blocked",
-    "summary": "Reunión sin recorrer el cuestionario",
-    "blockers_count": 8,
-    "warnings_count": 2,
-    "detail": "Solo 9 de 46 preguntas relevadas. Hace falta una segunda reunión enfocada."
-  },
-  "custom": {
-    "count": 0,
-    "items": []
-  },
-  "decisions": [],
-  "narrative": {
-    "current_situation": "Aceros del Sur opera una planta en Rosario con flujo de despachos diarios. La reunión introductoria recorrió de forma libre el contexto, pero no se siguió el cuestionario de onboarding.",
-    "what_they_want": "Pendiente — no se profundizó en alcance ni en módulos a implementar.",
-    "closure": "Pablo Sosa acordó una segunda reunión para recorrer el cuestionario y completar el relevamiento."
-  },
-  "open_questions": [
-    "Sin profundizar — re-relevar en próxima reunión."
-  ],
-  "blocks": [
-    {
-      "id": 1,
-      "name": "general_info",
-      "status": "warning",
-      "status_reason": "Cobertura parcial: 3 ok / 3 missing.",
-      "options": [
-        {
-          "group_id": "site_type",
-          "group_name": "Tipo de sitio",
-          "items": [
-            {
-              "label": "Planta industrial",
-              "needed": null,
-              "citation": null
-            },
-            {
-              "label": "Centro de distribución",
-              "needed": null,
-              "citation": null
-            },
-            {
-              "label": "Almacén",
-              "needed": null,
-              "citation": null
-            }
-          ]
-        },
-        {
-          "group_id": "implementation_focus",
-          "group_name": "Objetivo principal",
-          "items": [
-            {
-              "label": "Turnos",
-              "needed": null,
-              "citation": null
-            },
-            {
-              "label": "YMS",
-              "needed": null,
-              "citation": null
-            },
-            {
-              "label": "Ambos",
-              "needed": null,
-              "citation": null
-            }
-          ]
-        }
-      ],
-      "fields": [
-        {
-          "question": "Industria",
-          "answer": "Bebidas no alcohólicas",
-          "citation": "somos un embotellador de bebidas no alcohólicas",
-          "state": "ok"
-        },
-        {
-          "question": "País",
-          "answer": "Argentina",
-          "citation": "operamos en Argentina",
-          "state": "ok"
-        },
-        {
-          "question": "Ciudad",
-          "answer": "Mendoza",
-          "citation": "es nuestra planta principal de embotellado en Mendoza",
-          "state": "ok"
-        },
-        {
-          "question": "Contacto principal",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        },
-        {
-          "question": "Contacto operativo diario",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        },
-        {
-          "question": "Fecha objetivo go-live",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        }
-      ],
-      "additional_notes": [],
-      "flags": [],
-      "pending": []
-    },
-    {
-      "id": 2,
-      "name": "classification",
-      "status": "blocker",
-      "status_reason": "El bloque no fue tocado en la reunión.",
-      "options": [
-        {
-          "group_id": "operations",
-          "group_name": "Operaciones",
-          "items": [
-            {
-              "label": "Descarga",
-              "needed": null,
-              "citation": null
-            },
-            {
-              "label": "Carga",
-              "needed": null,
-              "citation": null
-            },
-            {
-              "label": "Retira Cliente",
-              "needed": null,
-              "citation": null
-            },
-            {
-              "label": "Interplantas",
-              "needed": null,
-              "citation": null
-            },
-            {
-              "label": "Otro",
-              "needed": null,
-              "citation": null
-            }
-          ]
-        },
-        {
-          "group_id": "modules",
-          "group_name": "Módulos",
-          "items": [
-            {
-              "label": "YMS",
-              "needed": null,
-              "citation": null
-            },
-            {
-              "label": "Dock Scheduling",
-              "needed": null,
-              "citation": null
-            },
-            {
-              "label": "Inducción",
-              "needed": null,
-              "citation": null
-            },
-            {
-              "label": "Control Documental",
-              "needed": null,
-              "citation": null
-            }
-          ]
-        }
-      ],
-      "fields": [
-        {
-          "question": "Método de agendamiento actual",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        },
-        {
-          "question": "Usan Excel para órdenes/turnos",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        }
-      ],
-      "additional_notes": [],
-      "flags": [],
-      "pending": []
-    },
-    {
-      "id": 3,
-      "name": "workflow",
-      "status": "blocker",
-      "status_reason": "Solo 1 de 3 preguntas tienen respuesta.",
-      "options": [],
-      "fields": [
-        {
-          "question": "Workflow por operación",
-          "answer": "Descarga: workflow estándar. Carga: workflow estándar.",
-          "citation": "el flujo nuestro coincide con lo que mostraron en la demo, no le veo cambios",
-          "state": "ok"
-        },
-        {
-          "question": "Requiere modificaciones",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        },
-        {
-          "question": "Etapas adicionales o faltantes",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        }
-      ],
-      "workflow_states": [],
-      "additional_notes": [],
-      "flags": [],
-      "pending": []
-    },
-    {
-      "id": 4,
-      "name": "process_actors",
-      "status": "blocker",
-      "status_reason": "Solo 1 de 7 preguntas tienen respuesta.",
-      "options": [],
-      "fields": [
-        {
-          "question": "Crea los turnos",
-          "answer": "Coordinador de logística (Lucía y dos asistentes)",
-          "citation": "los turnos los creamos nosotros desde logística",
-          "state": "ok"
-        },
-        {
-          "question": "Realiza el check-in",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        },
-        {
-          "question": "Asigna el dock",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        },
-        {
-          "question": "Completa checklists",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        },
-        {
-          "question": "Supervisa la operación",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        },
-        {
-          "question": "Usuarios externos",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        },
-        {
-          "question": "Valida documentación",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        }
-      ],
-      "additional_notes": [],
-      "flags": [],
-      "pending": []
-    },
-    {
-      "id": 5,
-      "name": "schedule_docks_warehouse",
-      "status": "blocker",
-      "status_reason": "El bloque no fue tocado en la reunión.",
-      "options": [],
-      "fields": [
-        {
-          "question": "Cantidad de warehouses",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        },
-        {
-          "question": "Docks por warehouse",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        },
-        {
-          "question": "Operaciones por dock",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        },
-        {
-          "question": "Duración del turno",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        },
-        {
-          "question": "Días y horarios habilitados",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        },
-        {
-          "question": "Restricciones horarias",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        }
-      ],
-      "additional_notes": [],
-      "flags": [],
-      "pending": []
-    },
-    {
-      "id": 6,
-      "name": "orders_module",
-      "status": "blocker",
-      "status_reason": "Solo 1 de 12 preguntas tienen respuesta.",
-      "options": [
-        {
-          "group_id": "module_decision",
-          "group_name": "Decisión módulo Órdenes",
-          "items": [
-            {
-              "label": "Con módulo de Órdenes",
-              "needed": null,
-              "citation": null
-            },
-            {
-              "label": "Sin módulo de Órdenes",
-              "needed": null,
-              "citation": null
-            }
-          ]
-        }
-      ],
-      "fields": [
-        {
-          "question": "Rol de la orden",
-          "answer": "Entidad gestionada",
-          "citation": "necesitamos manejar órdenes antes del turno",
-          "state": "ok"
-        },
-        {
-          "question": "Debe existir antes de agendar",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        },
-        {
-          "question": "Puede operar sin órdenes precargadas",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        },
-        {
-          "question": "Cita puede incluir varias órdenes",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        },
-        {
-          "question": "Usa Excel para órdenes",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        },
-        {
-          "question": "Asignar a tercero antes de agendar",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        },
-        {
-          "question": "Ubicación actual de gestión",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        },
-        {
-          "question": "Método de carga en EasyDocking",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        },
-        {
-          "question": "Campos requeridos en la orden",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        },
-        {
-          "question": "Coordina orden existente o on-demand",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        },
-        {
-          "question": "Nivel de detalle de mercadería",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        },
-        {
-          "question": "Duración del turno depende de datos de la orden",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        }
-      ],
-      "additional_notes": [],
-      "flags": [],
-      "pending": []
-    },
-    {
-      "id": 7,
-      "name": "fields_and_forms",
-      "status": "blocker",
-      "status_reason": "El bloque no fue tocado en la reunión.",
-      "options": [
-        {
-          "group_id": "forms_to_review",
-          "group_name": "Formularios a revisar",
-          "items": [
-            {
-              "label": "Planificación",
-              "needed": null,
-              "citation": null
-            },
-            {
-              "label": "Confirmación de turno",
-              "needed": null,
-              "citation": null
-            },
-            {
-              "label": "Check-in",
-              "needed": null,
-              "citation": null
-            },
-            {
-              "label": "Checklists",
-              "needed": null,
-              "citation": null
-            },
-            {
-              "label": "Asignación de dock",
-              "needed": null,
-              "citation": null
-            }
-          ]
-        }
-      ],
-      "fields": [
-        {
-          "question": "Resumen de modificaciones",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        }
-      ],
-      "additional_notes": [],
-      "flags": [],
-      "pending": []
-    },
-    {
-      "id": 8,
-      "name": "messages_notifications",
-      "status": "blocker",
-      "status_reason": "El bloque no fue tocado en la reunión.",
-      "options": [
-        {
-          "group_id": "channels",
-          "group_name": "Canales de comunicación",
-          "items": [
-            {
-              "label": "Mail",
-              "needed": null,
-              "citation": null
-            },
-            {
-              "label": "WhatsApp",
-              "needed": null,
-              "citation": null
-            }
-          ]
-        }
-      ],
-      "fields": [
-        {
-          "question": "Ajustes a plantillas",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        },
-        {
-          "question": "Mensaje clave faltante",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        }
-      ],
-      "additional_notes": [],
-      "flags": [
-        {
-          "type": "custom",
-          "description": "Plantilla de mail con branding propio (logo + firma de logística)",
-          "citation": "el mail tiene que salir con nuestro logo y la firma de logística"
-        }
-      ],
-      "pending": []
-    },
-    {
-      "id": 9,
-      "name": "exceptions_integrations",
-      "status": "blocker",
-      "status_reason": "Solo 1 de 3 preguntas tienen respuesta.",
-      "options": [],
-      "fields": [
-        {
-          "question": "Requerimientos no-estándar",
-          "answer": "Ninguno fuera del logo en mails",
-          "citation": "no, fuera del tema del mail no se nos ocurre nada raro",
-          "state": "ok"
-        },
-        {
-          "question": "Integraciones requeridas",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        },
-        {
-          "question": "Datos iniciales a importar",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        }
-      ],
-      "additional_notes": [],
-      "flags": [],
-      "pending": []
-    },
-    {
-      "id": 10,
-      "name": "closure",
-      "status": "warning",
-      "status_reason": "Cobertura parcial: 2 ok / 2 missing.",
-      "options": [],
-      "fields": [
-        {
-          "question": "Definido en la reunión",
-          "answer": "Configuración base, módulos, workflow estándar, actores, agenda y reglas de órdenes",
-          "citation": "creo que cerramos todo lo del relevamiento",
-          "state": "ok"
-        },
-        {
-          "question": "Pendientes abiertos",
-          "answer": "Excel de turnos, export SAP, logo + firma para plantilla mail",
-          "citation": "te paso el Excel después de la llamada",
-          "state": "ok"
-        },
-        {
-          "question": "Debe enviar el cliente",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        },
-        {
-          "question": "Próximo paso",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
-        }
-      ],
-      "additional_notes": [],
-      "flags": [],
-      "pending": []
-    }
-  ],
-  "next_meeting": {
-    "date": "2026-04-29",
-    "time": "10:00",
-    "label": "Relevamiento operativo",
-    "summary": "Recorrer el cuestionario estándar."
-  }
-}
-</script>
 <article class="doc">
-
   <header class="brand-bar">
-    <img src="assets/logo.png" alt="EasyDocking" class="brand-logo" />
+    <img src="../assets/logo.png" alt="EasyDocking" class="brand-logo" />
     <span class="brand-meta">Brief · 2026-04-22</span>
   </header>
 
   <section class="off-script-banner" role="alert">
-    <svg class="off-script-banner-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+    <div class="off-script-banner-stamp" aria-hidden="true">
+      <svg class="off-script-banner-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+    </div>
     <div class="off-script-banner-body">
       <span class="off-script-banner-eyebrow">Aviso · calidad del reporte</span>
       <h2 class="off-script-banner-title">Esta reunión no siguió el cuestionario estándar</h2>
-      <p class="off-script-banner-text">Solo 9 de 46 preguntas del cuestionario fueron cubiertas <strong>(20%)</strong>. La confianza del análisis es menor y los resultados pueden variar entre ejecuciones.</p>
+      <p class="off-script-banner-text">Solo 2 de 10 bloques del cuestionario fueron cubiertos <strong>(20%)</strong>. La confianza del análisis es menor y los resultados pueden variar entre ejecuciones.</p>
     </div>
   </section>
 
@@ -650,22 +36,22 @@
     <div class="hero-meta">
       <span>Metalmecánica</span>
       <span class="sep"></span>
-      <span>Argentina · Rosario</span>
+      <span>Argentina</span>
       <span class="sep"></span>
-      <span>Reunión 2026-04-22</span>
-      <span class="sep"></span>
-      <span>Pablo Sosa</span>
+      <span>Reunión <span class="meta-date">2026-04-22</span></span>
     </div>
 
     <div class="next-meeting">
-      <svg class="next-meeting-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg>
+      <div class="next-meeting-stamp" aria-hidden="true">
+        <svg class="next-meeting-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg>
+      </div>
       <div class="next-meeting-body">
         <span class="next-meeting-label">Próxima reunión · Relevamiento operativo</span>
         <span class="next-meeting-text">Recorrer el cuestionario estándar.</span>
       </div>
       <div>
-        <div class="next-meeting-date">2026-04-29</div>
-        <div class="next-meeting-time">10:00</div>
+        <div class="next-meeting-date">29 Abr 2026</div>
+        <div class="next-meeting-time">10:00 hs</div>
       </div>
     </div>
 
@@ -673,7 +59,7 @@
       <div class="summary-cell">
         <div class="summary-label">Resumen</div>
         <div class="summary-value summary-value--danger">Reunión sin recorrer el cuestionario</div>
-        <div class="summary-detail">Solo 9 de 46 preguntas relevadas. Hace falta una segunda reunión enfocada.</div>
+        <div class="summary-detail">Solo 2 de 10 bloques relevados. Hace falta una segunda reunión enfocada.</div>
       </div>
       <div class="summary-cell">
         <div class="summary-label">Pendientes cliente</div>
@@ -682,13 +68,8 @@
       </div>
       <div class="summary-cell">
         <div class="summary-label">Pedidos custom</div>
-        <div class="summary-value summary-value--big">0</div>
+        <div class="summary-value summary-value--big">1</div>
         <div class="summary-detail">fuera del estándar</div>
-      </div>
-      <div class="summary-cell">
-        <div class="summary-label">Go-live objetivo</div>
-        <div class="summary-value summary-value--big">—</div>
-        <div class="summary-detail">—</div>
       </div>
     </div>
 
@@ -769,7 +150,7 @@
           </li>
           <li class="narrative-item">
             <h3 class="narrative-label">Qué buscan</h3>
-            <p class="narrative-text">Pendiente — no se profundizó en alcance ni en módulos a implementar.</p>
+            <p class="narrative-text">Pendiente: no se profundizó en alcance ni en módulos a implementar.</p>
           </li>
           <li class="narrative-item">
             <h3 class="narrative-label">Cierre de la reunión</h3>
@@ -790,77 +171,107 @@
           <span class="chk-chip chk-chip--unknown">por definir</span>
         </div>
       </div>
-    <div class="chk-section">
-      <div class="chk-section-head">
-        <span class="chk-section-num">01</span>
-        <span class="chk-section-name">Información general</span>
+      <div class="chk-section">
+        <div class="chk-section-head">
+          <span class="chk-section-num">01</span>
+          <span class="chk-section-name">Información general</span>
+        </div>
+        <div class="chk-row">
+          <span class="chk-row-label">Tipo de sitio</span>
+          <div class="chk-row-chips">
+            <span class="chk-chip chk-chip--unknown">Planta industrial</span>
+            <span class="chk-chip chk-chip--unknown">Centro de distribución</span>
+            <span class="chk-chip chk-chip--unknown">Almacén</span>
+          </div>
+        </div>
+        <div class="chk-row">
+          <span class="chk-row-label">Objetivo principal</span>
+          <div class="chk-row-chips">
+            <span class="chk-chip chk-chip--unknown">Turnos</span>
+            <span class="chk-chip chk-chip--unknown">YMS</span>
+            <span class="chk-chip chk-chip--unknown">Ambos</span>
+          </div>
+        </div>
       </div>
-      <div class="chk-row">
-        <span class="chk-row-label">Tipo de sitio</span>
-        <div class="chk-row-chips"><span class="chk-chip chk-chip--unknown">Planta industrial</span><span class="chk-chip chk-chip--unknown">Centro de distribución</span><span class="chk-chip chk-chip--unknown">Almacén</span></div>
+      <div class="chk-section">
+        <div class="chk-section-head">
+          <span class="chk-section-num">02</span>
+          <span class="chk-section-name">Clasificación</span>
+        </div>
+        <div class="chk-row">
+          <span class="chk-row-label">Operaciones</span>
+          <div class="chk-row-chips">
+            <span class="chk-chip chk-chip--unknown">Descarga</span>
+            <span class="chk-chip chk-chip--unknown">Carga</span>
+            <span class="chk-chip chk-chip--unknown">Retira Cliente</span>
+            <span class="chk-chip chk-chip--unknown">Interplantas</span>
+            <span class="chk-chip chk-chip--unknown">Otro</span>
+          </div>
+        </div>
+        <div class="chk-row">
+          <span class="chk-row-label">Módulos</span>
+          <div class="chk-row-chips">
+            <span class="chk-chip chk-chip--unknown">YMS</span>
+            <span class="chk-chip chk-chip--unknown">Dock Scheduling</span>
+            <span class="chk-chip chk-chip--unknown">Inducción</span>
+            <span class="chk-chip chk-chip--unknown">Control Documental</span>
+          </div>
+        </div>
       </div>
-      <div class="chk-row">
-        <span class="chk-row-label">Objetivo principal</span>
-        <div class="chk-row-chips"><span class="chk-chip chk-chip--unknown">Turnos</span><span class="chk-chip chk-chip--unknown">YMS</span><span class="chk-chip chk-chip--unknown">Ambos</span></div>
+      <div class="chk-section">
+        <div class="chk-section-head">
+          <span class="chk-section-num">06</span>
+          <span class="chk-section-name">Módulo de Órdenes</span>
+        </div>
+        <div class="chk-row">
+          <span class="chk-row-label">Decisión módulo Órdenes</span>
+          <div class="chk-row-chips">
+            <span class="chk-chip chk-chip--unknown">Con módulo de Órdenes</span>
+            <span class="chk-chip chk-chip--unknown">Sin módulo de Órdenes</span>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="chk-section">
-      <div class="chk-section-head">
-        <span class="chk-section-num">02</span>
-        <span class="chk-section-name">Clasificación</span>
+      <div class="chk-section">
+        <div class="chk-section-head">
+          <span class="chk-section-num">07</span>
+          <span class="chk-section-name">Campos y formularios</span>
+        </div>
+        <div class="chk-row">
+          <span class="chk-row-label">Formularios a revisar</span>
+          <div class="chk-row-chips">
+            <span class="chk-chip chk-chip--unknown">Planificación</span>
+            <span class="chk-chip chk-chip--unknown">Confirmación de turno</span>
+            <span class="chk-chip chk-chip--unknown">Check-in</span>
+            <span class="chk-chip chk-chip--unknown">Checklists</span>
+            <span class="chk-chip chk-chip--unknown">Asignación de dock</span>
+          </div>
+        </div>
       </div>
-      <div class="chk-row">
-        <span class="chk-row-label">Operaciones</span>
-        <div class="chk-row-chips"><span class="chk-chip chk-chip--unknown">Descarga</span><span class="chk-chip chk-chip--unknown">Carga</span><span class="chk-chip chk-chip--unknown">Retira Cliente</span><span class="chk-chip chk-chip--unknown">Interplantas</span><span class="chk-chip chk-chip--unknown">Otro</span></div>
+      <div class="chk-section">
+        <div class="chk-section-head">
+          <span class="chk-section-num">08</span>
+          <span class="chk-section-name">Mensajes y notificaciones</span>
+        </div>
+        <div class="chk-row">
+          <span class="chk-row-label">Canales de comunicación</span>
+          <div class="chk-row-chips">
+            <span class="chk-chip chk-chip--unknown">Mail</span>
+            <span class="chk-chip chk-chip--unknown">WhatsApp</span>
+          </div>
+        </div>
       </div>
-      <div class="chk-row">
-        <span class="chk-row-label">Módulos</span>
-        <div class="chk-row-chips"><span class="chk-chip chk-chip--unknown">YMS</span><span class="chk-chip chk-chip--unknown">Dock Scheduling</span><span class="chk-chip chk-chip--unknown">Inducción</span><span class="chk-chip chk-chip--unknown">Control Documental</span></div>
-      </div>
-    </div>
-    <div class="chk-section">
-      <div class="chk-section-head">
-        <span class="chk-section-num">06</span>
-        <span class="chk-section-name">Módulo de Órdenes</span>
-      </div>
-      <div class="chk-row">
-        <span class="chk-row-label">Decisión módulo Órdenes</span>
-        <div class="chk-row-chips"><span class="chk-chip chk-chip--unknown">Con módulo de Órdenes</span><span class="chk-chip chk-chip--unknown">Sin módulo de Órdenes</span></div>
-      </div>
-    </div>
-    <div class="chk-section">
-      <div class="chk-section-head">
-        <span class="chk-section-num">07</span>
-        <span class="chk-section-name">Campos y formularios</span>
-      </div>
-      <div class="chk-row">
-        <span class="chk-row-label">Formularios a revisar</span>
-        <div class="chk-row-chips"><span class="chk-chip chk-chip--unknown">Planificación</span><span class="chk-chip chk-chip--unknown">Confirmación de turno</span><span class="chk-chip chk-chip--unknown">Check-in</span><span class="chk-chip chk-chip--unknown">Checklists</span><span class="chk-chip chk-chip--unknown">Asignación de dock</span></div>
-      </div>
-    </div>
-    <div class="chk-section">
-      <div class="chk-section-head">
-        <span class="chk-section-num">08</span>
-        <span class="chk-section-name">Mensajes y notificaciones</span>
-      </div>
-      <div class="chk-row">
-        <span class="chk-row-label">Canales de comunicación</span>
-        <div class="chk-row-chips"><span class="chk-chip chk-chip--unknown">Mail</span><span class="chk-chip chk-chip--unknown">WhatsApp</span></div>
-      </div>
-    </div>
     </div>
   </section>
 
   <section class="section">
     <div class="action-grid">
-
       <div class="action-box action-box--custom">
         <div class="action-box-h">
           Requerimientos custom
           <span class="action-box-h-badge">1</span>
         </div>
         <div class="deliverable deliverable--custom">
-<svg class="deliverable-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528"/></svg>
+          <svg class="deliverable-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528"/></svg>
           <div class="deliverable-body">
             <span class="deliverable-title">Plantilla de mail con branding propio (logo + firma de logística)</span>
             <span class="deliverable-cite">el mail tiene que salir con nuestro logo y la firma de logística</span>
@@ -883,16 +294,18 @@
         <span class="block-h-status block-h-status--warning">aviso</span>
       </div>
       <div class="block-reason block-reason--warning">
-        <span class="block-reason-label">aviso</span>
-        <span class="block-reason-text">Cobertura parcial: 3 ok / 3 missing.</span>
+        <svg class="block-reason-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+        <div class="block-reason-content">
+          <span class="block-reason-label">aviso</span>
+          <span class="block-reason-text">Cobertura parcial: 3 ok, 3 missing.</span>
+        </div>
       </div>
       <div class="identity-grid">
         <div class="identity-card identity-card--scalar">
           <div class="identity-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></svg></div>
           <div class="identity-body">
             <span class="identity-label">Industria</span>
-            <span class="identity-value">Bebidas no alcohólicas</span>
-            
+            <span class="identity-value">Metalmecánica</span>
           </div>
         </div>
         <div class="identity-card identity-card--scalar">
@@ -900,15 +313,13 @@
           <div class="identity-body">
             <span class="identity-label">País</span>
             <span class="identity-value">Argentina</span>
-            
           </div>
         </div>
         <div class="identity-card identity-card--scalar">
           <div class="identity-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></div>
           <div class="identity-body">
             <span class="identity-label">Ciudad</span>
-            <span class="identity-value">Mendoza</span>
-            
+            <span class="identity-value">Rosario</span>
           </div>
         </div>
         <div class="identity-card identity-card--person identity-card--missing">
@@ -916,7 +327,6 @@
           <div class="identity-body">
             <span class="identity-label">Contacto principal</span>
             <span class="identity-value identity-value--missing"><span class="identity-falta-tag">Falta</span>Sin definir</span>
-            
           </div>
         </div>
         <div class="identity-card identity-card--person identity-card--missing">
@@ -924,7 +334,6 @@
           <div class="identity-body">
             <span class="identity-label">Contacto operativo diario</span>
             <span class="identity-value identity-value--missing"><span class="identity-falta-tag">Falta</span>Sin definir</span>
-            
           </div>
         </div>
         <div class="identity-card identity-card--date identity-card--missing">
@@ -932,7 +341,6 @@
           <div class="identity-body">
             <span class="identity-label">Fecha objetivo go-live</span>
             <span class="identity-value identity-value--missing"><span class="identity-falta-tag">Falta</span>Sin definir</span>
-            
           </div>
         </div>
       </div>
@@ -946,8 +354,11 @@
         <span class="block-h-status block-h-status--blocker">bloqueante</span>
       </div>
       <div class="block-reason block-reason--blocker">
-        <span class="block-reason-label">bloqueante</span>
-        <span class="block-reason-text">El bloque no fue tocado en la reunión.</span>
+        <svg class="block-reason-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.586 16.726A2 2 0 0 1 2 15.312V8.688a2 2 0 0 1 .586-1.414l4.688-4.688A2 2 0 0 1 8.688 2h6.624a2 2 0 0 1 1.414.586l4.688 4.688A2 2 0 0 1 22 8.688v6.624a2 2 0 0 1-.586 1.414l-4.688 4.688a2 2 0 0 1-1.414.586H8.688a2 2 0 0 1-1.414-.586z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+        <div class="block-reason-content">
+          <span class="block-reason-label">bloqueante</span>
+          <span class="block-reason-text">El bloque no fue tocado en la reunión.</span>
+        </div>
       </div>
       <ul class="bullets">
         <li class="bullet">
@@ -969,8 +380,11 @@
         <span class="block-h-status block-h-status--blocker">bloqueante</span>
       </div>
       <div class="block-reason block-reason--blocker">
-        <span class="block-reason-label">bloqueante</span>
-        <span class="block-reason-text">Solo 1 de 3 preguntas tienen respuesta.</span>
+        <svg class="block-reason-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.586 16.726A2 2 0 0 1 2 15.312V8.688a2 2 0 0 1 .586-1.414l4.688-4.688A2 2 0 0 1 8.688 2h6.624a2 2 0 0 1 1.414.586l4.688 4.688A2 2 0 0 1 22 8.688v6.624a2 2 0 0 1-.586 1.414l-4.688 4.688a2 2 0 0 1-1.414.586H8.688a2 2 0 0 1-1.414-.586z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+        <div class="block-reason-content">
+          <span class="block-reason-label">bloqueante</span>
+          <span class="block-reason-text">Solo 1 de 3 preguntas tienen respuesta.</span>
+        </div>
       </div>
       <ul class="bullets">
         <li class="bullet">
@@ -996,8 +410,11 @@
         <span class="block-h-status block-h-status--blocker">bloqueante</span>
       </div>
       <div class="block-reason block-reason--blocker">
-        <span class="block-reason-label">bloqueante</span>
-        <span class="block-reason-text">Solo 1 de 7 preguntas tienen respuesta.</span>
+        <svg class="block-reason-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.586 16.726A2 2 0 0 1 2 15.312V8.688a2 2 0 0 1 .586-1.414l4.688-4.688A2 2 0 0 1 8.688 2h6.624a2 2 0 0 1 1.414.586l4.688 4.688A2 2 0 0 1 22 8.688v6.624a2 2 0 0 1-.586 1.414l-4.688 4.688a2 2 0 0 1-1.414.586H8.688a2 2 0 0 1-1.414-.586z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+        <div class="block-reason-content">
+          <span class="block-reason-label">bloqueante</span>
+          <span class="block-reason-text">Solo 1 de 7 preguntas tienen respuesta.</span>
+        </div>
       </div>
       <ul class="bullets">
         <li class="bullet">
@@ -1039,8 +456,11 @@
         <span class="block-h-status block-h-status--blocker">bloqueante</span>
       </div>
       <div class="block-reason block-reason--blocker">
-        <span class="block-reason-label">bloqueante</span>
-        <span class="block-reason-text">El bloque no fue tocado en la reunión.</span>
+        <svg class="block-reason-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.586 16.726A2 2 0 0 1 2 15.312V8.688a2 2 0 0 1 .586-1.414l4.688-4.688A2 2 0 0 1 8.688 2h6.624a2 2 0 0 1 1.414.586l4.688 4.688A2 2 0 0 1 22 8.688v6.624a2 2 0 0 1-.586 1.414l-4.688 4.688a2 2 0 0 1-1.414.586H8.688a2 2 0 0 1-1.414-.586z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+        <div class="block-reason-content">
+          <span class="block-reason-label">bloqueante</span>
+          <span class="block-reason-text">El bloque no fue tocado en la reunión.</span>
+        </div>
       </div>
       <ul class="bullets">
         <li class="bullet">
@@ -1078,8 +498,11 @@
         <span class="block-h-status block-h-status--blocker">bloqueante</span>
       </div>
       <div class="block-reason block-reason--blocker">
-        <span class="block-reason-label">bloqueante</span>
-        <span class="block-reason-text">Solo 1 de 12 preguntas tienen respuesta.</span>
+        <svg class="block-reason-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.586 16.726A2 2 0 0 1 2 15.312V8.688a2 2 0 0 1 .586-1.414l4.688-4.688A2 2 0 0 1 8.688 2h6.624a2 2 0 0 1 1.414.586l4.688 4.688A2 2 0 0 1 22 8.688v6.624a2 2 0 0 1-.586 1.414l-4.688 4.688a2 2 0 0 1-1.414.586H8.688a2 2 0 0 1-1.414-.586z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+        <div class="block-reason-content">
+          <span class="block-reason-label">bloqueante</span>
+          <span class="block-reason-text">Solo 1 de 12 preguntas tienen respuesta.</span>
+        </div>
       </div>
       <ul class="bullets">
         <li class="bullet">
@@ -1141,8 +564,11 @@
         <span class="block-h-status block-h-status--blocker">bloqueante</span>
       </div>
       <div class="block-reason block-reason--blocker">
-        <span class="block-reason-label">bloqueante</span>
-        <span class="block-reason-text">El bloque no fue tocado en la reunión.</span>
+        <svg class="block-reason-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.586 16.726A2 2 0 0 1 2 15.312V8.688a2 2 0 0 1 .586-1.414l4.688-4.688A2 2 0 0 1 8.688 2h6.624a2 2 0 0 1 1.414.586l4.688 4.688A2 2 0 0 1 22 8.688v6.624a2 2 0 0 1-.586 1.414l-4.688 4.688a2 2 0 0 1-1.414.586H8.688a2 2 0 0 1-1.414-.586z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+        <div class="block-reason-content">
+          <span class="block-reason-label">bloqueante</span>
+          <span class="block-reason-text">El bloque no fue tocado en la reunión.</span>
+        </div>
       </div>
       <ul class="bullets">
         <li class="bullet">
@@ -1160,8 +586,11 @@
         <span class="block-h-status block-h-status--blocker">bloqueante</span>
       </div>
       <div class="block-reason block-reason--blocker">
-        <span class="block-reason-label">bloqueante</span>
-        <span class="block-reason-text">El bloque no fue tocado en la reunión.</span>
+        <svg class="block-reason-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.586 16.726A2 2 0 0 1 2 15.312V8.688a2 2 0 0 1 .586-1.414l4.688-4.688A2 2 0 0 1 8.688 2h6.624a2 2 0 0 1 1.414.586l4.688 4.688A2 2 0 0 1 22 8.688v6.624a2 2 0 0 1-.586 1.414l-4.688 4.688a2 2 0 0 1-1.414.586H8.688a2 2 0 0 1-1.414-.586z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+        <div class="block-reason-content">
+          <span class="block-reason-label">bloqueante</span>
+          <span class="block-reason-text">El bloque no fue tocado en la reunión.</span>
+        </div>
       </div>
       <ul class="bullets">
         <li class="bullet">
@@ -1183,8 +612,11 @@
         <span class="block-h-status block-h-status--blocker">bloqueante</span>
       </div>
       <div class="block-reason block-reason--blocker">
-        <span class="block-reason-label">bloqueante</span>
-        <span class="block-reason-text">Solo 1 de 3 preguntas tienen respuesta.</span>
+        <svg class="block-reason-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.586 16.726A2 2 0 0 1 2 15.312V8.688a2 2 0 0 1 .586-1.414l4.688-4.688A2 2 0 0 1 8.688 2h6.624a2 2 0 0 1 1.414.586l4.688 4.688A2 2 0 0 1 22 8.688v6.624a2 2 0 0 1-.586 1.414l-4.688 4.688a2 2 0 0 1-1.414.586H8.688a2 2 0 0 1-1.414-.586z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+        <div class="block-reason-content">
+          <span class="block-reason-label">bloqueante</span>
+          <span class="block-reason-text">Solo 1 de 3 preguntas tienen respuesta.</span>
+        </div>
       </div>
       <ul class="bullets">
         <li class="bullet">
@@ -1210,8 +642,11 @@
         <span class="block-h-status block-h-status--warning">aviso</span>
       </div>
       <div class="block-reason block-reason--warning">
-        <span class="block-reason-label">aviso</span>
-        <span class="block-reason-text">Cobertura parcial: 2 ok / 2 missing.</span>
+        <svg class="block-reason-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+        <div class="block-reason-content">
+          <span class="block-reason-label">aviso</span>
+          <span class="block-reason-text">Cobertura parcial: 2 ok, 2 missing.</span>
+        </div>
       </div>
       <ul class="bullets">
         <li class="bullet">
@@ -1232,14 +667,14 @@
         </li>
       </ul>
     </div>
-
   </section>
 
   <footer class="doc-footer">
     <span>EasyDocking · Brief generado por agente</span>
     <span>2026-04-22</span>
   </footer>
-
 </article>
 </body>
 </html>
+</content>
+</invoke>

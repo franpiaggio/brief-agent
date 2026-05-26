@@ -7,655 +7,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-<!--
-  El JSON que sigue es el insumo exacto que produjo este HTML.
-  Inspectable desde DevTools:
-    JSON.parse(document.getElementById('brief-source').textContent)
--->
-<script type="application/json" id="brief-source" data-source="data.json">
-{
-  "meta": {
-    "client_name": "Example Corp SA",
-    "industry": "beverages",
-    "country": "AR",
-    "meeting_date": "2026-05-08"
-  },
-  "verdict": {
-    "status": "ready",
-    "summary": "10 bloques en orden",
-    "blockers_count": 0,
-    "warnings_count": 0,
-    "detail": "Sin pendientes ni avisos"
-  },
-  "custom": {
-    "count": 0,
-    "items": []
-  },
-  "decisions": [
-    {
-      "summary": "Go-live el 15 de julio 2026",
-      "block_ref": 1,
-      "citation": "queremos estar en vivo el 15 de julio"
-    },
-    {
-      "summary": "Implementar YMS + Dock Scheduling + Inducción; Control Documental queda para fase 2",
-      "block_ref": 2,
-      "citation": "control documental por ahora no, podríamos sumarlo en fase 2"
-    },
-    {
-      "summary": "Workflow estándar para descarga y carga, sin modificaciones",
-      "block_ref": 3,
-      "citation": "vamos a arrancar con el workflow estándar"
-    },
-    {
-      "summary": "Con módulo de Órdenes desde el día 1; integración SAP en fase 2 (Excel inicial)",
-      "block_ref": 6,
-      "citation": "arrancamos con Excel y después integramos con SAP"
-    },
-    {
-      "summary": "Plantilla de mail customizada con logo de Example Corp y firma de logística",
-      "block_ref": 8,
-      "citation": "el mail tiene que salir con nuestro logo y la firma de logística"
-    },
-    {
-      "summary": "Próxima reunión de validación el 2026-05-22",
-      "block_ref": 10,
-      "citation": "nos juntamos de nuevo el 22 de mayo a las 10"
-    }
-  ],
-  "narrative": {
-    "current_situation": "Example Corp SA opera una planta industrial de embotellado en Mendoza, sin sistema formal de turnos. Hoy coordinan con un Excel compartido por WhatsApp del supervisor: reciben insumos durante todo el día y despachan producto terminado a CDs y clientes. La operación de carga es estacional con pico noviembre–febrero.",
-    "what_they_want": "Implementar YMS + Dock Scheduling + Inducción para ordenar el ingreso de camiones, con módulo de Órdenes operando desde el día 1 contra órdenes exportadas de SAP (Excel en fase 1, integración API en fase 2). Una sola planta con 6 docks, go-live el 15 de julio.",
-    "closure": "Configuración base completa y validada: módulos, workflow, actores, agenda, reglas de órdenes, mensajería e integraciones. Sin pendientes operativos. Validación con cliente 2026-05-22."
-  },
-  "open_questions": [
-    {
-      "question": "¿Alcance exacto y cronograma de la integración SAP de fase 2?",
-      "owner_hint": "EasyDocking",
-      "deadline_hint": null,
-      "citation": "la integración con SAP la dejamos para fase 2"
-    }
-  ],
-  "blocks": [
-    {
-      "id": 1,
-      "name": "general_info",
-      "status": "ok",
-      "status_reason": "",
-      "options": [
-        {
-          "group_id": "site_type",
-          "group_name": "Tipo de sitio",
-          "items": [
-            {
-              "label": "Planta industrial",
-              "needed": true,
-              "citation": "es nuestra planta principal de embotellado en Mendoza"
-            },
-            {
-              "label": "Centro de distribución",
-              "needed": false,
-              "citation": "tenemos un CD aparte pero no entra en este onboarding"
-            },
-            {
-              "label": "Almacén",
-              "needed": false,
-              "citation": "tenemos un CD aparte pero no entra en este onboarding"
-            }
-          ]
-        },
-        {
-          "group_id": "implementation_focus",
-          "group_name": "Objetivo principal",
-          "items": [
-            {
-              "label": "Turnos",
-              "needed": false,
-              "citation": "necesitamos todo el YMS, no solo agendamiento"
-            },
-            {
-              "label": "YMS",
-              "needed": false,
-              "citation": "necesitamos todo el YMS, no solo agendamiento"
-            },
-            {
-              "label": "Ambos",
-              "needed": true,
-              "citation": "necesitamos todo el YMS, no solo agendamiento"
-            }
-          ]
-        }
-      ],
-      "fields": [
-        {
-          "question": "Industria",
-          "answer": "Bebidas no alcohólicas",
-          "citation": "somos un embotellador de bebidas no alcohólicas",
-          "state": "ok"
-        },
-        {
-          "question": "País",
-          "answer": "Argentina",
-          "citation": "operamos en Argentina",
-          "state": "ok"
-        },
-        {
-          "question": "Ciudad",
-          "answer": "Mendoza",
-          "citation": "es nuestra planta principal de embotellado en Mendoza",
-          "state": "ok"
-        },
-        {
-          "question": "Contacto principal",
-          "answer": "Lucía Fernández (Jefa de Logística)",
-          "citation": "yo soy Lucía Fernández, jefa de logística y voy a ser el contacto del proyecto",
-          "state": "ok"
-        },
-        {
-          "question": "Contacto operativo diario",
-          "answer": "Mariano Sosa (Supervisor de Patio)",
-          "citation": "el día a día lo va a llevar Mariano Sosa, mi supervisor de patio",
-          "state": "ok"
-        },
-        {
-          "question": "Fecha objetivo go-live",
-          "answer": "2026-07-15",
-          "citation": "queremos estar en vivo el 15 de julio",
-          "state": "ok"
-        }
-      ],
-      "additional_notes": [],
-      "flags": [],
-      "pending": []
-    },
-    {
-      "id": 2,
-      "name": "classification",
-      "status": "ok",
-      "status_reason": "",
-      "options": [
-        {
-          "group_id": "operations",
-          "group_name": "Operaciones",
-          "items": [
-            {
-              "label": "Descarga",
-              "needed": true,
-              "citation": "recibimos insumos (azúcar, envases) todo el día"
-            },
-            {
-              "label": "Carga",
-              "needed": true,
-              "citation": "y despachamos producto terminado a CDs propios y clientes"
-            },
-            {
-              "label": "Retira Cliente",
-              "needed": false,
-              "citation": "los clientes no retiran de planta"
-            },
-            {
-              "label": "Interplantas",
-              "needed": false,
-              "citation": "no movemos entre plantas, solo planta → CD"
-            },
-            {
-              "label": "Otro",
-              "needed": false,
-              "citation": "no, no hay otras"
-            }
-          ]
-        },
-        {
-          "group_id": "modules",
-          "group_name": "Módulos",
-          "items": [
-            {
-              "label": "YMS",
-              "needed": true,
-              "citation": "queremos el módulo de gestión de patio"
-            },
-            {
-              "label": "Dock Scheduling",
-              "needed": true,
-              "citation": "y el de agendamiento de turnos"
-            },
-            {
-              "label": "Inducción",
-              "needed": true,
-              "citation": "inducción a conductores también, es obligatorio por seguridad"
-            },
-            {
-              "label": "Control Documental",
-              "needed": false,
-              "citation": "control documental por ahora no, podríamos sumarlo en fase 2"
-            }
-          ]
-        }
-      ],
-      "fields": [
-        {
-          "question": "Método de agendamiento actual",
-          "answer": "Excel compartido + WhatsApp del supervisor",
-          "citation": "hoy lo hacemos en un Excel que comparte el supervisor por WhatsApp",
-          "state": "ok"
-        },
-        {
-          "question": "Usan Excel para órdenes/turnos",
-          "answer": "Sí, Excel diario de turnos",
-          "citation": "tenemos un Excel diario con los turnos del día",
-          "state": "ok"
-        }
-      ],
-      "additional_notes": [],
-      "flags": [],
-      "pending": []
-    },
-    {
-      "id": 3,
-      "name": "workflow",
-      "status": "ok",
-      "status_reason": "",
-      "options": [],
-      "fields": [
-        {
-          "question": "Workflow por operación",
-          "answer": "Descarga: workflow estándar. Carga: workflow estándar.",
-          "citation": "el flujo nuestro coincide con lo que mostraron en la demo, no le veo cambios",
-          "state": "ok"
-        },
-        {
-          "question": "Requiere modificaciones",
-          "answer": "No",
-          "citation": "no, vamos a arrancar con el workflow estándar",
-          "state": "ok"
-        },
-        {
-          "question": "Etapas adicionales o faltantes",
-          "answer": "Ninguna",
-          "citation": "no, vamos a arrancar con el workflow estándar",
-          "state": "ok"
-        }
-      ],
-      "workflow_states": [],
-      "additional_notes": [],
-      "flags": [],
-      "pending": []
-    },
-    {
-      "id": 4,
-      "name": "process_actors",
-      "status": "ok",
-      "status_reason": "",
-      "options": [],
-      "fields": [
-        {
-          "question": "Crea los turnos",
-          "answer": "Coordinador de logística (Lucía y dos asistentes)",
-          "citation": "los turnos los creamos nosotros desde logística",
-          "state": "ok"
-        },
-        {
-          "question": "Realiza el check-in",
-          "answer": "Seguridad de portería",
-          "citation": "el check-in lo hace seguridad en la entrada",
-          "state": "ok"
-        },
-        {
-          "question": "Asigna el dock",
-          "answer": "Supervisor de patio (Mariano)",
-          "citation": "el dock lo asigna Mariano según disponibilidad",
-          "state": "ok"
-        },
-        {
-          "question": "Completa checklists",
-          "answer": "Operadores de patio",
-          "citation": "los operadores de patio cierran el checklist del camión",
-          "state": "ok"
-        },
-        {
-          "question": "Supervisa la operación",
-          "answer": "Supervisor de patio (Mariano)",
-          "citation": "Mariano supervisa todo el patio",
-          "state": "ok"
-        },
-        {
-          "question": "Usuarios externos",
-          "answer": "Conductores reciben WhatsApp; transportistas pueden ver turnos vía portal",
-          "citation": "los choferes confirman por WhatsApp y las empresas de transporte ven sus turnos",
-          "state": "ok"
-        },
-        {
-          "question": "Valida documentación",
-          "answer": "Seguridad de portería contra checklist precargado",
-          "citation": "seguridad valida que tenga toda la documentación cargada antes de dejarlo entrar",
-          "state": "ok"
-        }
-      ],
-      "additional_notes": [],
-      "flags": [],
-      "pending": []
-    },
-    {
-      "id": 5,
-      "name": "schedule_docks_warehouse",
-      "status": "ok",
-      "status_reason": "",
-      "options": [],
-      "fields": [
-        {
-          "question": "Cantidad de warehouses",
-          "answer": "1",
-          "citation": "es solo la planta de Mendoza, un warehouse",
-          "state": "ok"
-        },
-        {
-          "question": "Docks por warehouse",
-          "answer": "6 docks (4 carga, 2 descarga)",
-          "citation": "tenemos 6 docks, 4 de carga y 2 de descarga",
-          "state": "ok"
-        },
-        {
-          "question": "Operaciones por dock",
-          "answer": "Carga y descarga separadas físicamente",
-          "citation": "la carga y la descarga están en muelles distintos",
-          "state": "ok"
-        },
-        {
-          "question": "Duración del turno",
-          "answer": "Carga: 45 min. Descarga: 60 min.",
-          "citation": "carga lleva 45 minutos y descarga 60",
-          "state": "ok"
-        },
-        {
-          "question": "Días y horarios habilitados",
-          "answer": "Lunes a sábado, 6:00–22:00",
-          "citation": "operamos de lunes a sábado, de 6 a 22",
-          "state": "ok"
-        },
-        {
-          "question": "Restricciones horarias",
-          "answer": "No se reciben turnos entre 14:00 y 15:00 (cambio de turno operativo)",
-          "citation": "entre las 14 y 15 no recibimos, es el cambio de turno del personal",
-          "state": "ok"
-        }
-      ],
-      "additional_notes": [],
-      "flags": [],
-      "pending": []
-    },
-    {
-      "id": 6,
-      "name": "orders_module",
-      "status": "ok",
-      "status_reason": "",
-      "options": [
-        {
-          "group_id": "module_decision",
-          "group_name": "Decisión módulo Órdenes",
-          "items": [
-            {
-              "label": "Con módulo de Órdenes",
-              "needed": true,
-              "citation": "necesitamos manejar órdenes antes del turno, sí"
-            },
-            {
-              "label": "Sin módulo de Órdenes",
-              "needed": false,
-              "citation": "necesitamos manejar órdenes antes del turno, sí"
-            }
-          ]
-        }
-      ],
-      "fields": [
-        {
-          "question": "Rol de la orden",
-          "answer": "Entidad gestionada",
-          "citation": "necesitamos manejar órdenes antes del turno",
-          "state": "ok"
-        },
-        {
-          "question": "Debe existir antes de agendar",
-          "answer": "Sí",
-          "citation": "no se puede sacar turno si no hay OC",
-          "state": "ok"
-        },
-        {
-          "question": "Puede operar sin órdenes precargadas",
-          "answer": "No",
-          "citation": "no se puede sacar turno si no hay OC",
-          "state": "ok"
-        },
-        {
-          "question": "Cita puede incluir varias órdenes",
-          "answer": "Sí, hasta 3 órdenes por turno",
-          "citation": "una cita puede tener hasta 3 OCs si son del mismo proveedor",
-          "state": "ok"
-        },
-        {
-          "question": "Usa Excel para órdenes",
-          "answer": "Hoy sí (SAP exporta a Excel)",
-          "citation": "las órdenes salen de SAP y bajamos un Excel",
-          "state": "ok"
-        },
-        {
-          "question": "Asignar a tercero antes de agendar",
-          "answer": "Sí, a la transportadora",
-          "citation": "le asignamos la OC a la transportadora para que ellos saquen el turno",
-          "state": "ok"
-        },
-        {
-          "question": "Ubicación actual de gestión",
-          "answer": "SAP (export a Excel)",
-          "citation": "las OCs viven en SAP, exportamos a Excel",
-          "state": "ok"
-        },
-        {
-          "question": "Método de carga en EasyDocking",
-          "answer": "Excel inicial, integración API con SAP en fase 2",
-          "citation": "arrancamos con Excel y después integramos con SAP",
-          "state": "ok"
-        },
-        {
-          "question": "Campos requeridos en la orden",
-          "answer": "Número OC, proveedor, fecha, productos con códigos, cantidades, transportadora",
-          "citation": "necesitamos OC, proveedor, productos, cantidades y transportadora",
-          "state": "ok"
-        },
-        {
-          "question": "Coordina orden existente o on-demand",
-          "answer": "Existente (siempre hay OC)",
-          "citation": "siempre se opera contra una OC ya creada",
-          "state": "ok"
-        },
-        {
-          "question": "Nivel de detalle de mercadería",
-          "answer": "SKU + cantidades",
-          "citation": "necesitamos SKU y cantidades, no solo cabecera",
-          "state": "ok"
-        },
-        {
-          "question": "Duración del turno depende de datos de la orden",
-          "answer": "Sí, por cantidad de pallets",
-          "citation": "si trae más de 20 pallets, el turno pasa de 45 a 60 minutos",
-          "state": "ok"
-        }
-      ],
-      "additional_notes": [],
-      "flags": [],
-      "pending": []
-    },
-    {
-      "id": 7,
-      "name": "fields_and_forms",
-      "status": "ok",
-      "status_reason": "",
-      "options": [
-        {
-          "group_id": "forms_to_review",
-          "group_name": "Formularios a revisar",
-          "items": [
-            {
-              "label": "Planificación",
-              "needed": true,
-              "citation": "el de planificación es el que más usamos"
-            },
-            {
-              "label": "Confirmación de turno",
-              "needed": true,
-              "citation": "confirmación también, sí"
-            },
-            {
-              "label": "Check-in",
-              "needed": true,
-              "citation": "check-in también lo necesitamos"
-            },
-            {
-              "label": "Checklists",
-              "needed": true,
-              "citation": "checklist de seguridad obligatorio"
-            },
-            {
-              "label": "Asignación de dock",
-              "needed": true,
-              "citation": "asignación de dock sí, lo va a usar Mariano"
-            }
-          ]
-        }
-      ],
-      "fields": [
-        {
-          "question": "Resumen de modificaciones",
-          "answer": "Ningún campo extra, todos los estándar alcanzan",
-          "citation": "los campos estándar nos sirven bien, no hace falta agregar",
-          "state": "ok"
-        }
-      ],
-      "additional_notes": [],
-      "flags": [],
-      "pending": []
-    },
-    {
-      "id": 8,
-      "name": "messages_notifications",
-      "status": "ok",
-      "status_reason": "",
-      "options": [
-        {
-          "group_id": "channels",
-          "group_name": "Canales de comunicación",
-          "items": [
-            {
-              "label": "Mail",
-              "needed": true,
-              "citation": "queremos que los avisos al cliente interno salgan por mail"
-            },
-            {
-              "label": "WhatsApp",
-              "needed": true,
-              "citation": "y al chofer por WhatsApp como siempre"
-            }
-          ]
-        }
-      ],
-      "fields": [
-        {
-          "question": "Ajustes a plantillas",
-          "answer": "Plantilla de mail con logo de Example Corp y firma del área de logística",
-          "citation": "el mail tiene que salir con nuestro logo y la firma de logística",
-          "state": "ok"
-        },
-        {
-          "question": "Mensaje clave faltante",
-          "answer": "Ninguno",
-          "citation": "los mensajes que mostraron alcanzan",
-          "state": "ok"
-        }
-      ],
-      "additional_notes": [],
-      "flags": [],
-      "pending": []
-    },
-    {
-      "id": 9,
-      "name": "exceptions_integrations",
-      "status": "ok",
-      "status_reason": "",
-      "options": [],
-      "fields": [
-        {
-          "question": "Requerimientos no-estándar",
-          "answer": "Ninguno fuera del logo en mails",
-          "citation": "no, fuera del tema del mail no se nos ocurre nada raro",
-          "state": "ok"
-        },
-        {
-          "question": "Integraciones requeridas",
-          "answer": "SAP (fase 2)",
-          "citation": "la integración con SAP la dejamos para fase 2",
-          "state": "ok"
-        },
-        {
-          "question": "Datos iniciales a importar",
-          "answer": "Listado de transportadoras + listado de proveedores recurrentes",
-          "citation": "te paso un Excel con las transportadoras y los proveedores",
-          "state": "ok"
-        }
-      ],
-      "additional_notes": [],
-      "flags": [],
-      "pending": []
-    },
-    {
-      "id": 10,
-      "name": "closure",
-      "status": "ok",
-      "status_reason": "",
-      "options": [],
-      "fields": [
-        {
-          "question": "Definido en la reunión",
-          "answer": "Configuración base, módulos, workflow estándar, actores, agenda y reglas de órdenes",
-          "citation": "creo que cerramos todo lo del relevamiento",
-          "state": "ok"
-        },
-        {
-          "question": "Pendientes abiertos",
-          "answer": "Excel de turnos, export SAP, logo + firma para plantilla mail",
-          "citation": "te paso el Excel después de la llamada",
-          "state": "ok"
-        },
-        {
-          "question": "Debe enviar el cliente",
-          "answer": "Excel turnos, export SAP, logo PNG, firma corporativa, listado transportadoras + proveedores",
-          "citation": "te paso el logo y la firma para que armes la plantilla",
-          "state": "ok"
-        },
-        {
-          "question": "Próximo paso",
-          "answer": "Equipo EasyDocking arma config base; reunión de validación 2026-05-22",
-          "citation": "nos juntamos de nuevo el 22 de mayo a las 10",
-          "state": "ok"
-        }
-      ],
-      "additional_notes": [],
-      "flags": [],
-      "pending": []
-    }
-  ],
-  "next_meeting": null
-}
-</script>
 <article class="doc">
-
   <header class="brand-bar">
-    <img src="assets/logo.png" alt="EasyDocking" class="brand-logo" />
+    <img src="../assets/logo.png" alt="EasyDocking" class="brand-logo" />
     <span class="brand-meta">Brief · 2026-05-08</span>
   </header>
-
-  
 
   <section class="hero">
     <div class="hero-eyebrow">Cliente · Onboarding</div>
@@ -664,13 +23,11 @@
       <span class="verdict-pill verdict-pill--ready">Listo para implementar</span>
     </div>
     <div class="hero-meta">
-      <span>beverages</span>
+      <span>Beverages</span>
       <span class="sep"></span>
-      <span>AR · —</span>
+      <span>Argentina</span>
       <span class="sep"></span>
-      <span>Reunión 2026-05-08</span>
-      <span class="sep"></span>
-      <span>—</span>
+      <span>Reunión <span class="meta-date">2026-05-08</span></span>
     </div>
 
 
@@ -689,11 +46,6 @@
         <div class="summary-label">Pedidos custom</div>
         <div class="summary-value summary-value--big">0</div>
         <div class="summary-detail">fuera del estándar</div>
-      </div>
-      <div class="summary-cell">
-        <div class="summary-label">Go-live objetivo</div>
-        <div class="summary-value summary-value--big">2026-07-15</div>
-        <div class="summary-detail">—</div>
       </div>
     </div>
 
@@ -795,64 +147,95 @@
           <span class="chk-chip chk-chip--unknown">por definir</span>
         </div>
       </div>
-    <div class="chk-section">
-      <div class="chk-section-head">
-        <span class="chk-section-num">01</span>
-        <span class="chk-section-name">Información general</span>
+      <div class="chk-section">
+        <div class="chk-section-head">
+          <span class="chk-section-num">01</span>
+          <span class="chk-section-name">Información general</span>
+        </div>
+        <div class="chk-row">
+          <span class="chk-row-label">Tipo de sitio</span>
+          <div class="chk-row-chips">
+            <span class="chk-chip chk-chip--yes">Planta industrial</span>
+            <span class="chk-chip chk-chip--no">Centro de distribución</span>
+            <span class="chk-chip chk-chip--no">Almacén</span>
+          </div>
+        </div>
+        <div class="chk-row">
+          <span class="chk-row-label">Objetivo principal</span>
+          <div class="chk-row-chips">
+            <span class="chk-chip chk-chip--no">Turnos</span>
+            <span class="chk-chip chk-chip--no">YMS</span>
+            <span class="chk-chip chk-chip--yes">Ambos</span>
+          </div>
+        </div>
       </div>
-      <div class="chk-row">
-        <span class="chk-row-label">Tipo de sitio</span>
-        <div class="chk-row-chips"><span class="chk-chip chk-chip--yes">Planta industrial</span><span class="chk-chip chk-chip--no">Centro de distribución</span><span class="chk-chip chk-chip--no">Almacén</span></div>
+      <div class="chk-section">
+        <div class="chk-section-head">
+          <span class="chk-section-num">02</span>
+          <span class="chk-section-name">Clasificación</span>
+        </div>
+        <div class="chk-row">
+          <span class="chk-row-label">Operaciones</span>
+          <div class="chk-row-chips">
+            <span class="chk-chip chk-chip--yes">Descarga</span>
+            <span class="chk-chip chk-chip--yes">Carga</span>
+            <span class="chk-chip chk-chip--no">Retira Cliente</span>
+            <span class="chk-chip chk-chip--no">Interplantas</span>
+            <span class="chk-chip chk-chip--no">Otro</span>
+          </div>
+        </div>
+        <div class="chk-row">
+          <span class="chk-row-label">Módulos</span>
+          <div class="chk-row-chips">
+            <span class="chk-chip chk-chip--yes">YMS</span>
+            <span class="chk-chip chk-chip--yes">Dock Scheduling</span>
+            <span class="chk-chip chk-chip--yes">Inducción</span>
+            <span class="chk-chip chk-chip--no">Control Documental</span>
+          </div>
+        </div>
       </div>
-      <div class="chk-row">
-        <span class="chk-row-label">Objetivo principal</span>
-        <div class="chk-row-chips"><span class="chk-chip chk-chip--no">Turnos</span><span class="chk-chip chk-chip--no">YMS</span><span class="chk-chip chk-chip--yes">Ambos</span></div>
+      <div class="chk-section">
+        <div class="chk-section-head">
+          <span class="chk-section-num">06</span>
+          <span class="chk-section-name">Módulo de Órdenes</span>
+        </div>
+        <div class="chk-row">
+          <span class="chk-row-label">Decisión módulo Órdenes</span>
+          <div class="chk-row-chips">
+            <span class="chk-chip chk-chip--yes">Con módulo de Órdenes</span>
+            <span class="chk-chip chk-chip--no">Sin módulo de Órdenes</span>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="chk-section">
-      <div class="chk-section-head">
-        <span class="chk-section-num">02</span>
-        <span class="chk-section-name">Clasificación</span>
+      <div class="chk-section">
+        <div class="chk-section-head">
+          <span class="chk-section-num">07</span>
+          <span class="chk-section-name">Campos y formularios</span>
+        </div>
+        <div class="chk-row">
+          <span class="chk-row-label">Formularios a revisar</span>
+          <div class="chk-row-chips">
+            <span class="chk-chip chk-chip--yes">Planificación</span>
+            <span class="chk-chip chk-chip--yes">Confirmación de turno</span>
+            <span class="chk-chip chk-chip--yes">Check-in</span>
+            <span class="chk-chip chk-chip--yes">Checklists</span>
+            <span class="chk-chip chk-chip--yes">Asignación de dock</span>
+          </div>
+        </div>
       </div>
-      <div class="chk-row">
-        <span class="chk-row-label">Operaciones</span>
-        <div class="chk-row-chips"><span class="chk-chip chk-chip--yes">Descarga</span><span class="chk-chip chk-chip--yes">Carga</span><span class="chk-chip chk-chip--no">Retira Cliente</span><span class="chk-chip chk-chip--no">Interplantas</span><span class="chk-chip chk-chip--no">Otro</span></div>
+      <div class="chk-section">
+        <div class="chk-section-head">
+          <span class="chk-section-num">08</span>
+          <span class="chk-section-name">Mensajes y notificaciones</span>
+        </div>
+        <div class="chk-row">
+          <span class="chk-row-label">Canales de comunicación</span>
+          <div class="chk-row-chips">
+            <span class="chk-chip chk-chip--yes">Mail</span>
+            <span class="chk-chip chk-chip--yes">WhatsApp</span>
+          </div>
+        </div>
       </div>
-      <div class="chk-row">
-        <span class="chk-row-label">Módulos</span>
-        <div class="chk-row-chips"><span class="chk-chip chk-chip--yes">YMS</span><span class="chk-chip chk-chip--yes">Dock Scheduling</span><span class="chk-chip chk-chip--yes">Inducción</span><span class="chk-chip chk-chip--no">Control Documental</span></div>
-      </div>
-    </div>
-    <div class="chk-section">
-      <div class="chk-section-head">
-        <span class="chk-section-num">06</span>
-        <span class="chk-section-name">Módulo de Órdenes</span>
-      </div>
-      <div class="chk-row">
-        <span class="chk-row-label">Decisión módulo Órdenes</span>
-        <div class="chk-row-chips"><span class="chk-chip chk-chip--yes">Con módulo de Órdenes</span><span class="chk-chip chk-chip--no">Sin módulo de Órdenes</span></div>
-      </div>
-    </div>
-    <div class="chk-section">
-      <div class="chk-section-head">
-        <span class="chk-section-num">07</span>
-        <span class="chk-section-name">Campos y formularios</span>
-      </div>
-      <div class="chk-row">
-        <span class="chk-row-label">Formularios a revisar</span>
-        <div class="chk-row-chips"><span class="chk-chip chk-chip--yes">Planificación</span><span class="chk-chip chk-chip--yes">Confirmación de turno</span><span class="chk-chip chk-chip--yes">Check-in</span><span class="chk-chip chk-chip--yes">Checklists</span><span class="chk-chip chk-chip--yes">Asignación de dock</span></div>
-      </div>
-    </div>
-    <div class="chk-section">
-      <div class="chk-section-head">
-        <span class="chk-section-num">08</span>
-        <span class="chk-section-name">Mensajes y notificaciones</span>
-      </div>
-      <div class="chk-row">
-        <span class="chk-row-label">Canales de comunicación</span>
-        <div class="chk-row-chips"><span class="chk-chip chk-chip--yes">Mail</span><span class="chk-chip chk-chip--yes">WhatsApp</span></div>
-      </div>
-    </div>
     </div>
   </section>
 
@@ -882,7 +265,6 @@
           <div class="identity-body">
             <span class="identity-label">Industria</span>
             <span class="identity-value">Bebidas no alcohólicas</span>
-            
           </div>
         </div>
         <div class="identity-card identity-card--scalar">
@@ -890,7 +272,6 @@
           <div class="identity-body">
             <span class="identity-label">País</span>
             <span class="identity-value">Argentina</span>
-            
           </div>
         </div>
         <div class="identity-card identity-card--scalar">
@@ -898,7 +279,6 @@
           <div class="identity-body">
             <span class="identity-label">Ciudad</span>
             <span class="identity-value">Mendoza</span>
-            
           </div>
         </div>
         <div class="identity-card identity-card--person">
@@ -906,7 +286,6 @@
           <div class="identity-body">
             <span class="identity-label">Contacto principal</span>
             <span class="identity-value">Lucía Fernández (Jefa de Logística)</span>
-            
           </div>
         </div>
         <div class="identity-card identity-card--person">
@@ -914,7 +293,6 @@
           <div class="identity-body">
             <span class="identity-label">Contacto operativo diario</span>
             <span class="identity-value">Mariano Sosa (Supervisor de Patio)</span>
-            
           </div>
         </div>
         <div class="identity-card identity-card--date">
@@ -922,7 +300,6 @@
           <div class="identity-body">
             <span class="identity-label">Fecha objetivo go-live</span>
             <span class="identity-value">2026-07-15</span>
-            
           </div>
         </div>
       </div>
@@ -1174,26 +551,26 @@
         </li>
         <li class="bullet">
           <span class="bullet-q">Pendientes abiertos</span>
-          <span class="bullet-a">Excel de turnos, export SAP, logo + firma para plantilla mail</span>
+          <span class="bullet-a">Ninguno</span>
         </li>
         <li class="bullet">
           <span class="bullet-q">Debe enviar el cliente</span>
-          <span class="bullet-a">Excel turnos, export SAP, logo PNG, firma corporativa, listado transportadoras + proveedores</span>
+          <span class="bullet-a">Nada</span>
         </li>
         <li class="bullet">
           <span class="bullet-q">Próximo paso</span>
-          <span class="bullet-a">Equipo EasyDocking arma config base; reunión de validación 2026-05-22</span>
+          <span class="bullet-a">Validación con cliente 2026-05-22</span>
         </li>
       </ul>
     </div>
-
   </section>
 
   <footer class="doc-footer">
     <span>EasyDocking · Brief generado por agente</span>
     <span>2026-05-08</span>
   </footer>
-
 </article>
 </body>
 </html>
+</content>
+</invoke>

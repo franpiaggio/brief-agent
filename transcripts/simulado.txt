@@ -1,0 +1,131 @@
+RE: Reunión de onboarding EasyDocking - Distribuidora Norte SpA
+sáb, 9 may 2026
+
+Resumen:
+
+La reunión tuvo como objetivo relevar la operación logística de Distribuidora Norte SpA en su centro de distribución Santiago Norte para preparar la implementación de EasyDocking. Se confirmó que se trata de un centro de distribución de retail (cadena de supermercados propios) ubicado en Santiago, Chile, y que el alcance del piloto cubre la planificación de turnos y la gestión en patio mediante los módulos YMS, Dock Scheduling e Inducción. El módulo de Control Documental queda planificado para una segunda fase. La fecha objetivo de salida en vivo es el 20 de julio de 2026; Catalina Vargas queda como contacto del proyecto y Felipe Aravena como contacto operativo diario.
+
+Se relevaron las dos operaciones a implementar (Descarga de proveedores y Carga a tiendas propias) sobre el workflow estándar de EasyDocking sin modificaciones, los siete actores del proceso, la grilla física del CD (1 warehouse con 12 docks, 8 de descarga y 4 de carga) y los parámetros de agenda (lunes a viernes 06:00 a 22:00, sábado 06:00 a 14:00, con ventana de cierre entre 13:00 y 14:00 por cambio de turno operativo). Se acordó usar el módulo de Órdenes con detalle a nivel SKU, partiendo de un Excel exportado diariamente desde SAP y migrando a una integración API en fase 2. Las plantillas estándar de mail y WhatsApp aplican sin ajustes y no se identificaron pedidos fuera del estándar. Quedaron pendientes el envío de los maestros (proveedores y transportadoras) y la lista de correos para crear los usuarios; el próximo paso es la reunión de configuración a los siete días.
+
+
+Capítulos y Temas:
+
+Apertura y presentación de asistentes
+Se inició la reunión con presentaciones de los participantes; Catalina Vargas se presentó como gerenta de operaciones logísticas de Distribuidora Norte SpA y contacto del proyecto, y Felipe Aravena como supervisor de patio y contacto operativo diario. Guido Barrionuevo encuadró la reunión como relevamiento operativo para alimentar la configuración inicial del sistema.
+
+Contexto y objetivos del proyecto
+Catalina describió a Distribuidora Norte SpA como el brazo logístico de una cadena de supermercados con 32 tiendas en la zona centro y norte de Chile. La operación se centraliza en el CD Santiago Norte, que recibe mercadería de proveedores y la despacha a las tiendas propias. El objetivo del proyecto es ordenar la programación de turnos (hoy en planilla compartida) y dar visibilidad operativa al patio en un único sistema.
+* Distribuidora Norte SpA es un centro de distribución del rubro retail/supermercado ubicado en Santiago, Chile.
+* El contacto del proyecto es Catalina Vargas, gerenta de operaciones logísticas.
+* El contacto operativo diario es Felipe Aravena, supervisor de patio.
+* La fecha objetivo de salida en vivo es el 20 de julio de 2026.
+* El objetivo de implementar EasyDocking es cubrir tanto la planificación de Turnos como la gestión de patio (YMS) de forma conjunta.
+
+Operaciones y módulos a implementar
+Felipe explicó que el CD ejecuta dos operaciones: Descarga (recepción de proveedores) y Carga (despacho a tiendas propias). No realizan Retira Cliente ni Interplantas en este sitio. Catalina confirmó que el piloto cubre los módulos YMS, Dock Scheduling e Inducción; el Control Documental queda planificado para una segunda fase porque hoy lo manejan con un proceso paralelo desde el área legal.
+* Las operaciones a implementar en este sitio son Descarga (proveedores) y Carga (tiendas propias).
+* No se realizan operaciones de Retira Cliente ni Interplantas en el CD Norte.
+* Los módulos a habilitar son YMS, Dock Scheduling e Inducción.
+* El módulo de Control Documental queda planificado para fase 2.
+
+Método actual de agendamiento y uso de Excel
+Felipe describió que hoy los turnos se coordinan en una planilla compartida de Excel que el equipo de planificación actualiza manualmente y reenvía a las transportadoras por correo y WhatsApp. Tienen además una planilla maestra de pedidos exportada desde SAP. Catalina se comprometió a compartir ambas planillas tras la reunión.
+* El método actual de agendamiento es una planilla Excel compartida que el equipo de planificación actualiza y reenvía por mail y WhatsApp.
+* Las órdenes de compra se exportan diariamente desde SAP a una planilla Excel.
+* Catalina se compromete a enviar las planillas Excel de turnos y de pedidos después de la reunión.
+
+Workflow por operación y ajustes
+Guido recorrió el workflow estándar de Descarga (creación de turno, confirmación, check-in, asignación de dock, inicio y fin de carga, checklist, salida) y el de Carga, y consultó si requieren modificaciones. Felipe respondió que ambos flujos coinciden con la operación real del CD y que no necesitan etapas adicionales ni reordenamientos.
+* El workflow estándar de Descarga aplica sin modificaciones según la operación actual del cliente.
+* El workflow estándar de Carga aplica sin modificaciones según la operación actual del cliente.
+* No se identificaron etapas adicionales ni faltantes en los workflows estándar.
+
+Actores del proceso y roles operativos
+Catalina detalló los roles: los turnos los crea el equipo interno de planificación logística (tres personas) y, en paralelo, las transportadoras pueden autogenerarlos desde el portal externo. El check-in en portería lo realiza el equipo de vigilancia. La asignación de dock la hace Felipe como supervisor de patio; las checklists las completan los operadores de muelle al inicio y fin de cada operación; y la supervisión general la ejerce Felipe con reporte a Catalina. La validación documental previa la realiza la portería contra un checklist precargado en el sistema.
+* Los turnos los crea el equipo interno de planificación logística, compuesto por tres personas.
+* Adicionalmente, las transportadoras pueden generar turnos desde un portal externo de autoservicio.
+* El check-in en portería lo realiza el equipo de vigilancia.
+* La asignación de dock la realiza Felipe Aravena como supervisor de patio.
+* Las checklists las completan los operadores de muelle al inicio y al cierre de cada operación.
+* La supervisión operativa la ejerce Felipe Aravena con reporte a Catalina Vargas.
+* Los usuarios externos previstos son las transportadoras (autogeneran turnos desde el portal) y los conductores (reciben notificaciones por WhatsApp).
+* La validación documental previa la realiza la portería contra un checklist precargado en el sistema.
+
+Warehouse, docks y simultaneidad
+Felipe describió la grilla física: el CD Norte cuenta con un único warehouse y 12 docks operativos, distribuidos en 8 docks dedicados a descarga de proveedores y 4 docks dedicados a carga de tiendas propias. Los muelles están físicamente separados y no se intercambian operaciones entre ellos.
+* El CD Norte cuenta con un único warehouse ubicado en Santiago, Chile.
+* La grilla operativa es de 12 docks: 8 dedicados a Descarga (proveedores) y 4 dedicados a Carga (tiendas).
+* Las operaciones de Descarga y Carga están segregadas físicamente por dock y no se intercambian.
+
+Duración de turnos y horarios de operación
+Felipe explicó que la duración estándar es de 45 minutos para Descarga y 30 minutos para Carga; cuando la orden trae más de 25 pallets, la duración de Descarga se extiende automáticamente a 60 minutos. El CD opera de lunes a viernes de 06:00 a 22:00 y los sábados de 06:00 a 14:00; no operan domingo. Existe una ventana entre 13:00 y 14:00 en la que no se reciben turnos por cambio de turno operativo.
+* La duración estándar del turno de Descarga es de 45 minutos.
+* La duración estándar del turno de Carga es de 30 minutos.
+* Si la orden supera los 25 pallets, la duración del turno de Descarga se extiende a 60 minutos.
+* Los días y horarios habilitados son lunes a viernes de 06:00 a 22:00 y sábados de 06:00 a 14:00.
+* Existe una restricción horaria entre 13:00 y 14:00 en la que no se reciben turnos por cambio de turno operativo.
+
+Módulo de Órdenes y gestión de pedidos
+Catalina confirmó que necesitan operar con el módulo de Órdenes activo, porque la orden de compra debe existir en el sistema antes de poder agendar el turno. Las OCs nacen en SAP y, durante el piloto, se cargarán a EasyDocking vía Excel exportado diariamente; en una fase 2 se evaluará la integración API directa. Una cita puede incluir hasta dos órdenes de compra siempre que pertenezcan al mismo proveedor; antes de agendar, la OC se asigna a una transportadora para que sea ella quien reserve el turno. Necesitan el detalle a nivel SKU y cantidades, no solo cabecera, porque la duración del turno depende del volumen de pallets que indique la orden.
+* Se confirma el uso del módulo de Órdenes: las órdenes deben existir en EasyDocking antes de agendar el turno.
+* Las órdenes se gestionan hoy en SAP y se cargarán inicialmente a EasyDocking vía Excel exportado diariamente.
+* En una segunda fase se evaluará una integración API directa con SAP para reemplazar la carga vía Excel.
+* Una cita puede incluir hasta dos órdenes de compra siempre que pertenezcan al mismo proveedor.
+* La orden se asigna a la transportadora antes de agendar el turno para que sea ella quien lo reserve.
+* La orden debe incluir detalle a nivel SKU y cantidades; no alcanza con la cabecera.
+* La duración del turno depende de la cantidad de pallets indicada en la orden.
+
+Formularios y campos
+Guido recorrió los formularios estándar (Planificación, Confirmación de turno, Check-in, Checklists, Asignación de dock) y consultó si los campos del estándar cubren las necesidades del cliente. Catalina y Felipe revisaron cada formulario y confirmaron que los campos obligatorios y opcionales del estándar son adecuados; no piden agregar ni eliminar campos.
+* Los formularios estándar revisados son Planificación, Confirmación de turno, Check-in, Checklists y Asignación de dock.
+* Los campos obligatorios y opcionales del estándar son adecuados para la operación actual.
+* No se requieren modificaciones a los formularios del estándar.
+
+Mensajes y notificaciones
+Se revisaron las plantillas estándar de mail y WhatsApp para confirmación de turno, recordatorio previo, autorización de ingreso y cierre del proceso. Catalina indicó que las plantillas tal como vienen aplican a su operación y no requieren ajustes de redacción ni de formato; tampoco identifican un mensaje clave faltante en el flujo.
+* Los canales de notificación habilitados son Mail y WhatsApp.
+* Las plantillas estándar de mail aplican sin ajustes de redacción ni formato.
+* Las plantillas estándar de WhatsApp aplican sin ajustes de redacción ni formato.
+* No se identifica ningún mensaje clave faltante en el flujo de notificaciones.
+
+Excepciones e integraciones
+Catalina y Felipe revisaron los puntos potencialmente fuera del estándar y confirmaron que no hay pedidos custom para esta implementación. La única integración planificada es con SAP para la importación automática de órdenes, prevista para fase 2. Para la puesta en marcha del piloto se necesita importar el maestro de proveedores y el maestro de transportadoras como carga inicial.
+* No se identificaron requerimientos fuera del estándar durante el relevamiento.
+* La única integración planificada es con SAP para la carga automática de órdenes y queda prevista para fase 2.
+* La importación inicial requerida incluye el maestro de proveedores y el maestro de transportadoras.
+
+Cierre, pendientes y próximos pasos
+Guido resumió las definiciones tomadas y los pendientes del cliente. Catalina y Felipe asumieron el compromiso de enviar las planillas, los maestros y los correos de usuarios en los próximos días. Se acordó realizar la reunión de configuración a los siete días para revisar el sistema cargado con los datos del cliente.
+* Quedaron definidos los workflows, la grilla de docks, los actores, las duraciones de turno y los horarios de operación.
+* Quedan pendientes el envío de los maestros (proveedores y transportadoras) y la lista de correos para crear los usuarios.
+* El cliente se compromete a enviar las planillas de turnos y de pedidos, los maestros y los correos de los usuarios.
+* El próximo paso es la reunión de configuración a los siete días para validar el sistema cargado con los datos del cliente.
+
+
+Puntos de Acción:
+
+* Catalina Vargas: Enviar las planillas Excel de turnos y de pedidos exportadas desde SAP
+* Catalina Vargas: Enviar el maestro de proveedores con datos de contacto y categorías
+* Catalina Vargas: Enviar el maestro de transportadoras con datos de contacto y choferes habituales
+* Felipe Aravena: Enviar los correos de los usuarios internos (planificación, supervisor, operadores, vigilancia) para crear las cuentas
+* Guido Barrionuevo: Cargar la configuración inicial del cliente (warehouse, docks, horarios, duraciones) y dejarla lista para la próxima reunión
+* Guido Barrionuevo: Cargar los maestros de proveedores y transportadoras una vez recibidos del cliente
+* Guido Barrionuevo: Habilitar el portal externo para transportadoras y compartir el acceso de prueba
+* Equipo de producto: Evaluar para fase 2 la integración API con SAP para la carga automática de órdenes
+* Felipe Aravena: Coordinar internamente la disponibilidad para la reunión de configuración dentro de siete días
+
+
+Preguntas clave:
+
+* ¿El workflow estándar de Descarga y de Carga cubre la operación actual del CD Norte sin modificaciones?
+* ¿La duración del turno se ajusta automáticamente si la orden supera los 25 pallets?
+* ¿Quién es responsable de la asignación de dock en cada turno?
+* ¿Es posible que una cita incluya más de una orden de compra del mismo proveedor?
+* ¿Las plantillas estándar de mail y WhatsApp aplican sin ajustes en redacción y formato?
+* ¿Cuándo estaría disponible la integración API con SAP para reemplazar la carga vía Excel?
+
+
+Bloc de notas:
+
+* Catalina y Felipe traen las definiciones revisadas internamente; el relevamiento avanza sin trabas y permite cerrar los 10 bloques.
+* La reunión confirma que el caso encaja con el estándar de EasyDocking y no requiere desarrollos custom.

@@ -1,0 +1,214 @@
+Reunión de relevamiento operativo — EasyDocking · Frigorífico Pampa SA
+Lunes 4 de mayo de 2026, 10:00 a 11:15 (ART)
+
+Participantes:
+- Guido Barrionuevo (EasyDocking, conduce el relevamiento)
+- Marcos Belgrano (Frigorífico Pampa SA, Jefe de Operaciones Logísticas, contacto del proyecto)
+- Romina Sánchez (Frigorífico Pampa SA, Coordinadora de Patio, contacto operativo diario)
+
+Transcripción:
+
+
+Guido Barrionuevo: Buen día Marcos, buen día Romina, ¿se me escucha bien? Perfecto. Bueno, gracias por hacerse el tiempo. Esta reunión la pensamos como un relevamiento operativo, vamos a ir bloque por bloque sobre un cuestionario que tenemos armado, así nos llevamos toda la información que necesitamos para configurar EasyDocking sobre la operación de ustedes. Calculá una hora, una hora y cuarto.
+
+Marcos Belgrano: Dale Guido, perfecto. Estoy con Romina que es la que vive el día a día del patio, así que entre los dos te cubrimos todo.
+
+Guido Barrionuevo: Genial. Arrancamos por lo básico. Marcos, contame: el sitio que vamos a implementar, ¿es planta industrial, centro de distribución o almacén?
+
+Marcos Belgrano: Es una planta industrial. Es la planta de Córdoba, donde tenemos producción y, pegado, un centro de distribución que despacha a clientes. Para nosotros es el mismo sitio operativo, pero son dos warehouses físicos, dos predios anexos.
+
+Guido Barrionuevo: Buenísimo, anoto planta industrial. ¿Industria?
+
+Marcos Belgrano: Frigorífico, carne vacuna. Producción y despacho de cortes a distribuidores y a algunas cadenas de retail.
+
+Guido Barrionuevo: Perfecto. ¿País y ciudad?
+
+Marcos Belgrano: Argentina, Córdoba capital. La planta está en el parque industrial.
+
+Guido Barrionuevo: ¿Quién va a ser el contacto principal del proyecto?
+
+Marcos Belgrano: Yo, Marcos Belgrano, Jefe de Operaciones Logísticas. Cualquier tema del proyecto en general lo manejamos vos y yo.
+
+Guido Barrionuevo: ¿Y el contacto operativo diario, el que va a usar el sistema y al que vamos a entrenar primero?
+
+Romina Sánchez: Yo, Romina Sánchez. Soy Coordinadora de Patio. Estoy todo el día en operación, así que el día a día de la herramienta va a pasar por mí.
+
+Guido Barrionuevo: Perfecto, te anoto Romina. Ahora, ¿cuál es el objetivo principal de implementar EasyDocking? Más orientado a turnos, a YMS, o a los dos?
+
+Marcos Belgrano: A los dos. Hoy tenemos un problema serio de coordinación: los proveedores y los transportistas no respetan los turnos, el patio se nos llena, los choferes esperan tres y cuatro horas. Queremos ordenar la agenda y al mismo tiempo tener visibilidad de qué está pasando en patio en tiempo real. Así que turnos y YMS, los dos módulos juntos.
+
+Guido Barrionuevo: Excelente. ¿Y fecha objetivo para salir en vivo?
+
+Marcos Belgrano: Mirá, todavía no la cerramos del todo. Apuntamos a mediados de año, segundo semestre. Te diría que entre julio y agosto, pero todavía no tengo fecha confirmada.
+
+Guido Barrionuevo: Ok, lo dejo como "segundo semestre 2026, fecha a confirmar". Bien, pasamos al segundo bloque, clasificación. ¿Qué tipos de operaciones se gestionan en el sitio? Tenemos descarga, carga, retira cliente, interplantas, o algún otro.
+
+Marcos Belgrano: Tenemos tres: descarga, carga y retira cliente.
+
+Romina Sánchez: La descarga es básicamente recepción de insumos, embalajes, algún producto terminado de otras plantas hermanas. La carga es el despacho a los distribuidores y a las cadenas. Y retira cliente lo usamos con dos o tres distribuidoras grandes que pasan ellas con su transporte a buscar la mercadería.
+
+Guido Barrionuevo: Perfecto, los tres entran. ¿Hoy utilizan turnos o planificación en alguno de esos procesos? ¿Con Excel?
+
+Marcos Belgrano: Sí, todo con Excel. Tenemos una planilla de turnos compartida que actualiza el equipo de planificación, una por día. Está siempre desactualizada, esa es la realidad.
+
+Guido Barrionuevo: ¿Y para órdenes o pedidos también tienen Excel? Si lo tienen, después si pueden pasármelo lo voy mirando.
+
+Marcos Belgrano: Sí, tenemos un Excel de pedidos también, lo bajamos del sistema interno nuestro. Te lo paso después de la reunión, junto con la planilla de turnos.
+
+Guido Barrionuevo: Dale, gracias. Y de módulos, ¿qué van a implementar? Tenemos YMS, Dock Scheduling, Inducción y Control Documental.
+
+Marcos Belgrano: Los cuatro. Para nosotros control documental es importante porque trabajamos con SENASA y necesitamos que la documentación esté validada antes de que el camión entre a planta. Así que los cuatro módulos, queremos arrancar con el paquete completo.
+
+Guido Barrionuevo: Ok, los cuatro. Pasamos al bloque tres, workflow. ¿Cuál es el workflow que aplica para cada operación? Te puedo mostrar los estándares y validamos.
+
+Marcos Belgrano: Sí, mostralos.
+
+Guido Barrionuevo: Para descarga tenemos: creación del turno, confirmación, check-in en portería, asignación de dock, inicio de descarga, checklist, fin de descarga, salida. Para carga es similar pero con el paso de pesaje agregado en algunos casos. Y retira cliente sigue el de carga pero sin el lado del transportista, porque el cliente trae su propio transporte. ¿Les cierra?
+
+Romina Sánchez: A ver, descarga sí, tal cual. En carga tenemos un paso extra antes del fin de carga que es el control de temperatura de cámara, porque al ser carne tenemos que validar que la cámara del camión esté a temperatura antes de empezar a cargar y al cerrar. Eso hoy lo hacemos en una planilla aparte que firma el operario.
+
+Guido Barrionuevo: Ah, ok. ¿Eso es un paso del workflow o un campo dentro de la checklist?
+
+Romina Sánchez: Te diría que es un campo de la checklist, no un estado nuevo. El operario igual marca inicio y fin como ahora, pero necesita registrar la temperatura medida y que quede asociada al turno.
+
+Guido Barrionuevo: Perfecto, eso lo anoto como un campo extra en el formulario de checklist de carga. Es un pedido custom respecto del estándar, lo voy a marcar así en el documento. Fuera de eso, ¿el resto de los workflows aplica sin modificaciones?
+
+Marcos Belgrano: Sí, lo demás está bien. No agregamos ni sacamos estados.
+
+Guido Barrionuevo: Buenísimo. Bloque cuatro, actores del proceso. Vamos uno por uno. ¿Quién crea los turnos?
+
+Romina Sánchez: Los crea el equipo de planificación, somos cuatro internos que organizamos la grilla del día siguiente. Algunos transportistas grandes los podrían generar ellos si les damos acceso, pero hoy lo hacemos todo nosotros.
+
+Guido Barrionuevo: Anoto entonces equipo de planificación (cuatro personas) y, opcionalmente a futuro, transportistas con acceso al portal. ¿Quién hace el check-in del camión?
+
+Romina Sánchez: La portería, el equipo de vigilancia. Ellos confirman llegada y revisan papeles básicos.
+
+Guido Barrionuevo: ¿Quién asigna el dock?
+
+Romina Sánchez: Yo. La asignación de dock pasa por mí o por algún compañero coordinador de patio. Somos dos coordinadores, uno por turno.
+
+Guido Barrionuevo: ¿Quién completa los checklists?
+
+Romina Sánchez: Los operarios de muelle, uno por dock. Son ellos los que abren y cierran la operación con el chofer.
+
+Guido Barrionuevo: ¿Quién supervisa la operación?
+
+Romina Sánchez: Yo, como coordinadora, y por encima mío está Marcos que tiene visibilidad general.
+
+Guido Barrionuevo: ¿Usuarios externos? Proveedores, transportistas, clientes.
+
+Marcos Belgrano: Por ahora no le vamos a abrir el sistema a externos. Los transportistas y los clientes los notificamos por WhatsApp y por mail, pero acceso al sistema no. Quizás más adelante les abrimos a las transportadoras grandes el portal para que generen turnos ellas, pero no en el arranque.
+
+Guido Barrionuevo: Perfecto, lo dejo como "sin usuarios externos en el piloto, evaluar transportadoras grandes a futuro". ¿Quién valida la documentación de los conductores y vehículos?
+
+Marcos Belgrano: La documentación la valida nuestro equipo de Higiene y Seguridad, junto con un referente de SENASA cuando aplica. Ellos cargan los documentos validados al sistema y la portería solo verifica que estén aprobados antes de habilitar el ingreso.
+
+Guido Barrionuevo: Buenísimo, eso encaja perfecto con el módulo de Control Documental. Pasamos al bloque cinco, agenda, docks y warehouse. ¿Cuántos warehouses participan?
+
+Marcos Belgrano: Dos. La planta y el CD anexo. Son predios pegados pero los manejamos como dos warehouses separados porque tienen docks distintos.
+
+Guido Barrionuevo: ¿Cuántos docks por warehouse?
+
+Romina Sánchez: La planta tiene cuatro docks, todos de descarga. El CD anexo tiene seis docks, cuatro de carga para distribuidores y dos para retira cliente.
+
+Guido Barrionuevo: Perfecto, entonces diez docks en total: cuatro descarga en planta, cuatro carga y dos retira en el CD. ¿Las operaciones están fijadas por dock o son intercambiables?
+
+Romina Sánchez: Están fijadas. Los de descarga no se usan para carga ni viceversa, porque están equipados distinto. Los dos de retira son docks chicos sin cámara, esos son específicos para que el cliente cargue su camión rápido.
+
+Guido Barrionuevo: ¿Cuál es la duración del turno?
+
+Romina Sánchez: Descarga lleva 75 minutos en promedio porque incluye la inspección sanitaria. Carga son 45 minutos. Retira cliente lo manejamos en 30 minutos porque son cargas chicas, una o dos pallets.
+
+Guido Barrionuevo: ¿Días y horarios habilitados?
+
+Romina Sánchez: De lunes a sábado, de 6 de la mañana a 10 de la noche. Domingo no operamos.
+
+Guido Barrionuevo: ¿Alguna restricción horaria dentro del día?
+
+Romina Sánchez: Sí, entre las 14 y las 15 no recibimos turnos, es el cambio de turno del personal operativo. Y los sábados solo hasta las 14, no hasta las 22.
+
+Guido Barrionuevo: Perfecto, esa restricción sábado la anoto. Pasamos al bloque seis, módulo de Órdenes. ¿Necesitan que la orden de compra exista en EasyDocking antes de poder sacar el turno, o alcanza con un campo de referencia en el formulario?
+
+Marcos Belgrano: Necesitamos que la orden exista antes. Sin orden no hay turno. Es una regla operativa nuestra, porque si no la orden no pasó control de calidad ni tiene producto reservado en el sistema.
+
+Guido Barrionuevo: Ok, entonces módulo de Órdenes activo. ¿Una cita puede incluir más de una orden?
+
+Marcos Belgrano: Sí, hasta tres. A veces el distribuidor levanta varias órdenes en el mismo viaje. Pero siempre del mismo cliente, no mezclamos clientes en un mismo turno.
+
+Guido Barrionuevo: ¿Asignan la orden a un tercero antes de agendar? A la transportadora o al cliente que retira.
+
+Marcos Belgrano: Sí, la orden se asigna a la transportadora o al cliente retira antes de generar el turno. Esa asignación hoy la hace el equipo comercial cuando confirma el despacho.
+
+Guido Barrionuevo: ¿Cómo gestionan hoy las órdenes? ¿XLS, ERP, otro?
+
+Marcos Belgrano: Las órdenes nacen en nuestro WMS interno, que es un desarrollo propio. De ahí las bajamos a Excel y se las pasamos al equipo de planificación.
+
+Guido Barrionuevo: ¿Y cómo las van a cargar a EasyDocking? ¿Manual, Excel, integración?
+
+Marcos Belgrano: Para el piloto, Excel. Importamos diariamente. Pero a mediano plazo queremos integración API directa con nuestro WMS para que las órdenes pasen automáticamente. Eso lo trabajamos en una fase 2.
+
+Guido Barrionuevo: ¿Qué campos necesita tener la orden?
+
+Marcos Belgrano: Número de orden, cliente o proveedor según corresponda, fecha de despacho, lista de productos con códigos internos y cantidades en kilos y en pallets, transportadora asignada, y un campo de observaciones para temas sanitarios.
+
+Guido Barrionuevo: ¿Necesitan detalle de mercadería a nivel SKU o alcanza con cabecera?
+
+Marcos Belgrano: SKU y cantidad, sí o sí. La cabecera sola no nos sirve porque el dock y el tipo de cámara dependen del producto.
+
+Guido Barrionuevo: ¿La duración del turno depende de datos de la orden? Pallets, tipo de carga, SKU.
+
+Romina Sánchez: Sí, depende de la cantidad de pallets. Si la carga tiene más de 18 pallets, sumamos 15 minutos al turno estándar. Eso lo deciden los operarios en el armado de la grilla.
+
+Guido Barrionuevo: Perfecto. Bloque siete, formularios y campos. Te repaso rápido los formularios que tenemos: planificación de turno, confirmación, check-in, checklists, asignación de dock. ¿Los campos del estándar les cierran?
+
+Marcos Belgrano: La mayoría sí. El único cambio es lo que mencionó Romina antes: el formulario de checklist de carga tiene que tener el campo de temperatura de cámara, con valor numérico y obligatorio. Y agregaría un campo de foto del termómetro, opcional pero deseable.
+
+Guido Barrionuevo: Ok, dos campos custom en la checklist de carga: temperatura numérica obligatoria y foto opcional. Los marco como custom. ¿Algún otro cambio en los demás formularios?
+
+Marcos Belgrano: No, el resto está bien. Planificación, confirmación, check-in y asignación de dock con el estándar nos alcanza.
+
+Guido Barrionuevo: Bloque ocho, mensajes y notificaciones. ¿Por dónde quieren notificar? Mail, WhatsApp, los dos.
+
+Marcos Belgrano: Los dos. Mail para los responsables internos y para las transportadoras grandes, WhatsApp para los choferes y para los clientes retira.
+
+Guido Barrionuevo: ¿Las plantillas estándar de mail aplican o necesitan ajustes?
+
+Marcos Belgrano: Necesitamos verlas antes de confirmar. ¿Me las podés mandar después de la reunión?
+
+Guido Barrionuevo: Sí, te las envío. Por ahora lo dejo como "plantillas a revisar por el cliente". ¿Y las de WhatsApp?
+
+Marcos Belgrano: Lo mismo, las miramos y te confirmo. Pero por la lógica del flujo, las plantillas estándar tendrían que aplicar sin grandes cambios.
+
+Guido Barrionuevo: ¿Falta algún mensaje clave en el proceso?
+
+Romina Sánchez: A mí me gustaría que cuando el camión entra al patio le llegue un mensaje al cliente final avisando que la mercadería está siendo cargada. Eso hoy lo hacemos manualmente. ¿Eso entra dentro del estándar?
+
+Guido Barrionuevo: Sí, eso lo tenemos como mensaje de inicio de carga, podemos habilitarlo. Lo marco como confirmado. Bloque nueve, excepciones e integraciones. ¿Hay algo fuera del estándar más allá de la temperatura?
+
+Marcos Belgrano: Más allá del campo de temperatura y la foto, no. La integración con nuestro WMS es lo principal, pero como dijimos es fase 2.
+
+Guido Barrionuevo: ¿Necesitan importar información inicial al sistema?
+
+Marcos Belgrano: Sí, vamos a tener que importar el maestro de transportadoras, el maestro de clientes y el maestro de productos con sus códigos. Eso lo bajamos de nuestro WMS, te lo paso en Excel.
+
+Guido Barrionuevo: Perfecto. Pasamos al cierre, bloque diez. ¿Qué quedó definido en la reunión?
+
+Marcos Belgrano: Definimos que vamos con los cuatro módulos, las tres operaciones, dos warehouses, diez docks, los horarios y duraciones, el módulo de órdenes activo con import por Excel y los actores del proceso. También el campo custom de temperatura y la integración futura con el WMS interno.
+
+Guido Barrionuevo: ¿Qué quedó pendiente?
+
+Marcos Belgrano: La fecha de go-live exacta, las plantillas de mensajes que te tengo que revisar, y los maestros que te tengo que mandar.
+
+Guido Barrionuevo: ¿Qué nos vas a enviar vos?
+
+Marcos Belgrano: Te mando esta semana las planillas de Excel de turnos y pedidos, los maestros de transportadoras, clientes y productos, y los correos de los usuarios internos para que les des de alta.
+
+Guido Barrionuevo: Perfecto. ¿Próximo paso?
+
+Marcos Belgrano: Que vos cargues lo que mandamos y nos juntemos en dos semanas a ver el sistema configurado, hacer una pasada en vivo y cerrar fecha de go-live. ¿Te parece?
+
+Guido Barrionuevo: Dale, lo agendamos. Te paso un mail con el resumen de lo que hablamos y los pendientes, y coordinamos. Muchas gracias a los dos por el tiempo.
+
+Marcos Belgrano: Gracias a vos, Guido. Hablamos.
+
+Romina Sánchez: Gracias, hasta luego.
