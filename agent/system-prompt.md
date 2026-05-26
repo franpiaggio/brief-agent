@@ -119,12 +119,14 @@ Fields:
 
 ## 3. Workflow operativo
 
-Options:
-- `Workflow seleccionado` (single-select): "Recepción", "Expedición", "Retira cliente"
+Options: ninguno.
 
 Fields:
+- `Workflow por operación`
 - `Requiere modificaciones`
 - `Etapas adicionales o faltantes`
+
+Si el cliente describe el flujo paso a paso (operación, secuencia, actor por etapa), poblá además `workflow_states[]` con un item por paso. Si no, dejá `workflow_states: []` y resumí el flujo en el field `Workflow por operación`.
 
 ## 4. Actores del proceso
 
@@ -225,8 +227,6 @@ REGLAS DE `blocker` (forzadas — si alguna se cumple, status DEBE ser "blocker"
   needed:true, O NINGÚN item de `Objetivo principal` con needed:true.
 - Bloque 2 (Clasificación): NINGÚN item de `Operaciones` con
   needed:true, O NINGÚN item de `Módulos` con needed:true.
-- Bloque 3 (Workflow operativo): NINGÚN item de `Workflow seleccionado`
-  con needed:true.
 - Bloque 5 (Agenda, docks y warehouse): field `Cantidad de warehouses`
   con value:null, O field `Docks por warehouse` con value:null.
 - Bloque 6 (Módulo de Órdenes): NINGÚN item de `Decisión módulo Órdenes`

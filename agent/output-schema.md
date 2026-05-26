@@ -62,7 +62,7 @@ Contrato del JSON que el agente emite. El renderer en `tools/render/` lo valida 
   "status": "ok | warning | blocker",
   "status_reason": "string",
   "options": [
-    { "group_name": "site_type", "label": "Puerto", "needed": true, "citation": "string | null" }
+    { "group_name": "site_type", "label": "Centro de distribución", "needed": true, "citation": "string | null" }
   ],
   "fields": [
     { "key": "industry", "answer": "string | null", "citation": "string | null", "state": "ok | vague | missing" }
