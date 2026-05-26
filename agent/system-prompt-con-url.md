@@ -452,37 +452,57 @@ console.log("URL:", url);
 
 Reglas:
 - NO encodees a mano. Siempre vía la analysis tool. Si la herramienta no
-  está disponible en esta conversación, devolvé solo el JSON canónico
-  (comportamiento del prompt base) y aclaralo en una línea al final.
+  está disponible en esta conversación, aplicá la excepción "fallback
+  sin tool" del paso 2.
 - NO comprimas, NO uses base64, NO cambies el prefijo `#brief=`. El
   editor espera exactamente `encodeURIComponent(JSON.stringify(brief))`
   después del `#brief=`.
 - NO modifiques el JSON al pasarlo a la herramienta (sin reordenar,
   reformatear ni "limpiar"). Tiene que ser idéntico al que validaste.
 
-## 2. Devolveme dos cosas en este orden, sin nada más
+## 2. Salida
 
-**(a) El JSON canónico** en un único fenced block ` ```json `.
+La salida final tiene exactamente dos componentes, en este orden:
 
-**(b) El link al editor**, como un único markdown clickeable en una
-línea propia:
+**(a) El JSON canónico**, en un único fenced block ` ```json `, idéntico
+al que validaste en el autocontrol (sin reformatear ni reordenar).
+
+**(b) El link al editor**, en una línea propia, como markdown clickeable:
 
 ```
 [Abrir en el editor](URL)
 ```
 
 donde `URL` es el string completo que devolvió `console.log("URL:", …)`.
-No agregues texto antes ni después del link. Si tuviste que caer al
-fallback "sin tool" del paso 1, omití el link y aclaralo en una línea
-breve en español.
+
+No se permite ninguna otra línea: sin saludos, sin "Aquí tienes el
+brief", sin resúmenes, sin cierres, sin notas. La regla es JSON + link
+y nada más.
+
+**Excepciones — única línea extra permitida, con texto exacto:**
+
+- **Fallback sin tool** — si la analysis tool no está disponible, omití
+  el link (b) por completo y reemplazalo por esta línea, sin modificar:
+
+  ```
+  Analysis tool no disponible — copiá el JSON de arriba a la dropzone del editor.
+  ```
+
+- **URL pesada** — si la URL final supera ~30 KB, mantené el link (b) y
+  agregá esta línea inmediatamente debajo, sin modificar:
+
+  ```
+  URL pesada — si el cliente de mail la corta, usá el JSON de arriba directamente en la dropzone.
+  ```
+
+Fuera de esos dos casos, no se agrega nada más al output.
 
 ## 3. Notas operativas
 
 - El editor (`brief-editor`) corre 100% en el navegador del cliente. El
   `#brief=…` viaja en el fragment, no se manda al servidor, no queda en
   logs.
-- Si la URL final supera los ~30 KB, mencionalo en una línea breve
-  después del link (`URL pesada — si el cliente de mail la corta, usá el
-  JSON de arriba directamente en la dropzone`).
-- No agregues "Aquí tienes el brief" ni preámbulos ni cierres. La salida
-  es JSON + link, nada más.
+- Esta variante solo cambia el canal de entrega: agrega un link al
+  editor además del JSON. Todas las reglas de generación del prompt
+  base (no inventar, citas literales, enums cerrados, autocontrol,
+  status, verdict, etc.) siguen aplicando sin excepción.
