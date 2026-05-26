@@ -7,11 +7,13 @@ import { downloadPdf } from '../export/downloadPdf'
 import { BLOCK_DEFS } from '../constants/blockDefs'
 import { VERDICT_DEFS, VERDICT_BY_STATUS } from '../constants/verdictDefs'
 import { BLOCK_STATUS_LABELS } from '../constants/groupLabels'
+import { ExportPdfWarningDialog } from '../modal/ExportPdfWarningDialog'
 
 export function Toolbar() {
   const { state, dispatch, actions, isDirty, markExported, resetEditor } = useBrief()
   const [blocksOpen, setBlocksOpen] = useState(false)
   const [exportOpen, setExportOpen] = useState(false)
+  const [pdfWarningOpen, setPdfWarningOpen] = useState(false)
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
@@ -46,8 +48,21 @@ export function Toolbar() {
     setExportOpen(false)
   }
 
-  async function handleExportPdf() {
+  function handleExportPdfClick() {
     if (!state) return
+    setPdfWarningOpen(true)
+  }
+
+  function handleDownloadJsonFromWarning() {
+    if (!state) return
+    const jsonFilename = buildFilename(state).replace(/\.html$/, '.json')
+    downloadJson(state, jsonFilename)
+    markExported()
+  }
+
+  async function handleConfirmPdfExport() {
+    if (!state) return
+    setPdfWarningOpen(false)
     try {
       await downloadPdf(state)
       markExported()
@@ -153,7 +168,7 @@ export function Toolbar() {
         <button
           className="btn btn--ghost"
           type="button"
-          onClick={handleExportPdf}
+          onClick={handleExportPdfClick}
           title="Abrir diálogo de impresión para guardar como PDF"
         >
           <svg className="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -208,6 +223,15 @@ export function Toolbar() {
           )}
         </div>
       </div>
+
+      {pdfWarningOpen && state && (
+        <ExportPdfWarningDialog
+          jsonFilename={buildFilename(state).replace(/\.html$/, '.json')}
+          onDownloadJson={handleDownloadJsonFromWarning}
+          onConfirm={handleConfirmPdfExport}
+          onCancel={() => setPdfWarningOpen(false)}
+        />
+      )}
     </header>
   )
 }
