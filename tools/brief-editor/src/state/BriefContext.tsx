@@ -4,6 +4,7 @@ import type { BriefData } from '../types'
 import { actions } from './actions'
 import type { Action } from './actions'
 import { reducer } from './reducer'
+import { hasBriefHash, loadFromHash } from '../loaders/loadHash'
 
 type BriefContextValue = {
   state: BriefData | null
@@ -12,6 +13,8 @@ type BriefContextValue = {
   isDirty: boolean
   markExported: () => void
   resetEditor: () => void
+  hashLoadError: string | null
+  clearHashLoadError: () => void
 }
 
 export const BriefContext = createContext<BriefContextValue | null>(null)
@@ -19,6 +22,7 @@ export const BriefContext = createContext<BriefContextValue | null>(null)
 export function BriefProvider({ children }: { children: React.ReactNode }) {
   const [state, rawDispatch] = useReducer(reducer, null)
   const [isDirty, setIsDirty] = useState(false)
+  const [hashLoadError, setHashLoadError] = useState<string | null>(null)
   const historyPushed = useRef(false)
 
   const dispatch = useCallback<Dispatch<Action>>((action) => {
@@ -37,7 +41,23 @@ export function BriefProvider({ children }: { children: React.ReactNode }) {
     setIsDirty(false)
   }, [])
 
+  const clearHashLoadError = useCallback(() => setHashLoadError(null), [])
+
   useEffect(() => {
+    const hash = window.location.hash
+    if (hasBriefHash(hash)) {
+      try {
+        const data = loadFromHash(hash)
+        rawDispatch({ type: 'LOAD_BRIEF', data })
+        history.replaceState({ view: 'editor' }, '', window.location.pathname + window.location.search)
+        historyPushed.current = true
+        return
+      } catch (err) {
+        setHashLoadError(err instanceof Error ? err.message : 'No se pudo cargar el brief desde el link')
+        history.replaceState({ view: 'dropzone' }, '', window.location.pathname + window.location.search)
+        return
+      }
+    }
     history.replaceState({ view: 'dropzone' }, '')
   }, [])
 
@@ -79,7 +99,7 @@ export function BriefProvider({ children }: { children: React.ReactNode }) {
   }, [isDirty])
 
   return (
-    <BriefContext value={{ state, dispatch, actions, isDirty, markExported, resetEditor }}>
+    <BriefContext value={{ state, dispatch, actions, isDirty, markExported, resetEditor, hashLoadError, clearHashLoadError }}>
       {children}
     </BriefContext>
   )

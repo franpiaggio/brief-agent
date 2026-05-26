@@ -10,8 +10,10 @@ import './dropzone.css'
 type DropzoneState = 'idle' | 'loading' | { error: string }
 
 export function Dropzone() {
-  const { dispatch, actions } = useBrief()
-  const [status, setStatus] = useState<DropzoneState>('idle')
+  const { dispatch, actions, hashLoadError, clearHashLoadError } = useBrief()
+  const [status, setStatus] = useState<DropzoneState>(
+    hashLoadError ? { error: hashLoadError } : 'idle',
+  )
   const inputRef = useRef<HTMLInputElement>(null)
 
   async function handleFile(file: File) {
@@ -22,6 +24,7 @@ export function Dropzone() {
     }
 
     setStatus('loading')
+    clearHashLoadError()
     try {
       const data =
         ext === 'html' ? await loadHtml(file) :
@@ -35,6 +38,7 @@ export function Dropzone() {
 
   function loadSample() {
     setStatus('loading')
+    clearHashLoadError()
     try {
       const data = BriefSchema.parse(sampleBrief)
       dispatch(actions.loadBrief(data))
