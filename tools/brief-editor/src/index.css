@@ -48,6 +48,7 @@ button {
 
 body.app {
   height: 100vh;
+  height: 100dvh;
   overflow: hidden;
 }
 
@@ -58,6 +59,7 @@ body.app {
     "toolbar"
     "preview";
   height: 100vh;
+  height: 100dvh;
 }
 
 /* Toolbar ---------------------------------------------------- */
@@ -1371,7 +1373,7 @@ body.app {
   .toolbar-select,
   .toolbar-dropdown-trigger,
   .btn {
-    min-height: 38px;
+    min-height: 44px;
   }
 
   .toolbar-select {
@@ -1391,11 +1393,21 @@ body.app {
   }
 
   .toolbar-divider,
-  .toolbar-status,
   .btn--load .btn-label,
   .btn--pdf .btn-label,
   .btn--export .btn-label {
     display: none;
+  }
+
+  .toolbar-status {
+    font-size: 0;
+    padding: 0 4px 0 0;
+    gap: 0;
+    flex: 0 0 auto;
+  }
+  .toolbar-status::before {
+    width: 8px;
+    height: 8px;
   }
 
   .btn {
