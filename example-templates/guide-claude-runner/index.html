@@ -562,6 +562,65 @@
     gap: 16px;
     flex-wrap: wrap;
   }
+
+  @media (max-width: 720px) {
+    .wrap { padding: 44px 20px 72px; }
+
+    .topbar { padding-bottom: 22px; margin-bottom: 40px; }
+
+    .head { margin-bottom: 36px; }
+    .head h1 { font-size: 24px; }
+    .head-lede { font-size: 14px; }
+
+    .sec { margin-top: 40px; }
+    .sec-head { flex-wrap: wrap; row-gap: 6px; }
+    .sec h2 { font-size: 17px; }
+    .sec-status { margin-left: 0; }
+
+    .equation { font-size: 18px; gap: 10px; padding-bottom: 20px; }
+    .equation-op { font-size: 14px; }
+
+    .diagram { padding: 16px 18px; font-size: 11.5px; }
+
+    .opt { padding: 18px 0; }
+    .opt-name { font-size: 14.5px; }
+    .opt-desc { font-size: 13.5px; }
+    .opt--next { margin: 0; padding-left: 14px; padding-right: 14px; }
+    .opt-link { font-size: 12.5px; }
+
+    .matrix table { font-size: 11.5px; }
+    .matrix th, .matrix td { padding: 10px 12px; }
+    .matrix tbody th { width: auto; }
+
+    .spec { grid-template-columns: 1fr; gap: 0; }
+    .spec dt {
+      margin-top: 12px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--ink-subtle);
+    }
+    .spec dt:first-of-type { margin-top: 0; }
+    .spec dd { word-break: break-word; }
+    .spec dd a { word-break: break-all; }
+
+    .howto { padding: 14px 16px 16px; }
+    .howto-list li { font-size: 13px; padding-left: 28px; }
+
+    .file-path { font-size: 11.5px; word-break: break-all; }
+    .file-desc { font-size: 13px; }
+
+    .foot { margin-top: 56px; font-size: 10px; }
+  }
+
+  @media (max-width: 420px) {
+    .wrap { padding: 36px 16px 60px; }
+    .head h1 { font-size: 22px; }
+    .equation { font-size: 16px; gap: 8px; }
+    .equation-op { font-size: 13px; }
+    .sec h2 { font-size: 16px; }
+    .sec-num { font-size: 10px; }
+  }
 </style>
 </head>
 <body>
