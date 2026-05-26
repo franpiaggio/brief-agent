@@ -30,8 +30,15 @@ function getTemplate(): HandlebarsTemplateDelegate {
   return compiled;
 }
 
+function safeJsonForScript(value: unknown): string {
+  return JSON.stringify(value, null, 2)
+    .replace(/</g, '\\u003c')
+    .replace(/-->/g, '--\\u003e');
+}
+
 export function renderBrief(rawJson: unknown): string {
   const brief = BriefSchema.parse(rawJson);
   const context = compute(brief);
-  return getTemplate()(context);
+  const sourceJson = safeJsonForScript(brief);
+  return getTemplate()({ ...(context as Record<string, unknown>), sourceJson });
 }
