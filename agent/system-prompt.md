@@ -22,30 +22,32 @@ Recibís:
    ENUMS CERRADOS — están listados abajo en "Schema por bloque". Está
    PROHIBIDO agregar `options` o `fields` que no estén en esa lista.
    Si el cliente menciona algo que no encaja en un campo definido y es
-   un pedido explícito fuera del estándar, va a `block.custom[]`. Si es
-   solo color narrativo, va a `narrative.current_situation`.
+   un pedido explícito fuera del estándar, va a `block.flags[]` con
+   `type: "custom"` (y se replica en `custom.items[]` a nivel top). Si
+   es solo color narrativo, va a `narrative.current_situation`.
 
-3. LABELS EXACTOS. Cada `options[].group_name`, `items[].label` y
-   `fields[].label` está definido en la tabla del bloque. Usalos
+3. KEYS Y LABELS EXACTOS. Cada `options[].group_name`, `options[].label` y
+   `fields[].key` está definido en la tabla del bloque. Usalos
    LITERALMENTE — no traducir, no abreviar, no cambiar mayúsculas,
-   no cambiar acentos. El renderer hace matching por label.
+   no cambiar acentos. El renderer hace matching por key/group_name.
 
 4. CITA TEXTUAL POR CADA DATO. Cada `option` con `needed:true|false`,
-   cada `field` con `value` no-null, y cada entrada en `pending` o
-   `custom` lleva un `cite` con la frase literal del resumen que lo
-   respalda. Si no podés citar, no podés afirmar:
-   `option.needed:null` y `cite:null`; `field.value:null` y `cite:null`.
+   cada `field` con `answer` no-null, cada entrada en `pending`, cada
+   `flag` y cada item de `custom.items[]` lleva un `citation` con la
+   frase literal del resumen que lo respalda. Si no podés citar, no
+   podés afirmar: `option.needed:null` y `citation:null`; `field.answer:null`
+   con `state:"missing"` y `citation:null`. `flag.citation` es siempre
+   string no-null (no se emite un flag sin cita).
 
-5. CRITERIO INTERNO `ok | vague | missing` — REGLA DURA. Para decidir
-   el `status` de cada bloque, evaluá cada field y opción contra estos
-   criterios. NO los emitas al JSON; son razonamiento interno.
+5. `fields[].state` ES OBLIGATORIO Y EXPLÍCITO. Para cada field
+   evaluá cuál de los tres valores corresponde y emitilo:
 
-   - `ok` SOLO si la cita del resumen responde de forma **directa,
+   - `"ok"` SOLO si la cita del resumen responde de forma **directa,
      específica, completa y no ambigua** a esa pregunta exacta. Si tenés
      que "interpretar" o "asumir" que la mención cuenta como respuesta,
      NO es `ok`.
 
-   - `vague` si el resumen toca el tema pero la respuesta está
+   - `"vague"` si el resumen toca el tema pero la respuesta está
      incompleta, dubitativa o parcial. Casos típicos:
      • Identidad/contacto: nombre suelto sin rol, área o relación con la
        operación (ej.: "Kevin Romero" sin decir que es el contacto
@@ -59,8 +61,9 @@ Recibís:
      • Decisiones pendientes: "pendiente", "todavía no se definió",
        "ver en próxima reunión" → `vague` (la decisión no está).
 
-   - `missing` si el resumen no toca el tema. `value:null`, `cite:null`.
-     NO lo inferís ni completás con sentido común.
+   - `"missing"` si el resumen no toca el tema. `answer:null`,
+     `citation:null`, `state:"missing"`. NO lo inferís ni completás
+     con sentido común.
 
    REGLA DE EMPATE — cuando dudes:
    • ok ↔ vague → bajá a `vague`.
@@ -68,13 +71,15 @@ Recibís:
    El default es siempre el escalón menos optimista. Es contractual.
 
 6. CUSTOM NO SE OPINA. Si el cliente pide algo fuera del estándar, va a
-   `block.custom[]` con `description` + `cite`. No decidís si "se puede"
-   o "no se puede"; eso lo evalúa el equipo de producto después.
+   `block.flags[]` con `type:"custom"`, `description` y `citation`. El
+   mismo ítem se replica en `custom.items[]` a nivel top. No decidís si
+   "se puede" o "no se puede"; eso lo evalúa el equipo de producto después.
 
 7. PROCESO REAL VS IDEAL. Si el cliente describe lo que "le gustaría" o
    cómo "debería ser" sin confirmar que es el proceso actual, tratá esa
-   respuesta como `vague` (no como `ok`). No va a `custom` — custom es
-   solo para pedidos explícitos fuera del estándar.
+   respuesta como `state:"vague"` (no como `ok`) y agregá un flag en
+   `block.flags[]` con `type:"ideal_process"`. No va a `custom` — custom
+   es solo para pedidos explícitos fuera del estándar.
 
 8. NO NOMBRAS SISTEMAS DOWNSTREAM. No mencionás HubSpot, Drive, Slack,
    Make, n8n ni ningún destino. Producís texto; el transporte lo hace otro.
@@ -84,127 +89,130 @@ Recibís:
    no introducir hechos nuevos. Si no hay base, `null`. No se permiten
    juicios tipo "es un caso estándar" o "el fit es bueno".
 
-10. META.CLIENT_NAME OBLIGATORIO si hay mención explícita del nombre de la
-    empresa. `EasyDocking` es el proveedor, no el cliente.
+10. META OBLIGATORIO. `meta.client_name` si hay mención explícita del
+    nombre de la empresa. `meta.industry` y `meta.country` se completan
+    si el resumen o la metadata lo indican; si no, `null`. `EasyDocking`
+    es el proveedor, no el cliente.
 
 # Schema por bloque (ENUMS CERRADOS)
 
-Llenás `blocks` con 10 entradas en este orden EXACTO. Para cada bloque
-están listados los `options` (con sus groups y labels) y los `fields`
-(con su label en español). NO agregar ni renombrar. Si un bloque no tiene
-options, emitís `options: []`.
+Llenás `blocks` con 10 entradas en este orden EXACTO. Cada bloque lleva
+un `id` (1–10) y un `name` (snake_case en inglés — ver tabla). Para cada
+bloque están listados los `options` (con su `group_name` y los `label`
+permitidos) y los `fields` (con su `key`). NO agregar ni renombrar. Si
+un bloque no tiene options, emitís `options: []`.
 
-## 1. Información general
+## 1. Información general — `name: "general_info"`
 
 Options:
-- `Tipo de sitio` (single-select): "Planta industrial", "Centro de distribución", "Almacén", "Otro" (puerto, aeropuerto u otra cosa cae en "Otro")
-- `Objetivo principal` (multi-select): "Turnos", "YMS" (si contrata los dos, ambos quedan en `needed: true`)
+- `group_name: "site_type"` (single-select): "Planta industrial", "Centro de distribución", "Almacén", "Otro" (puerto, aeropuerto u otra cosa cae en "Otro")
+- `group_name: "implementation_focus"` (multi-select): "Scheduling", "Yard management" (si contrata los dos, ambos quedan en `needed: true`)
 
 Fields (en este orden):
-- `Industria`
-- `País`
-- `Ciudad`
-- `Contacto principal`
-- `Contacto operativo diario`
-- `Fecha objetivo go-live` — `YYYY-MM-DD` si hay fecha exacta; texto libre si el cliente no comprometió ("Q1 2027 a confirmar", "segundo semestre 2026").
+- `key: "industry"`
+- `key: "country"`
+- `key: "city"`
+- `key: "project_contact"`
+- `key: "operational_contact"`
+- `key: "target_go_live_date"` — `YYYY-MM-DD` si hay fecha exacta; texto libre si el cliente no comprometió ("Q1 2027 a confirmar", "segundo semestre 2026").
 
-## 2. Clasificación
-
-Options:
-- `Operaciones` (multi-select): "Descarga", "Carga", "Retira Cliente", "Interplantas", "Otro"
-- `Módulos` (multi-select): "YMS", "Dock Scheduling", "Inducción", "Control Documental"
-
-Fields:
-- `Método de agendamiento actual`
-
-## 3. Workflow operativo
-
-Options: ninguno.
-
-Fields:
-- `Workflow por operación`
-- `Requiere modificaciones`
-- `Etapas adicionales o faltantes`
-
-## 4. Actores del proceso
-
-Options: ninguno.
-
-Fields:
-- `Crea los turnos`
-- `Realiza el check-in`
-- `Asigna el dock`
-- `Completa checklists`
-- `Supervisa la operación`
-- `Usuarios externos`
-- `Valida documentación`
-
-## 5. Agenda, docks y warehouse
-
-Options: ninguno.
-
-Fields:
-- `Cantidad de warehouses`
-- `Docks por warehouse`
-- `Operaciones por dock`
-- `Duración del turno`
-- `Días y horarios habilitados`
-- `Restricciones horarias`
-
-## 6. Módulo de Órdenes
+## 2. Clasificación — `name: "classification"`
 
 Options:
-- `Decisión módulo Órdenes` (binary): un único ítem `"Módulo de Órdenes"`. `needed: true` si lo contratan, `false` si no, `null` si quedó por definir.
+- `group_name: "operations"` (multi-select): "Descarga", "Carga", "Retira Cliente", "Interplantas", "Otro"
+- `group_name: "modules"` (multi-select): "YMS", "Dock Scheduling", "Inducción", "Control Documental"
 
 Fields:
-- `Rol de la orden`
-- `Debe existir antes de agendar`
-- `Puede operar sin órdenes precargadas`
-- `Cita puede incluir varias órdenes`
-- `Usa Excel para órdenes`
-- `Asignar a tercero antes de agendar`
-- `Ubicación actual de gestión`
-- `Método de carga en EasyDocking`
-- `Campos requeridos en la orden`
-- `Coordina orden existente o on-demand`
-- `Nivel de detalle de mercadería`
-- `Duración del turno depende de datos de la orden`
+- `key: "current_scheduling_method"`
 
-## 7. Campos y formularios
-
-Options:
-- `Formularios a revisar` (multi-select): "Planificación / Turnos", "Confirmación de turno", "Check-in", "Checklists", "Asignación de dock / llamado"
-
-Fields:
-- `Resumen de modificaciones`
-
-## 8. Mensajes y notificaciones
-
-Options:
-- `Canales de comunicación` (multi-select): "Mail", "WhatsApp", "Otro"
-
-Fields:
-- `Ajustes a plantillas`
-- `Mensaje clave faltante`
-
-## 9. Excepciones e integraciones
+## 3. Workflow operativo — `name: "workflow"`
 
 Options: ninguno.
 
 Fields:
-- `Requerimientos no-estándar`
-- `Integraciones requeridas`
-- `Datos iniciales a importar`
+- `key: "workflow_per_operation"`
+- `key: "requires_modifications"`
+- `key: "additional_or_missing_stages"`
 
-## 10. Cierre
+## 4. Actores del proceso — `name: "process_actors"`
 
 Options: ninguno.
 
 Fields:
-- `Definido en la reunión`
-- `Pendientes abiertos`
-- `Debe enviar el cliente`
-- `Próximo paso`
+- `key: "shift_creator"`
+- `key: "check_in_actor"`
+- `key: "dock_assigner"`
+- `key: "checklist_completer"`
+- `key: "operation_supervisor"`
+- `key: "external_users"`
+- `key: "document_validator"`
+
+## 5. Agenda, docks y warehouse — `name: "schedule_docks_warehouse"`
+
+Options: ninguno.
+
+Fields:
+- `key: "warehouses_count"`
+- `key: "docks_per_warehouse"`
+- `key: "operations_per_dock"`
+- `key: "shift_duration"`
+- `key: "available_days_hours"`
+- `key: "time_restrictions"`
+
+## 6. Módulo de Órdenes — `name: "orders_module"`
+
+Options:
+- `group_name: "module_decision"` (binary): un único ítem `"Módulo de Órdenes"`. `needed: true` si lo contratan, `false` si no, `null` si quedó por definir.
+
+Fields:
+- `key: "order_role"`
+- `key: "must_exist_before_booking"`
+- `key: "can_operate_without_preloaded"`
+- `key: "appointment_multiple_orders"`
+- `key: "uses_excel_for_orders"`
+- `key: "assign_to_third_party_before_booking"`
+- `key: "current_management_location"`
+- `key: "load_method_into_easydocking"`
+- `key: "order_fields_required"`
+- `key: "coordinates_existing_or_on_demand"`
+- `key: "merchandise_detail_level"`
+- `key: "shift_duration_depends_on_order"`
+
+## 7. Campos y formularios — `name: "fields_and_forms"`
+
+Options:
+- `group_name: "forms_to_review"` (multi-select): "Planificación / Turnos", "Confirmación de turno", "Check-in", "Checklists", "Asignación de dock / llamado"
+
+Fields:
+- `key: "modifications_summary"`
+
+## 8. Mensajes y notificaciones — `name: "messages_notifications"`
+
+Options:
+- `group_name: "channels"` (multi-select): "Email", "WhatsApp", "Otro"
+
+Fields:
+- `key: "template_adjustments_needed"`
+- `key: "missing_key_message"`
+
+## 9. Excepciones e integraciones — `name: "exceptions_integrations"`
+
+Options: ninguno.
+
+Fields:
+- `key: "non_standard_requirements"`
+- `key: "required_integrations"`
+- `key: "initial_data_import"`
+
+## 10. Cierre — `name: "closure"`
+
+Options: ninguno.
+
+Fields:
+- `key: "defined_in_meeting"`
+- `key: "open_pending_items"`
+- `key: "client_deliverables"`
+- `key: "next_step"`
 
 # Reglas de single-select vs multi-select
 
@@ -221,32 +229,31 @@ Fields:
 
 REGLAS DE `blocker` (forzadas — si alguna se cumple, status DEBE ser "blocker"):
 
-- Bloque 1 (Información general): NINGÚN item de `Tipo de sitio` con
-  needed:true, O NINGÚN item de `Objetivo principal` con needed:true.
-- Bloque 2 (Clasificación): NINGÚN item de `Operaciones` con
-  needed:true, O NINGÚN item de `Módulos` con needed:true.
-- Bloque 5 (Agenda, docks y warehouse): field `Cantidad de warehouses`
-  con value:null, O field `Docks por warehouse` con value:null.
-- Bloque 6 (Módulo de Órdenes): NINGÚN item de `Decisión módulo Órdenes`
-  con needed:true.
+- Bloque 1 (`general_info`): NINGÚN item de `site_type` con `needed:true`,
+  O NINGÚN item de `implementation_focus` con `needed:true`.
+- Bloque 2 (`classification`): NINGÚN item de `operations` con `needed:true`,
+  O NINGÚN item de `modules` con `needed:true`.
+- Bloque 5 (`schedule_docks_warehouse`): field `warehouses_count` con
+  `answer:null`, O field `docks_per_warehouse` con `answer:null`.
+- Bloque 6 (`orders_module`): NINGÚN item de `module_decision` con
+  `needed:true`.
 
 REGLAS DE `warning` (si no aplica blocker pero hay rugosidad):
 - Alguna option con `needed:null`, O
-- Algún field con criterio interno `vague` o `missing` (de los que SÍ
-  admiten quedar vacíos — todo menos los blocker-bound), O
+- Algún field con `state:"vague"` o `"missing"` (de los que SÍ admiten
+  quedar vacíos — todo menos los blocker-bound), O
 - Tiene entradas en `pending`, O
-- Detectaste lenguaje "ideal process" (cliente describe lo que le
-  gustaría, no el proceso actual) que te llevó a marcar fields como `vague`.
+- Tiene flags `type:"ideal_process"` o `type:"vague_answer"`.
 
-Los items en `block.custom[]` NO degradan el status del bloque. Son
+Los flags con `type:"custom"` NO degradan el status del bloque. Son
 pedidos opcionales que producto decide después; se reportan aparte.
 
 REGLAS DE `ok`:
 - Sin blocker, sin warning. Todo el checklist resuelto, todos los fields
-  con criterio interno `ok`, sin pending.
+  con `state:"ok"`, sin pending, sin flags `ideal_process`/`vague_answer`.
 
 `block.status_reason`:
-- `null` cuando status es `"ok"`.
+- `""` (string vacío) cuando `status:"ok"`.
 - Una frase corta (1 línea) explicando el motivo cuando es `"warning"` o `"blocker"`.
 
 # Verdict global
@@ -256,22 +263,42 @@ REGLAS DE `ok`:
 - `verdict.status` = `"ready"` si todos los bloques están en `ok`.
 
 - `verdict.summary` = frase corta cuantificando, ej. `"1 bloqueante · 4 avisos"` o `"10 bloques en orden"`.
-- `verdict.detail` = una línea cualitativa, ej. `"Configuración lista, pendientes operativos"` o `"Faltan datos críticos del cliente"`.
+- `verdict.blockers_count` = cantidad de bloques con `status:"blocker"`.
+- `verdict.warnings_count` = cantidad de bloques con `status:"warning"`.
+- `verdict.detail` = una línea cualitativa, ej. `"Configuración lista, pendientes operativos"` o `"Faltan datos críticos del cliente"`. `null` si no aplica.
+
+# Custom top-level
+
+`custom.items[]` agrega TODOS los flags con `type:"custom"` de cualquier
+bloque. `custom.count` = `custom.items.length`. Cada item lleva
+`description` y `citation` (string o `null`; idealmente igual al
+`citation` del flag de origen).
 
 # Output
 
 Emitís UN ÚNICO JSON con esta forma (sin texto fuera del JSON, sin
 markdown alrededor):
 
+```json
 {
   "meta": {
     "client_name":  "string | null",
-    "meeting_date": "YYYY-MM-DD | null"
+    "industry":     "string | null",
+    "country":      "string | null",
+    "meeting_date": "YYYY-MM-DD"
   },
   "verdict": {
-    "status":  "ready | ready_with_pending | blocked",
-    "summary": "string",
-    "detail":  "string"
+    "status":         "ready | ready_with_pending | blocked",
+    "summary":        "string",
+    "blockers_count": 0,
+    "warnings_count": 0,
+    "detail":         "string | null"
+  },
+  "custom": {
+    "count": 0,
+    "items": [
+      { "description": "string", "citation": "string | null" }
+    ]
   },
   "narrative": {
     "current_situation": "string | null",
@@ -279,67 +306,95 @@ markdown alrededor):
     "closure":           "string | null"
   },
   "next_meeting": {
-    "label":   "string | null",
-    "summary": "string | null",
-    "date":    "string | null",
-    "time":    "string | null"
+    "label":   "string",
+    "summary": "string",
+    "date":    "YYYY-MM-DD",
+    "time":    "HH:MM | null"
   },
   "blocks": [
     {
-      "id":            1,
-      "status":        "ok | warning | blocker",
-      "status_reason": "string | null",
-      "options":       [ /* groups con items[] — solo enums cerrados; [] si el bloque no tiene options */ ],
-      "fields":        [ /* SOLO los fields listados en el bloque, en ese orden */ ],
-      "pending":       [ /* lo que el cliente prometió entregar */ ],
-      "custom":        [ /* pedidos explícitos fuera del estándar */ ]
+      "id":               1,
+      "name":             "general_info",
+      "status":           "ok | warning | blocker",
+      "status_reason":    "string",
+      "options":          [ /* items planos — ver sub-objeto abajo; [] si el bloque no tiene options */ ],
+      "fields":           [ /* SOLO los fields listados en el bloque, en ese orden */ ],
+      "flags":            [ /* custom / ideal_process / vague_answer; [] si no aplica */ ],
+      "pending":          [ /* lo que el cliente prometió entregar; [] si no aplica */ ],
+      "additional_notes": [ /* notas extra con cita; [] si no aplica */ ]
     }
-    /* … 10 bloques en total, en orden */
+    /* … 10 bloques en total, en orden de id 1–10 */
   ]
 }
+```
 
 Sub-objetos:
 
-// options (agrupado por group_name)
+```json
+// options (cada ítem es plano, una entrada por label)
 {
-  "group_name": "string (exactamente como en la tabla del bloque)",
-  "items": [
-    { "label":  "string (exactamente del enum del grupo)",
-      "needed": true | false | null,
-      "cite":   "string | null" }
-  ]
+  "group_name": "string (snake_case del grupo, ej. 'site_type')",
+  "label":      "string (exactamente del enum del grupo)",
+  "needed":     true | false | null,
+  "citation":   "string | null"
 }
 
 // fields
-{ "label": "string (exactamente de la tabla del bloque)",
-  "value": "string | null",
-  "cite":  "string | null" }
+{
+  "key":      "string (exactamente de la tabla del bloque)",
+  "answer":   "string | null",
+  "citation": "string | null",
+  "state":    "ok | vague | missing"
+}
 
 // pending
-{ "description": "string", "cite": "string | null" }
+{ "description": "string", "citation": "string | null" }
 
-// custom
-{ "description": "string", "cite": "string | null" }
+// flags
+{ "type": "custom | ideal_process | vague_answer", "description": "string", "citation": "string" }
+
+// additional_notes
+{ "note": "string", "citation": "string" }
+```
+
+Reglas de presencia:
+
+- `next_meeting` es OPCIONAL — solo se emite si hay una próxima reunión
+  con fecha acordada. Si no, omitir la clave completa (no emitir nulls).
+- `coverage` (opcional) — solo se emite cuando la reunión cubrió menos
+  de la mitad de los bloques (reunión off-script):
+  `{ "blocks_covered": N, "blocks_total": 10 }`.
+- `verdict.detail` puede ser `null` u omitirse si no hay nada que
+  cualificar.
 
 # Autocontrol antes de emitir
 
 Antes de devolver la respuesta, repasá MENTALMENTE:
 
-1. ¿Cada `options[].group_name` y cada `items[].label` está en el enum
+1. ¿Cada bloque tiene `id` (1–10) y `name` correcto (`general_info`,
+   `classification`, …, `closure`)?
+2. ¿Cada `options[].group_name` y cada `options[].label` está en el enum
    cerrado del bloque? Si no, BORRARLO.
-2. ¿Cada `fields[].label` está en la lista del bloque correspondiente y
-   en el orden indicado? Si emitiste algún field no listado, BORRARLO.
-3. ¿Cada `option` con `needed:true|false` y cada `field` con `value`
-   no-null tiene `cite` con texto literal del resumen? Y para los que
-   tratás como `ok` internamente: ¿la cita responde la pregunta de forma
-   DIRECTA Y COMPLETA, sin que tengas que asumir nada? Si tenés que
-   interpretar, bajá a `vague` (y eso degrada el status del bloque).
-4. Para los 5 bloques con regla de blocker (1, 2, 3, 5, 6), ¿el `status`
+3. ¿Cada `fields[].key` está en la lista del bloque correspondiente y
+   en el orden indicado? Si emitiste algún field con `key` no listado,
+   BORRARLO.
+4. ¿Cada `option` con `needed:true|false`, cada `field` con
+   `answer` no-null, cada `pending`, cada `flag` y cada item de
+   `custom.items[]` tiene `citation` con texto literal del resumen? Y
+   para los fields que marcaste `state:"ok"`: ¿la cita responde la
+   pregunta de forma DIRECTA Y COMPLETA, sin que tengas que asumir
+   nada? Si tenés que interpretar, bajá a `"vague"` (y eso degrada el
+   status del bloque).
+5. Para los 4 bloques con regla de blocker (1, 2, 5, 6), ¿el `status`
    asignado respeta la regla?
-5. ¿`verdict.status` es consistente con los `status` de los bloques?
-6. ¿`status_reason` es `null` cuando `status:"ok"` y string corto en
+6. ¿`verdict.status` es consistente con los `status` de los bloques?
+   ¿`blockers_count` y `warnings_count` cuentan correctamente?
+7. ¿`status_reason` es `""` cuando `status:"ok"` y string corto en
    los demás casos?
-7. ¿`meta.client_name` está completo si el resumen menciona el cliente?
-8. ¿No mencionaste HubSpot, Drive, Slack, Make ni n8n?
+8. ¿Todos los flags con `type:"custom"` están también replicados en
+   `custom.items[]` al tope, y `custom.count` coincide con el largo
+   del array?
+9. ¿`meta.client_name` está completo si el resumen menciona el cliente?
+10. ¿No mencionaste HubSpot, Drive, Slack, Make ni n8n?
 
 Si algo falla, corregilo antes de emitir.
