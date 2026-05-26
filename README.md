@@ -2,7 +2,10 @@
 
 Contratos del agente, templates y herramientas para el pipeline de briefs de onboarding.
 
-🔗 **[Reportes de ejemplo](https://franpiaggio.github.io/brief-agent/)**
+**Sitio publicado:**
+
+- 🔗 [Reportes de ejemplo](https://franpiaggio.github.io/brief-agent/) (los 5 estados visuales del brief)
+- 🔗 [Brief editor](https://franpiaggio.github.io/brief-agent/brief-editor/) (editor en vivo)
 
 ---
 
@@ -12,7 +15,7 @@ Contratos del agente, templates y herramientas para el pipeline de briefs de onb
 
 Editor local para pulir briefs antes de enviarlos al cliente. Acepta el HTML del brief con JSON embebido o el JSON canónico suelto. Permite corregir cualquier dato haciendo click sobre el documento y exporta el HTML actualizado. Sin servidor, sin LLM, sin auto-save.
 
-→ [`tools/brief-editor/`](tools/brief-editor/) · [README](tools/brief-editor/README.md)
+→ [`tools/brief-editor/`](tools/brief-editor/) · [README](tools/brief-editor/README.md) · [Sitio publicado](https://franpiaggio.github.io/brief-agent/brief-editor/)
 
 ### Render
 
