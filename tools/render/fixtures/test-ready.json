@@ -105,8 +105,7 @@
       ],
       "flags": [],
       "pending": [],
-      "additional_notes": [],
-      "workflow_states": []
+      "additional_notes": []
     },
     {
       "id": 2,
@@ -173,8 +172,7 @@
       ],
       "flags": [],
       "pending": [],
-      "additional_notes": [],
-      "workflow_states": []
+      "additional_notes": []
     },
     {
       "id": 3,
@@ -204,8 +202,7 @@
       ],
       "flags": [],
       "pending": [],
-      "additional_notes": [],
-      "workflow_states": []
+      "additional_notes": []
     },
     {
       "id": 4,
@@ -259,8 +256,7 @@
       ],
       "flags": [],
       "pending": [],
-      "additional_notes": [],
-      "workflow_states": []
+      "additional_notes": []
     },
     {
       "id": 5,
@@ -308,8 +304,7 @@
       ],
       "flags": [],
       "pending": [],
-      "additional_notes": [],
-      "workflow_states": []
+      "additional_notes": []
     },
     {
       "id": 6,
@@ -327,8 +322,7 @@
       "fields": [],
       "flags": [],
       "pending": [],
-      "additional_notes": [],
-      "workflow_states": []
+      "additional_notes": []
     },
     {
       "id": 7,
@@ -377,8 +371,7 @@
       ],
       "flags": [],
       "pending": [],
-      "additional_notes": [],
-      "workflow_states": []
+      "additional_notes": []
     },
     {
       "id": 8,
@@ -421,8 +414,7 @@
       ],
       "flags": [],
       "pending": [],
-      "additional_notes": [],
-      "workflow_states": []
+      "additional_notes": []
     },
     {
       "id": 9,
@@ -452,8 +444,7 @@
       ],
       "flags": [],
       "pending": [],
-      "additional_notes": [],
-      "workflow_states": []
+      "additional_notes": []
     },
     {
       "id": 10,
@@ -489,8 +480,7 @@
       ],
       "flags": [],
       "pending": [],
-      "additional_notes": [],
-      "workflow_states": []
+      "additional_notes": []
     }
   ]
 }

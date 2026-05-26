@@ -126,8 +126,6 @@ Fields:
 - `Requiere modificaciones`
 - `Etapas adicionales o faltantes`
 
-Si el cliente describe el flujo paso a paso (operación, secuencia, actor por etapa), poblá además `workflow_states[]` con un item por paso. Si no, dejá `workflow_states: []` y resumí el flujo en el field `Workflow por operación`.
-
 ## 4. Actores del proceso
 
 Options: ninguno.

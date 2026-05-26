@@ -45,15 +45,6 @@ const CustomItemSchema = z.object({
   citation: z.string().nullable().optional(),
 });
 
-const WorkflowStateSchema = z.object({
-  operation: z.string(),
-  step: z.number(),
-  name: z.string(),
-  actor: z.string(),
-  notes: z.string().nullable(),
-  citation: z.string(),
-});
-
 const BlockSchema = z.object({
   id: z.number().int().min(1).max(10),
   name: BlockName,
@@ -66,7 +57,6 @@ const BlockSchema = z.object({
     .default([]),
   flags: z.array(FlagSchema).default([]),
   pending: z.array(PendingSchema).default([]),
-  workflow_states: z.array(WorkflowStateSchema).default([]),
 });
 
 export const BriefSchema = z.object({

@@ -110,8 +110,7 @@
       ],
       "flags": [],
       "pending": [],
-      "additional_notes": [],
-      "workflow_states": []
+      "additional_notes": []
     },
     {
       "id": 2,
@@ -178,8 +177,7 @@
       ],
       "flags": [],
       "pending": [],
-      "additional_notes": [],
-      "workflow_states": []
+      "additional_notes": []
     },
     {
       "id": 3,
@@ -215,8 +213,7 @@
         }
       ],
       "pending": [],
-      "additional_notes": [],
-      "workflow_states": []
+      "additional_notes": []
     },
     {
       "id": 4,
@@ -270,8 +267,7 @@
       ],
       "flags": [],
       "pending": [],
-      "additional_notes": [],
-      "workflow_states": []
+      "additional_notes": []
     },
     {
       "id": 5,
@@ -324,8 +320,7 @@
           "citation": "Diego lo tiene que imprimir del CAD, lo manda esta semana"
         }
       ],
-      "additional_notes": [],
-      "workflow_states": []
+      "additional_notes": []
     },
     {
       "id": 6,
@@ -373,8 +368,7 @@
           "citation": "Lo tenemos que hablar con el gerente general antes de confirmar"
         }
       ],
-      "additional_notes": [],
-      "workflow_states": []
+      "additional_notes": []
     },
     {
       "id": 7,
@@ -423,8 +417,7 @@
       ],
       "flags": [],
       "pending": [],
-      "additional_notes": [],
-      "workflow_states": []
+      "additional_notes": []
     },
     {
       "id": 8,
@@ -467,8 +460,7 @@
       ],
       "flags": [],
       "pending": [],
-      "additional_notes": [],
-      "workflow_states": []
+      "additional_notes": []
     },
     {
       "id": 9,
@@ -498,8 +490,7 @@
       ],
       "flags": [],
       "pending": [],
-      "additional_notes": [],
-      "workflow_states": []
+      "additional_notes": []
     },
     {
       "id": 10,
@@ -535,8 +526,7 @@
       ],
       "flags": [],
       "pending": [],
-      "additional_notes": [],
-      "workflow_states": []
+      "additional_notes": []
     }
   ]
 }

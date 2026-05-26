@@ -30,15 +30,6 @@ const AdditionalNoteSchema = z.object({
   citation: z.string(),
 })
 
-const WorkflowStateSchema = z.object({
-  operation: z.string(),
-  step: z.number(),
-  name: z.string(),
-  actor: z.string(),
-  notes: z.string().nullable(),
-  citation: z.string(),
-})
-
 export const BlockSchema = z.object({
   id: z.number().int().min(1).max(10),
   name: z.string(),
@@ -49,7 +40,6 @@ export const BlockSchema = z.object({
   flags: z.array(FlagSchema).default([]),
   pending: z.array(PendingItemSchema),
   additional_notes: z.array(AdditionalNoteSchema).default([]),
-  workflow_states: z.array(WorkflowStateSchema).default([]),
 })
 
 export const BriefSchema = z.object({

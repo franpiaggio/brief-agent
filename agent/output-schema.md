@@ -75,8 +75,7 @@ Contrato del JSON que el agente emite. El renderer en `tools/render/` lo valida 
   ],
   "additional_notes": [
     { "note": "string", "citation": "string" }
-  ],
-  "workflow_states": [ /* solo bloque 3 — ver abajo */ ]
+  ]
 }
 ```
 
@@ -87,7 +86,7 @@ Reglas:
 - `options` es `[]` para los bloques sin enums (actores, agenda, excepciones, cierre).
 - `fields[].state`: `"ok"` si respondido directamente; `"vague"` si vago o inferido; `"missing"` si no fue mencionado.
 - `flags` de `type: "custom"` se agregan también a `custom.items[]` a nivel top. Los de `type: "ideal_process"` o `"vague_answer"` solo van en `flags[]` del bloque.
-- `pending`, `additional_notes`, `workflow_states` son `[]` si no aplica.
+- `pending` y `additional_notes` son `[]` si no aplica.
 
 ## Nombres de bloque (`name`)
 
@@ -149,16 +148,6 @@ Options van en `options[]` del bloque con cada ítem como entrada plana (con `gr
 
 ### `closure`
 `defined_in_meeting`, `open_pending_items`, `client_deliverables`, `next_step`
-
-### `workflow` — `workflow_states[]` (solo bloque 3)
-
-Cuando el cliente describe el workflow con suficiente claridad:
-
-```json
-{ "operation": "string", "step": 1, "name": "string", "actor": "string", "notes": "string | null", "citation": "string" }
-```
-
-Si no queda claro, dejar `workflow_states: []` y usar el field `workflow_per_operation`.
 
 ## Reglas para `block.status`
 
