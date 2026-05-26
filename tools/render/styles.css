@@ -1251,17 +1251,28 @@ body {
   .identity-card--missing .identity-icon { box-shadow: none; }
 
   /* Page-break control — prevent splitting within elements, sections flow continuously */
-  .narrative,
-  .narrative-card,
   .checks-shell,
   .chk-section,
-  .action-box,
   .deliverable,
-  .section,
   .block,
   .identity-grid,
   .identity-card,
   .doc-footer {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Narrative and action-box can flow across pages so they start on the previous
+     page and continue — avoids large empty space when a whole card gets pushed
+     to a new page. Individual items inside stay together. */
+  .narrative,
+  .narrative-card,
+  .action-box,
+  .section {
+    page-break-inside: auto;
+    break-inside: auto;
+  }
+  .narrative-item {
     page-break-inside: avoid;
     break-inside: avoid;
   }
