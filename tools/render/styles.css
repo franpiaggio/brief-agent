@@ -1212,9 +1212,35 @@ body {
 
 @media print {
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  body { padding: 12mm 8mm; } /* replaces @page margin so content isn't edge-to-edge */
-  .doc { max-width: none; margin: 0; }
 
+  body {
+    padding: 14mm 16mm;
+    background: white;
+  }
+
+  /* Remove card chrome — flat document layout for print */
+  .doc {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    border-radius: 0;
+    background: white;
+  }
+
+  /* Narrative: strip gradient wrapper, keep the inner card border */
+  .narrative-shell {
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    border-radius: 0;
+  }
+  .narrative-card { box-shadow: none; }
+
+  /* Checks: keep border for structure, drop shadow */
+  .checks-shell { box-shadow: none; }
+
+  /* Page-break control */
   .narrative,
   .narrative-card,
   .checks-shell,
