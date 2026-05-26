@@ -2,7 +2,7 @@
 
 Este repositorio tiene contratos del agente, templates HTML y tooling para ejecutar el agente de onboarding.
 
-🔗 **[Ver briefs online](https://franpiaggio.github.io/brief-agent/)**
+🔗 **[Reportes de ejemplo](https://franpiaggio.github.io/brief-agent/)**
 
 ---
 
