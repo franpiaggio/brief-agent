@@ -1,6 +1,3 @@
-// Mapping tables for labels, icons, status classes, and field display names.
-
-// Table A: verdict.status → CSS class + label + summary color
 export const VERDICT_MAP: Record<
   string,
   { cssClass: string; label: string; summaryColorClass: string }
@@ -22,7 +19,6 @@ export const VERDICT_MAP: Record<
   },
 };
 
-// Table B: blocks[].name → title + lucide icon + short name (for coverage tiles)
 export const BLOCK_MAP: Record<
   string,
   { title: string; iconName: string; shortName: string }
@@ -79,7 +75,6 @@ export const BLOCK_MAP: Record<
   },
 };
 
-// Table C: blocks[].status → pill label + reason icon
 export const STATUS_MAP: Record<
   string,
   { label: string; reasonIconName: string }
@@ -89,7 +84,6 @@ export const STATUS_MAP: Record<
   blocker: { label: 'bloqueante', reasonIconName: 'octagon-alert' },
 };
 
-// Table D: options[].group_name → row label in chk-shell
 export const OPTION_GROUP_LABEL: Record<string, string> = {
   site_type: 'Tipo de sitio',
   implementation_focus: 'Objetivo principal',
@@ -100,7 +94,6 @@ export const OPTION_GROUP_LABEL: Record<string, string> = {
   channels: 'Canales de comunicación',
 };
 
-// Table E: fields[].key → display label (by block)
 export const FIELD_LABEL: Record<string, Record<string, string>> = {
   general_info: {
     industry: 'Industria',
@@ -171,7 +164,6 @@ export const FIELD_LABEL: Record<string, Record<string, string>> = {
   },
 };
 
-// Block 1 identity-grid card config
 export const IDENTITY_CARD_CONFIG: Record<
   string,
   { cardClass: string; iconName: string; label: string }
@@ -196,7 +188,6 @@ export const IDENTITY_CARD_CONFIG: Record<
   },
 };
 
-// Ordered identity card keys for block 1 (layout order)
 export const IDENTITY_CARD_ORDER = [
   'industry',
   'country',
@@ -206,7 +197,6 @@ export const IDENTITY_CARD_ORDER = [
   'target_go_live_date',
 ];
 
-// needed boolean → chk-chip class
 export const NEEDED_CLASS: Record<string, string> = {
   true: 'yes',
   false: 'no',

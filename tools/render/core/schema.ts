@@ -106,7 +106,7 @@ export const BriefSchema = z.object({
       blocks_total: z.number().int(),
     })
     .optional(),
-  blocks: z.array(BlockSchema),
+  blocks: z.array(BlockSchema).length(10),
 });
 
 export type Brief = z.infer<typeof BriefSchema>;

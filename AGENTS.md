@@ -29,6 +29,7 @@ El orden de verdad es: cuestionario → schema/prompt → renderer → examples.
 
 - `template.html` — plantilla Handlebars activa.
 - `styles.css` — CSS activo del HTML generado.
+- `fixtures/` — JSONs de ejemplo para validar estados del brief.
 - `core/schema.ts` — validación Zod.
 - `core/compute.ts` — campos derivados.
 - `core/mappings.ts` — labels, iconos y clases.
@@ -39,7 +40,7 @@ Uso:
 
 ```bash
 cd tools/render
-npm run render -- test-ready.json output-examples/ready.html
+npm run render -- fixtures/test-ready.json output-examples/ready.html
 ```
 
 `tools/render/output-examples/` es para inspección local y está ignorado por git.

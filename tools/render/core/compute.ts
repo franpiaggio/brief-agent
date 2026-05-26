@@ -10,16 +10,21 @@ import {
   NEEDED_CLASS,
 } from './mappings.js';
 
-// Spanish month abbreviations for date formatting
 const MONTHS_ES = [
   'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun',
   'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic',
 ];
 
 function formatDateEs(iso: string): string {
-  const [year, month, day] = iso.split('-');
-  const m = parseInt(month, 10);
-  return `${parseInt(day, 10)} ${MONTHS_ES[m - 1]} ${year}`;
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso);
+  if (!match) return iso;
+
+  const [, year, month, day] = match;
+  const m = Number(month);
+  const monthLabel = MONTHS_ES[m - 1];
+  if (!monthLabel) return iso;
+
+  return `${Number(day)} ${monthLabel} ${year}`;
 }
 
 function padId(n: number): string {
@@ -59,7 +64,6 @@ function computeFieldsForRender(block: Block): unknown[] {
 }
 
 function computeOptionsForBlock(block: Block): unknown[] {
-  // Group options by group_name, preserving insertion order
   const groups = new Map<string, { label: string; needed: boolean | null; citation: string | null }[]>();
   for (const opt of block.options) {
     const existing = groups.get(opt.group_name);
@@ -108,8 +112,8 @@ function computeBlocksWithOptions(enrichedBlocks: ReturnType<typeof enrichBlock>
     options: unknown[];
   }>)
     .filter((b) => Array.isArray(b.options) && b.options.length > 0)
-    .map((b, i) => ({
-      idPadded: padId(i + 1),
+    .map((b) => ({
+      idPadded: b.idPadded,
       title: b.title,
       options: b.options,
     }));

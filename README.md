@@ -1,6 +1,6 @@
 # EasyDocking - Agente de onboarding
 
-Este repositorio tiene los contratos del agente, ejemplos HTML del brief de onboarding y el renderer que convierte el JSON del agente en HTML.
+Este repositorio tiene contratos del agente, templates HTML y tooling para ejecutar el agente de onboarding.
 
 🔗 **[Ver briefs online](https://franpiaggio.github.io/brief-agent/)**
 
@@ -32,6 +32,8 @@ Ejemplos visuales del brief como HTML estático. No son dependencias runtime del
 
 Renderer TypeScript que valida el JSON, calcula campos derivados y genera el HTML final.
 
+Ver detalle de uso en [tools/render/README.md](tools/render/README.md).
+
 | Archivo | Qué es |
 |---|---|
 | `core/schema.ts` | Validación Zod del JSON de entrada. |
@@ -39,6 +41,7 @@ Renderer TypeScript que valida el JSON, calcula campos derivados y genera el HTM
 | `core/compute.ts` | Enriquecimiento del JSON para render. |
 | `template.html` | Plantilla Handlebars activa del renderer. |
 | `styles.css` | CSS activo para el HTML generado por el renderer. |
+| `fixtures/` | JSONs de ejemplo para validar estados del brief. |
 | `core/render.ts` | Compila `tools/render/template.html` y devuelve HTML. |
 | `adapters/cli.ts` | CLI para renderizar desde un archivo o stdin. |
 
@@ -46,19 +49,10 @@ Uso:
 
 ```bash
 cd tools/render
-npm run render -- test-ready.json output.html
+npm run render -- fixtures/test-ready.json output.html
 ```
 
 Para revisar ejemplos generados localmente, usar `tools/render/output-examples/`. Esa carpeta esta ignorada por git.
-
-## `docs/`
-
-Documentación de producto y diseño.
-
-| Archivo | Qué es |
-|---|---|
-| `product.md` | Propósito, usuarios, personalidad y principios del brief. |
-| `design.md` | Tokens, componentes y reglas visuales. |
 
 ## `transcripts/`
 
