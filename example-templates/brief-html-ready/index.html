@@ -171,7 +171,7 @@
           <div class="chk-row-chips">
             <span class="chk-chip chk-chip--yes">Centro de distribución</span>
             <span class="chk-chip chk-chip--no">Planta industrial</span>
-            <span class="chk-chip chk-chip--no">Puerto</span>
+            <span class="chk-chip chk-chip--no">Otro</span>
           </div>
         </div>
         <div class="chk-row">
@@ -190,19 +190,19 @@
         <div class="chk-row">
           <span class="chk-row-label">Operaciones</span>
           <div class="chk-row-chips">
-            <span class="chk-chip chk-chip--yes">Recepción</span>
-            <span class="chk-chip chk-chip--yes">Despacho</span>
-            <span class="chk-chip chk-chip--yes">Retira cliente</span>
-            <span class="chk-chip chk-chip--no">Transferencia</span>
+            <span class="chk-chip chk-chip--yes">Descarga</span>
+            <span class="chk-chip chk-chip--yes">Carga</span>
+            <span class="chk-chip chk-chip--yes">Retira Cliente</span>
+            <span class="chk-chip chk-chip--no">Interplantas</span>
           </div>
         </div>
         <div class="chk-row">
           <span class="chk-row-label">Módulos</span>
           <div class="chk-row-chips">
-            <span class="chk-chip chk-chip--yes">Agenda de docks</span>
-            <span class="chk-chip chk-chip--yes">Check-in</span>
-            <span class="chk-chip chk-chip--no">Módulo de órdenes</span>
-            <span class="chk-chip chk-chip--no">Control documental</span>
+            <span class="chk-chip chk-chip--yes">Dock Scheduling</span>
+            <span class="chk-chip chk-chip--yes">Inducción</span>
+            <span class="chk-chip chk-chip--no">YMS</span>
+            <span class="chk-chip chk-chip--no">Control Documental</span>
           </div>
         </div>
       </div>
@@ -226,10 +226,11 @@
         <div class="chk-row">
           <span class="chk-row-label">Formularios a revisar</span>
           <div class="chk-row-chips">
-            <span class="chk-chip chk-chip--yes">Formulario de turno</span>
-            <span class="chk-chip chk-chip--yes">Formulario de check-in</span>
-            <span class="chk-chip chk-chip--no">Checklist de descarga</span>
-            <span class="chk-chip chk-chip--no">Asignación de dock</span>
+            <span class="chk-chip chk-chip--yes">Planificación / Turnos</span>
+            <span class="chk-chip chk-chip--yes">Check-in</span>
+            <span class="chk-chip chk-chip--no">Checklists</span>
+            <span class="chk-chip chk-chip--no">Asignación de dock / llamado</span>
+            <span class="chk-chip chk-chip--unknown">Confirmación de turno</span>
           </div>
         </div>
       </div>
@@ -242,7 +243,6 @@
           <span class="chk-row-label">Canales de comunicación</span>
           <div class="chk-row-chips">
             <span class="chk-chip chk-chip--yes">Email</span>
-            <span class="chk-chip chk-chip--no">SMS</span>
             <span class="chk-chip chk-chip--yes">WhatsApp</span>
           </div>
         </div>
@@ -342,10 +342,6 @@
         <li class="bullet">
           <span class="bullet-q">Método de agendamiento actual</span>
           <span class="bullet-a">Email entre coordinadores y transportistas, sin sistema centralizado</span>
-        </li>
-        <li class="bullet">
-          <span class="bullet-q">Usan Excel para órdenes/turnos</span>
-          <span class="bullet-a">Sí, Excel compartido en Drive con el listado de recepciones del día</span>
         </li>
       </ul>
     </div>
@@ -606,12 +602,6 @@
           "citation": null
         },
         {
-          "group_name": "site_type",
-          "label": "Puerto",
-          "needed": false,
-          "citation": null
-        },
-        {
           "group_name": "implementation_focus",
           "label": "Scheduling",
           "needed": true,
@@ -620,6 +610,12 @@
         {
           "group_name": "implementation_focus",
           "label": "Yard management",
+          "needed": false,
+          "citation": null
+        },
+        {
+          "group_name": "site_type",
+          "label": "Otro",
           "needed": false,
           "citation": null
         }
@@ -675,49 +671,49 @@
       "options": [
         {
           "group_name": "operations",
-          "label": "Recepción",
+          "label": "Descarga",
           "needed": true,
           "citation": "Recibimos mercadería de proveedores todos los días hábiles"
         },
         {
           "group_name": "operations",
-          "label": "Despacho",
+          "label": "Carga",
           "needed": true,
           "citation": "Salimos con unidades propias y con transportes tercerizados"
         },
         {
           "group_name": "operations",
-          "label": "Retira cliente",
+          "label": "Retira Cliente",
           "needed": true,
           "citation": "Tenemos clientes corporativos que retiran con flota propia"
         },
         {
           "group_name": "operations",
-          "label": "Transferencia",
+          "label": "Interplantas",
           "needed": false,
           "citation": null
         },
         {
           "group_name": "modules",
-          "label": "Agenda de docks",
+          "label": "Dock Scheduling",
           "needed": true,
           "citation": null
         },
         {
           "group_name": "modules",
-          "label": "Check-in",
+          "label": "Inducción",
           "needed": true,
           "citation": null
         },
         {
           "group_name": "modules",
-          "label": "Módulo de órdenes",
+          "label": "YMS",
           "needed": false,
           "citation": "En fase 1 no, empezamos simple"
         },
         {
           "group_name": "modules",
-          "label": "Control documental",
+          "label": "Control Documental",
           "needed": false,
           "citation": null
         }
@@ -727,12 +723,6 @@
           "key": "current_scheduling_method",
           "answer": "Email entre coordinadores y transportistas, sin sistema centralizado",
           "citation": "Cada coordinador tiene su propia planilla y no las cruzamos",
-          "state": "ok"
-        },
-        {
-          "key": "uses_excel_for_orders",
-          "answer": "Sí, Excel compartido en Drive con el listado de recepciones del día",
-          "citation": null,
           "state": "ok"
         }
       ],
@@ -903,26 +893,32 @@
       "options": [
         {
           "group_name": "forms_to_review",
-          "label": "Formulario de turno",
+          "label": "Planificación / Turnos",
           "needed": true,
           "citation": "Agregar campo de tipo de mercadería y número de pallets estimados"
         },
         {
           "group_name": "forms_to_review",
-          "label": "Formulario de check-in",
+          "label": "Check-in",
           "needed": true,
           "citation": "Agregar patente del camión y número de precinto si aplica"
         },
         {
           "group_name": "forms_to_review",
-          "label": "Checklist de descarga",
+          "label": "Checklists",
           "needed": false,
           "citation": null
         },
         {
           "group_name": "forms_to_review",
-          "label": "Asignación de dock",
+          "label": "Asignación de dock / llamado",
           "needed": false,
+          "citation": null
+        },
+        {
+          "group_name": "forms_to_review",
+          "label": "Confirmación de turno",
+          "needed": null,
           "citation": null
         }
       ],
@@ -949,12 +945,6 @@
           "group_name": "channels",
           "label": "Email",
           "needed": true,
-          "citation": null
-        },
-        {
-          "group_name": "channels",
-          "label": "SMS",
-          "needed": false,
           "citation": null
         },
         {

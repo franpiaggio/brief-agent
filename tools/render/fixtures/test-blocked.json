@@ -62,6 +62,12 @@
           "label": "Yard management",
           "needed": false,
           "citation": null
+        },
+        {
+          "group_name": "site_type",
+          "label": "Otro",
+          "needed": false,
+          "citation": null
         }
       ],
       "fields": [
@@ -115,49 +121,49 @@
       "options": [
         {
           "group_name": "operations",
-          "label": "Recepción",
+          "label": "Descarga",
           "needed": true,
           "citation": "Recibimos materia prima todos los días"
         },
         {
           "group_name": "operations",
-          "label": "Despacho",
+          "label": "Carga",
           "needed": true,
           "citation": "Expedimos producto terminado a distribuidores y puntos propios"
         },
         {
           "group_name": "operations",
-          "label": "Transferencia",
+          "label": "Interplantas",
           "needed": false,
           "citation": null
         },
         {
           "group_name": "operations",
-          "label": "Retira cliente",
+          "label": "Retira Cliente",
           "needed": false,
           "citation": null
         },
         {
           "group_name": "modules",
-          "label": "Agenda de docks",
+          "label": "Dock Scheduling",
           "needed": true,
           "citation": null
         },
         {
           "group_name": "modules",
-          "label": "Check-in",
+          "label": "Inducción",
           "needed": true,
           "citation": null
         },
         {
           "group_name": "modules",
-          "label": "Módulo de órdenes",
+          "label": "YMS",
           "needed": null,
           "citation": "Estamos evaluando si lo necesitamos en la primera fase"
         },
         {
           "group_name": "modules",
-          "label": "Control documental",
+          "label": "Control Documental",
           "needed": false,
           "citation": null
         }
@@ -167,12 +173,6 @@
           "key": "current_scheduling_method",
           "answer": "El portero anota en cuaderno, el jefe de playa asigna dock por teléfono",
           "citation": "Hoy es todo manual y a voz",
-          "state": "ok"
-        },
-        {
-          "key": "uses_excel_for_orders",
-          "answer": "Sí, Excel de expedición con las órdenes del día",
-          "citation": null,
           "state": "ok"
         }
       ],
@@ -384,25 +384,31 @@
       "options": [
         {
           "group_name": "forms_to_review",
-          "label": "Formulario de turno",
+          "label": "Planificación / Turnos",
           "needed": null,
           "citation": null
         },
         {
           "group_name": "forms_to_review",
-          "label": "Formulario de check-in",
+          "label": "Check-in",
           "needed": null,
           "citation": null
         },
         {
           "group_name": "forms_to_review",
-          "label": "Checklist de descarga",
+          "label": "Checklists",
           "needed": null,
           "citation": null
         },
         {
           "group_name": "forms_to_review",
-          "label": "Asignación de dock",
+          "label": "Asignación de dock / llamado",
+          "needed": null,
+          "citation": null
+        },
+        {
+          "group_name": "forms_to_review",
+          "label": "Confirmación de turno",
           "needed": null,
           "citation": null
         }
@@ -430,12 +436,6 @@
           "group_name": "channels",
           "label": "Email",
           "needed": true,
-          "citation": null
-        },
-        {
-          "group_name": "channels",
-          "label": "SMS",
-          "needed": false,
           "citation": null
         },
         {

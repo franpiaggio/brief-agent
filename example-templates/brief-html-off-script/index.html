@@ -177,6 +177,7 @@
           <div class="chk-row-chips">
             <span class="chk-chip chk-chip--yes">Planta industrial</span>
             <span class="chk-chip chk-chip--no">Centro de distribución</span>
+            <span class="chk-chip chk-chip--no">Otro</span>
           </div>
         </div>
         <div class="chk-row">
@@ -195,19 +196,19 @@
         <div class="chk-row">
           <span class="chk-row-label">Operaciones</span>
           <div class="chk-row-chips">
-            <span class="chk-chip chk-chip--yes">Recepción</span>
-            <span class="chk-chip chk-chip--yes">Despacho</span>
-            <span class="chk-chip chk-chip--no">Transferencia</span>
-            <span class="chk-chip chk-chip--no">Retira cliente</span>
+            <span class="chk-chip chk-chip--yes">Descarga</span>
+            <span class="chk-chip chk-chip--yes">Carga</span>
+            <span class="chk-chip chk-chip--no">Interplantas</span>
+            <span class="chk-chip chk-chip--no">Retira Cliente</span>
           </div>
         </div>
         <div class="chk-row">
           <span class="chk-row-label">Módulos</span>
           <div class="chk-row-chips">
-            <span class="chk-chip chk-chip--yes">Agenda de docks</span>
-            <span class="chk-chip chk-chip--yes">Check-in</span>
-            <span class="chk-chip chk-chip--unknown">Módulo de órdenes</span>
-            <span class="chk-chip chk-chip--unknown">Control documental</span>
+            <span class="chk-chip chk-chip--yes">Dock Scheduling</span>
+            <span class="chk-chip chk-chip--yes">Inducción</span>
+            <span class="chk-chip chk-chip--unknown">YMS</span>
+            <span class="chk-chip chk-chip--unknown">Control Documental</span>
           </div>
         </div>
       </div>
@@ -231,10 +232,11 @@
         <div class="chk-row">
           <span class="chk-row-label">Formularios a revisar</span>
           <div class="chk-row-chips">
-            <span class="chk-chip chk-chip--unknown">Formulario de turno</span>
-            <span class="chk-chip chk-chip--unknown">Formulario de check-in</span>
-            <span class="chk-chip chk-chip--unknown">Checklist de descarga</span>
-            <span class="chk-chip chk-chip--unknown">Asignación de dock</span>
+            <span class="chk-chip chk-chip--unknown">Planificación / Turnos</span>
+            <span class="chk-chip chk-chip--unknown">Check-in</span>
+            <span class="chk-chip chk-chip--unknown">Checklists</span>
+            <span class="chk-chip chk-chip--unknown">Asignación de dock / llamado</span>
+            <span class="chk-chip chk-chip--unknown">Confirmación de turno</span>
           </div>
         </div>
       </div>
@@ -247,7 +249,6 @@
           <span class="chk-row-label">Canales de comunicación</span>
           <div class="chk-row-chips">
             <span class="chk-chip chk-chip--unknown">Email</span>
-            <span class="chk-chip chk-chip--unknown">SMS</span>
             <span class="chk-chip chk-chip--unknown">WhatsApp</span>
           </div>
         </div>
@@ -353,10 +354,6 @@
         <li class="bullet">
           <span class="bullet-q">Método de agendamiento actual</span>
           <span class="bullet-a">Email entre coordinadora y transportistas, agenda física en portería</span>
-        </li>
-        <li class="bullet">
-          <span class="bullet-q">Usan Excel para órdenes/turnos</span>
-          <span class="bullet-a bullet-a--missing">Sin definir</span>
         </li>
       </ul>
     </div>
@@ -680,6 +677,12 @@
           "label": "Yard management",
           "needed": false,
           "citation": null
+        },
+        {
+          "group_name": "site_type",
+          "label": "Otro",
+          "needed": false,
+          "citation": null
         }
       ],
       "fields": [
@@ -733,49 +736,49 @@
       "options": [
         {
           "group_name": "operations",
-          "label": "Recepción",
+          "label": "Descarga",
           "needed": true,
           "citation": "Recibimos materias primas farmacéuticas de proveedores certificados"
         },
         {
           "group_name": "operations",
-          "label": "Despacho",
+          "label": "Carga",
           "needed": true,
           "citation": "Despachamos a droguerías y cadenas de farmacias"
         },
         {
           "group_name": "operations",
-          "label": "Transferencia",
+          "label": "Interplantas",
           "needed": false,
           "citation": null
         },
         {
           "group_name": "operations",
-          "label": "Retira cliente",
+          "label": "Retira Cliente",
           "needed": false,
           "citation": null
         },
         {
           "group_name": "modules",
-          "label": "Agenda de docks",
+          "label": "Dock Scheduling",
           "needed": true,
           "citation": null
         },
         {
           "group_name": "modules",
-          "label": "Check-in",
+          "label": "Inducción",
           "needed": true,
           "citation": null
         },
         {
           "group_name": "modules",
-          "label": "Módulo de órdenes",
+          "label": "YMS",
           "needed": null,
           "citation": "Hay órdenes de compra en SAP — no vimos si las integramos"
         },
         {
           "group_name": "modules",
-          "label": "Control documental",
+          "label": "Control Documental",
           "needed": null,
           "citation": "BPM exige verificar Certificado de Análisis en cada recepción de MP"
         }
@@ -786,12 +789,6 @@
           "answer": "Email entre coordinadora y transportistas, agenda física en portería",
           "citation": null,
           "state": "ok"
-        },
-        {
-          "key": "uses_excel_for_orders",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
         }
       ],
       "additional_notes": [],
@@ -966,25 +963,31 @@
       "options": [
         {
           "group_name": "forms_to_review",
-          "label": "Formulario de turno",
+          "label": "Planificación / Turnos",
           "needed": null,
           "citation": null
         },
         {
           "group_name": "forms_to_review",
-          "label": "Formulario de check-in",
+          "label": "Check-in",
           "needed": null,
           "citation": null
         },
         {
           "group_name": "forms_to_review",
-          "label": "Checklist de descarga",
+          "label": "Checklists",
           "needed": null,
           "citation": null
         },
         {
           "group_name": "forms_to_review",
-          "label": "Asignación de dock",
+          "label": "Asignación de dock / llamado",
+          "needed": null,
+          "citation": null
+        },
+        {
+          "group_name": "forms_to_review",
+          "label": "Confirmación de turno",
           "needed": null,
           "citation": null
         }
@@ -1011,12 +1014,6 @@
         {
           "group_name": "channels",
           "label": "Email",
-          "needed": null,
-          "citation": null
-        },
-        {
-          "group_name": "channels",
-          "label": "SMS",
           "needed": null,
           "citation": null
         },

@@ -110,13 +110,13 @@ Options van en `options[]` del bloque con cada ítem como entrada plana (con `gr
 
 | `name` | `group_name` | Ítems posibles |
 |---|---|---|
-| `general_info` | `site_type` | `"Puerto"`, `"Aeropuerto"`, `"Centro de distribución"`, `"Planta industrial"`, `"Almacén"` |
+| `general_info` | `site_type` | `"Planta industrial"`, `"Centro de distribución"`, `"Almacén"`, `"Otro"` |
 | `general_info` | `implementation_focus` | `"Scheduling"`, `"Yard management"` (multi: si los dos quedan en `needed: true`, es porque contratan ambos) |
-| `classification` | `operations` | `"Recepción"`, `"Despacho"`, `"Transferencia"`, `"Retira cliente"`, `"Otro"` |
-| `classification` | `modules` | `"Agenda de docks"`, `"Check-in"`, `"Módulo de órdenes"`, `"Control documental"` |
+| `classification` | `operations` | `"Descarga"`, `"Carga"`, `"Retira Cliente"`, `"Interplantas"`, `"Otro"` |
+| `classification` | `modules` | `"YMS"`, `"Dock Scheduling"`, `"Inducción"`, `"Control Documental"` |
 | `orders_module` | `module_decision` | `"Módulo de Órdenes"` (binario, single item: `needed: true` activa, `false` descarta, `null` por definir) |
-| `fields_and_forms` | `forms_to_review` | `"Formulario de turno"`, `"Formulario de check-in"`, `"Checklist de descarga"`, `"Asignación de dock"` |
-| `messages_notifications` | `channels` | `"Email"`, `"SMS"`, `"WhatsApp"` |
+| `fields_and_forms` | `forms_to_review` | `"Planificación / Turnos"`, `"Confirmación de turno"`, `"Check-in"`, `"Checklists"`, `"Asignación de dock / llamado"` |
+| `messages_notifications` | `channels` | `"Email"`, `"WhatsApp"` |
 
 ## Fields por bloque (`key`)
 
@@ -124,7 +124,7 @@ Options van en `options[]` del bloque con cada ítem como entrada plana (con `gr
 `industry`, `country`, `city`, `project_contact`, `operational_contact`, `target_go_live_date`
 
 ### `classification`
-`current_scheduling_method`, `uses_excel_for_orders`
+`current_scheduling_method`
 
 ### `workflow`
 `workflow_per_operation`, `requires_modifications`, `additional_or_missing_stages`

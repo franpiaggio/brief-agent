@@ -61,6 +61,12 @@
           "label": "Yard management",
           "needed": false,
           "citation": null
+        },
+        {
+          "group_name": "site_type",
+          "label": "Otro",
+          "needed": false,
+          "citation": null
         }
       ],
       "fields": [
@@ -114,49 +120,49 @@
       "options": [
         {
           "group_name": "operations",
-          "label": "Recepción",
+          "label": "Descarga",
           "needed": true,
           "citation": "Recibimos materias primas farmacéuticas de proveedores certificados"
         },
         {
           "group_name": "operations",
-          "label": "Despacho",
+          "label": "Carga",
           "needed": true,
           "citation": "Despachamos a droguerías y cadenas de farmacias"
         },
         {
           "group_name": "operations",
-          "label": "Transferencia",
+          "label": "Interplantas",
           "needed": false,
           "citation": null
         },
         {
           "group_name": "operations",
-          "label": "Retira cliente",
+          "label": "Retira Cliente",
           "needed": false,
           "citation": null
         },
         {
           "group_name": "modules",
-          "label": "Agenda de docks",
+          "label": "Dock Scheduling",
           "needed": true,
           "citation": null
         },
         {
           "group_name": "modules",
-          "label": "Check-in",
+          "label": "Inducción",
           "needed": true,
           "citation": null
         },
         {
           "group_name": "modules",
-          "label": "Módulo de órdenes",
+          "label": "YMS",
           "needed": null,
           "citation": "Hay órdenes de compra en SAP — no vimos si las integramos"
         },
         {
           "group_name": "modules",
-          "label": "Control documental",
+          "label": "Control Documental",
           "needed": null,
           "citation": "BPM exige verificar Certificado de Análisis en cada recepción de MP"
         }
@@ -167,12 +173,6 @@
           "answer": "Email entre coordinadora y transportistas, agenda física en portería",
           "citation": null,
           "state": "ok"
-        },
-        {
-          "key": "uses_excel_for_orders",
-          "answer": null,
-          "citation": null,
-          "state": "missing"
         }
       ],
       "flags": [],
@@ -347,25 +347,31 @@
       "options": [
         {
           "group_name": "forms_to_review",
-          "label": "Formulario de turno",
+          "label": "Planificación / Turnos",
           "needed": null,
           "citation": null
         },
         {
           "group_name": "forms_to_review",
-          "label": "Formulario de check-in",
+          "label": "Check-in",
           "needed": null,
           "citation": null
         },
         {
           "group_name": "forms_to_review",
-          "label": "Checklist de descarga",
+          "label": "Checklists",
           "needed": null,
           "citation": null
         },
         {
           "group_name": "forms_to_review",
-          "label": "Asignación de dock",
+          "label": "Asignación de dock / llamado",
+          "needed": null,
+          "citation": null
+        },
+        {
+          "group_name": "forms_to_review",
+          "label": "Confirmación de turno",
           "needed": null,
           "citation": null
         }
@@ -392,12 +398,6 @@
         {
           "group_name": "channels",
           "label": "Email",
-          "needed": null,
-          "citation": null
-        },
-        {
-          "group_name": "channels",
-          "label": "SMS",
           "needed": null,
           "citation": null
         },

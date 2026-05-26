@@ -45,18 +45,6 @@
       "options": [
         {
           "group_name": "site_type",
-          "label": "Puerto",
-          "needed": false,
-          "citation": null
-        },
-        {
-          "group_name": "site_type",
-          "label": "Aeropuerto",
-          "needed": false,
-          "citation": null
-        },
-        {
-          "group_name": "site_type",
           "label": "Centro de distribución",
           "needed": true,
           "citation": "Somos un CD en Mendoza"
@@ -70,6 +58,12 @@
         {
           "group_name": "implementation_focus",
           "label": "Yard management",
+          "needed": false,
+          "citation": null
+        },
+        {
+          "group_name": "site_type",
+          "label": "Otro",
           "needed": false,
           "citation": null
         }
@@ -130,37 +124,37 @@
       "options": [
         {
           "group_name": "operations",
-          "label": "Recepción",
+          "label": "Descarga",
           "needed": true,
           "citation": "Recibimos mercadería todos los días"
         },
         {
           "group_name": "operations",
-          "label": "Despacho",
+          "label": "Carga",
           "needed": true,
           "citation": "Despachamos a última milla"
         },
         {
           "group_name": "operations",
-          "label": "Transferencia",
+          "label": "Interplantas",
           "needed": false,
           "citation": null
         },
         {
           "group_name": "modules",
-          "label": "Agenda de docks",
+          "label": "Dock Scheduling",
           "needed": true,
           "citation": null
         },
         {
           "group_name": "modules",
-          "label": "Check-in",
+          "label": "Inducción",
           "needed": true,
           "citation": null
         },
         {
           "group_name": "modules",
-          "label": "Módulo de órdenes",
+          "label": "YMS",
           "needed": null,
           "citation": null
         }
@@ -170,12 +164,6 @@
           "key": "current_scheduling_method",
           "answer": "WhatsApp y llamadas telefónicas, sin sistema",
           "citation": "Hoy lo hacemos todo por WhatsApp",
-          "state": "ok"
-        },
-        {
-          "key": "uses_excel_for_orders",
-          "answer": "Sí, Excel compartido en Drive",
-          "citation": "Tenemos un Excel que actualiza el equipo de logística",
           "state": "ok"
         }
       ],
@@ -382,20 +370,26 @@
       "options": [
         {
           "group_name": "forms_to_review",
-          "label": "Formulario de turno",
+          "label": "Planificación / Turnos",
           "needed": true,
           "citation": "Sí, agregar campo de número de orden"
         },
         {
           "group_name": "forms_to_review",
-          "label": "Formulario de check-in",
+          "label": "Check-in",
           "needed": true,
           "citation": "Agregar campo de patente"
         },
         {
           "group_name": "forms_to_review",
-          "label": "Checklist de descarga",
+          "label": "Checklists",
           "needed": false,
+          "citation": null
+        },
+        {
+          "group_name": "forms_to_review",
+          "label": "Confirmación de turno",
+          "needed": null,
           "citation": null
         }
       ],
@@ -422,12 +416,6 @@
           "group_name": "channels",
           "label": "Email",
           "needed": true,
-          "citation": null
-        },
-        {
-          "group_name": "channels",
-          "label": "SMS",
-          "needed": false,
           "citation": null
         },
         {

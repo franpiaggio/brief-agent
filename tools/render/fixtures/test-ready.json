@@ -47,12 +47,6 @@
           "citation": null
         },
         {
-          "group_name": "site_type",
-          "label": "Puerto",
-          "needed": false,
-          "citation": null
-        },
-        {
           "group_name": "implementation_focus",
           "label": "Scheduling",
           "needed": true,
@@ -61,6 +55,12 @@
         {
           "group_name": "implementation_focus",
           "label": "Yard management",
+          "needed": false,
+          "citation": null
+        },
+        {
+          "group_name": "site_type",
+          "label": "Otro",
           "needed": false,
           "citation": null
         }
@@ -116,49 +116,49 @@
       "options": [
         {
           "group_name": "operations",
-          "label": "Recepción",
+          "label": "Descarga",
           "needed": true,
           "citation": "Recibimos mercadería de proveedores todos los días hábiles"
         },
         {
           "group_name": "operations",
-          "label": "Despacho",
+          "label": "Carga",
           "needed": true,
           "citation": "Salimos con unidades propias y con transportes tercerizados"
         },
         {
           "group_name": "operations",
-          "label": "Retira cliente",
+          "label": "Retira Cliente",
           "needed": true,
           "citation": "Tenemos clientes corporativos que retiran con flota propia"
         },
         {
           "group_name": "operations",
-          "label": "Transferencia",
+          "label": "Interplantas",
           "needed": false,
           "citation": null
         },
         {
           "group_name": "modules",
-          "label": "Agenda de docks",
+          "label": "Dock Scheduling",
           "needed": true,
           "citation": null
         },
         {
           "group_name": "modules",
-          "label": "Check-in",
+          "label": "Inducción",
           "needed": true,
           "citation": null
         },
         {
           "group_name": "modules",
-          "label": "Módulo de órdenes",
+          "label": "YMS",
           "needed": false,
           "citation": "En fase 1 no, empezamos simple"
         },
         {
           "group_name": "modules",
-          "label": "Control documental",
+          "label": "Control Documental",
           "needed": false,
           "citation": null
         }
@@ -168,12 +168,6 @@
           "key": "current_scheduling_method",
           "answer": "Email entre coordinadores y transportistas, sin sistema centralizado",
           "citation": "Cada coordinador tiene su propia planilla y no las cruzamos",
-          "state": "ok"
-        },
-        {
-          "key": "uses_excel_for_orders",
-          "answer": "Sí, Excel compartido en Drive con el listado de recepciones del día",
-          "citation": null,
           "state": "ok"
         }
       ],
@@ -344,26 +338,32 @@
       "options": [
         {
           "group_name": "forms_to_review",
-          "label": "Formulario de turno",
+          "label": "Planificación / Turnos",
           "needed": true,
           "citation": "Agregar campo de tipo de mercadería y número de pallets estimados"
         },
         {
           "group_name": "forms_to_review",
-          "label": "Formulario de check-in",
+          "label": "Check-in",
           "needed": true,
           "citation": "Agregar patente del camión y número de precinto si aplica"
         },
         {
           "group_name": "forms_to_review",
-          "label": "Checklist de descarga",
+          "label": "Checklists",
           "needed": false,
           "citation": null
         },
         {
           "group_name": "forms_to_review",
-          "label": "Asignación de dock",
+          "label": "Asignación de dock / llamado",
           "needed": false,
+          "citation": null
+        },
+        {
+          "group_name": "forms_to_review",
+          "label": "Confirmación de turno",
+          "needed": null,
           "citation": null
         }
       ],
@@ -390,12 +390,6 @@
           "group_name": "channels",
           "label": "Email",
           "needed": true,
-          "citation": null
-        },
-        {
-          "group_name": "channels",
-          "label": "SMS",
-          "needed": false,
           "citation": null
         },
         {

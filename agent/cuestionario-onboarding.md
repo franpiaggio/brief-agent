@@ -36,9 +36,10 @@ Recordar agregar a **Read.AI** a la reunión — estará tomando notas para el a
 
 ❓ **Preguntas guía**
 
-- ¿Es una planta industrial, centro de distribución o almacén?
+- ¿Es una planta industrial, centro de distribución, almacén u otro tipo de sitio?
 - ¿De qué industria es?
-- ¿País y ciudad?
+- ¿En qué país operan?
+- ¿En qué ciudad?
 - ¿Quién es el contacto principal del proyecto?
 - ¿Quién será el contacto operativo diario?
 - ¿Cuál es el objetivo principal de implementar EasyDocking? (más orientado a Turnos, YMS o ambos?)

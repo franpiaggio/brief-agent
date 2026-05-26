@@ -105,7 +105,6 @@ export const FIELD_LABEL: Record<string, Record<string, string>> = {
   },
   classification: {
     current_scheduling_method: 'Método de agendamiento actual',
-    uses_excel_for_orders: 'Usan Excel para órdenes/turnos',
   },
   workflow: {
     workflow_per_operation: 'Workflow por operación',

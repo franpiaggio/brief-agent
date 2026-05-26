@@ -97,7 +97,7 @@ options, emitís `options: []`.
 ## 1. Información general
 
 Options:
-- `Tipo de sitio` (single-select): "Planta industrial", "Centro de distribución", "Almacén"
+- `Tipo de sitio` (single-select): "Planta industrial", "Centro de distribución", "Almacén", "Otro" (puerto, aeropuerto u otra cosa cae en "Otro")
 - `Objetivo principal` (multi-select): "Turnos", "YMS" (si contrata los dos, ambos quedan en `needed: true`)
 
 Fields (en este orden):
@@ -116,7 +116,6 @@ Options:
 
 Fields:
 - `Método de agendamiento actual`
-- `Usan Excel para órdenes/turnos`
 
 ## 3. Workflow operativo
 
@@ -174,7 +173,7 @@ Fields:
 ## 7. Campos y formularios
 
 Options:
-- `Formularios a revisar` (multi-select): "Planificación", "Confirmación de turno", "Check-in", "Checklists", "Asignación de dock"
+- `Formularios a revisar` (multi-select): "Planificación / Turnos", "Confirmación de turno", "Check-in", "Checklists", "Asignación de dock / llamado"
 
 Fields:
 - `Resumen de modificaciones`
