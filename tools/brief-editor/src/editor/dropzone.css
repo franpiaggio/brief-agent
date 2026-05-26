@@ -10,6 +10,9 @@
   width: 100%;
   max-width: 608px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .dropzone-card {
@@ -118,33 +121,36 @@
   border-radius: 999px;
 }
 
-.landing-tips {
-  width: min(560px, 100%);
-  margin: 22px auto 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.tip {
+.dropzone-sample {
+  display: inline-flex;
+  align-self: center;
+  margin: 18px auto 0;
+  padding: 8px 14px;
   background: transparent;
-  border: 1px solid var(--ruled-border);
-  border-radius: 10px;
-  padding: 14px 16px;
+  border: 0;
+  font-family: var(--font-sans);
   font-size: 12.5px;
   color: var(--ink-muted);
-  line-height: 1.5;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: color 140ms ease, background 140ms ease;
 }
 
-.tip-label {
-  font-family: var(--font-mono);
-  font-size: 9.5px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+.dropzone-sample::before {
+  content: "↗";
+  display: inline-block;
+  margin-right: 6px;
+  color: var(--validation-green-deep);
+}
+
+.dropzone-sample:hover {
   color: var(--ink);
-  display: block;
-  margin-bottom: 4px;
+  background: var(--paper-warm);
+}
+
+.dropzone-sample:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .landing-footer {

@@ -3,6 +3,8 @@ import { useBrief } from '../state/BriefContext'
 import { loadHtml } from '../loaders/loadHtml'
 import { loadJson } from '../loaders/loadJson'
 import { loadPdf } from '../loaders/loadPdf'
+import { BriefSchema } from '../schema'
+import sampleBrief from '../sample-brief.json'
 import './dropzone.css'
 
 type DropzoneState = 'idle' | 'loading' | { error: string }
@@ -25,6 +27,16 @@ export function Dropzone() {
         ext === 'html' ? await loadHtml(file) :
         ext === 'pdf'  ? await loadPdf(file)  :
                          await loadJson(file)
+      dispatch(actions.loadBrief(data))
+    } catch (err) {
+      setStatus({ error: err instanceof Error ? err.message : 'Error desconocido' })
+    }
+  }
+
+  function loadSample() {
+    setStatus('loading')
+    try {
+      const data = BriefSchema.parse(sampleBrief)
       dispatch(actions.loadBrief(data))
     } catch (err) {
       setStatus({ error: err instanceof Error ? err.message : 'Error desconocido' })
@@ -74,11 +86,8 @@ export function Dropzone() {
             </svg>
           </div>
 
-          <div className="dropzone-eyebrow">Cargar reporte</div>
-          <h1 className="dropzone-title">Soltá el brief para editar</h1>
-          <p className="dropzone-sub">
-            Acepta el HTML del brief, el JSON canónico o un PDF exportado desde este editor. Sin LLM, sin server: edición local.
-          </p>
+          <div className="dropzone-eyebrow">Editor de reporte</div>
+          <h1 className="dropzone-title">Carga el reporte generado</h1>
 
           {status === 'loading' ? (
             <button className="dropzone-cta" type="button" disabled>
@@ -102,7 +111,7 @@ export function Dropzone() {
           <div className={`dropzone-or${typeof status === 'object' ? ' dropzone-or--error' : ''}`}>
             {typeof status === 'object'
               ? status.error
-              : 'o arrastralo a esta tarjeta'}
+              : 'o arrástralo a la tarjeta'}
           </div>
 
           <div className="dropzone-formats">
@@ -112,11 +121,15 @@ export function Dropzone() {
           </div>
         </div>
 
+        <button
+          type="button"
+          className="dropzone-sample"
+          onClick={loadSample}
+          disabled={status === 'loading'}
+        >
+          Cargar informe de prueba
+        </button>
       </div>
-
-      <footer className="landing-footer">
-        Validación con Zod antes de montar · errores con la ruta exacta del campo
-      </footer>
     </main>
   )
 }
