@@ -1249,19 +1249,14 @@ body {
   .identity-card .identity-icon,
   .identity-card--missing .identity-icon { box-shadow: none; }
 
-  /* Each detail block starts on its own page */
-  .section {
-    page-break-before: always;
-    break-before: page;
-  }
-
-  /* Page-break control — prevent splitting within elements */
+  /* Page-break control — prevent splitting within elements, sections flow continuously */
   .narrative,
   .narrative-card,
   .checks-shell,
   .chk-section,
   .action-box,
   .deliverable,
+  .section,
   .block,
   .identity-grid,
   .identity-card,
