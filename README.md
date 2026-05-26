@@ -1,8 +1,38 @@
-# EasyDocking - Agente de onboarding
+# EasyDocking — Brief de onboarding
 
-Este repositorio tiene contratos del agente, templates HTML y tooling para ejecutar el agente de onboarding.
+Contratos del agente, templates y herramientas para el pipeline de briefs de onboarding.
 
 🔗 **[Reportes de ejemplo](https://franpiaggio.github.io/brief-agent/)**
+
+---
+
+## Tools
+
+### Brief Editor
+
+Editor local para pulir briefs antes de mandarlos al cliente. Cargás un brief (HTML con JSON embebido o JSON suelto), corregís datos con un click sobre el documento y exportás el HTML actualizado. Sin servidor, sin LLM, sin auto-save.
+
+→ [`tools/brief-editor/`](tools/brief-editor/) · [README](tools/brief-editor/README.md)
+
+### Render
+
+CLI TypeScript que valida el JSON del agente contra el schema Zod, calcula campos derivados y genera el HTML final del brief. Es la fuente de verdad del output — el Brief Editor y el Runner lo usan internamente.
+
+```bash
+cd tools/render
+npm run render -- fixtures/test-ready.json output.html
+```
+
+→ [`tools/render/`](tools/render/) · [README](tools/render/README.md)
+
+### Runner
+
+> [!NOTE]
+> Work in progress — coming soon.
+
+Ejecutor local del agente. Arrastrás un transcript, elegís proveedor y modelo, y genera el brief completo. Soporta Claude Max (CLI local), Anthropic API y OpenAI API. Historial de runs con métricas de tokens y costo.
+
+→ [`tools/runner/`](tools/runner/)
 
 ---
 
@@ -28,32 +58,3 @@ Ejemplos visuales del brief como HTML estático. No son dependencias runtime del
 | `brief-html-off-script/` | La reunión se desvió del cuestionario. |
 | `brief-html-no-meeting/` | Sin reunión o sin material suficiente. |
 
-## `tools/render/`
-
-Renderer TypeScript que valida el JSON, calcula campos derivados y genera el HTML final.
-
-Ver detalle de uso en [tools/render/README.md](tools/render/README.md).
-
-| Archivo | Qué es |
-|---|---|
-| `core/schema.ts` | Validación Zod del JSON de entrada. |
-| `core/mappings.ts` | Labels, iconos y clases derivados de estados/bloques. |
-| `core/compute.ts` | Enriquecimiento del JSON para render. |
-| `template.html` | Plantilla Handlebars activa del renderer. |
-| `styles.css` | CSS activo para el HTML generado por el renderer. |
-| `fixtures/` | JSONs de ejemplo para validar estados del brief. |
-| `core/render.ts` | Compila `tools/render/template.html` y devuelve HTML. |
-| `adapters/cli.ts` | CLI para renderizar desde un archivo o stdin. |
-
-Uso:
-
-```bash
-cd tools/render
-npm run render -- fixtures/test-ready.json output.html
-```
-
-Para revisar ejemplos generados localmente, usar `tools/render/output-examples/`. Esa carpeta esta ignorada por git.
-
-## `transcripts/`
-
-Transcripts de ejemplo para probar el agente (cliente ficticio).

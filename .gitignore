@@ -20,7 +20,13 @@ CLAUDE.md
 RENDER-CONTRACT.md
 .impeccable/
 .claude/
-brief-editor/
+
+# Editor build output
+tools/brief-editor/dist/
+tools/brief-editor/.vite/
+
+# Runner (work in progress, not ready to publish)
+tools/runner/
 
 # Transcripts de clientes reales — solo se trackean los simulados
 transcripts/*
